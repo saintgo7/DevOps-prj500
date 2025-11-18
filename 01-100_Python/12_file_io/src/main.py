@@ -10,42 +10,48 @@ from typing import List, Dict, Any
 
 def demonstrate_basic_file_operations() -> dict[str, Any]:
     """Demonstrate basic file read/write operations."""
-    # Write to file
-    with open("temp_basic.txt", "w") as f:
-        f.write("Hello, World!\n")
-        f.write("Python File I/O\n")
+    try:
+        # Write to file
+        with open("temp_basic.txt", "w") as f:
+            f.write("Hello, World!\n")
+            f.write("Python File I/O\n")
 
-    # Read entire file
-    with open("temp_basic.txt", "r") as f:
-        content = f.read()
+        # Read entire file
+        with open("temp_basic.txt", "r") as f:
+            content = f.read()
 
-    # Read lines
-    with open("temp_basic.txt", "r") as f:
-        lines = f.readlines()
+        # Read lines
+        with open("temp_basic.txt", "r") as f:
+            lines = f.readlines()
 
-    # Read line by line
-    line_by_line = []
-    with open("temp_basic.txt", "r") as f:
-        for line in f:
-            line_by_line.append(line.strip())
+        # Read line by line
+        line_by_line = []
+        with open("temp_basic.txt", "r") as f:
+            for line in f:
+                line_by_line.append(line.strip())
 
-    # Append to file
-    with open("temp_basic.txt", "a") as f:
-        f.write("Appended line\n")
+        # Append to file
+        with open("temp_basic.txt", "a") as f:
+            f.write("Appended line\n")
 
-    # Read after append
-    with open("temp_basic.txt", "r") as f:
-        final_content = f.read()
+        # Read after append
+        with open("temp_basic.txt", "r") as f:
+            final_content = f.read()
 
-    # Cleanup
-    os.remove("temp_basic.txt")
-
-    return {
-        "initial_content": content,
-        "lines": lines,
-        "line_by_line": line_by_line,
-        "after_append": final_content,
-    }
+        return {
+            "initial_content": content,
+            "lines": lines,
+            "line_by_line": line_by_line,
+            "after_append": final_content,
+        }
+    except (PermissionError, IOError) as e:
+        return {"error": f"File operation failed: {e}"}
+    finally:
+        # Cleanup - safely remove file if it exists
+        try:
+            os.remove("temp_basic.txt")
+        except FileNotFoundError:
+            pass
 
 
 def demonstrate_file_modes() -> dict[str, Any]:

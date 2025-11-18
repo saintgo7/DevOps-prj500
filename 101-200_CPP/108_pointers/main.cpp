@@ -231,27 +231,34 @@ void demonstrateDoublePointers() {
     int rows = 3;
     int cols = 4;
     int** matrix = new int*[rows];
-    for (int i = 0; i < rows; i++) {
-        matrix[i] = new int[cols];
-    }
+    int allocated = 0;  // Track successful allocations
 
-    // Fill and print
-    int counter = 1;
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            matrix[i][j] = counter++;
+    try {
+        for (int i = 0; i < rows; i++) {
+            matrix[i] = new int[cols];
+            allocated++;
         }
-    }
 
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            std::cout << matrix[i][j] << " ";
+        // Fill and print
+        int counter = 1;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = counter++;
+            }
         }
-        std::cout << std::endl;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                std::cout << matrix[i][j] << " ";
+            }
+            std::cout << std::endl;
+        }
+    } catch (...) {
+        std::cerr << "Memory allocation failed!" << std::endl;
     }
 
-    // Cleanup
-    for (int i = 0; i < rows; i++) {
+    // Cleanup - free all successfully allocated rows
+    for (int i = 0; i < allocated; i++) {
         delete[] matrix[i];
     }
     delete[] matrix;

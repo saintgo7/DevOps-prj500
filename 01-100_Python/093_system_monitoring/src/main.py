@@ -279,7 +279,8 @@ def monitor_system(duration: int = 5, interval: int = 1) -> List[SystemSnapshot]
 
         cpu = psutil.cpu_percent(interval=interval)
         mem = psutil.virtual_memory().percent
-        disk = psutil.disk_usage('/').percent
+        # Use os.sep for cross-platform compatibility (/ on Unix, \ on Windows)
+        disk = psutil.disk_usage(os.sep).percent
         net_now = psutil.net_io_counters()
 
         net_sent = (net_now.bytes_sent - net_start.bytes_sent) / (1024**2)

@@ -427,9 +427,12 @@ with engine.connect() as conn:
     for row in result:
         print(row)
 
-    # With transaction
+    # With transaction (ALWAYS use parameterized queries!)
     with conn.begin():
-        conn.execute(text("INSERT INTO users (username, email, password_hash) VALUES ('test', 'test@example.com', 'hash')"))
+        conn.execute(
+            text("INSERT INTO users (username, email, password_hash) VALUES (:username, :email, :password_hash)"),
+            {"username": "test", "email": "test@example.com", "password_hash": "hash"}
+        )
 
 session.close()
 """

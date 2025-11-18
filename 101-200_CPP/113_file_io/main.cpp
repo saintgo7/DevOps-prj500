@@ -38,11 +38,11 @@ int main() {
     demonstrateBinaryFiles();
     demonstrateErrorHandling();
 
-    // Cleanup test files
-    std::filesystem::remove("output.txt");
-    std::filesystem::remove("data.txt");
-    std::filesystem::remove("append.txt");
-    std::filesystem::remove("binary.dat");
+    // Cleanup test files - safely check existence first
+    if (std::filesystem::exists("output.txt")) std::filesystem::remove("output.txt");
+    if (std::filesystem::exists("data.txt")) std::filesystem::remove("data.txt");
+    if (std::filesystem::exists("append.txt")) std::filesystem::remove("append.txt");
+    if (std::filesystem::exists("binary.dat")) std::filesystem::remove("binary.dat");
 
     return 0;
 }

@@ -12,12 +12,14 @@ def demonstrate_basic_thread() -> dict[str, Any]:
     """Demonstrate basic thread creation and execution."""
 
     results = []
+    results_lock = threading.Lock()  # Add lock for thread safety
 
     def worker(name: str, count: int):
         """Simple worker function."""
         for i in range(count):
             time.sleep(0.01)
-            results.append(f"{name}-{i}")
+            with results_lock:  # Protect shared resource
+                results.append(f"{name}-{i}")
 
     # Create threads
     thread1 = threading.Thread(target=worker, args=("Thread-1", 3))
@@ -78,17 +80,20 @@ def demonstrate_daemon_threads() -> dict[str, Any]:
     """Demonstrate daemon vs non-daemon threads."""
 
     results = {"daemon_count": 0, "regular_count": 0}
+    results_lock = threading.Lock()  # Add lock for thread safety
 
     def daemon_worker():
         """Daemon thread - exits when main program exits."""
         for i in range(100):
-            results["daemon_count"] = i
+            with results_lock:
+                results["daemon_count"] = i
             time.sleep(0.01)
 
     def regular_worker():
         """Regular thread - blocks program exit."""
         for i in range(5):
-            results["regular_count"] = i
+            with results_lock:
+                results["regular_count"] = i
             time.sleep(0.01)
 
     # Create daemon thread
@@ -172,14 +177,17 @@ def demonstrate_semaphore() -> dict[str, Any]:
     semaphore = threading.Semaphore(2)  # Max 2 concurrent
     active_count = []
     max_concurrent = [0]
+    count_lock = threading.Lock()  # Add lock for shared state
 
     def worker(name: str):
         """Worker with semaphore."""
         with semaphore:
-            active_count.append(name)
-            max_concurrent[0] = max(max_concurrent[0], len(active_count))
+            with count_lock:
+                active_count.append(name)
+                max_concurrent[0] = max(max_concurrent[0], len(active_count))
             time.sleep(0.1)
-            active_count.remove(name)
+            with count_lock:
+                active_count.remove(name)
 
     # Create 5 threads but only 2 can run at once
     threads = [
