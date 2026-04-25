@@ -53,5 +53,59 @@
   },
   "languageSwitcher": {
     "label": "选择语言"
+  },
+  "glossary": {
+    "title": "平实语言词汇表",
+    "intro": "我们用平实的语言描述我们的工作。下面是每个技术术语在日常语言中的含义。",
+    "yourCallingCard": {
+      "plain": "你的使命名片",
+      "technical": "MatchProfile",
+      "explain": "一个简短的页面,告诉别人你关心哪个SDG,你能提供什么,你需要什么。"
+    },
+    "spark": {
+      "plain": "兴趣的火花",
+      "technical": "MatchSignal",
+      "explain": "一个小动作——比如收藏或点赞——表示你可能想多了解某人。"
+    },
+    "companion": {
+      "plain": "同伴",
+      "technical": "MatchPair",
+      "explain": "你和对方都同意建立联系的人。"
+    },
+    "kindred": {
+      "plain": "寻找志同道合者",
+      "technical": "向量相似度",
+      "explain": "我们比较你关于自己写的内容与别人写的内容,来推荐与你思考和关心相似事物的人。"
+    },
+    "mustHave": {
+      "plain": "必备条件",
+      "technical": "硬过滤器",
+      "explain": "决定你绝不会被匹配到谁的规则——例如,你们必须至少共享一种语言。"
+    },
+    "fairnessBoost": {
+      "plain": "公平性加权",
+      "technical": "equity weight",
+      "explain": "我们给那些声音通常被忽略的人——例如在最不发达国家工作的人——一些额外的可见度,以免网络只放大已经很响亮的声音。"
+    },
+    "yourSpace": {
+      "plain": "你的私人空间",
+      "technical": "租户隔离",
+      "explain": "你的数据与其他每个组织分开存储。其他组织中的任何人都无法看到。"
+    },
+    "privacyLine": {
+      "plain": "隐私边界",
+      "technical": "行级安全(RLS)",
+      "explain": "嵌入数据库的规则,使我们自己的代码也无法意外显示别人的数据。"
+    },
+    "changeRecord": {
+      "plain": "变更记录",
+      "technical": "审计事件",
+      "explain": "每当发生重要变更,我们都会记下谁在何时做出的,以便你随时检查历史。"
+    },
+    "privacyMask": {
+      "plain": "隐私面罩",
+      "technical": "PII 脱敏",
+      "explain": "在AI阅读你的文字之前,我们会隐藏姓名、电话号码、地址等个人详细信息。"
+    }
   }
 }

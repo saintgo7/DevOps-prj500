@@ -53,5 +53,59 @@
   },
   "languageSwitcher": {
     "label": "言語を選択"
+  },
+  "glossary": {
+    "title": "Plain-language glossary (translation needed)",
+    "intro": "This glossary is not yet translated to 日本語. Contributions welcome at docs/principles/ja.md.",
+    "yourCallingCard": {
+      "plain": "your calling card",
+      "technical": "MatchProfile",
+      "explain": "A short page where you tell others what SDG you care about, what you can offer, and what you need."
+    },
+    "spark": {
+      "plain": "a spark of interest",
+      "technical": "MatchSignal",
+      "explain": "A small action — like a save or a thumbs up — that tells us you might want to learn more about someone."
+    },
+    "companion": {
+      "plain": "a companion",
+      "technical": "MatchPair",
+      "explain": "Someone you and they have both agreed to connect with."
+    },
+    "kindred": {
+      "plain": "finding kindred minds",
+      "technical": "vector similarity",
+      "explain": "We compare what you wrote about yourself with what others wrote, to suggest people who think and care about similar things."
+    },
+    "mustHave": {
+      "plain": "must-haves",
+      "technical": "hard filter",
+      "explain": "Rules that decide who you definitely won't be matched with — for example, you must share at least one common language."
+    },
+    "fairnessBoost": {
+      "plain": "fairness boost",
+      "technical": "equity weight",
+      "explain": "We give a small extra visibility to people whose voices are usually missed — for example, those working in least-developed countries — so the network does not just amplify the already-loud."
+    },
+    "yourSpace": {
+      "plain": "your private space",
+      "technical": "tenant isolation",
+      "explain": "Your data is stored separately from every other organisation. No one in another organisation can ever see it."
+    },
+    "privacyLine": {
+      "plain": "the privacy line",
+      "technical": "row-level security",
+      "explain": "A rule built into our database so that even our own code cannot accidentally show someone else's data."
+    },
+    "changeRecord": {
+      "plain": "change record",
+      "technical": "audit event",
+      "explain": "Whenever something important changes, we write down who changed it and when, so you can always check the history."
+    },
+    "privacyMask": {
+      "plain": "privacy mask",
+      "technical": "PII redaction",
+      "explain": "Before AI reads your text, we hide personal details like names, phone numbers, and addresses."
+    }
   }
 }

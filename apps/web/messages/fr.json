@@ -51,5 +51,61 @@
     "noTargets": "Aucune cible exemple n'est encore disponible pour cet objectif.",
     "tier": "Niveau"
   },
-  "languageSwitcher": { "label": "Choisir la langue" }
+  "languageSwitcher": {
+    "label": "Choisir la langue"
+  },
+  "glossary": {
+    "title": "Glossaire en langage clair",
+    "intro": "Nous utilisons des mots clairs pour décrire ce que nous faisons. Voici ce que chaque terme technique signifie dans le langage de tous les jours.",
+    "yourCallingCard": {
+      "plain": "votre carte d'appel",
+      "technical": "MatchProfile",
+      "explain": "Une page brève où vous dites aux autres quel ODD vous tient à cœur, ce que vous pouvez offrir, ce dont vous avez besoin."
+    },
+    "spark": {
+      "plain": "une étincelle d'intérêt",
+      "technical": "MatchSignal",
+      "explain": "Une petite action — comme un enregistrement ou un j'aime — qui nous dit que vous voulez peut-être en savoir plus sur quelqu'un."
+    },
+    "companion": {
+      "plain": "un compagnon",
+      "technical": "MatchPair",
+      "explain": "Quelqu'un avec qui vous et l'autre avez tous deux accepté de vous connecter."
+    },
+    "kindred": {
+      "plain": "trouver des esprits apparentés",
+      "technical": "similarité vectorielle",
+      "explain": "Nous comparons ce que vous avez écrit sur vous avec ce que d'autres ont écrit, pour suggérer des personnes qui pensent et se soucient de choses semblables."
+    },
+    "mustHave": {
+      "plain": "indispensables",
+      "technical": "filtre strict",
+      "explain": "Règles qui déterminent avec qui vous ne serez jamais mis en correspondance — par exemple, vous devez partager au moins une langue commune."
+    },
+    "fairnessBoost": {
+      "plain": "amplification de l'équité",
+      "technical": "poids d'équité",
+      "explain": "Nous donnons un peu plus de visibilité aux personnes dont les voix sont habituellement ignorées — par exemple, celles travaillant dans les pays les moins avancés — pour que le réseau n'amplifie pas seulement ceux qui sont déjà bruyants."
+    },
+    "yourSpace": {
+      "plain": "votre espace privé",
+      "technical": "isolation de locataire",
+      "explain": "Vos données sont stockées séparément de toute autre organisation. Personne dans une autre organisation ne peut les voir."
+    },
+    "privacyLine": {
+      "plain": "la ligne de confidentialité",
+      "technical": "sécurité au niveau des lignes",
+      "explain": "Une règle intégrée à notre base de données pour que même notre propre code ne puisse pas accidentellement afficher les données d'autrui."
+    },
+    "changeRecord": {
+      "plain": "registre de changements",
+      "technical": "événement d'audit",
+      "explain": "Chaque fois qu'un changement important survient, nous notons qui l'a fait et quand, pour que vous puissiez toujours consulter l'historique."
+    },
+    "privacyMask": {
+      "plain": "masque de confidentialité",
+      "technical": "expurgation des PII",
+      "explain": "Avant que l'IA ne lise votre texte, nous masquons les détails personnels comme les noms, numéros de téléphone et adresses."
+    }
+  }
 }

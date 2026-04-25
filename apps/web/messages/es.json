@@ -51,5 +51,61 @@
     "noTargets": "Aún no hay metas de muestra para este objetivo.",
     "tier": "Nivel"
   },
-  "languageSwitcher": { "label": "Elegir idioma" }
+  "languageSwitcher": {
+    "label": "Elegir idioma"
+  },
+  "glossary": {
+    "title": "Glosario en lenguaje sencillo",
+    "intro": "Usamos palabras sencillas para lo que hacemos. Esto es lo que cada término técnico significa en lenguaje cotidiano.",
+    "yourCallingCard": {
+      "plain": "tu tarjeta de llamado",
+      "technical": "MatchProfile",
+      "explain": "Una página breve donde dices a otros qué ODS te importa, qué puedes ofrecer y qué necesitas."
+    },
+    "spark": {
+      "plain": "una chispa de interés",
+      "technical": "MatchSignal",
+      "explain": "Una pequeña acción — como guardar o dar me gusta — que nos dice que tal vez quieras saber más sobre alguien."
+    },
+    "companion": {
+      "plain": "un compañero",
+      "technical": "MatchPair",
+      "explain": "Alguien con quien tú y la otra persona han aceptado conectarse."
+    },
+    "kindred": {
+      "plain": "encontrar mentes afines",
+      "technical": "similitud vectorial",
+      "explain": "Comparamos lo que escribiste sobre ti con lo que escribieron otros, para sugerirte personas que piensan y se preocupan por cosas similares."
+    },
+    "mustHave": {
+      "plain": "condiciones imprescindibles",
+      "technical": "filtro estricto",
+      "explain": "Reglas que deciden con quién definitivamente no serás emparejado — por ejemplo, deben compartir al menos un idioma común."
+    },
+    "fairnessBoost": {
+      "plain": "impulso de equidad",
+      "technical": "peso de equidad",
+      "explain": "Damos un poco más de visibilidad a personas cuyas voces suelen ser ignoradas — por ejemplo, quienes trabajan en países menos desarrollados — para que la red no solo amplifique a los ya ruidosos."
+    },
+    "yourSpace": {
+      "plain": "tu espacio privado",
+      "technical": "aislamiento de inquilino",
+      "explain": "Tus datos se almacenan separadamente de cada otra organización. Nadie en otra organización puede verlos."
+    },
+    "privacyLine": {
+      "plain": "la línea de privacidad",
+      "technical": "seguridad a nivel de fila",
+      "explain": "Una regla incorporada en nuestra base de datos para que ni nuestro propio código pueda mostrar accidentalmente datos de otra persona."
+    },
+    "changeRecord": {
+      "plain": "registro de cambios",
+      "technical": "evento de auditoría",
+      "explain": "Cada vez que cambia algo importante, registramos quién lo cambió y cuándo, para que siempre puedas revisar el historial."
+    },
+    "privacyMask": {
+      "plain": "máscara de privacidad",
+      "technical": "redacción de PII",
+      "explain": "Antes de que la IA lea tu texto, ocultamos detalles personales como nombres, números de teléfono y direcciones."
+    }
+  }
 }

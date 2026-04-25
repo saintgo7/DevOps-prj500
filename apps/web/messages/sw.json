@@ -51,5 +51,61 @@
     "noTargets": "Hakuna shabaha za mfano zilizopandwa kwa lengo hili bado.",
     "tier": "Daraja"
   },
-  "languageSwitcher": { "label": "Chagua lugha" }
+  "languageSwitcher": {
+    "label": "Chagua lugha"
+  },
+  "glossary": {
+    "title": "Kamusi ya lugha rahisi",
+    "intro": "Tunatumia maneno rahisi kwa kile tunachofanya. Hapa ni nini kila neno la kiteknolojia linamaanisha kwa lugha ya kila siku.",
+    "yourCallingCard": {
+      "plain": "kadi yako ya wito",
+      "technical": "MatchProfile",
+      "explain": "Ukurasa mfupi unaowajulisha wengine ni SDG ipi unayojali, unayoweza kutoa nini, na unahitaji nini."
+    },
+    "spark": {
+      "plain": "cheche ya hamu",
+      "technical": "MatchSignal",
+      "explain": "Hatua ndogo — kama kuhifadhi au kupenda — inayotuambia huenda unataka kujifunza zaidi kuhusu mtu fulani."
+    },
+    "companion": {
+      "plain": "mwenza",
+      "technical": "MatchPair",
+      "explain": "Mtu ambaye wewe na yeye mmekubali kuunganishwa."
+    },
+    "kindred": {
+      "plain": "kupata akili rafiki",
+      "technical": "kufanana kwa vekta",
+      "explain": "Tunalinganisha ulichoandika kuhusu wewe na kile wengine waliandika, kupendekeza watu wanaofikiria na kujali vitu vinavyofanana."
+    },
+    "mustHave": {
+      "plain": "mahitaji ya lazima",
+      "technical": "kichungi kali",
+      "explain": "Sheria zinazoamua na nani hutaunganishwa kabisa — kwa mfano, lazima mshiriki angalau lugha moja ya pamoja."
+    },
+    "fairnessBoost": {
+      "plain": "uhakika wa usawa",
+      "technical": "uzito wa usawa",
+      "explain": "Tunatoa mwonekano kidogo zaidi kwa watu ambao sauti zao kawaida hupuuzwa — kwa mfano, wanaofanya kazi katika nchi zilizoendelea kidogo zaidi — ili mtandao usiongezee tu wale walio na sauti kubwa tayari."
+    },
+    "yourSpace": {
+      "plain": "nafasi yako binafsi",
+      "technical": "kutengwa kwa mpangaji",
+      "explain": "Data yako huhifadhiwa tofauti na kila shirika lingine. Hakuna mtu katika shirika lingine anayeweza kuiona."
+    },
+    "privacyLine": {
+      "plain": "mstari wa faragha",
+      "technical": "usalama wa kiwango cha safu",
+      "explain": "Sheria iliyojengwa katika hifadhidata yetu ili hata msimbo wetu wenyewe usiweze kuonyesha data ya mtu mwingine kwa bahati mbaya."
+    },
+    "changeRecord": {
+      "plain": "rekodi ya mabadiliko",
+      "technical": "tukio la ukaguzi",
+      "explain": "Kila wakati kitu muhimu kinabadilika, tunarekodi nani alibadilisha na lini, ili uweze kuangalia historia kila wakati."
+    },
+    "privacyMask": {
+      "plain": "kinyago cha faragha",
+      "technical": "uficho wa PII",
+      "explain": "Kabla AI haijasoma maandishi yako, tunaficha maelezo binafsi kama majina, nambari za simu, na anwani."
+    }
+  }
 }
