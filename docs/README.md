@@ -78,6 +78,8 @@
 - [0006](./adr/0006-prisma-as-orm.md) Prisma ORM
 - [0007](./adr/0007-observability-baseline.md) 관측성 베이스라인 (pino + Prom + structlog)
 - [0008](./adr/0008-security-guardrails-baseline.md) 보안 가드레일 베이스라인
+- [0009](./adr/0009-global-language-policy.md) 글로벌 언어 정책 (13 언어 + RTL + LDC 우선)
+- [0010](./adr/0010-peer-matching-domain.md) Peer Matching 도메인 — 같은 고민의 인류를 잇는다
 
 ## 변경 절차
 - 큰 변경: RFC PR + 도메인 책임자 승인

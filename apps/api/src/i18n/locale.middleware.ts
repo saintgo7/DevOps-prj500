@@ -1,9 +1,13 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import type { NextFunction, Request, Response } from 'express';
 
-export const SUPPORTED_LOCALES = ['ko', 'en', 'ja', 'zh'] as const;
+// Kept in sync with apps/web/src/i18n/routing.ts. See ADR-0009.
+export const SUPPORTED_LOCALES = [
+  'en', 'zh', 'hi', 'es', 'ar', 'fr', 'bn', 'pt', 'ru', 'id', 'ja', 'ko', 'sw',
+] as const;
 export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 export const DEFAULT_LOCALE: SupportedLocale = 'en';
+export const RTL_LOCALES: ReadonlySet<SupportedLocale> = new Set(['ar']);
 
 declare module 'express' {
   interface Request {

@@ -1,0 +1,55 @@
+{
+  "common": {
+    "appName": "SDG Impact Cloud",
+    "tagline": "SaaS de medición y reporte de impacto basado en los Objetivos de Desarrollo Sostenible (ODS) de la ONU",
+    "loading": "Cargando…",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "back": "Atrás",
+    "home": "Inicio",
+    "signOut": "Cerrar sesión",
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "myProfile": "Mi perfil",
+    "language": "Idioma"
+  },
+  "home": {
+    "goalsHeading": "Los 17 Objetivos de Desarrollo Sostenible",
+    "apiOffline": "No se puede conectar con la API del catálogo. Inicia tu entorno local con {dev} o {compose}.",
+    "footerDocs": "Documentación"
+  },
+  "auth": {
+    "signUpTitle": "Registrarse",
+    "signUpHint": "Crea un nuevo espacio de trabajo (tenant) y una cuenta de administrador.",
+    "signInTitle": "Iniciar sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "passwordHint": "Contraseña (mínimo 12 caracteres)",
+    "organizationName": "Nombre de la organización (opcional)",
+    "displayName": "Nombre para mostrar (opcional)",
+    "submitting": "Enviando…",
+    "haveAccount": "¿Ya tienes cuenta?",
+    "noAccount": "¿No tienes cuenta?",
+    "signupFailed": "Error en el registro",
+    "signinFailed": "Error al iniciar sesión"
+  },
+  "me": {
+    "title": "Mi perfil",
+    "email": "Correo electrónico",
+    "name": "Nombre para mostrar",
+    "status": "Estado",
+    "mfa": "MFA",
+    "mfaActive": "activado",
+    "mfaInactive": "desactivado",
+    "tenantId": "ID de Tenant",
+    "userId": "ID de Usuario",
+    "loadFailed": "No se pudo cargar el perfil"
+  },
+  "goal": {
+    "back": "← Los 17 Objetivos",
+    "targets": "Metas ({count})",
+    "noTargets": "Aún no hay metas de muestra para este objetivo.",
+    "tier": "Nivel"
+  },
+  "languageSwitcher": { "label": "Elegir idioma" }
+}

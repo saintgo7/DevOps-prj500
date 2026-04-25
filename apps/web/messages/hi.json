@@ -1,0 +1,55 @@
+{
+  "common": {
+    "appName": "SDG इम्पैक्ट क्लाउड",
+    "tagline": "संयुक्त राष्ट्र सतत विकास लक्ष्य (SDGs) पर आधारित प्रभाव माप एवं रिपोर्टिंग SaaS",
+    "loading": "लोड हो रहा है…",
+    "submit": "सबमिट करें",
+    "cancel": "रद्द करें",
+    "back": "पीछे",
+    "home": "होम",
+    "signOut": "साइन आउट",
+    "signIn": "साइन इन",
+    "signUp": "साइन अप",
+    "myProfile": "मेरी प्रोफ़ाइल",
+    "language": "भाषा"
+  },
+  "home": {
+    "goalsHeading": "17 सतत विकास लक्ष्य",
+    "apiOffline": "कैटलॉग API से कनेक्ट नहीं हो सका। {dev} या {compose} के साथ लोकल वातावरण शुरू करें।",
+    "footerDocs": "दस्तावेज़"
+  },
+  "auth": {
+    "signUpTitle": "साइन अप",
+    "signUpHint": "एक नया वर्कस्पेस (टेनेंट) और व्यवस्थापक खाता बनाएँ।",
+    "signInTitle": "साइन इन",
+    "email": "ईमेल",
+    "password": "पासवर्ड",
+    "passwordHint": "पासवर्ड (कम से कम 12 अक्षर)",
+    "organizationName": "संगठन का नाम (वैकल्पिक)",
+    "displayName": "नाम (वैकल्पिक)",
+    "submitting": "प्रसंस्करण…",
+    "haveAccount": "क्या आपके पास पहले से खाता है?",
+    "noAccount": "क्या आपके पास खाता नहीं है?",
+    "signupFailed": "साइन अप विफल",
+    "signinFailed": "साइन इन विफल"
+  },
+  "me": {
+    "title": "मेरी प्रोफ़ाइल",
+    "email": "ईमेल",
+    "name": "प्रदर्शन नाम",
+    "status": "स्थिति",
+    "mfa": "MFA",
+    "mfaActive": "सक्षम",
+    "mfaInactive": "अक्षम",
+    "tenantId": "टेनेंट ID",
+    "userId": "उपयोगकर्ता ID",
+    "loadFailed": "प्रोफ़ाइल लोड करने में विफल"
+  },
+  "goal": {
+    "back": "← सभी 17 लक्ष्य",
+    "targets": "लक्ष्य ({count})",
+    "noTargets": "इस लक्ष्य के लिए अभी कोई नमूना उप-लक्ष्य उपलब्ध नहीं है।",
+    "tier": "टियर"
+  },
+  "languageSwitcher": { "label": "भाषा चुनें" }
+}

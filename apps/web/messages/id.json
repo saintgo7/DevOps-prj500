@@ -1,0 +1,55 @@
+{
+  "common": {
+    "appName": "SDG Impact Cloud",
+    "tagline": "Platform SaaS pengukuran dan pelaporan dampak berbasis Tujuan Pembangunan Berkelanjutan (SDGs) PBB",
+    "loading": "Memuat…",
+    "submit": "Kirim",
+    "cancel": "Batal",
+    "back": "Kembali",
+    "home": "Beranda",
+    "signOut": "Keluar",
+    "signIn": "Masuk",
+    "signUp": "Daftar",
+    "myProfile": "Profil saya",
+    "language": "Bahasa"
+  },
+  "home": {
+    "goalsHeading": "17 Tujuan Pembangunan Berkelanjutan",
+    "apiOffline": "API katalog tidak terjangkau. Mulai lingkungan lokal Anda dengan {dev} atau {compose}.",
+    "footerDocs": "Dokumentasi"
+  },
+  "auth": {
+    "signUpTitle": "Daftar",
+    "signUpHint": "Buat ruang kerja baru (tenant) dan akun administrator.",
+    "signInTitle": "Masuk",
+    "email": "Email",
+    "password": "Kata sandi",
+    "passwordHint": "Kata sandi (minimal 12 karakter)",
+    "organizationName": "Nama organisasi (opsional)",
+    "displayName": "Nama tampilan (opsional)",
+    "submitting": "Mengirim…",
+    "haveAccount": "Sudah punya akun?",
+    "noAccount": "Belum punya akun?",
+    "signupFailed": "Pendaftaran gagal",
+    "signinFailed": "Masuk gagal"
+  },
+  "me": {
+    "title": "Profil saya",
+    "email": "Email",
+    "name": "Nama tampilan",
+    "status": "Status",
+    "mfa": "MFA",
+    "mfaActive": "aktif",
+    "mfaInactive": "nonaktif",
+    "tenantId": "ID Tenant",
+    "userId": "ID Pengguna",
+    "loadFailed": "Gagal memuat profil"
+  },
+  "goal": {
+    "back": "← Semua 17 Tujuan",
+    "targets": "Target ({count})",
+    "noTargets": "Belum ada contoh target untuk tujuan ini.",
+    "tier": "Tingkat"
+  },
+  "languageSwitcher": { "label": "Pilih bahasa" }
+}

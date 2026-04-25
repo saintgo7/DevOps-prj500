@@ -1,0 +1,55 @@
+{
+  "common": {
+    "appName": "SDG Impact Cloud",
+    "tagline": "Jukwaa la SaaS la kupima na kuripoti athari kulingana na Malengo ya Maendeleo Endelevu (SDGs) ya Umoja wa Mataifa",
+    "loading": "Inapakia…",
+    "submit": "Wasilisha",
+    "cancel": "Ghairi",
+    "back": "Rudi",
+    "home": "Mwanzo",
+    "signOut": "Toka",
+    "signIn": "Ingia",
+    "signUp": "Jisajili",
+    "myProfile": "Wasifu wangu",
+    "language": "Lugha"
+  },
+  "home": {
+    "goalsHeading": "Malengo 17 ya Maendeleo Endelevu",
+    "apiOffline": "API ya Katalogi haiwezi kufikiwa. Anzisha mazingira yako ya kawaida kwa {dev} au {compose}.",
+    "footerDocs": "Nyaraka"
+  },
+  "auth": {
+    "signUpTitle": "Jisajili",
+    "signUpHint": "Unda nafasi mpya ya kazi (mpangaji) na akaunti ya msimamizi.",
+    "signInTitle": "Ingia",
+    "email": "Barua pepe",
+    "password": "Nenosiri",
+    "passwordHint": "Nenosiri (angalau herufi 12)",
+    "organizationName": "Jina la shirika (hiari)",
+    "displayName": "Jina la kuonyesha (hiari)",
+    "submitting": "Inawasilisha…",
+    "haveAccount": "Tayari una akaunti?",
+    "noAccount": "Huna akaunti?",
+    "signupFailed": "Usajili umeshindikana",
+    "signinFailed": "Kuingia kumeshindikana"
+  },
+  "me": {
+    "title": "Wasifu wangu",
+    "email": "Barua pepe",
+    "name": "Jina la kuonyesha",
+    "status": "Hali",
+    "mfa": "MFA",
+    "mfaActive": "imewashwa",
+    "mfaInactive": "imezimwa",
+    "tenantId": "Kitambulisho cha Mpangaji",
+    "userId": "Kitambulisho cha Mtumiaji",
+    "loadFailed": "Imeshindikana kupakia wasifu"
+  },
+  "goal": {
+    "back": "← Malengo 17",
+    "targets": "Shabaha ({count})",
+    "noTargets": "Hakuna shabaha za mfano zilizopandwa kwa lengo hili bado.",
+    "tier": "Daraja"
+  },
+  "languageSwitcher": { "label": "Chagua lugha" }
+}
