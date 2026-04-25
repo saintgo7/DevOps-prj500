@@ -9,6 +9,7 @@ import { ColumnsModule } from './columns/columns.module';
 import { WatchModule } from './watch/watch.module';
 import { HealthController } from './health/health.controller';
 import { LocaleMiddleware } from './i18n/locale.middleware';
+import { MonitoringModule } from './monitoring/monitoring.module';
 import { ObservabilityModule } from './observability/observability.module';
 import { RequestIdMiddleware } from './observability/request-id.middleware';
 import { PrismaModule } from './prisma/prisma.module';
@@ -27,6 +28,7 @@ import { TenantContextMiddleware } from './tenant/tenant-context.middleware';
     AuthModule,
     CatalogModule,
     ColumnsModule,
+    MonitoringModule,
     WatchModule,
   ],
   controllers: [HealthController],

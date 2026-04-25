@@ -138,5 +138,25 @@
     "managingApproversBody": "添加或删除审批者本身就是敏感操作。需两位管理员同意,变更会被记录在不可变更的审计日志中。",
     "partnerTitle": "合作机构",
     "partnerBody": "合作机构可通过签名的 webhook(HMAC-SHA256)或拉取 CC BY 4.0 公开 Atom 订阅源,接收每一篇已发布的专栏。合作方从不看到草稿、订阅或私人兴趣。"
+  },
+  "dashboard": {
+    "dashboardTitle": "仪表板",
+    "sectionGoals": "17 个目标",
+    "sectionTargets": "169 个细分目标",
+    "sectionPostSdgs": "2030 年后议程",
+    "sectionPostSdgsBody": "国际社会开始讨论的 SDGs 之后时代的主题。",
+    "sectionImpact": "我们自我衡量的影响",
+    "sourceTabExternal": "来自世界",
+    "sourceTabExternalBody": "外部的研究、论文、文章、专栏、新闻通讯和经过验证的社交内容——只有通过 12 条完整性规则的内容才会出现。",
+    "sourceTabInternal": "来自本平台",
+    "sourceTabInternalBody": "我们自己发布的新闻通讯、专栏、论文。",
+    "researchTitle": "研究与项目规划",
+    "researchIntro": "基于你的发现规划新研究或新项目。在你选择分享之前,仅在你的工作区可见。",
+    "outreachTitle": "联系专家",
+    "outreachIntro": "为研究者、从业者或合作伙伴起草一条消息。我们绝不替你发送——由你点击发送。",
+    "monitoringTitle": "监控(仅管理员)",
+    "monitoringIntro": "完整性、审批、合作伙伴、研究和监控管道的整体视图。打开此页面本身会被记录在审计日志中。",
+    "chatTitle": "实时对话",
+    "chatIntro": "用你的语言输入。对方用自己的语言阅读。原文始终保留。"
   }
 }

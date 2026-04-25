@@ -7,10 +7,18 @@ import {
 import { Prisma } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
 import { tally, type RequestRecord, type Sensitivity } from './approval-tally';
+import { verifyIntegrity, type ContentCandidate, type IntegrityReport } from './content-integrity';
+
+export type ColumnOrigin = 'external' | 'internal';
 
 export interface ColumnDraftInput {
   tenantId: string;
   authorId?: string;
+  /**
+   * 'external' = curated from a public source (must pass the 12 integrity rules).
+   * 'internal' = our own platform's publication (eligibility check still runs).
+   */
+  origin?: ColumnOrigin;
   primaryLocale: string;
   bodyI18n: Record<string, { title: string; summary: string; excerpt?: string }>;
   sourceUrl: string;
@@ -20,8 +28,13 @@ export interface ColumnDraftInput {
   sourceLicense?: string;
   sdgFocus: string[];
   sdgConfidence?: number;
+  humanConfirmedSdg?: boolean;
   sensitivity?: Sensitivity;
   aiProvenance?: { model: string; promptVersion: string; draftedAt: string };
+  contentHash?: string;
+  trustedDomains?: ReadonlySet<string>;
+  sanctionedDomains?: ReadonlySet<string>;
+  knownContentHashes?: ReadonlySet<string>;
 }
 
 @Injectable()
@@ -51,7 +64,10 @@ export class ColumnService {
     return errors;
   }
 
-  async createDraft(input: ColumnDraftInput) {
+  async createDraft(input: ColumnDraftInput): Promise<{
+    id: string;
+    integrityReport: IntegrityReport;
+  }> {
     const errors = ColumnService.eligibilityErrors(input);
     if (errors.length > 0) {
       throw new BadRequestException({
@@ -59,11 +75,48 @@ export class ColumnService {
         items: errors,
       });
     }
-    return this.prisma.column.create({
+    const origin: ColumnOrigin = input.origin ?? 'external';
+
+    // External-origin columns MUST pass all 12 integrity rules. Internal
+    // columns also run the verifier (so we can show the report) but a few
+    // rules — namely the trusted-domain rule — are advisory rather than
+    // blocking, since the platform itself is the publisher.
+    const candidate: ContentCandidate = {
+      url: input.sourceUrl,
+      primaryLocale: input.primaryLocale,
+      bodyI18n: input.bodyI18n,
+      ...(input.sourceTitle !== undefined ? { sourceTitle: input.sourceTitle } : {}),
+      ...(input.sourceAuthors !== undefined ? { sourceAuthors: input.sourceAuthors } : {}),
+      ...(input.sourcePublisher !== undefined ? { sourcePublisher: input.sourcePublisher } : {}),
+      ...(input.sourceLicense !== undefined ? { sourceLicense: input.sourceLicense } : {}),
+      sdgFocus: input.sdgFocus,
+      ...(input.sdgConfidence !== undefined ? { sdgConfidence: input.sdgConfidence } : {}),
+      ...(input.humanConfirmedSdg !== undefined
+        ? { humanConfirmedSdg: input.humanConfirmedSdg }
+        : {}),
+      ...(input.contentHash !== undefined ? { contentHash: input.contentHash } : {}),
+      ...(input.knownContentHashes !== undefined
+        ? { knownContentHashes: input.knownContentHashes }
+        : {}),
+      ...(input.trustedDomains !== undefined ? { trustedDomains: input.trustedDomains } : {}),
+      ...(input.sanctionedDomains !== undefined
+        ? { sanctionedDomains: input.sanctionedDomains }
+        : {}),
+    };
+    const report = verifyIntegrity(candidate);
+    if (origin === 'external' && !report.pass) {
+      throw new BadRequestException({
+        error: 'Content integrity verification failed (12-rule check).',
+        items: report.results.filter((r) => !r.ok).map((r) => `${r.rule}: ${r.message}`),
+      });
+    }
+
+    const created = await this.prisma.column.create({
       data: {
         tenantId: input.tenantId,
         ...(input.authorId !== undefined ? { authorId: input.authorId } : {}),
         state: 'draft',
+        origin,
         primaryLocale: input.primaryLocale,
         bodyI18n: input.bodyI18n as Prisma.InputJsonValue,
         sourceUrl: input.sourceUrl,
@@ -74,11 +127,13 @@ export class ColumnService {
         sdgFocus: input.sdgFocus,
         ...(input.sdgConfidence !== undefined ? { sdgConfidence: input.sdgConfidence } : {}),
         sensitivity: input.sensitivity ?? 'standard',
+        integrityReport: report as unknown as Prisma.InputJsonValue,
         ...(input.aiProvenance !== undefined
           ? { aiProvenance: input.aiProvenance as unknown as Prisma.InputJsonValue }
           : {}),
       },
     });
+    return { id: created.id, integrityReport: report };
   }
 
   async submitForApproval(tenantId: string, columnId: string, approverIds: string[]) {
@@ -181,11 +236,14 @@ export class ColumnService {
     return outcome;
   }
 
-  async listPublished(filter: { since?: Date; locale?: string; take?: number } = {}) {
+  async listPublished(
+    filter: { since?: Date; locale?: string; take?: number; origin?: ColumnOrigin } = {},
+  ) {
     return this.prisma.column.findMany({
       where: {
         state: 'published',
         ...(filter.since ? { publishedAt: { gte: filter.since } } : {}),
+        ...(filter.origin ? { origin: filter.origin } : {}),
       },
       orderBy: { publishedAt: 'desc' },
       take: filter.take ?? 30,

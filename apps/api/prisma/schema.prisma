@@ -241,9 +241,15 @@ model Column {
   tenantId        String   @map("tenant_id") @db.Uuid
   authorId        String?  @map("author_id") @db.Uuid // who curated it
   state           String   @default("draft") // draft | pending | published | rejected | revoked
+  // 'external' = curated from outside sources; 'internal' = our own publication.
+  // Two-section UX (ADR-0014 §4): readers always see which section they are reading.
+  origin          String   @default("external") // 'external' | 'internal'
   // Multilingual body: { en: { title, summary, excerpt, attribution }, ko: ..., ar: ... }
   bodyI18n        Json     @map("body_i18n")
-  primaryLocale   String   @default("en") @map("primary_locale")
+  primaryLocale   String   @default("ko") @map("primary_locale")
+  // 12-rule integrity verifier outcome (CONTENT_STANDARD §8 + ADR-0014 §5).
+  // Stored so admins can audit *which* rules passed or failed at submit time.
+  integrityReport Json?    @map("integrity_report")
   // Source attribution
   sourceUrl       String   @map("source_url")
   sourceTitle     String?  @map("source_title")
@@ -351,4 +357,93 @@ model PartnerWebhook {
 
   @@index([partnerId, active])
   @@map("partner_webhooks")
+}
+
+// ============================================================
+// Research proposals + expert outreach + chat (ADR-0014)
+// ============================================================
+
+// A research / project plan inspired by curated findings. Owned by an admin
+// or accredited researcher inside a tenant. Sharing with collaborators is
+// always opt-in via ExpertOutreach (never auto-broadcast — see ADR-0012).
+model ResearchProposal {
+  id           String   @id @default(uuid()) @db.Uuid
+  tenantId     String   @map("tenant_id") @db.Uuid
+  ownerId      String   @map("owner_id") @db.Uuid
+  state        String   @default("draft") // draft | review | approved | retired
+  // Multilingual content: { ko: { title, abstract, plan }, en: ..., ... }
+  bodyI18n     Json     @map("body_i18n")
+  primaryLocale String  @default("ko") @map("primary_locale")
+  sdgFocus     String[] @default([]) @map("sdg_focus")
+  inspiredByItemIds String[] @default([]) @map("inspired_by_item_ids") // WatchItem ids
+  inspiredByColumnIds String[] @default([]) @map("inspired_by_column_ids") // Column ids
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  outreaches ExpertOutreach[]
+
+  @@index([tenantId, state, createdAt])
+  @@index([ownerId])
+  @@map("research_proposals")
+}
+
+// A *draft* outreach to an external expert. Created and visible only to the
+// proposal owner; sending requires an explicit human action that also
+// records consent for any contact details used.
+model ExpertOutreach {
+  id            String   @id @default(uuid()) @db.Uuid
+  tenantId      String   @map("tenant_id") @db.Uuid
+  proposalId    String   @map("proposal_id") @db.Uuid
+  expertName    String   @map("expert_name")
+  expertOrg     String?  @map("expert_org")
+  expertEmail   String?  @map("expert_email")
+  draftMessage  String   @map("draft_message")
+  draftLocale   String   @default("en") @map("draft_locale")
+  state         String   @default("draft") // draft | sent | replied | declined | withdrawn
+  sentAt        DateTime? @map("sent_at")
+  consentRecord Json?    @map("consent_record") // when, how, by whom contact was consented
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  proposal ResearchProposal @relation(fields: [proposalId], references: [id])
+
+  @@index([tenantId, proposalId])
+  @@index([state])
+  @@map("expert_outreaches")
+}
+
+// A chat conversation. Members write in their own language; the platform
+// translates for the others while preserving the original verbatim.
+// Translation always tags model + confidence + timestamp (ADR-0014 §2).
+model Conversation {
+  id          String   @id @default(uuid()) @db.Uuid
+  tenantId    String   @map("tenant_id") @db.Uuid
+  topic       String?
+  // Members and their preferred locales:
+  //   { userId: { locale: 'ko' | 'en' | ... } }
+  members     Json
+  createdAt   DateTime @default(now()) @map("created_at")
+  archivedAt  DateTime? @map("archived_at")
+
+  messages Message[]
+
+  @@index([tenantId, createdAt])
+  @@map("conversations")
+}
+
+model Message {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  conversationId  String   @map("conversation_id") @db.Uuid
+  authorId        String   @map("author_id") @db.Uuid
+  originalText    String   @map("original_text")
+  originalLocale  String   @map("original_locale")
+  // Cached translations: { en: { text, model, confidence, translatedAt }, ... }
+  // The original is NEVER overwritten by translations.
+  translations    Json?
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  conversation Conversation @relation(fields: [conversationId], references: [id])
+
+  @@index([tenantId, conversationId, createdAt])
+  @@map("messages")
 }

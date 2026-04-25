@@ -138,5 +138,25 @@
     "managingApproversBody": "Agregar o quitar a un aprobador es en sí mismo una acción sensible. Dos administradores deben estar de acuerdo, y el cambio se registra en el registro de auditoría inmutable.",
     "partnerTitle": "Organizaciones aliadas",
     "partnerBody": "Las organizaciones aliadas pueden recibir cada columna publicada mediante webhook firmado (HMAC-SHA256) o consultando el feed Atom público bajo CC BY 4.0. Las aliadas nunca ven borradores, suscripciones, o intereses privados."
+  },
+  "dashboard": {
+    "dashboardTitle": "Tablero",
+    "sectionGoals": "17 Objetivos",
+    "sectionTargets": "169 Metas",
+    "sectionPostSdgs": "Agenda post-2030",
+    "sectionPostSdgsBody": "Temas que la comunidad internacional comienza a discutir para la era posterior a los ODS.",
+    "sectionImpact": "Nuestro impacto que medimos nosotros mismos",
+    "sourceTabExternal": "Del mundo",
+    "sourceTabExternalBody": "Investigación, artículos, columnas, boletines y publicaciones en redes sociales verificadas, externas a la plataforma — solo las que superan las 12 reglas de integridad.",
+    "sourceTabInternal": "De esta plataforma",
+    "sourceTabInternalBody": "Boletines, columnas y artículos que publicamos nosotros mismos.",
+    "researchTitle": "Planes de investigación y proyectos",
+    "researchIntro": "Planea un nuevo estudio o iniciativa inspirado en tus hallazgos. Solo visible dentro de tu espacio hasta que decidas compartir.",
+    "outreachTitle": "Contactar a un experto",
+    "outreachIntro": "Redacta un mensaje a un investigador, profesional o aliado. Nunca enviamos en tu nombre — tú haces clic en enviar.",
+    "monitoringTitle": "Monitoreo (solo administradores)",
+    "monitoringIntro": "Vista holística de integridad, aprobaciones, aliados, investigación y pipeline de monitoreo. Ver esta página queda registrado en el registro de auditoría.",
+    "chatTitle": "Conversación en tiempo real",
+    "chatIntro": "Escribe en tu idioma. La otra persona lee en el suyo. El original siempre se conserva."
   }
 }

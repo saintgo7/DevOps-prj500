@@ -138,5 +138,25 @@
     "managingApproversBody": "Ajouter ou retirer un approbateur est en soi une action sensible. Deux administrateurs doivent être d'accord, et le changement est consigné dans le journal d'audit immuable.",
     "partnerTitle": "Organisations partenaires",
     "partnerBody": "Les organisations partenaires peuvent recevoir chaque chronique publiée via webhook signé (HMAC-SHA256) ou en interrogeant le flux Atom public sous CC BY 4.0. Les partenaires ne voient jamais les brouillons, abonnements, ou intérêts privés."
+  },
+  "dashboard": {
+    "dashboardTitle": "Tableau de bord",
+    "sectionGoals": "17 Objectifs",
+    "sectionTargets": "169 Cibles",
+    "sectionPostSdgs": "Agenda post-2030",
+    "sectionPostSdgsBody": "Thèmes que la communauté internationale commence à discuter pour l'ère après les ODD.",
+    "sectionImpact": "Notre impact que nous mesurons nous-mêmes",
+    "sourceTabExternal": "Du monde",
+    "sourceTabExternalBody": "Recherches, articles, chroniques, lettres et publications sociales vérifiées venant de l'extérieur — seules celles qui passent les 12 règles d'intégrité.",
+    "sourceTabInternal": "De cette plateforme",
+    "sourceTabInternalBody": "Lettres, chroniques et articles que nous publions nous-mêmes.",
+    "researchTitle": "Plans de recherche et de projet",
+    "researchIntro": "Planifiez une nouvelle étude ou initiative inspirée par vos découvertes. Visible uniquement dans votre espace de travail jusqu'au partage.",
+    "outreachTitle": "Contacter un expert",
+    "outreachIntro": "Rédigez un message à un chercheur, praticien ou partenaire. Nous n'envoyons jamais en votre nom — vous cliquez sur envoyer.",
+    "monitoringTitle": "Surveillance (administrateurs uniquement)",
+    "monitoringIntro": "Vue d'ensemble : intégrité, approbations, partenaires, recherches, pipeline de veille. Voir cette page est en soi enregistré dans le journal d'audit.",
+    "chatTitle": "Conversation en temps réel",
+    "chatIntro": "Écrivez dans votre langue. L'autre lit dans la sienne. L'original est toujours préservé."
   }
 }

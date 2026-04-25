@@ -138,5 +138,25 @@
     "managingApproversBody": "Kuongeza au kuondoa muidhinishaji yenyewe ni hatua nyeti. Wasimamizi wawili lazima wakubali, na mabadiliko yamerekodiwa katika kumbukumbu ya ukaguzi isiyobadilika.",
     "partnerTitle": "Mashirika washirika",
     "partnerBody": "Mashirika washirika yanaweza kupokea kila safu iliyochapishwa kupitia webhook iliyosainiwa (HMAC-SHA256) au kwa kuvuta mkondo wa Atom wa umma chini ya CC BY 4.0. Washirika hawaoni kamwe rasimu, usajili, au maslahi ya faragha."
+  },
+  "dashboard": {
+    "dashboardTitle": "Dashibodi",
+    "sectionGoals": "Malengo 17",
+    "sectionTargets": "Shabaha 169",
+    "sectionPostSdgs": "Ajenda baada ya 2030",
+    "sectionPostSdgsBody": "Mada ambazo jamii ya kimataifa imeanza kujadili kwa enzi baada ya SDGs.",
+    "sectionImpact": "Athari yetu tuliyojipima",
+    "sourceTabExternal": "Kutoka ulimwenguni",
+    "sourceTabExternalBody": "Utafiti, makala, safu, jarida, na machapisho ya kijamii yaliyothibitishwa kutoka nje ya jukwaa letu — tu yale yanayopita ukaguzi wa sheria 12.",
+    "sourceTabInternal": "Kutoka jukwaa hili",
+    "sourceTabInternalBody": "Majarida, safu, na karatasi tunazochapisha sisi wenyewe.",
+    "researchTitle": "Mipango ya utafiti na miradi",
+    "researchIntro": "Panga utafiti au mpango mpya kutokana na uliyoyaona. Inaonekana tu ndani ya nafasi yako ya kazi hadi ushiriki.",
+    "outreachTitle": "Wasiliana na mtaalam",
+    "outreachIntro": "Andika rasimu ya ujumbe kwa mtafiti, mtumiaji, au mshirika. Hatutumi kamwe kwa niaba yako — wewe unabofya tuma.",
+    "monitoringTitle": "Ufuatiliaji (kwa wasimamizi tu)",
+    "monitoringIntro": "Mwonekano wa jumla wa uthibitisho, idhini, washirika, utafiti, na mlolongo wa kuangalia. Kutazama ukurasa huu kunarekodiwa katika kumbukumbu ya ukaguzi.",
+    "chatTitle": "Mazungumzo ya wakati halisi",
+    "chatIntro": "Andika kwa lugha yako. Mwingine anasoma kwa lugha yake. Maandishi ya asili huhifadhiwa daima."
   }
 }

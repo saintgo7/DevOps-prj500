@@ -140,5 +140,26 @@
     "partnerTitle": "Partner organisations",
     "partnerBody": "Partner organisations may receive every published column via signed webhook (HMAC-SHA256) or by polling the public Atom feed under CC BY 4.0. Partners never see drafts, subscriptions, or private interests.",
     "_translationNeeded": "Not yet translated to 日本語. PR welcome."
+  },
+  "dashboard": {
+    "dashboardTitle": "Dashboard",
+    "sectionGoals": "17 Goals",
+    "sectionTargets": "169 Targets",
+    "sectionPostSdgs": "Post-2030 agenda",
+    "sectionPostSdgsBody": "Themes the global community is starting to discuss for the era after the SDGs.",
+    "sectionImpact": "Our self-measured impact",
+    "sourceTabExternal": "From the world",
+    "sourceTabExternalBody": "Curated research, papers, articles, columns, newsletters, and verified social posts from outside our platform — only those that pass the 12-rule integrity check.",
+    "sourceTabInternal": "From this platform",
+    "sourceTabInternalBody": "Newsletters, columns, and papers we publish ourselves.",
+    "researchTitle": "Research and project plans",
+    "researchIntro": "Plan a new study or initiative inspired by what you've found. Visible only inside your workspace until you share.",
+    "outreachTitle": "Reach an expert",
+    "outreachIntro": "Draft a message to a researcher, practitioner, or partner. We never send on your behalf — you click send.",
+    "monitoringTitle": "Monitoring (admins only)",
+    "monitoringIntro": "Holistic view of integrity, approvals, partners, research, and the watch pipeline. Reading this view is itself recorded in the audit log.",
+    "chatTitle": "Real-time conversation",
+    "chatIntro": "Type in your language. The other side reads in theirs. The original is always preserved.",
+    "_translationNeeded": "Not yet translated to 日本語. PR welcome."
   }
 }

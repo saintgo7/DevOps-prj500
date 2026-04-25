@@ -8,10 +8,16 @@ export class ColumnController {
   constructor(private readonly columns: ColumnService) {}
 
   @Get()
-  @ApiOperation({ summary: 'Recently published daily columns (public)' })
+  @ApiOperation({
+    summary: 'Recently published daily columns (public)',
+    description:
+      'Use ?origin=external for curated outside content, ?origin=internal for ' +
+      'our own publications (ADR-0014 §4 — two-section UX).',
+  })
   async listPublished(
     @Query('days') days?: string,
     @Query('locale') locale?: string,
+    @Query('origin') origin?: 'external' | 'internal',
   ) {
     const since = days
       ? new Date(Date.now() - Number(days) * 86400 * 1000)
@@ -19,6 +25,7 @@ export class ColumnController {
     const data = await this.columns.listPublished({
       since,
       ...(locale !== undefined ? { locale } : {}),
+      ...(origin !== undefined ? { origin } : {}),
       take: 30,
     });
     return { data, meta: { count: data.length } };
