@@ -3,15 +3,25 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
+import { Logger } from 'nestjs-pino';
 import { AppModule } from './app.module';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create(AppModule, {
     cors: { origin: process.env.WEB_ORIGIN ?? 'http://localhost:3000', credentials: true },
+    bufferLogs: true,
   });
+  app.useLogger(app.get(Logger));
 
+  app.use(
+    helmet({
+      ...(process.env.NODE_ENV === 'production' ? {} : { contentSecurityPolicy: false }),
+      crossOriginResourcePolicy: { policy: 'cross-origin' },
+    }),
+  );
   app.use(cookieParser());
-  app.setGlobalPrefix('v1');
+  app.setGlobalPrefix('v1', { exclude: ['metrics'] });
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -37,7 +47,12 @@ async function bootstrap(): Promise<void> {
 
   const port = Number(process.env.PORT ?? 4000);
   await app.listen(port);
-  console.log(`[api] listening on :${port}  •  docs at /docs`);
+  app
+    .get(Logger)
+    .log(
+      `[api] listening on :${port} • docs=/docs metrics=/metrics ready=/v1/ready`,
+      'Bootstrap',
+    );
 }
 
 void bootstrap();

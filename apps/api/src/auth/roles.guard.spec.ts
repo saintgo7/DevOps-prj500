@@ -5,17 +5,6 @@ import { RolesGuard } from './roles.guard';
 import type { PrismaService } from '../prisma/prisma.service';
 import type { AuthenticatedRequest } from './jwt-auth.guard';
 
-function ctx(req: Partial<AuthenticatedRequest>, required: string[] | undefined): ExecutionContext {
-  const reflector = new Reflector();
-  vi.spyOn(reflector, 'getAllAndOverride').mockReturnValue(required);
-  return {
-    _reflector: reflector,
-    getHandler: () => () => undefined,
-    getClass: () => class {},
-    switchToHttp: () => ({ getRequest: <T>() => req as T }),
-  } as unknown as ExecutionContext & { _reflector: Reflector };
-}
-
 function makePrisma(roleKeys: string[]): PrismaService {
   return {
     membership: {

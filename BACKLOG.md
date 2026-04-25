@@ -105,13 +105,24 @@
 - ✅ 단위 테스트 3개 (인터셉터)
 - ⏳ TODO: 관리자 조회 UI, before/after 자동 캡처, SIEM 송출
 
-### S1-08. 관측성 베이스
-- OTel 트레이스·로그·메트릭 → 로컬 Tempo/Loki/Prometheus (Compose)
-- 핵심 대시보드 1개 (Service Health)
+### S1-08. 관측성 베이스 — ✅ 부분 완료
+- ✅ 구조화 JSON 로깅: api(`nestjs-pino`), worker(`pino`), ai(`structlog`)
+  비밀 redact, 표준 필드(`service`/`env`/`request_id`/`tenant_id`)
+- ✅ `RequestIdMiddleware` (api·ai) — 모든 요청에 `X-Request-Id` 검증·생성·echo
+- ✅ Prometheus `/metrics` (api) — process 기본 + HTTP duration histogram
+- ✅ `/v1/ready` 헬스 — DB ping 검증
+- ✅ Worker 그레이스풀 셧다운 (SIGTERM/SIGINT)
+- ✅ ADR-0007 Observability Baseline
+- ⏳ TODO: 풀 OTel SDK, Tempo/Loki 컨테이너, Grafana 대시보드 시드
 
-### S1-09. 보안 가드레일
-- WAF 룰셋(개발), 비밀 회전 자동화 베이스
-- 펜테스트용 자체 점검 체크리스트
+### S1-09. 보안 가드레일 — ✅ 부분 완료
+- ✅ Helmet (X-Frame-Options=DENY, nosniff, HSTS, strict referrer)
+- ✅ `@nestjs/throttler` 전역 (short 20/s, long 300/min, health/ready/metrics 제외)
+- ✅ ValidationPipe whitelist + forbidNonWhitelisted (over-posting 방지)
+- ✅ 쿠키 HttpOnly + SameSite=Lax + Secure(prod)
+- ✅ `scripts/security-check.sh` — 비밀/.env 스캔, dangerous 패턴, pnpm audit
+- ✅ ADR-0008 Security Guardrails Baseline
+- ⏳ TODO: 티어별 레이트 리밋, CSRF (외부 OAuth 시), WAF 룰셋, 펜테스트 일정화
 
 ### S1-10. 문서 동기화
 - 코드 변경에 따라 `docs/13`, `docs/14` 업데이트

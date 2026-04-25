@@ -76,6 +76,8 @@
 - [0004](./adr/0004-aws-as-cloud.md) AWS 1차 클라우드
 - [0005](./adr/0005-otel-grafana-stack.md) OTel + Grafana 관측성
 - [0006](./adr/0006-prisma-as-orm.md) Prisma ORM
+- [0007](./adr/0007-observability-baseline.md) 관측성 베이스라인 (pino + Prom + structlog)
+- [0008](./adr/0008-security-guardrails-baseline.md) 보안 가드레일 베이스라인
 
 ## 변경 절차
 - 큰 변경: RFC PR + 도메인 책임자 승인
