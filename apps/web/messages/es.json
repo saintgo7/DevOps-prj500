@@ -107,5 +107,14 @@
       "technical": "redacción de PII",
       "explain": "Antes de que la IA lea tu texto, ocultamos detalles personales como nombres, números de teléfono y direcciones."
     }
+  },
+  "watch": {
+    "title": "Hallazgos de esta semana",
+    "intro": "Cada semana revisamos lo que las agencias de la ONU, donantes, investigadores y organizaciones de base dicen sobre el ODS que te importa.",
+    "noFindings": "Ningún hallazgo de esta semana coincide con tu filtro. Prueba a ampliarlo.",
+    "subscribe": "Recibir esto en mi idioma cada semana",
+    "expressInterest": "Quiero aprender más / colaborar",
+    "interestRecorded": "Guardado en tu lista privada. No contactaremos a nadie por ti — tú decides si y cuándo.",
+    "publicFeed": "Feed semanal público (re-sindicación libre bajo CC BY 4.0)"
   }
 }

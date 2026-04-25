@@ -21,7 +21,9 @@ async function bootstrap(): Promise<void> {
     }),
   );
   app.use(cookieParser());
-  app.setGlobalPrefix('v1', { exclude: ['metrics'] });
+  // Public Atom/RSS feeds must live at the root URL (not under /v1) so feed
+  // readers and re-syndicators can discover them. See ADR-0012.
+  app.setGlobalPrefix('v1', { exclude: ['metrics', 'feed/(.*)'] });
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,

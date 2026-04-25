@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { SDG_GOALS, SDG_TARGETS_SAMPLE, SDG_INDICATORS_SAMPLE } from './seed/sdg-goals';
+import { WATCH_SOURCES } from './seed/watch-sources';
 
 const prisma = new PrismaClient();
 
@@ -54,9 +55,36 @@ async function main(): Promise<void> {
     });
   }
 
+  // Weekly Global SDG Watch sources (ADR-0012). Public, anyone may PR additions.
+  for (const s of WATCH_SOURCES) {
+    await prisma.watchSource.upsert({
+      where: { url: s.url },
+      update: {
+        name: s.name,
+        feedUrl: s.feedUrl ?? null,
+        kind: s.kind,
+        category: s.category,
+        language: s.language,
+        region: s.region ?? null,
+        sdgFocus: s.sdgFocus ?? [],
+      },
+      create: {
+        name: s.name,
+        url: s.url,
+        feedUrl: s.feedUrl ?? null,
+        kind: s.kind,
+        category: s.category,
+        language: s.language,
+        region: s.region ?? null,
+        sdgFocus: s.sdgFocus ?? [],
+      },
+    });
+  }
+
   console.log(
     `[seed] roles=${roles.length}, goals=${SDG_GOALS.length}, ` +
-      `targets=${SDG_TARGETS_SAMPLE.length}, indicators=${SDG_INDICATORS_SAMPLE.length}`,
+      `targets=${SDG_TARGETS_SAMPLE.length}, indicators=${SDG_INDICATORS_SAMPLE.length}, ` +
+      `watch_sources=${WATCH_SOURCES.length}`,
   );
 }
 

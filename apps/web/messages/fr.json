@@ -107,5 +107,14 @@
       "technical": "expurgation des PII",
       "explain": "Avant que l'IA ne lise votre texte, nous masquons les détails personnels comme les noms, numéros de téléphone et adresses."
     }
+  },
+  "watch": {
+    "title": "Découvertes de la semaine",
+    "intro": "Chaque semaine, nous regardons ce que les agences de l'ONU, les bailleurs, les chercheurs et les organisations de base disent sur l'ODD qui vous tient à cœur.",
+    "noFindings": "Aucune découverte de cette semaine ne correspond à votre filtre. Essayez de l'élargir.",
+    "subscribe": "Recevoir cela dans ma langue chaque semaine",
+    "expressInterest": "Je veux en apprendre plus / collaborer",
+    "interestRecorded": "Enregistré dans votre liste privée. Nous ne contacterons personne en votre nom — vous décidez si et quand.",
+    "publicFeed": "Flux hebdomadaire public (re-syndication libre sous CC BY 4.0)"
   }
 }

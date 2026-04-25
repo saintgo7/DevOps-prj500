@@ -130,3 +130,99 @@ model SdgIndicator {
   @@index([targetId])
   @@map("sdg_indicators")
 }
+
+// ============================================================
+// Weekly Global SDG Watch (ADR-0012, public + RLS-aware)
+// ============================================================
+
+// A place worth checking each week (UN agency, donor, journal, NGO, repo).
+// Sources are global/shared (not RLS-bound) so every tenant benefits.
+model WatchSource {
+  id           String   @id @default(uuid()) @db.Uuid
+  name         String
+  url          String
+  feedUrl      String?  @map("feed_url")
+  kind         String   // 'rss' | 'atom' | 'html' | 'github' | 'api'
+  category     String   // 'un' | 'donor' | 'academic' | 'ngo' | 'civic' | 'regional' | 'funding'
+  language     String   @default("en")
+  region       String?  // ISO-3166 alpha-2 or 'global'
+  sdgFocus     String[] @default([]) @map("sdg_focus") // e.g. ['SDG-13','SDG-15']
+  active       Boolean  @default(true)
+  lastScannedAt DateTime? @map("last_scanned_at")
+  failureCount Int      @default(0) @map("failure_count")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  items WatchItem[]
+
+  @@unique([url])
+  @@index([category, active])
+  @@index([language])
+  @@map("watch_sources")
+}
+
+// One discovered finding from a source.
+// Items are global so feeds and search benefit every tenant; per-user
+// state (saved, dismissed, interested) lives in WatchSubscription/Interest.
+model WatchItem {
+  id           String   @id @default(uuid()) @db.Uuid
+  sourceId    String   @map("source_id") @db.Uuid
+  url         String
+  title       String
+  summary     String?
+  language    String   @default("en")
+  publishedAt DateTime? @map("published_at")
+  discoveredAt DateTime @default(now()) @map("discovered_at")
+  sdgFocus    String[] @default([]) @map("sdg_focus")
+  region      String?
+  contentHash String   @map("content_hash") // sha256(url+normalized title)
+  // AI-assisted multilingual summary: { en: { summary, confidence }, ko: ..., ... }
+  // Per data-sovereignty principle, raw AI runs are stored only with provenance
+  // and are user-overridable.
+  i18nSummary Json?    @map("i18n_summary")
+
+  source         WatchSource              @relation(fields: [sourceId], references: [id])
+  collaborations CollaborationInterest[]
+
+  @@unique([contentHash])
+  @@index([sourceId, discoveredAt])
+  @@index([sdgFocus], type: Gin)
+  @@map("watch_items")
+}
+
+// A user's saved filter for what they want to hear about each week.
+// RLS-bound; only the owner sees their own subscriptions.
+model WatchSubscription {
+  id           String   @id @default(uuid()) @db.Uuid
+  tenantId     String   @map("tenant_id") @db.Uuid
+  userId       String   @map("user_id") @db.Uuid
+  name         String   @default("My weekly watch")
+  // Filter shape (kept as JSON for forward-compatibility):
+  // { sdgFocus?: string[], categories?: string[], languages?: string[], regions?: string[] }
+  filter       Json
+  digestLanguage String @default("en") @map("digest_language")
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@index([tenantId, userId, active])
+  @@map("watch_subscriptions")
+}
+
+// Private record that a user is interested in collaborating around an item.
+// NEVER auto-broadcast: see ADR-0012 §"Collaboration workflow".
+// RLS-bound; only the owner sees their own interests.
+model CollaborationInterest {
+  id        String   @id @default(uuid()) @db.Uuid
+  tenantId  String   @map("tenant_id") @db.Uuid
+  userId    String   @map("user_id") @db.Uuid
+  itemId    String   @map("item_id") @db.Uuid
+  note      String?
+  intent    String   @default("learn") // 'learn' | 'partner' | 'fund' | 'volunteer'
+  contactConsent Boolean @default(false) @map("contact_consent")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  item WatchItem @relation(fields: [itemId], references: [id])
+
+  @@unique([tenantId, userId, itemId])
+  @@index([itemId])
+  @@map("collaboration_interests")
+}

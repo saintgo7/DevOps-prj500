@@ -5,6 +5,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { AuditModule } from './audit/audit.module';
 import { AuthModule } from './auth/auth.module';
 import { CatalogModule } from './catalog/catalog.module';
+import { WatchModule } from './watch/watch.module';
 import { HealthController } from './health/health.controller';
 import { LocaleMiddleware } from './i18n/locale.middleware';
 import { ObservabilityModule } from './observability/observability.module';
@@ -24,6 +25,7 @@ import { TenantContextMiddleware } from './tenant/tenant-context.middleware';
     AuditModule,
     AuthModule,
     CatalogModule,
+    WatchModule,
   ],
   controllers: [HealthController],
   providers: [{ provide: APP_GUARD, useClass: ThrottlerGuard }],

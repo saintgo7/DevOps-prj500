@@ -107,5 +107,14 @@
       "technical": "uficho wa PII",
       "explain": "Kabla AI haijasoma maandishi yako, tunaficha maelezo binafsi kama majina, nambari za simu, na anwani."
     }
+  },
+  "watch": {
+    "title": "Tuliyoyaona wiki hii",
+    "intro": "Kila wiki, tunaangalia kile mashirika ya UN, wafadhili, watafiti na vikundi vya kiasili vinasema kuhusu SDG unayojali.",
+    "noFindings": "Hakuna kile tulichoona wiki hii kinacholingana na vichungi vyako. Jaribu kupanua.",
+    "subscribe": "Pokea hii kwa lugha yangu kila wiki",
+    "expressInterest": "Nataka kujifunza zaidi / kushirikiana",
+    "interestRecorded": "Imehifadhiwa katika orodha yako ya faragha. Hatutawasiliana na yeyote kwa niaba yako — wewe unaamua lini na kama.",
+    "publicFeed": "Mkondo wa kila wiki wa umma (chapisha tena kwa uhuru chini ya CC BY 4.0)"
   }
 }

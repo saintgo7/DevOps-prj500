@@ -107,5 +107,15 @@
       "technical": "PII redaction",
       "explain": "Before AI reads your text, we hide personal details like names, phone numbers, and addresses."
     }
+  },
+  "watch": {
+    "title": "This week's findings",
+    "intro": "Each week, we look at what UN agencies, donors, researchers, and grassroots groups are saying about the SDG you care about.",
+    "noFindings": "No findings this week match your filter. Try widening it.",
+    "subscribe": "Get this in my language each week",
+    "expressInterest": "I want to learn more / collaborate",
+    "interestRecorded": "Saved to your private list. We will not contact anyone for you — you decide if and when.",
+    "publicFeed": "Public weekly feed (re-syndicate freely under CC BY 4.0)",
+    "_translationNeeded": "Not yet translated to Português. PR welcome."
   }
 }
