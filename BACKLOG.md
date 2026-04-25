@@ -75,9 +75,12 @@
 - ✅ 단위 테스트 3개 (유효/누락/잘못된 UUID)
 - ⏳ TODO: 통합 테스트 (실 Postgres + cross-tenant 읽기 거부 검증)
 
-### S1-04. RBAC (Casbin 또는 OPA)
-- admin / reviewer / contributor / viewer / auditor
-- 정책 평가 단일 진입점, 감사 이벤트 발행
+### S1-04. RBAC — ✅ 부분 완료
+- ✅ `@Roles('admin', 'reviewer', …)` 데코레이터 + `RolesGuard`
+- ✅ memberships에서 사용자 역할 조회, 단일 정책 평가 지점
+- ✅ 5개 역할 (admin / reviewer / contributor / viewer / auditor)
+- ✅ 단위 테스트 4개
+- ⏳ TODO: ABAC(속성 기반 — 부서·자원 단위), Casbin/OPA 도입 검토
 
 ### S1-05. SDG 카탈로그 API (read-only) — ✅ 부분 완료
 - ✅ `GET /v1/catalog/goals`, `/goals/:id`, `/targets?goal=…`, `/indicators?target=…`, `/indicators/:id`
@@ -87,15 +90,20 @@
 - ⏳ TODO: 텍스트 검색 (Postgres FTS / OpenSearch), 클라이언트 SDK 자동 생성
 
 ### S1-06. Web — 카탈로그 브라우저 UI — ✅ 부분 완료
-- ✅ 홈페이지에서 17 Goals 그리드 표시 (SdgBadge 사용, RSC fetch)
-- ✅ API 미연결 시 graceful fallback 메시지
-- ⏳ TODO: Targets/Indicators 드릴다운 페이지, 다국어 토글, 검색
+- ✅ 홈페이지에서 17 Goals 그리드 (SdgBadge, RSC fetch, 클릭 가능)
+- ✅ `/goals/[id]` 드릴다운 — Targets + Indicators 트리 렌더 (한·영 병기)
+- ✅ `/signup`, `/signin`, `/me` (쿠키 인증, 사인아웃) — 클라이언트 컴포넌트
+- ✅ API 미연결 시 graceful fallback
+- ⏳ TODO: 다국어 토글 UI, 검색 박스, 활동·보고서 진입
 - AC: a11y 위반 0, Storybook 등록
 
-### S1-07. 감사로그 v1
-- `audit_events` 테이블, append-only
-- API 미들웨어로 자동 기록
-- 관리자 화면에서 조회 (간단)
+### S1-07. 감사로그 v1 — ✅ 부분 완료
+- ✅ `audit_events` 테이블 (append-only, 인덱싱)
+- ✅ `AuditInterceptor` 전역 적용: POST/PUT/PATCH/DELETE 자동 기록
+  (signin/signup/signout 제외)
+- ✅ `AuditService.record(...)` 도메인 서비스에서 직접 호출 가능 (before/after 포함)
+- ✅ 단위 테스트 3개 (인터셉터)
+- ⏳ TODO: 관리자 조회 UI, before/after 자동 캡처, SIEM 송출
 
 ### S1-08. 관측성 베이스
 - OTel 트레이스·로그·메트릭 → 로컬 Tempo/Loki/Prometheus (Compose)
