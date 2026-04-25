@@ -68,6 +68,15 @@
 | 20 | GTM | Sales / Marketing Lead | 2026-Q2 | 분기 |
 | 21 | 임팩트·로드맵 | PO / CEO | 2026-Q2 | 분기 |
 
+## ADR (아키텍처 결정 기록)
+
+- [0001](./adr/0001-modular-monolith.md) Modular Monolith
+- [0002](./adr/0002-postgres-with-rls.md) Postgres + RLS
+- [0003](./adr/0003-claude-as-primary-llm.md) Claude를 1차 LLM
+- [0004](./adr/0004-aws-as-cloud.md) AWS 1차 클라우드
+- [0005](./adr/0005-otel-grafana-stack.md) OTel + Grafana 관측성
+- [0006](./adr/0006-prisma-as-orm.md) Prisma ORM
+
 ## 변경 절차
 - 큰 변경: RFC PR + 도메인 책임자 승인
 - 작은 보강: PR 1명 리뷰

@@ -1,12 +1,67 @@
-export default function HomePage() {
+import { SdgBadge } from '@sdgi/ui';
+import { fetchGoals, localized, type Goal } from '@/lib/api';
+
+export const dynamic = 'force-dynamic';
+
+export default async function HomePage(): Promise<React.JSX.Element> {
+  const goals: Goal[] = await fetchGoals('ko');
+
   return (
-    <main style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-      <h1>SDG Impact Cloud</h1>
-      <p>UN 지속가능발전목표(SDGs) 기반 임팩트 측정·보고 SaaS</p>
-      <p>
-        See <a href="/api/health">API health</a> · docs in{' '}
-        <code>docs/</code>
-      </p>
+    <main
+      style={{
+        padding: '2rem',
+        maxWidth: 1100,
+        margin: '0 auto',
+        fontFamily: 'system-ui, -apple-system, sans-serif',
+      }}
+    >
+      <header style={{ marginBottom: '2rem' }}>
+        <h1 style={{ margin: 0 }}>SDG Impact Cloud</h1>
+        <p style={{ color: '#4b5563', marginTop: 4 }}>
+          UN 지속가능발전목표(SDGs) 기반 임팩트 측정·보고 SaaS
+        </p>
+      </header>
+
+      <section aria-labelledby="goals-heading">
+        <h2 id="goals-heading">17개 지속가능발전목표</h2>
+        {goals.length === 0 ? (
+          <p style={{ color: '#6b7280' }}>
+            카탈로그 API에 연결되지 않았습니다. <code>pnpm dev</code> 또는 <code>make up</code>로
+            로컬 환경을 기동하세요.
+          </p>
+        ) : (
+          <ul
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+              gap: 12,
+              listStyle: 'none',
+              padding: 0,
+            }}
+          >
+            {goals.map((g) => (
+              <li
+                key={g.id}
+                style={{
+                  border: '1px solid #e5e7eb',
+                  borderRadius: 8,
+                  padding: 12,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 12,
+                }}
+              >
+                <SdgBadge goal={g.number} />
+                <span style={{ fontWeight: 500 }}>{localized(g.name, 'ko')}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+
+      <footer style={{ marginTop: '2rem', color: '#9ca3af', fontSize: 12 }}>
+        문서: <a href="https://github.com/saintgo7/devops-prj500/tree/main/docs">/docs</a>
+      </footer>
     </main>
   );
 }

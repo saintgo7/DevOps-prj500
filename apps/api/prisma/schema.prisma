@@ -1,0 +1,131 @@
+// Prisma schema for SDG Impact Cloud
+// See docs/13-data-model.md for design rationale.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ============================================================
+// Identity & Tenancy (RLS-protected)
+// ============================================================
+
+model Tenant {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  region    String   @default("kr")
+  plan      String   @default("starter") // starter | growth | enterprise
+  status    String   @default("active") // active | suspended | deleted
+  createdAt DateTime @default(now()) @map("created_at")
+
+  users        User[]
+  memberships  Membership[]
+  auditEvents  AuditEvent[]
+
+  @@map("tenants")
+}
+
+model User {
+  id           String   @id @default(uuid()) @db.Uuid
+  tenantId     String   @map("tenant_id") @db.Uuid
+  email        String
+  displayName  String?  @map("display_name")
+  authProvider String   @default("local") @map("auth_provider")
+  mfaEnabled   Boolean  @default(false) @map("mfa_enabled")
+  status       String   @default("active")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  tenant      Tenant       @relation(fields: [tenantId], references: [id])
+  memberships Membership[]
+  auditEvents AuditEvent[]
+
+  @@unique([tenantId, email])
+  @@index([tenantId, status])
+  @@map("users")
+}
+
+model Role {
+  id          String       @id @default(uuid()) @db.Uuid
+  key         String       @unique // admin | reviewer | contributor | viewer | auditor
+  name        String
+  memberships Membership[]
+
+  @@map("roles")
+}
+
+model Membership {
+  id       String @id @default(uuid()) @db.Uuid
+  tenantId String @map("tenant_id") @db.Uuid
+  userId   String @map("user_id") @db.Uuid
+  roleId   String @map("role_id") @db.Uuid
+
+  tenant Tenant @relation(fields: [tenantId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
+  role   Role   @relation(fields: [roleId], references: [id])
+
+  @@unique([tenantId, userId, roleId])
+  @@map("memberships")
+}
+
+model AuditEvent {
+  id           String   @id @default(uuid()) @db.Uuid
+  tenantId     String?  @map("tenant_id") @db.Uuid
+  actorId      String?  @map("actor_id") @db.Uuid
+  action       String
+  resourceType String   @map("resource_type")
+  resourceId   String?  @map("resource_id")
+  before       Json?
+  after        Json?
+  occurredAt   DateTime @default(now()) @map("occurred_at")
+
+  tenant Tenant? @relation(fields: [tenantId], references: [id])
+  actor  User?   @relation(fields: [actorId], references: [id])
+
+  @@index([tenantId, occurredAt])
+  @@index([resourceType, resourceId])
+  @@map("audit_events")
+}
+
+// ============================================================
+// SDG Catalog (global, read-only — not RLS-bound)
+// ============================================================
+
+model SdgGoal {
+  id          String       @id // SDG-1..SDG-17
+  number      Int          @unique
+  nameI18n    Json         @map("name_i18n")
+  color       String
+  icon        String?
+  targets     SdgTarget[]
+
+  @@map("sdg_goals")
+}
+
+model SdgTarget {
+  id       String           @id // SDG-13.2 etc
+  goalId   String           @map("goal_id")
+  textI18n Json             @map("text_i18n")
+  type     String           @default("outcome") // outcome | means
+
+  goal       SdgGoal        @relation(fields: [goalId], references: [id])
+  indicators SdgIndicator[]
+
+  @@index([goalId])
+  @@map("sdg_targets")
+}
+
+model SdgIndicator {
+  id          String  @id // SDG-13.2.1 etc
+  targetId    String  @map("target_id")
+  unit        String
+  methodology String?
+  tier        Int
+
+  target SdgTarget @relation(fields: [targetId], references: [id])
+
+  @@index([targetId])
+  @@map("sdg_indicators")
+}

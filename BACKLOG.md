@@ -53,11 +53,13 @@
 ## Sprint 1 — Identity & Catalog 기반 (2주)
 **목표**: 인증·테넌시 작동 + SDG 카탈로그 검색 가능
 
-### S1-01. 데이터 모델 v1 (Prisma)
-- `tenants`, `users`, `roles`, `memberships`, RLS 정책
-- 카탈로그 스키마 `catalog.sdg_goals/targets/indicators`
-- 마이그레이션 + 시드 (UN 232 지표)
-- 관련 문서: `docs/13`
+### S1-01. 데이터 모델 v1 (Prisma) — ✅ 부분 완료
+- ✅ `tenants`, `users`, `roles`, `memberships`, `audit_events` Prisma 스키마
+- ✅ RLS 정책 (FORCE ROW LEVEL SECURITY) — `prisma/migrations/20260425000000_init`
+- ✅ 카탈로그 스키마 `sdg_goals/targets/indicators`
+- ✅ 시드: 17 SDG Goals (3개 언어), 10 Sample Targets, 9 Sample Indicators
+- ⏳ TODO: 169 targets / 232 indicators 풀 ETL 스크립트 (UN 공식 데이터)
+- 관련 문서: `docs/13`, `docs/adr/0006-prisma-as-orm.md`
 
 ### S1-02. 인증 (Auth.js)
 - 이메일·비밀번호, Google OIDC
@@ -65,23 +67,26 @@
 - 세션 쿠키 + Refresh
 - AC: 가입·로그인·로그아웃 E2E 통과
 
-### S1-03. 테넌트 컨텍스트 미들웨어
-- 모든 API 요청에 `SET LOCAL app.tenant_id`
-- 멀티테넌시 격리 통합 테스트 (cross-tenant read 거부)
-- AC: 격리 테스트 그린
+### S1-03. 테넌트 컨텍스트 미들웨어 — ✅ 부분 완료
+- ✅ `TenantContextMiddleware`: `X-Tenant-Id` 헤더 → UUID 검증 → `req.tenantId`
+- ✅ `PrismaTenantInterceptor`: `set_config('app.tenant_id', $1, true)` 트랜잭션 단위 적용
+- ✅ 단위 테스트 3개 (유효/누락/잘못된 UUID)
+- ⏳ TODO: 통합 테스트 (실 Postgres + cross-tenant 읽기 거부 검증)
 
 ### S1-04. RBAC (Casbin 또는 OPA)
 - admin / reviewer / contributor / viewer / auditor
 - 정책 평가 단일 진입점, 감사 이벤트 발행
 
-### S1-05. SDG 카탈로그 API (read-only)
-- `GET /v1/catalog/goals`, `/targets`, `/indicators`
-- 검색 (Postgres FTS), 다국어 응답
-- AC: OpenAPI 문서 자동 생성, P95 < 200ms
+### S1-05. SDG 카탈로그 API (read-only) — ✅ 부분 완료
+- ✅ `GET /v1/catalog/goals`, `/goals/:id`, `/targets?goal=…`, `/indicators?target=…`, `/indicators/:id`
+- ✅ 다국어 응답 (i18n JSONB 그대로 반환)
+- ✅ 단위 테스트 6개 (CatalogService)
+- ⏳ TODO: 텍스트 검색 (Postgres FTS / OpenSearch), OpenAPI 자동 문서 생성
 
-### S1-06. Web — 카탈로그 브라우저 UI
-- 17 Goals 그리드 → Targets → Indicator 상세
-- 필터·검색, 다국어 토글
+### S1-06. Web — 카탈로그 브라우저 UI — ✅ 부분 완료
+- ✅ 홈페이지에서 17 Goals 그리드 표시 (SdgBadge 사용, RSC fetch)
+- ✅ API 미연결 시 graceful fallback 메시지
+- ⏳ TODO: Targets/Indicators 드릴다운 페이지, 다국어 토글, 검색
 - AC: a11y 위반 0, Storybook 등록
 
 ### S1-07. 감사로그 v1
