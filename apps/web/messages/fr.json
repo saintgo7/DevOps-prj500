@@ -116,5 +116,27 @@
     "expressInterest": "Je veux en apprendre plus / collaborer",
     "interestRecorded": "Enregistré dans votre liste privée. Nous ne contacterons personne en votre nom — vous décidez si et quand.",
     "publicFeed": "Flux hebdomadaire public (re-syndication libre sous CC BY 4.0)"
+  },
+  "column": {
+    "todayTitle": "La chronique du jour",
+    "todayIntro": "Une courte pièce sourcée, sélectionnée selon notre Standard de Contenu public.",
+    "byStandard": "Sélectionnée selon le Standard de Contenu {version} — chaque pièce publiée enregistre cette version.",
+    "originalSource": "Source originale",
+    "translatedFrom": "Traduit de {sourceLanguage}",
+    "approveTitle": "Approuver avant publication",
+    "approveDescription": "Nous ne publions jamais automatiquement. Une chronique n'atteint les lecteurs qu'après qu'au moins un humain a cliqué sur approuver. Les sujets sensibles en requièrent deux.",
+    "approveDecision": {
+      "approve": "Approuver et publier",
+      "reject": "Rejeter (cette découverte ne sera pas publiée)",
+      "revise": "Renvoyer pour révision"
+    },
+    "approveExpired": "Ce lien d'approbation a expiré. Veuillez demander à l'éditeur de le réémettre.",
+    "approveAlreadyDecided": "Ce lien d'approbation a déjà été utilisé. Chaque lien est à usage unique.",
+    "approveTokenInvalid": "Nous n'avons pas pu vérifier ce lien d'approbation. La signature ne correspond pas.",
+    "approveSuccess": "Merci. Votre décision a été enregistrée à {time}.",
+    "managingApprovers": "Gérer les approbateurs",
+    "managingApproversBody": "Ajouter ou retirer un approbateur est en soi une action sensible. Deux administrateurs doivent être d'accord, et le changement est consigné dans le journal d'audit immuable.",
+    "partnerTitle": "Organisations partenaires",
+    "partnerBody": "Les organisations partenaires peuvent recevoir chaque chronique publiée via webhook signé (HMAC-SHA256) ou en interrogeant le flux Atom public sous CC BY 4.0. Les partenaires ne voient jamais les brouillons, abonnements, ou intérêts privés."
   }
 }

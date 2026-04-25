@@ -116,5 +116,27 @@
     "expressInterest": "더 배우고 싶어요 / 함께 일하고 싶어요",
     "interestRecorded": "내 비공개 목록에 저장했어요. 제가 누구에게도 연락하지 않습니다 — 당신이 결정하세요.",
     "publicFeed": "공개 주간 피드 (CC BY 4.0으로 자유롭게 재신디케이트)"
+  },
+  "column": {
+    "todayTitle": "오늘의 칼럼",
+    "todayIntro": "공개된 콘텐츠 기준에 따라 출처가 명확한 짧은 큐레이션입니다.",
+    "byStandard": "콘텐츠 기준 {version}에 따라 큐레이션됨 — 발행된 모든 글에 이 버전이 기록됩니다.",
+    "originalSource": "원문 출처",
+    "translatedFrom": "{sourceLanguage}에서 번역됨",
+    "approveTitle": "발행 전 승인",
+    "approveDescription": "자동 발행은 없습니다. 최소 한 명의 사람이 승인 버튼을 클릭해야만 독자에게 도달합니다. 민감한 주제는 두 명이 필요합니다.",
+    "approveDecision": {
+      "approve": "승인하고 발행",
+      "reject": "반려 (이 발견은 발행되지 않습니다)",
+      "revise": "수정 요청으로 돌려보내기"
+    },
+    "approveExpired": "이 승인 링크는 만료되었습니다. 편집자에게 재발급을 요청해 주세요.",
+    "approveAlreadyDecided": "이 승인 링크는 이미 사용되었습니다. 각 링크는 단 한 번만 사용할 수 있습니다.",
+    "approveTokenInvalid": "이 승인 링크를 검증할 수 없습니다. 서명이 일치하지 않습니다.",
+    "approveSuccess": "감사합니다. 당신의 결정이 {time}에 기록되었습니다.",
+    "managingApprovers": "승인자 관리",
+    "managingApproversBody": "승인자를 추가하거나 제거하는 것 자체가 민감한 작업입니다. 두 명의 관리자가 동의해야 하며, 변경은 변경 불가능한 감사 기록에 남습니다.",
+    "partnerTitle": "협력 기관",
+    "partnerBody": "협력 기관은 서명된 웹훅(HMAC-SHA256) 또는 CC BY 4.0의 공개 Atom 피드를 통해 발행된 모든 칼럼을 받을 수 있습니다. 파트너는 초안·구독·비공개 관심을 절대 볼 수 없습니다."
   }
 }

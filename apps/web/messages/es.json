@@ -116,5 +116,27 @@
     "expressInterest": "Quiero aprender más / colaborar",
     "interestRecorded": "Guardado en tu lista privada. No contactaremos a nadie por ti — tú decides si y cuándo.",
     "publicFeed": "Feed semanal público (re-sindicación libre bajo CC BY 4.0)"
+  },
+  "column": {
+    "todayTitle": "Columna de hoy",
+    "todayIntro": "Una pieza breve y con fuente, seleccionada según nuestro Estándar de Contenido público.",
+    "byStandard": "Curada bajo el Estándar de Contenido {version} — cada pieza publicada registra esta versión.",
+    "originalSource": "Fuente original",
+    "translatedFrom": "Traducido desde {sourceLanguage}",
+    "approveTitle": "Aprobar antes de publicar",
+    "approveDescription": "Nunca publicamos de forma automática. Una columna llega a los lectores solo después de que al menos una persona aprobadora haga clic en aprobar. Los temas sensibles requieren dos.",
+    "approveDecision": {
+      "approve": "Aprobar y publicar",
+      "reject": "Rechazar (este hallazgo no se publicará)",
+      "revise": "Devolver para revisión"
+    },
+    "approveExpired": "Este enlace de aprobación ha expirado. Por favor solicite al editor que lo vuelva a emitir.",
+    "approveAlreadyDecided": "Este enlace de aprobación ya se utilizó. Cada enlace es de un solo uso.",
+    "approveTokenInvalid": "No pudimos verificar este enlace de aprobación. La firma no coincide.",
+    "approveSuccess": "Gracias. Su decisión se registró a las {time}.",
+    "managingApprovers": "Gestionar aprobadores",
+    "managingApproversBody": "Agregar o quitar a un aprobador es en sí mismo una acción sensible. Dos administradores deben estar de acuerdo, y el cambio se registra en el registro de auditoría inmutable.",
+    "partnerTitle": "Organizaciones aliadas",
+    "partnerBody": "Las organizaciones aliadas pueden recibir cada columna publicada mediante webhook firmado (HMAC-SHA256) o consultando el feed Atom público bajo CC BY 4.0. Las aliadas nunca ven borradores, suscripciones, o intereses privados."
   }
 }

@@ -226,3 +226,129 @@ model CollaborationInterest {
   @@index([itemId])
   @@map("collaboration_interests")
 }
+
+// ============================================================
+// Daily Columns + Multi-channel Approval + Partners (ADR-0013)
+// ============================================================
+
+// A curated daily column. Begins as 'draft', moves to 'pending' on submit,
+// becomes 'published' once enough approvers have approved (n-of-m), or
+// 'rejected' / 'revoked' under negative outcomes.
+model Column {
+  id              String   @id @default(uuid()) @db.Uuid
+  // Tenant-scoped editorial process. RLS applies to drafts/pending/rejected.
+  // Once 'published', columns are also exposed via the public feed.
+  tenantId        String   @map("tenant_id") @db.Uuid
+  authorId        String?  @map("author_id") @db.Uuid // who curated it
+  state           String   @default("draft") // draft | pending | published | rejected | revoked
+  // Multilingual body: { en: { title, summary, excerpt, attribution }, ko: ..., ar: ... }
+  bodyI18n        Json     @map("body_i18n")
+  primaryLocale   String   @default("en") @map("primary_locale")
+  // Source attribution
+  sourceUrl       String   @map("source_url")
+  sourceTitle     String?  @map("source_title")
+  sourceAuthors   String[] @default([]) @map("source_authors")
+  sourcePublisher String?  @map("source_publisher")
+  sourceLicense   String?  @map("source_license")
+  sourcePublishedAt DateTime? @map("source_published_at")
+  // SDG mapping with confidence and human/AI provenance
+  sdgFocus        String[] @default([]) @map("sdg_focus")
+  sdgConfidence   Float?   @map("sdg_confidence")
+  sensitivity     String   @default("standard") // standard | sensitive (medical/legal/child/conflict)
+  // Audit / content-standard provenance
+  standardVersion String   @default("v0.1") @map("standard_version")
+  aiProvenance    Json?    @map("ai_provenance") // { model, prompt_version, drafted_at }
+  // Lifecycle timestamps
+  submittedAt     DateTime? @map("submitted_at")
+  publishedAt     DateTime? @map("published_at")
+  revokedAt       DateTime? @map("revoked_at")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  approvalRequests ApprovalRequest[]
+
+  @@index([tenantId, state, createdAt])
+  @@index([state, publishedAt])
+  @@index([sdgFocus], type: Gin)
+  @@map("columns")
+}
+
+// Who is allowed to approve columns (per tenant). Adding an approver itself
+// is a sensitive action — see ADR-0013 §"Self-governance of approvers".
+model ColumnApprover {
+  id          String   @id @default(uuid()) @db.Uuid
+  tenantId    String   @map("tenant_id") @db.Uuid
+  userId      String   @map("user_id") @db.Uuid
+  // Channels this approver has consented to receive approval requests via:
+  channels    String[] @default(["email", "inapp"]) // 'email' | 'sms' | 'inapp' | 'webhook'
+  // For SMS channel — required only when 'sms' is in channels
+  phoneE164   String?  @map("phone_e164")
+  // True if this approver may approve sensitive columns (requires 2-of-m)
+  sensitiveOk Boolean  @default(false) @map("sensitive_ok")
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@unique([tenantId, userId])
+  @@index([tenantId, active])
+  @@map("column_approvers")
+}
+
+// One approver × one column. Token-bearing.
+// HMAC token format: see ADR-0013 §3.
+model ApprovalRequest {
+  id           String   @id @default(uuid()) @db.Uuid
+  tenantId     String   @map("tenant_id") @db.Uuid
+  columnId     String   @map("column_id") @db.Uuid
+  approverId   String   @map("approver_id") @db.Uuid
+  channel      String   // 'email' | 'sms' | 'inapp' | 'webhook'
+  // Public-side token id; the actual HMAC token is computed at issue time
+  // and not stored. We store only the request id and the decision metadata.
+  expiresAt    DateTime @map("expires_at")
+  decision     String?  // null | 'approve' | 'reject' | 'revise'
+  decidedAt    DateTime? @map("decided_at")
+  decidedVia   String?  @map("decided_via") // channel actually used
+  reasonNote   String?  @map("reason_note")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  column Column @relation(fields: [columnId], references: [id])
+
+  @@index([tenantId, columnId])
+  @@index([approverId, decision])
+  @@index([expiresAt])
+  @@map("approval_requests")
+}
+
+// A registered partner organisation that may receive published columns
+// or use our APIs. HMAC secret used to sign outbound webhooks. The secret
+// is only ever returned to the partner once, on creation.
+model PartnerOrganization {
+  id           String   @id @default(uuid()) @db.Uuid
+  name         String
+  homepageUrl  String?  @map("homepage_url")
+  contactEmail String   @map("contact_email")
+  hmacSecret   String   @map("hmac_secret") // store only hashed; never log raw
+  scopes       String[] @default([]) // 'column.published' | 'column.revoked' | 'feed.read'
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  webhooks PartnerWebhook[]
+
+  @@map("partner_organizations")
+}
+
+// One outbound endpoint registered by a partner.
+model PartnerWebhook {
+  id              String   @id @default(uuid()) @db.Uuid
+  partnerId       String   @map("partner_id") @db.Uuid
+  url             String
+  events          String[] @default(["column.published"])
+  active          Boolean  @default(true)
+  lastStatus      Int?     @map("last_status")
+  lastDeliveredAt DateTime? @map("last_delivered_at")
+  failureCount    Int      @default(0) @map("failure_count")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  partner PartnerOrganization @relation(fields: [partnerId], references: [id])
+
+  @@index([partnerId, active])
+  @@map("partner_webhooks")
+}

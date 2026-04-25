@@ -117,5 +117,28 @@
     "interestRecorded": "Saved to your private list. We will not contact anyone for you — you decide if and when.",
     "publicFeed": "Public weekly feed (re-syndicate freely under CC BY 4.0)",
     "_translationNeeded": "Not yet translated to Português. PR welcome."
+  },
+  "column": {
+    "todayTitle": "Today's column",
+    "todayIntro": "A short, sourced piece selected against our public Content Standard.",
+    "byStandard": "Curated under Content Standard {version} — every published piece records this version.",
+    "originalSource": "Original source",
+    "translatedFrom": "Translated from {sourceLanguage}",
+    "approveTitle": "Approve before publishing",
+    "approveDescription": "We never auto-publish. A column reaches readers only after at least one human approver clicks approve. Sensitive topics need two.",
+    "approveDecision": {
+      "approve": "Approve and publish",
+      "reject": "Reject (this finding will not be published)",
+      "revise": "Send back for revision"
+    },
+    "approveExpired": "This approval link has expired. Please ask the editor to re-issue.",
+    "approveAlreadyDecided": "This approval link has already been used. Each link is single-use.",
+    "approveTokenInvalid": "We could not verify this approval link. The signature does not match.",
+    "approveSuccess": "Thank you. Your decision was recorded at {time}.",
+    "managingApprovers": "Managing approvers",
+    "managingApproversBody": "Adding or removing an approver is itself a sensitive action. Two administrators must agree, and the change is recorded in the immutable audit log.",
+    "partnerTitle": "Partner organisations",
+    "partnerBody": "Partner organisations may receive every published column via signed webhook (HMAC-SHA256) or by polling the public Atom feed under CC BY 4.0. Partners never see drafts, subscriptions, or private interests.",
+    "_translationNeeded": "Not yet translated to Português. PR welcome."
   }
 }

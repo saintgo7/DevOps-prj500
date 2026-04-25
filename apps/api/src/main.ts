@@ -21,9 +21,12 @@ async function bootstrap(): Promise<void> {
     }),
   );
   app.use(cookieParser());
-  // Public Atom/RSS feeds must live at the root URL (not under /v1) so feed
-  // readers and re-syndicators can discover them. See ADR-0012.
-  app.setGlobalPrefix('v1', { exclude: ['metrics', 'feed/(.*)'] });
+  // Public Atom/RSS feeds and one-tap approval links live at the root URL
+  // (not under /v1) so feed readers and email/SMS recipients can reach them.
+  // See ADR-0012 (feeds) and ADR-0013 (approve).
+  app.setGlobalPrefix('v1', {
+    exclude: ['metrics', 'feed/(.*)', 'approve/(.*)'],
+  });
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,

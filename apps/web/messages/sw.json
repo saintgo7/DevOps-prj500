@@ -116,5 +116,27 @@
     "expressInterest": "Nataka kujifunza zaidi / kushirikiana",
     "interestRecorded": "Imehifadhiwa katika orodha yako ya faragha. Hatutawasiliana na yeyote kwa niaba yako — wewe unaamua lini na kama.",
     "publicFeed": "Mkondo wa kila wiki wa umma (chapisha tena kwa uhuru chini ya CC BY 4.0)"
+  },
+  "column": {
+    "todayTitle": "Safu ya leo",
+    "todayIntro": "Maandishi mafupi yenye chanzo, yaliyochaguliwa kwa kufuata Kigezo cha Maudhui cha umma.",
+    "byStandard": "Imechaguliwa kwa Kigezo cha Maudhui {version} — kila kipande kilichochapishwa kinarekodi toleo hili.",
+    "originalSource": "Chanzo asili",
+    "translatedFrom": "Imetafsiriwa kutoka {sourceLanguage}",
+    "approveTitle": "Idhinisha kabla ya kuchapisha",
+    "approveDescription": "Hatuchapishi kiotomatiki kamwe. Safu hufikia wasomaji tu baada ya angalau mtu mmoja kubonyeza idhini. Mada nyeti zinahitaji wawili.",
+    "approveDecision": {
+      "approve": "Idhinisha na chapisha",
+      "reject": "Kataa (uvumbuzi huu hautachapishwa)",
+      "revise": "Rudisha kwa marekebisho"
+    },
+    "approveExpired": "Kiungo hiki cha idhini kimemalizika. Tafadhali muulize mhariri akiifufue.",
+    "approveAlreadyDecided": "Kiungo hiki cha idhini tayari kimetumika. Kila kiungo ni cha matumizi mara moja.",
+    "approveTokenInvalid": "Hatukuweza kuthibitisha kiungo hiki cha idhini. Saini hailingani.",
+    "approveSuccess": "Asante. Uamuzi wako umesajiliwa saa {time}.",
+    "managingApprovers": "Kusimamia waidhinishaji",
+    "managingApproversBody": "Kuongeza au kuondoa muidhinishaji yenyewe ni hatua nyeti. Wasimamizi wawili lazima wakubali, na mabadiliko yamerekodiwa katika kumbukumbu ya ukaguzi isiyobadilika.",
+    "partnerTitle": "Mashirika washirika",
+    "partnerBody": "Mashirika washirika yanaweza kupokea kila safu iliyochapishwa kupitia webhook iliyosainiwa (HMAC-SHA256) au kwa kuvuta mkondo wa Atom wa umma chini ya CC BY 4.0. Washirika hawaoni kamwe rasimu, usajili, au maslahi ya faragha."
   }
 }

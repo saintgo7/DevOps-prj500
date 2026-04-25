@@ -58,15 +58,54 @@ const worker = new Worker(
       return { ok: true };
     }
 
+    if (job.name === 'columns:generate-candidates') {
+      // ADR-0013: every weekday morning, build candidate columns from the
+      // most recently discovered watch items that pass CONTENT_STANDARD §8.
+      // Today the worker only emits the schedule signal; api-side curator
+      // tools then create drafts in their tenant scope.
+      log.info('daily column candidate generation tick');
+      return { ok: true };
+    }
+
+    if (job.name === 'partner-webhook:dispatch') {
+      // Outbound HMAC-signed webhook to a partner. Retries with exponential
+      // backoff are handled by BullMQ's job options (set when enqueued).
+      const data = job.data as {
+        deliveryId: string;
+        url: string;
+        secret: string;
+        body: string;
+        event: string;
+      };
+      const { signWebhookBody } = await import('./signing/webhook');
+      const sig = signWebhookBody(data.secret, data.body);
+      const res = await fetch(data.url, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'x-sdgi-signature': sig,
+          'x-sdgi-event': data.event,
+          'x-sdgi-delivery': data.deliveryId,
+          'user-agent': 'SDGI-Webhook/1.0 (+https://sdgi.app)',
+        },
+        body: data.body,
+      });
+      if (!res.ok) {
+        throw new Error(`partner returned ${res.status}`);
+      }
+      log.info({ delivery_id: data.deliveryId, status: res.status }, 'webhook delivered');
+      return { ok: true, status: res.status };
+    }
+
     log.warn({ name: job.name }, 'unknown job; no-op');
     return { ok: true };
   },
   { connection },
 );
 
-// Register the recurring weekly job once on startup.
-// Mondays 06:00 UTC. Idempotent — using a fixed jobId.
+// Register the recurring jobs once on startup. Idempotent — fixed jobIds.
 async function registerSchedules(): Promise<void> {
+  // Weekly watch fan-out — Mondays 06:00 UTC.
   await queue.add(
     'sdg-watch:weekly-fanout',
     {},
@@ -78,6 +117,19 @@ async function registerSchedules(): Promise<void> {
     },
   );
   baseLogger.info('weekly fan-out scheduled (Mon 06:00 UTC)');
+
+  // Daily column candidate generation — weekdays 05:00 UTC.
+  await queue.add(
+    'columns:generate-candidates',
+    {},
+    {
+      repeat: { pattern: '0 5 * * 1-5', tz: 'UTC' },
+      jobId: 'columns:generate-candidates',
+      removeOnComplete: { count: 50 },
+      removeOnFail: { count: 50 },
+    },
+  );
+  baseLogger.info('daily column candidate generation scheduled (Mon-Fri 05:00 UTC)');
 }
 
 worker.on('failed', (job, err) => {

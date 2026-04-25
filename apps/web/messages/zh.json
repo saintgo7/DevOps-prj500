@@ -116,5 +116,27 @@
     "expressInterest": "我想了解更多 / 进行合作",
     "interestRecorded": "已保存到您的私人列表。我们不会替您联系任何人——由您决定何时以及是否联系。",
     "publicFeed": "公开周报订阅源(以 CC BY 4.0 自由再发布)"
+  },
+  "column": {
+    "todayTitle": "今日专栏",
+    "todayIntro": "一篇简短、有出处的精选,依据我们公开的《内容标准》挑选。",
+    "byStandard": "依据《内容标准》{version} 进行编辑——每篇发布的内容都会记录此版本。",
+    "originalSource": "原始来源",
+    "translatedFrom": "从 {sourceLanguage} 翻译",
+    "approveTitle": "发布前需审批",
+    "approveDescription": "我们绝不自动发布。专栏只有在至少一名人工审批者点击批准后才会到达读者。敏感主题需要两人。",
+    "approveDecision": {
+      "approve": "批准并发布",
+      "reject": "拒绝(此发现将不会发布)",
+      "revise": "退回修改"
+    },
+    "approveExpired": "此批准链接已过期。请要求编辑重新发出。",
+    "approveAlreadyDecided": "此批准链接已被使用。每个链接仅可使用一次。",
+    "approveTokenInvalid": "无法验证此批准链接。签名不匹配。",
+    "approveSuccess": "谢谢。您的决定已于 {time} 被记录。",
+    "managingApprovers": "管理审批者",
+    "managingApproversBody": "添加或删除审批者本身就是敏感操作。需两位管理员同意,变更会被记录在不可变更的审计日志中。",
+    "partnerTitle": "合作机构",
+    "partnerBody": "合作机构可通过签名的 webhook(HMAC-SHA256)或拉取 CC BY 4.0 公开 Atom 订阅源,接收每一篇已发布的专栏。合作方从不看到草稿、订阅或私人兴趣。"
   }
 }
