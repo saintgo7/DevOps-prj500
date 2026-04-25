@@ -33,6 +33,7 @@ model User {
   tenantId     String   @map("tenant_id") @db.Uuid
   email        String
   displayName  String?  @map("display_name")
+  passwordHash String?  @map("password_hash")
   authProvider String   @default("local") @map("auth_provider")
   mfaEnabled   Boolean  @default(false) @map("mfa_enabled")
   status       String   @default("active")

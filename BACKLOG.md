@@ -61,11 +61,13 @@
 - ⏳ TODO: 169 targets / 232 indicators 풀 ETL 스크립트 (UN 공식 데이터)
 - 관련 문서: `docs/13`, `docs/adr/0006-prisma-as-orm.md`
 
-### S1-02. 인증 (Auth.js)
-- 이메일·비밀번호, Google OIDC
-- Argon2id, MFA(TOTP)
-- 세션 쿠키 + Refresh
-- AC: 가입·로그인·로그아웃 E2E 통과
+### S1-02. 인증 — ✅ 부분 완료
+- ✅ 이메일·비밀번호 가입 (Argon2id) + JWT 쿠키 세션 (8시간 TTL)
+- ✅ `POST /v1/auth/signup` — Tenant + admin User + Membership 트랜잭션 생성
+- ✅ `POST /v1/auth/signin`, `POST /v1/auth/signout`, `GET /v1/me` (JwtAuthGuard 보호)
+- ✅ HttpOnly + SameSite=Lax + Secure(prod) 쿠키, ValidationPipe로 입력 검증
+- ✅ 단위 테스트 9개 (AuthService 5 + JwtAuthGuard 4)
+- ⏳ TODO: Google OIDC, MFA(TOTP), Refresh 토큰, Passkey
 
 ### S1-03. 테넌트 컨텍스트 미들웨어 — ✅ 부분 완료
 - ✅ `TenantContextMiddleware`: `X-Tenant-Id` 헤더 → UUID 검증 → `req.tenantId`
@@ -81,7 +83,8 @@
 - ✅ `GET /v1/catalog/goals`, `/goals/:id`, `/targets?goal=…`, `/indicators?target=…`, `/indicators/:id`
 - ✅ 다국어 응답 (i18n JSONB 그대로 반환)
 - ✅ 단위 테스트 6개 (CatalogService)
-- ⏳ TODO: 텍스트 검색 (Postgres FTS / OpenSearch), OpenAPI 자동 문서 생성
+- ✅ OpenAPI 3.1 자동 문서 (`@nestjs/swagger`) — `GET /docs` (Swagger UI), Bearer + Cookie auth 표시
+- ⏳ TODO: 텍스트 검색 (Postgres FTS / OpenSearch), 클라이언트 SDK 자동 생성
 
 ### S1-06. Web — 카탈로그 브라우저 UI — ✅ 부분 완료
 - ✅ 홈페이지에서 17 Goals 그리드 표시 (SdgBadge 사용, RSC fetch)
