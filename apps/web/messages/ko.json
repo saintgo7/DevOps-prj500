@@ -1,0 +1,57 @@
+{
+  "common": {
+    "appName": "SDG Impact Cloud",
+    "tagline": "UN 지속가능발전목표(SDGs) 기반 임팩트 측정·보고 SaaS",
+    "loading": "불러오는 중…",
+    "submit": "확인",
+    "cancel": "취소",
+    "back": "뒤로",
+    "home": "홈으로",
+    "signOut": "로그아웃",
+    "signIn": "로그인",
+    "signUp": "가입",
+    "myProfile": "내 프로필",
+    "language": "언어"
+  },
+  "home": {
+    "goalsHeading": "17개 지속가능발전목표",
+    "apiOffline": "카탈로그 API에 연결되지 않았습니다. {dev} 또는 {compose}로 로컬 환경을 기동하세요.",
+    "footerDocs": "문서"
+  },
+  "auth": {
+    "signUpTitle": "가입 (Sign Up)",
+    "signUpHint": "새 워크스페이스(Tenant)와 관리자 계정을 만듭니다.",
+    "signInTitle": "로그인 (Sign In)",
+    "email": "이메일",
+    "password": "비밀번호",
+    "passwordHint": "비밀번호 (12자 이상)",
+    "organizationName": "조직명 (선택)",
+    "displayName": "이름 (선택)",
+    "submitting": "처리 중…",
+    "haveAccount": "이미 계정이 있으신가요?",
+    "noAccount": "계정이 없으신가요?",
+    "signupFailed": "가입 실패",
+    "signinFailed": "로그인 실패"
+  },
+  "me": {
+    "title": "내 프로필",
+    "email": "이메일",
+    "name": "이름",
+    "status": "상태",
+    "mfa": "MFA",
+    "mfaActive": "활성",
+    "mfaInactive": "비활성",
+    "tenantId": "Tenant ID",
+    "userId": "User ID",
+    "loadFailed": "프로필을 불러오지 못했습니다"
+  },
+  "goal": {
+    "back": "← 17 Goals",
+    "targets": "Targets ({count})",
+    "noTargets": "이 Goal에 대한 샘플 Target이 아직 시드되어 있지 않습니다.",
+    "tier": "Tier"
+  },
+  "languageSwitcher": {
+    "label": "언어 선택"
+  }
+}

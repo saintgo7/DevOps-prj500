@@ -1,0 +1,57 @@
+{
+  "common": {
+    "appName": "SDG Impact Cloud",
+    "tagline": "Multi-tenant SaaS for SDG-based impact measurement and reporting",
+    "loading": "Loading…",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "back": "Back",
+    "home": "Home",
+    "signOut": "Sign out",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "myProfile": "My profile",
+    "language": "Language"
+  },
+  "home": {
+    "goalsHeading": "The 17 Sustainable Development Goals",
+    "apiOffline": "Catalog API is unreachable. Start your local stack with {dev} or {compose}.",
+    "footerDocs": "Docs"
+  },
+  "auth": {
+    "signUpTitle": "Sign up",
+    "signUpHint": "Create a new workspace (tenant) and an administrator account.",
+    "signInTitle": "Sign in",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "Password (12 characters or more)",
+    "organizationName": "Organization name (optional)",
+    "displayName": "Display name (optional)",
+    "submitting": "Submitting…",
+    "haveAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
+    "signupFailed": "Sign up failed",
+    "signinFailed": "Sign in failed"
+  },
+  "me": {
+    "title": "My profile",
+    "email": "Email",
+    "name": "Display name",
+    "status": "Status",
+    "mfa": "MFA",
+    "mfaActive": "enabled",
+    "mfaInactive": "disabled",
+    "tenantId": "Tenant ID",
+    "userId": "User ID",
+    "loadFailed": "Failed to load profile"
+  },
+  "goal": {
+    "back": "← All 17 Goals",
+    "targets": "Targets ({count})",
+    "noTargets": "No sample targets seeded for this goal yet.",
+    "tier": "Tier"
+  },
+  "languageSwitcher": {
+    "label": "Choose language"
+  }
+}

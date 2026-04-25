@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/navigation';
 import { apiBaseUrl } from '@/lib/api';
 
 export default function SignUpPage(): React.JSX.Element {
+  const t = useTranslations();
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,11 +33,11 @@ export default function SignUpPage(): React.JSX.Element {
       });
       if (!res.ok) {
         const body = (await res.json().catch(() => null)) as { message?: string } | null;
-        throw new Error(body?.message ?? `Sign up failed (${res.status})`);
+        throw new Error(body?.message ?? `${t('auth.signupFailed')} (${res.status})`);
       }
       router.push('/me');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Sign up failed');
+      setError(err instanceof Error ? err.message : t('auth.signupFailed'));
     } finally {
       setSubmitting(false);
     }
@@ -43,10 +45,10 @@ export default function SignUpPage(): React.JSX.Element {
 
   return (
     <main style={pageStyle}>
-      <h1>가입 (Sign Up)</h1>
-      <p style={{ color: '#6b7280' }}>새 워크스페이스(Tenant)와 관리자 계정을 만듭니다.</p>
+      <h1>{t('auth.signUpTitle')}</h1>
+      <p style={{ color: '#6b7280' }}>{t('auth.signUpHint')}</p>
       <form onSubmit={onSubmit} style={formStyle}>
-        <Field label="이메일" required>
+        <Field label={t('auth.email')} required>
           <input
             type="email"
             value={email}
@@ -56,7 +58,7 @@ export default function SignUpPage(): React.JSX.Element {
             style={inputStyle}
           />
         </Field>
-        <Field label="비밀번호 (12자 이상)" required>
+        <Field label={t('auth.passwordHint')} required>
           <input
             type="password"
             minLength={12}
@@ -67,14 +69,14 @@ export default function SignUpPage(): React.JSX.Element {
             style={inputStyle}
           />
         </Field>
-        <Field label="조직명 (선택)">
+        <Field label={t('auth.organizationName')}>
           <input
             value={organizationName}
             onChange={(e) => setOrganizationName(e.target.value)}
             style={inputStyle}
           />
         </Field>
-        <Field label="이름 (선택)">
+        <Field label={t('auth.displayName')}>
           <input
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
@@ -83,10 +85,10 @@ export default function SignUpPage(): React.JSX.Element {
         </Field>
         {error ? <p style={errorStyle}>{error}</p> : null}
         <button type="submit" disabled={submitting} style={buttonStyle}>
-          {submitting ? '처리 중…' : '가입'}
+          {submitting ? t('auth.submitting') : t('common.signUp')}
         </button>
         <p style={{ fontSize: 14 }}>
-          이미 계정이 있으신가요? <a href="/signin">로그인</a>
+          {t('auth.haveAccount')} <a href="signin">{t('common.signIn')}</a>
         </p>
       </form>
     </main>

@@ -1,0 +1,57 @@
+{
+  "common": {
+    "appName": "SDG影响云",
+    "tagline": "基于联合国可持续发展目标(SDGs)的多租户影响测量与报告SaaS",
+    "loading": "加载中…",
+    "submit": "提交",
+    "cancel": "取消",
+    "back": "返回",
+    "home": "首页",
+    "signOut": "退出登录",
+    "signIn": "登录",
+    "signUp": "注册",
+    "myProfile": "我的资料",
+    "language": "语言"
+  },
+  "home": {
+    "goalsHeading": "17个可持续发展目标",
+    "apiOffline": "无法连接到目录API。请使用 {dev} 或 {compose} 启动本地环境。",
+    "footerDocs": "文档"
+  },
+  "auth": {
+    "signUpTitle": "注册",
+    "signUpHint": "创建一个新的工作空间(租户)和管理员账户。",
+    "signInTitle": "登录",
+    "email": "电子邮箱",
+    "password": "密码",
+    "passwordHint": "密码 (至少12位)",
+    "organizationName": "组织名称(可选)",
+    "displayName": "显示名称(可选)",
+    "submitting": "提交中…",
+    "haveAccount": "已经有账户了吗?",
+    "noAccount": "还没有账户?",
+    "signupFailed": "注册失败",
+    "signinFailed": "登录失败"
+  },
+  "me": {
+    "title": "我的资料",
+    "email": "电子邮箱",
+    "name": "显示名称",
+    "status": "状态",
+    "mfa": "MFA",
+    "mfaActive": "启用",
+    "mfaInactive": "未启用",
+    "tenantId": "租户ID",
+    "userId": "用户ID",
+    "loadFailed": "无法加载资料"
+  },
+  "goal": {
+    "back": "← 全部17个目标",
+    "targets": "细分目标 ({count})",
+    "noTargets": "此目标尚未播种示例细分目标。",
+    "tier": "等级"
+  },
+  "languageSwitcher": {
+    "label": "选择语言"
+  }
+}

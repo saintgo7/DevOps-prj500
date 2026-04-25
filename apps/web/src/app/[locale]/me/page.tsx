@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/navigation';
 import { apiBaseUrl } from '@/lib/api';
 
 interface MeResponse {
@@ -14,6 +15,7 @@ interface MeResponse {
 }
 
 export default function MePage(): React.JSX.Element {
+  const t = useTranslations();
   const router = useRouter();
   const [me, setMe] = useState<MeResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -28,11 +30,11 @@ export default function MePage(): React.JSX.Element {
           if (!cancelled) router.push('/signin');
           return;
         }
-        if (!res.ok) throw new Error(`Failed to load profile (${res.status})`);
+        if (!res.ok) throw new Error(t('me.loadFailed'));
         const body = (await res.json()) as MeResponse;
         if (!cancelled) setMe(body);
       } catch (err) {
-        if (!cancelled) setError(err instanceof Error ? err.message : 'Failed to load');
+        if (!cancelled) setError(err instanceof Error ? err.message : t('me.loadFailed'));
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -41,7 +43,7 @@ export default function MePage(): React.JSX.Element {
     return () => {
       cancelled = true;
     };
-  }, [router]);
+  }, [router, t]);
 
   async function signOut(): Promise<void> {
     await fetch(`${apiBaseUrl}/v1/auth/signout`, {
@@ -60,26 +62,26 @@ export default function MePage(): React.JSX.Element {
         fontFamily: 'system-ui, -apple-system, sans-serif',
       }}
     >
-      <h1>내 프로필</h1>
+      <h1>{t('me.title')}</h1>
       {loading ? (
-        <p>불러오는 중…</p>
+        <p>{t('common.loading')}</p>
       ) : error ? (
         <p style={{ color: '#dc2626' }}>{error}</p>
       ) : me ? (
         <dl style={{ display: 'grid', gridTemplateColumns: '160px 1fr', gap: 8, marginTop: 16 }}>
-          <dt style={{ color: '#6b7280' }}>이메일</dt>
+          <dt style={{ color: '#6b7280' }}>{t('me.email')}</dt>
           <dd>{me.email}</dd>
-          <dt style={{ color: '#6b7280' }}>이름</dt>
+          <dt style={{ color: '#6b7280' }}>{t('me.name')}</dt>
           <dd>{me.displayName ?? '—'}</dd>
-          <dt style={{ color: '#6b7280' }}>상태</dt>
+          <dt style={{ color: '#6b7280' }}>{t('me.status')}</dt>
           <dd>{me.status}</dd>
-          <dt style={{ color: '#6b7280' }}>MFA</dt>
-          <dd>{me.mfaEnabled ? '활성' : '비활성'}</dd>
-          <dt style={{ color: '#6b7280' }}>Tenant ID</dt>
+          <dt style={{ color: '#6b7280' }}>{t('me.mfa')}</dt>
+          <dd>{me.mfaEnabled ? t('me.mfaActive') : t('me.mfaInactive')}</dd>
+          <dt style={{ color: '#6b7280' }}>{t('me.tenantId')}</dt>
           <dd>
             <code>{me.tenantId}</code>
           </dd>
-          <dt style={{ color: '#6b7280' }}>User ID</dt>
+          <dt style={{ color: '#6b7280' }}>{t('me.userId')}</dt>
           <dd>
             <code>{me.id}</code>
           </dd>
@@ -97,10 +99,10 @@ export default function MePage(): React.JSX.Element {
             cursor: 'pointer',
           }}
         >
-          로그아웃
+          {t('common.signOut')}
         </button>
         <a
-          href="/"
+          href="../"
           style={{
             padding: '8px 14px',
             border: '1px solid #d1d5db',
@@ -109,7 +111,7 @@ export default function MePage(): React.JSX.Element {
             color: '#111827',
           }}
         >
-          홈으로
+          {t('common.home')}
         </a>
       </div>
     </main>

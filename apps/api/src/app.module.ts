@@ -6,6 +6,7 @@ import { AuditModule } from './audit/audit.module';
 import { AuthModule } from './auth/auth.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { HealthController } from './health/health.controller';
+import { LocaleMiddleware } from './i18n/locale.middleware';
 import { ObservabilityModule } from './observability/observability.module';
 import { RequestIdMiddleware } from './observability/request-id.middleware';
 import { PrismaModule } from './prisma/prisma.module';
@@ -29,6 +30,8 @@ import { TenantContextMiddleware } from './tenant/tenant-context.middleware';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer): void {
-    consumer.apply(RequestIdMiddleware, TenantContextMiddleware).forRoutes('*');
+    consumer
+      .apply(RequestIdMiddleware, LocaleMiddleware, TenantContextMiddleware)
+      .forRoutes('*');
   }
 }

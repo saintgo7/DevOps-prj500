@@ -1,11 +1,18 @@
-import Link from 'next/link';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { SdgBadge } from '@sdgi/ui';
+import { Link } from '@/i18n/navigation';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { fetchGoals, localized, type Goal } from '@/lib/api';
 
 export const dynamic = 'force-dynamic';
 
-export default async function HomePage(): Promise<React.JSX.Element> {
-  const goals: Goal[] = await fetchGoals();
+export default async function HomePage(props: {
+  params: Promise<{ locale: string }>;
+}): Promise<React.JSX.Element> {
+  const { locale } = await props.params;
+  setRequestLocale(locale);
+  const t = await getTranslations();
+  const goals: Goal[] = await fetchGoals(locale);
 
   return (
     <main
@@ -27,30 +34,38 @@ export default async function HomePage(): Promise<React.JSX.Element> {
         }}
       >
         <div>
-          <h1 style={{ margin: 0 }}>SDG Impact Cloud</h1>
-          <p style={{ color: '#4b5563', marginTop: 4 }}>
-            UN 지속가능발전목표(SDGs) 기반 임팩트 측정·보고 SaaS
-          </p>
+          <h1 style={{ margin: 0 }}>{t('common.appName')}</h1>
+          <p style={{ color: '#4b5563', marginTop: 4 }}>{t('common.tagline')}</p>
         </div>
-        <nav style={{ display: 'flex', gap: 8 }}>
+        <nav
+          style={{
+            display: 'flex',
+            gap: 8,
+            alignItems: 'center',
+            flexWrap: 'wrap',
+          }}
+        >
+          <LanguageSwitcher />
           <Link href="/signin" style={navLink}>
-            로그인
+            {t('common.signIn')}
           </Link>
-          <Link href="/signup" style={{ ...navLink, background: '#0A6E5C', color: 'white' }}>
-            가입
+          <Link
+            href="/signup"
+            style={{ ...navLink, background: '#0A6E5C', color: 'white' }}
+          >
+            {t('common.signUp')}
           </Link>
           <Link href="/me" style={navLink}>
-            내 프로필
+            {t('common.myProfile')}
           </Link>
         </nav>
       </header>
 
       <section aria-labelledby="goals-heading">
-        <h2 id="goals-heading">17개 지속가능발전목표</h2>
+        <h2 id="goals-heading">{t('home.goalsHeading')}</h2>
         {goals.length === 0 ? (
           <p style={{ color: '#6b7280' }}>
-            카탈로그 API에 연결되지 않았습니다. <code>pnpm dev</code> 또는 <code>make up</code>로
-            로컬 환경을 기동하세요.
+            {t('home.apiOffline', { dev: 'pnpm dev', compose: 'make up' })}
           </p>
         ) : (
           <ul
@@ -65,7 +80,7 @@ export default async function HomePage(): Promise<React.JSX.Element> {
             {goals.map((g) => (
               <li key={g.id}>
                 <Link
-                  href={{ pathname: `/goals/${encodeURIComponent(g.id)}` }}
+                  href={`/goals/${encodeURIComponent(g.id)}` as never}
                   style={{
                     border: '1px solid #e5e7eb',
                     borderRadius: 8,
@@ -78,7 +93,7 @@ export default async function HomePage(): Promise<React.JSX.Element> {
                   }}
                 >
                   <SdgBadge goal={g.number} />
-                  <span style={{ fontWeight: 500 }}>{localized(g.name, 'ko')}</span>
+                  <span style={{ fontWeight: 500 }}>{localized(g.name, locale)}</span>
                 </Link>
               </li>
             ))}
@@ -87,7 +102,8 @@ export default async function HomePage(): Promise<React.JSX.Element> {
       </section>
 
       <footer style={{ marginTop: '2rem', color: '#9ca3af', fontSize: 12 }}>
-        문서: <a href="https://github.com/saintgo7/devops-prj500/tree/main/docs">/docs</a>
+        {t('home.footerDocs')}:{' '}
+        <a href="https://github.com/saintgo7/devops-prj500/tree/main/docs">/docs</a>
       </footer>
     </main>
   );

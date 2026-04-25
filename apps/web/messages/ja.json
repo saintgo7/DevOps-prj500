@@ -1,0 +1,57 @@
+{
+  "common": {
+    "appName": "SDGインパクトクラウド",
+    "tagline": "UN持続可能な開発目標(SDGs)に基づくインパクト測定・報告SaaS",
+    "loading": "読み込み中…",
+    "submit": "送信",
+    "cancel": "キャンセル",
+    "back": "戻る",
+    "home": "ホーム",
+    "signOut": "サインアウト",
+    "signIn": "サインイン",
+    "signUp": "新規登録",
+    "myProfile": "マイプロフィール",
+    "language": "言語"
+  },
+  "home": {
+    "goalsHeading": "17の持続可能な開発目標",
+    "apiOffline": "カタログAPIに接続できません。{dev} または {compose} でローカル環境を起動してください。",
+    "footerDocs": "ドキュメント"
+  },
+  "auth": {
+    "signUpTitle": "新規登録",
+    "signUpHint": "新しいワークスペース(テナント)と管理者アカウントを作成します。",
+    "signInTitle": "サインイン",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "passwordHint": "パスワード(12文字以上)",
+    "organizationName": "組織名(任意)",
+    "displayName": "表示名(任意)",
+    "submitting": "処理中…",
+    "haveAccount": "すでにアカウントをお持ちですか?",
+    "noAccount": "アカウントがありませんか?",
+    "signupFailed": "新規登録に失敗しました",
+    "signinFailed": "サインインに失敗しました"
+  },
+  "me": {
+    "title": "マイプロフィール",
+    "email": "メールアドレス",
+    "name": "表示名",
+    "status": "ステータス",
+    "mfa": "MFA",
+    "mfaActive": "有効",
+    "mfaInactive": "無効",
+    "tenantId": "テナントID",
+    "userId": "ユーザーID",
+    "loadFailed": "プロフィールの読み込みに失敗しました"
+  },
+  "goal": {
+    "back": "← 17のゴール",
+    "targets": "ターゲット ({count})",
+    "noTargets": "このゴールにはまだサンプルターゲットがシードされていません。",
+    "tier": "ティア"
+  },
+  "languageSwitcher": {
+    "label": "言語を選択"
+  }
+}

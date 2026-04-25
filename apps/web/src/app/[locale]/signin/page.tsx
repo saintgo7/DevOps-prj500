@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/navigation';
 import { apiBaseUrl } from '@/lib/api';
 
 export default function SignInPage(): React.JSX.Element {
+  const t = useTranslations();
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,11 +26,11 @@ export default function SignInPage(): React.JSX.Element {
       });
       if (!res.ok) {
         const body = (await res.json().catch(() => null)) as { message?: string } | null;
-        throw new Error(body?.message ?? `Sign in failed (${res.status})`);
+        throw new Error(body?.message ?? `${t('auth.signinFailed')} (${res.status})`);
       }
       router.push('/me');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Sign in failed');
+      setError(err instanceof Error ? err.message : t('auth.signinFailed'));
     } finally {
       setSubmitting(false);
     }
@@ -43,13 +45,13 @@ export default function SignInPage(): React.JSX.Element {
         fontFamily: 'system-ui, -apple-system, sans-serif',
       }}
     >
-      <h1>로그인 (Sign In)</h1>
+      <h1>{t('auth.signInTitle')}</h1>
       <form
         onSubmit={onSubmit}
         style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 16 }}
       >
         <label style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-          <span style={{ fontWeight: 500, fontSize: 14 }}>이메일</span>
+          <span style={{ fontWeight: 500, fontSize: 14 }}>{t('auth.email')}</span>
           <input
             type="email"
             value={email}
@@ -60,7 +62,7 @@ export default function SignInPage(): React.JSX.Element {
           />
         </label>
         <label style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-          <span style={{ fontWeight: 500, fontSize: 14 }}>비밀번호</span>
+          <span style={{ fontWeight: 500, fontSize: 14 }}>{t('auth.password')}</span>
           <input
             type="password"
             value={password}
@@ -96,10 +98,10 @@ export default function SignInPage(): React.JSX.Element {
             cursor: 'pointer',
           }}
         >
-          {submitting ? '처리 중…' : '로그인'}
+          {submitting ? t('auth.submitting') : t('common.signIn')}
         </button>
         <p style={{ fontSize: 14 }}>
-          계정이 없으신가요? <a href="/signup">가입</a>
+          {t('auth.noAccount')} <a href="signup">{t('common.signUp')}</a>
         </p>
       </form>
     </main>
