@@ -175,5 +175,19 @@
     "watermarkExplain": "Chaque vidéo porte un filigrane indiquant qu'elle est assistée par l'IA et montrant sa source.",
     "retract": "Retirer cette publication",
     "retractedNote": "Cette publication a été retirée le {when}."
+  },
+  "strategy": {
+    "toneTitle": "Ton de voix",
+    "toneIntro": "Cinq tons — enjoué, ami, solennel, pédagogique, contemplatif. Choisissez ce qui colle au moment. Jamais de sermon.",
+    "ethicsClosing": "Rappel implicite : ce que nous créons aujourd'hui façonne l'IA de demain, qui façonne les humains d'après.",
+    "trendBenchTitle": "Repère de tendances (métadonnées seulement)",
+    "trendBenchBody": "Nous suivons la durée moyenne, le timing du hook et la fréquence des hashtags par plateforme × langue. Nous ne copions ni ne republions le contenu de personne.",
+    "patentTitle": "L'invention du jour — au service des ODD",
+    "patentBody": "Un brevet ou dépôt de droits récemment publié, mis en correspondance avec un ODD et une région utiles. Jamais republié à des fins commerciales.",
+    "sessionTitle": "Session stratégique sur invitation",
+    "sessionIntro": "Échangez sur la manière dont une nouvelle technologie peut servir un ODD avec les personnes que vous invitez. Usage non commercial uniquement.",
+    "noncommercialClause": "J'accepte d'utiliser le contenu de cette session uniquement pour la mise en œuvre non commerciale des ODD.",
+    "revokeNotice": "Un super-administrateur peut révoquer cette session à tout moment si elle cesse de servir les ODD. La raison est conservée pour toujours.",
+    "sessionRevokedBanner": "Cette session a été révoquée le {when}. Raison : {reason}"
   }
 }

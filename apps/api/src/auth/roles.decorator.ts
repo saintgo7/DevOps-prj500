@@ -1,7 +1,13 @@
 import { SetMetadata } from '@nestjs/common';
 
 export const ROLES_METADATA_KEY = 'sdgi:required_roles';
-export type RoleKey = 'admin' | 'reviewer' | 'contributor' | 'viewer' | 'auditor';
+export type RoleKey =
+  | 'super-admin'
+  | 'admin'
+  | 'reviewer'
+  | 'contributor'
+  | 'viewer'
+  | 'auditor';
 
 /**
  * Mark a route as requiring at least one of the listed roles.

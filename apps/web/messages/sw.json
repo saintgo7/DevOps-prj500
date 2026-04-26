@@ -175,5 +175,19 @@
     "watermarkExplain": "Kila video hubeba alama ya maji ya kona inayoonyesha imechukuliwa kwa msaada wa AI na chanzo chake.",
     "retract": "Ondoa chapisho hili",
     "retractedNote": "Chapisho hili liliondolewa tarehe {when}."
+  },
+  "strategy": {
+    "toneTitle": "Sauti ya maneno",
+    "toneIntro": "Sauti tano — kucheza, rafiki, ya kuzingatia, ya kufundisha, ya kufikiria. Chagua inayolingana na wakati. Kamwe kuhubiri.",
+    "ethicsClosing": "Ukumbusho fiche: tunachotengeneza leo kinaunda AI ya kesho, ambayo inaunda wanadamu wanaofuata.",
+    "trendBenchTitle": "Marejeo ya mwelekeo (metadata tu)",
+    "trendBenchBody": "Tunafuatilia muda wa wastani, wakati wa hook na mzunguko wa hashtags kwa kila jukwaa × lugha. Kamwe hatunakili au kuchapisha tena maudhui ya yeyote.",
+    "patentTitle": "Ugunduzi wa leo — kwa hatua ya SDG",
+    "patentBody": "Hati miliki au hakimiliki iliyochapishwa hivi karibuni, imepangwa kwa SDG ipi na eneo gani inaweza kuhudumia. Kamwe kuchapishwa tena kibiashara.",
+    "sessionTitle": "Kikao cha mkakati cha mwaliko tu",
+    "sessionIntro": "Zungumza jinsi teknolojia mpya inavyoweza kuhudumia SDG, na watu uliowaalika tu. Kwa matumizi yasiyo ya kibiashara tu.",
+    "noncommercialClause": "Nakubali kutumia maudhui ya kikao hiki tu kwa utekelezaji usio wa kibiashara wa SDG.",
+    "revokeNotice": "Msimamizi mkuu anaweza kufuta kikao hiki wakati wowote ikiwa kitaacha kuhudumia SDGs. Sababu inahifadhiwa milele.",
+    "sessionRevokedBanner": "Kikao hiki kilifutwa tarehe {when}. Sababu: {reason}"
   }
 }

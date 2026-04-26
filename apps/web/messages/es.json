@@ -175,5 +175,19 @@
     "watermarkExplain": "Cada video lleva una marca de agua que indica que es asistido por IA y muestra su fuente.",
     "retract": "Retirar esta publicación",
     "retractedNote": "Esta publicación fue retirada el {when}."
+  },
+  "strategy": {
+    "toneTitle": "Tono de voz",
+    "toneIntro": "Cinco tonos — alegre, amigo, solemne, instructivo, reflexivo. Elige el que se ajuste al momento. Nunca prediques.",
+    "ethicsClosing": "Recordatorio implícito: lo que hacemos hoy moldea la IA de mañana, que moldea a los humanos del día siguiente.",
+    "trendBenchTitle": "Referencia de tendencias (solo metadatos)",
+    "trendBenchBody": "Hacemos seguimiento de duración media, momento del hook y frecuencia de hashtags por plataforma × idioma. Nunca copiamos ni republicamos contenido de nadie.",
+    "patentTitle": "El invento de hoy — al servicio de los ODS",
+    "patentBody": "Una patente o registro de derechos recién publicado, mapeado al ODS y la región a la que puede servir. Nunca republicado con fines comerciales.",
+    "sessionTitle": "Sesión estratégica solo por invitación",
+    "sessionIntro": "Conversa cómo una tecnología nueva puede servir a un ODS con las personas que tú has invitado. Uso solo no comercial.",
+    "noncommercialClause": "Acepto utilizar el contenido de esta sesión solo para la implementación no comercial de los ODS.",
+    "revokeNotice": "Un super-administrador puede revocar esta sesión en cualquier momento si deja de servir a los ODS. La razón se conserva para siempre.",
+    "sessionRevokedBanner": "Esta sesión fue revocada el {when}. Razón: {reason}"
   }
 }

@@ -175,5 +175,19 @@
     "watermarkExplain": "每段视频在角落标有水印,表明这是 AI 辅助内容并显示其来源。",
     "retract": "撤回此条发布",
     "retractedNote": "此条发布已于 {when} 撤回。"
+  },
+  "strategy": {
+    "toneTitle": "语气",
+    "toneIntro": "五种语气 — 俏皮、朋友、庄重、引导、反思。选择契合此刻的那一种,从不说教。",
+    "ethicsClosing": "隐性提醒:我们今日所造,塑造明日的 AI,而它塑造再之后的人类。",
+    "trendBenchTitle": "趋势基准(仅元数据)",
+    "trendBenchBody": "我们追踪平台 × 语言 × 时段的平均时长、钩点时机、标签频率。从不复制或转载任何人的内容。",
+    "patentTitle": "今日发明 — 服务于 SDG 行动",
+    "patentBody": "一项新公开的专利或版权申请,映射到它能服务的 SDG 与地区。绝不以商业目的转载。",
+    "sessionTitle": "邀请制战略会议",
+    "sessionIntro": "与你邀请的人深入讨论一项新技术如何服务于 SDG。仅限非商业用途。",
+    "noncommercialClause": "我同意将本会议内容仅用于非商业目的的 SDG 实施。",
+    "revokeNotice": "若不再服务于 SDGs,超级管理员可随时撤回本会议。撤回原因永久保存。",
+    "sessionRevokedBanner": "本会议已于 {when} 撤回。原因:{reason}"
   }
 }

@@ -175,5 +175,19 @@
     "watermarkExplain": "Every video carries a corner watermark indicating it is AI-assisted and showing its source.",
     "retract": "Retract this post",
     "retractedNote": "This post was retracted on {when}."
+  },
+  "strategy": {
+    "toneTitle": "Tone of voice",
+    "toneIntro": "Five tones — playful, friend, solemn, instructive, reflective. Pick the one that matches the moment, never preach.",
+    "ethicsClosing": "Implicit reminder: what we make today shapes the AI of tomorrow, which shapes the humans after.",
+    "trendBenchTitle": "Trend benchmark (metadata only)",
+    "trendBenchBody": "We track average length, hook timing and hashtag frequency per platform × locale. We never copy or republish anyone's content.",
+    "patentTitle": "Today's invention — for SDG action",
+    "patentBody": "A newly published patent or copyright filing, mapped to which SDG and which region it can serve. Never republished commercially.",
+    "sessionTitle": "Invitation-only strategy session",
+    "sessionIntro": "Talk through how a new technology can serve an SDG, with people you have invited. Non-commercial use only.",
+    "noncommercialClause": "I agree to use this session's content only for non-commercial SDG implementation.",
+    "revokeNotice": "A super-administrator may revoke this session at any time if it stops serving the SDGs. The reason is recorded forever.",
+    "sessionRevokedBanner": "This session was revoked on {when}. Reason: {reason}"
   }
 }

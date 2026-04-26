@@ -6,6 +6,7 @@ import { AuditModule } from './audit/audit.module';
 import { AuthModule } from './auth/auth.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { ColumnsModule } from './columns/columns.module';
+import { SessionsModule } from './sessions/sessions.module';
 import { StoriesModule } from './stories/stories.module';
 import { WatchModule } from './watch/watch.module';
 import { HealthController } from './health/health.controller';
@@ -30,6 +31,7 @@ import { TenantContextMiddleware } from './tenant/tenant-context.middleware';
     CatalogModule,
     ColumnsModule,
     MonitoringModule,
+    SessionsModule,
     StoriesModule,
     WatchModule,
   ],

@@ -5,8 +5,10 @@ import { WATCH_SOURCES } from './seed/watch-sources';
 const prisma = new PrismaClient();
 
 async function main(): Promise<void> {
-  // Roles (idempotent)
+  // Roles (idempotent). 'super-admin' is the failsafe role per ADR-0016 —
+  // can revoke any StrategySession in any tenant, can promote/demote admins.
   const roles = [
+    { key: 'super-admin', name: 'Super Administrator' },
     { key: 'admin', name: 'Administrator' },
     { key: 'reviewer', name: 'Reviewer' },
     { key: 'contributor', name: 'Contributor' },

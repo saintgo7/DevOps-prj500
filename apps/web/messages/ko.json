@@ -175,5 +175,19 @@
     "watermarkExplain": "모든 영상은 우측 하단에 'AI 보조 · 출처 표시' 워터마크를 영구 표기합니다.",
     "retract": "이 게시 철회",
     "retractedNote": "이 게시는 {when}에 철회되었습니다."
+  },
+  "strategy": {
+    "toneTitle": "어조",
+    "toneIntro": "다섯 어조 — 재미있게·친구처럼·엄중하게·차분히 가르치며·잠시 멈추어. 순간에 맞는 어조를 고르세요. 설교는 절대 X.",
+    "ethicsClosing": "은유적 환기: 우리가 오늘 만드는 것이 내일의 AI를, 그 AI가 그다음의 인간을 만듭니다.",
+    "trendBenchTitle": "트렌드 벤치마크 (메타데이터만)",
+    "trendBenchBody": "플랫폼·언어·시간대별 평균 길이·훅 타이밍·해시태그 빈도를 추적합니다. 외부 콘텐츠 자체는 절대 복제·재배포 X.",
+    "patentTitle": "오늘의 발명 — SDG 실천을 위한",
+    "patentBody": "새로 공개된 특허·저작권 한 건. 어느 SDG에, 어느 지역에 도움이 되는지 매핑. 영리 목적 재배포 절대 X.",
+    "sessionTitle": "초대제 전략 회의",
+    "sessionIntro": "새 기술이 어떤 SDG를 어떻게 도울 수 있는지, 당신이 초대한 사람들과만 깊이 의논합니다. 비영리 목적만.",
+    "noncommercialClause": "이 회의의 내용을 비영리 목적의 SDG 실천에만 사용하겠다고 동의합니다.",
+    "revokeNotice": "최고관리자는 SDG 실현에 부적합하다고 판단되는 즉시 이 회의를 회수할 수 있습니다. 사유는 영구 보존됩니다.",
+    "sessionRevokedBanner": "이 회의는 {when}에 회수되었습니다. 사유: {reason}"
   }
 }
