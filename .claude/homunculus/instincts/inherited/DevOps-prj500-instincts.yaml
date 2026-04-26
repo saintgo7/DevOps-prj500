@@ -1,0 +1,649 @@
+# Instincts generated from https://github.com/saintgo7/DevOps-prj500
+# Generated: 2026-04-26T23:51:17.018Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: DevOps-prj500-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Commit Length
+
+## Action
+
+Write moderate-length commit messages (~77 characters)
+
+## Evidence
+
+- Average commit message length: 77 chars
+- Based on 22 commits
+
+---
+id: DevOps-prj500-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Naming Files
+
+## Action
+
+Use camelCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: camelCase
+
+---
+id: DevOps-prj500-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: DevOps-prj500-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: DevOps-prj500-arch-type-based
+trigger: "when adding new code"
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Arch Type Based
+
+## Action
+
+Place code in the appropriate type folder (components/, services/, utils/, etc.)
+
+## Evidence
+
+- Type-based module organization detected
+- Folders: 
+
+---
+id: DevOps-prj500-test-framework
+trigger: "when writing tests"
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Test Framework
+
+## Action
+
+Use vitest as the test framework
+
+## Evidence
+
+- Test framework detected: vitest
+- File pattern: *.spec.ts
+
+---
+id: DevOps-prj500-test-naming
+trigger: "when creating a test file"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Test Naming
+
+## Action
+
+Name test files using the pattern: *.spec.ts
+
+## Evidence
+
+- File pattern: *.spec.ts
+- Consistent across test files
+
+---
+id: DevOps-prj500-workflow-database-migration
+trigger: "when modifying the database schema or adding tables"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Workflow Database Migration
+
+## Action
+
+Follow the database-migration workflow:
+1. Create migration file
+2. Update schema definitions
+3. Generate/update types
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~16x per month
+- Files: migrations/*, **/schema.*
+
+---
+id: DevOps-prj500-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~8x per month
+- Files: apps/api/src/*, apps/api/src/auth/*, apps/api/src/catalog/*
+
+---
+id: DevOps-prj500-workflow-add-new-domain-with-api-and-database
+trigger: "when doing add new domain with api and database"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Workflow Add New Domain With Api And Database
+
+## Action
+
+Follow the add-new-domain-with-api-and-database workflow:
+1. Edit apps/api/prisma/schema.prisma to add new models/tables.
+2. Create a migration in apps/api/prisma/migrations/ with a timestamped folder and migration.sql.
+3. Update or add seed data in apps/api/prisma/seed.ts or a new seed/*.ts file.
+4. Implement new module/controller/service in apps/api/src/{domain}/ (e.g., {domain}.module.ts, {domain}.controller.ts, {domain}.service.ts).
+5. Add unit/integration tests in apps/api/src/{domain}/*.spec.ts.
+6. Add or update i18n message catalogs in apps/web/messages/{locale}.json for the new domain.
+7. Document the design/decision in docs/adr/xxxx-{domain}.md.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: apps/api/prisma/schema.prisma, apps/api/prisma/migrations/*/migration.sql, apps/api/prisma/seed.ts
+
+---
+id: DevOps-prj500-workflow-expand-i18n-locales-and-messages
+trigger: "when doing expand i18n locales and messages"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Workflow Expand I18n Locales And Messages
+
+## Action
+
+Follow the expand-i18n-locales-and-messages workflow:
+1. Add or update message catalogs in apps/web/messages/{locale}.json for all supported locales.
+2. Update locale negotiation logic in apps/web/src/i18n/routing.ts or apps/api/src/i18n/locale.middleware.ts.
+3. Add new message namespaces for new features/domains.
+4. Ensure plain-language and technical terms are translated or stubbed for all locales.
+5. Update tests for locale negotiation and fallback logic.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: apps/web/messages/*.json, apps/web/src/i18n/routing.ts, apps/api/src/i18n/locale.middleware.ts
+
+---
+id: DevOps-prj500-workflow-add-adr-for-major-feature-or-policy
+trigger: "when doing add adr for major feature or policy"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Workflow Add Adr For Major Feature Or Policy
+
+## Action
+
+Follow the add-adr-for-major-feature-or-policy workflow:
+1. Write a new ADR markdown file in docs/adr/ with a sequential number and descriptive name.
+2. Describe the context, decision, consequences, and rationale.
+3. Link the ADR from docs/README.md or other relevant documentation.
+4. Reference the ADR in commit messages and related PRs.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: docs/adr/*.md, docs/README.md
+
+---
+id: DevOps-prj500-workflow-full-stack-feature-with-equity-guardrails
+trigger: "when doing full stack feature with equity guardrails"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Workflow Full Stack Feature With Equity Guardrails
+
+## Action
+
+Follow the full-stack-feature-with-equity-guardrails workflow:
+1. Design and implement new models and migrations in schema.prisma.
+2. Implement RLS (Row Level Security) and equity/safety constraints in the migration and service layer.
+3. Add or update API endpoints in controller/service files.
+4. Add or update i18n messages for all locales, including plain-language and safety warnings.
+5. Add or update tests to verify guardrails (e.g., noncommercialNotice, harmful-content guard, K-anonymity, approval flow).
+6. Document the workflow and guardrails in an ADR.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: apps/api/prisma/schema.prisma, apps/api/prisma/migrations/*/migration.sql, apps/api/src/{domain}/*.ts
+
+---
+id: DevOps-prj500-workflow-add-or-enhance-content-approval-workflow
+trigger: "when doing add or enhance content approval workflow"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/saintgo7/DevOps-prj500
+---
+
+# DevOps Prj500 Workflow Add Or Enhance Content Approval Workflow
+
+## Action
+
+Follow the add-or-enhance-content-approval-workflow workflow:
+1. Add or update approval-related models in schema.prisma and migration.
+2. Implement approval token/signature logic (e.g., HMAC, expiry, no PII).
+3. Add or update controller/service logic for approval state transitions.
+4. Add or update audit logging for all approval/rejection actions.
+5. Add or update tests for approval flow, token security, and edge cases.
+6. Update i18n messages for approval states and user-facing copy.
+7. Document the workflow in an ADR.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: apps/api/prisma/schema.prisma, apps/api/prisma/migrations/*/migration.sql, apps/api/src/{domain}/approval-*.ts
+
+---
+id: devops-prj500-instinct-file-naming-camelCase
+trigger: "When creating or renaming a file in the codebase"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct File Naming CamelCase
+
+## Action
+
+Use camelCase for file names
+
+## Evidence
+
+- Naming conventions: files = camelCase
+- Pattern in apps/api/src/*, apps/web/src/*
+
+---
+id: devops-prj500-instinct-function-naming-camelCase
+trigger: "When defining a function"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Function Naming CamelCase
+
+## Action
+
+Name the function using camelCase
+
+## Evidence
+
+- Naming conventions: functions = camelCase
+- Pattern in apps/api/src/*
+
+---
+id: devops-prj500-instinct-class-naming-pascalCase
+trigger: "When defining a class"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Class Naming PascalCase
+
+## Action
+
+Name the class using PascalCase
+
+## Evidence
+
+- Naming conventions: classes = PascalCase
+- Pattern in apps/api/src/*
+
+---
+id: devops-prj500-instinct-constant-naming-screamingSnakeCase
+trigger: "When declaring a constant"
+confidence: 0.9
+domain: code-style
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Constant Naming ScreamingSnakeCase
+
+## Action
+
+Name the constant using SCREAMING_SNAKE_CASE
+
+## Evidence
+
+- Naming conventions: constants = SCREAMING_SNAKE_CASE
+- Pattern in apps/api/src/*
+
+---
+id: devops-prj500-instinct-import-style-relative
+trigger: "When importing modules within the project"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Import Style Relative
+
+## Action
+
+Use relative import paths
+
+## Evidence
+
+- importStyle: relative
+- Pattern in apps/api/src/*
+
+---
+id: devops-prj500-instinct-export-style-named
+trigger: "When exporting modules or functions"
+confidence: 0.85
+domain: code-style
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Export Style Named
+
+## Action
+
+Use named exports
+
+## Evidence
+
+- exportStyle: named
+- Pattern in apps/api/src/*
+
+---
+id: devops-prj500-instinct-test-file-pattern
+trigger: "When creating a test file"
+confidence: 0.9
+domain: testing
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Test File Pattern
+
+## Action
+
+Name the file with the pattern *.spec.ts
+
+## Evidence
+
+- testing.filePattern: *.spec.ts
+- Pattern in apps/api/src/{domain}/*.spec.ts
+
+---
+id: devops-prj500-instinct-test-framework-vitest
+trigger: "When writing tests"
+confidence: 0.85
+domain: testing
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Test Framework Vitest
+
+## Action
+
+Use the Vitest testing framework
+
+## Evidence
+
+- testing.framework: vitest
+- Pattern in package.json, test files
+
+---
+id: devops-prj500-instinct-test-type-unit
+trigger: "When writing tests for a feature"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Test Type Unit
+
+## Action
+
+Write unit tests
+
+## Evidence
+
+- testing.testTypes: unit
+- Pattern in apps/api/src/{domain}/*.spec.ts
+
+---
+id: devops-prj500-instinct-commit-format-freeform
+trigger: "When writing a commit message"
+confidence: 0.8
+domain: git
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Commit Format Freeform
+
+## Action
+
+Use a concise, descriptive freeform message without a strict prefix
+
+## Evidence
+
+- commits.type: freeform
+- Examples: Add SDG SaaS project plan...
+- Average commit length: 77
+
+---
+id: devops-prj500-instinct-commit-feature-description
+trigger: "When committing a new feature or document"
+confidence: 0.8
+domain: git
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Commit Feature Description
+
+## Action
+
+Start the commit message with an action verb (e.g., Add, Edit, Scaffold)
+
+## Evidence
+
+- Examples: Add SDG SaaS project plan...
+- Add navigation, CLAUDE.md...
+
+---
+id: devops-prj500-instinct-workflow-add-new-domain
+trigger: "When introducing a new business domain with backend and API support"
+confidence: 0.98
+domain: workflow
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Workflow Add New Domain
+
+## Action
+
+Edit schema.prisma, create migration, update/add seed data, implement module/controller/service, add tests, update i18n messages, and document with an ADR
+
+## Evidence
+
+- Workflow: add-new-domain-with-api-and-database
+- Pattern in apps/api/prisma/schema.prisma, apps/api/src/{domain}/*.ts, docs/adr/*.md
+
+---
+id: devops-prj500-instinct-workflow-expand-i18n
+trigger: "When supporting more languages or adding new message namespaces"
+confidence: 0.95
+domain: workflow
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Workflow Expand I18n
+
+## Action
+
+Add/update message catalogs, update locale negotiation logic, add new namespaces, ensure translations/stubs, update tests
+
+## Evidence
+
+- Workflow: expand-i18n-locales-and-messages
+- Pattern in apps/web/messages/*.json, apps/web/src/i18n/routing.ts
+
+---
+id: devops-prj500-instinct-workflow-add-adr
+trigger: "When introducing a significant new feature, workflow, or policy"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Workflow Add Adr
+
+## Action
+
+Write a new ADR markdown file, describe context/decision/consequences, link from docs, reference in commits/PRs
+
+## Evidence
+
+- Workflow: add-adr-for-major-feature-or-policy
+- Pattern in docs/adr/*.md, docs/README.md
+
+---
+id: devops-prj500-instinct-workflow-feature-guardrails
+trigger: "When adding a new capability that must comply with equity and safety principles"
+confidence: 0.92
+domain: workflow
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Workflow Feature Guardrails
+
+## Action
+
+Design models/migrations, implement RLS and guardrails, update API, i18n, tests, and document in ADR
+
+## Evidence
+
+- Workflow: full-stack-feature-with-equity-guardrails
+- Pattern in apps/api/prisma/schema.prisma, apps/api/src/{domain}/*.ts, docs/adr/*.md
+
+---
+id: devops-prj500-instinct-workflow-approval
+trigger: "When ensuring content is reviewed and approved by humans before publication"
+confidence: 0.88
+domain: workflow
+source: repo-analysis
+source_repo: saintgo7/DevOps-prj500
+---
+
+# Devops Prj500 Instinct Workflow Approval
+
+## Action
+
+Add/update approval models, implement token logic, update controller/service, add audit logging, tests, i18n messages, and document in ADR
+
+## Evidence
+
+- Workflow: add-or-enhance-content-approval-workflow
+- Pattern in apps/api/prisma/schema.prisma, apps/api/src/{domain}/approval-*.ts, docs/adr/*.md
+

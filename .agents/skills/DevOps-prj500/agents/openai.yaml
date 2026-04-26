@@ -1,0 +1,6 @@
+interface:
+  display_name: "DevOps Prj500"
+  short_description: "Repo-specific patterns and workflows for DevOps-prj500"
+  default_prompt: "Use the DevOps-prj500 repo skill to follow existing architecture, testing, and workflow conventions."
+policy:
+  allow_implicit_invocation: true
