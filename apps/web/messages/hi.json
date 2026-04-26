@@ -282,5 +282,50 @@
     "fulfilmentSignClause": "I confirm receipt and agree to the platform's terms.",
     "ldcBoostNotice": "Critical-urgency requests from LDC regions surface automatically at the top of search and feeds.",
     "_translationNeeded": "Not yet translated to हिन्दी. PR welcome."
+  },
+  "bizplan": {
+    "title": "AI-assisted plan authoring — business, policy, ODA",
+    "intro": "Drawing on the platform's real-time data (patents, weekly findings, columns, manuscripts), we co-author SDG-aligned plans. AI never asserts without a citation.",
+    "trackBusiness": "Business plan",
+    "trackPolicy": "Policy proposal",
+    "trackPledge": "Public pledge",
+    "trackInvestment": "Investment pitch",
+    "trackOda": "ODA proposal",
+    "trackExecution": "Project execution",
+    "trackManagement": "Project management",
+    "noncommercialClause": "I agree to use this plan only for non-commercial SDG implementation.",
+    "trackImmutable": "Track cannot be changed once set. A different track requires a new plan.",
+    "citationRequired": "Every AI-drafted section (except executive summary) must cite a platform first source.",
+    "pledgeWordCap": "Pledge sections must be ≤ 200 words and written in plain language.",
+    "twoReviewerNotice": "ODA and policy tracks need two human reviewers (one a domain expert) before ready_for_use.",
+    "_translationNeeded": "Not yet translated to हिन्दी. PR welcome."
+  },
+  "feasibility": {
+    "title": "Multidisciplinary feasibility review (6 axes)",
+    "intro": "Impact, financial, technical, legal, ethical, evidence — each 0–100. If any axis falls below 40 the plan cannot move to ready_for_use.",
+    "axisImpact": "Impact — SDG outcome potential",
+    "axisFinancial": "Financial — budget/milestone coherence",
+    "axisTechnical": "Technical — TRL and operability",
+    "axisLegal": "Legal — non-commercial and regulatory fit",
+    "axisEthical": "Ethical — harm guard and non-targeted harm",
+    "axisEvidence": "Evidence — diversity and strength of citations",
+    "passFloor": "Pass threshold: every axis ≥ 40",
+    "humanAdjustNotice": "Domain experts may adjust each axis; the reason is recorded forever.",
+    "_translationNeeded": "Not yet translated to हिन्दी. PR welcome."
+  },
+  "expert": {
+    "title": "Expert competency matching",
+    "intro": "We suggest experts based on domain, language, field experience, LDC weight, and availability. The platform never auto-sends messages.",
+    "availabilityOpen": "Open to new collaborations",
+    "availabilityBusy": "Limited capacity",
+    "availabilityClosed": "Closed to new matches",
+    "visibilityPlatformOnly": "Visible inside platform matching only (default)",
+    "visibilityPublic": "Visible in public search",
+    "visibilityPrivate": "Profile private",
+    "verifiedBadge": "Verified credential — granted only by external authority or admin",
+    "selfReportNotice": "Users cannot grant themselves the 'verified' tier.",
+    "contactMaskNotice": "Until BOTH sides accept, contact details are excluded from the response.",
+    "ldcBoostNotice": "Experts with LDC field experience are surfaced for plans whose impact reaches LDC regions.",
+    "_translationNeeded": "Not yet translated to हिन्दी. PR welcome."
   }
 }

@@ -271,5 +271,47 @@
     "contactMaskNotice": "Hasta que AMBAS partes acepten, ninguna ve los datos de contacto de la otra: las respuestas del servidor los enmascaran.",
     "fulfilmentSignClause": "Confirmo la recepción y acepto los términos de la plataforma.",
     "ldcBoostNotice": "Las solicitudes con urgencia crítica desde regiones de PMA aparecen automáticamente en la parte superior."
+  },
+  "bizplan": {
+    "title": "Redacción asistida por IA — plan, política, ODA",
+    "intro": "Apoyándonos en los datos en tiempo real de la plataforma (patentes, hallazgos semanales, columnas, manuscritos), coescribimos planes alineados con los ODS. La IA nunca afirma sin citar.",
+    "trackBusiness": "Plan de negocio",
+    "trackPolicy": "Propuesta de política",
+    "trackPledge": "Compromiso público",
+    "trackInvestment": "Pitch de inversión",
+    "trackOda": "Propuesta de AOD/ODA",
+    "trackExecution": "Ejecución del proyecto",
+    "trackManagement": "Gestión del proyecto",
+    "noncommercialClause": "Acepto utilizar este plan solo para implementación no comercial de los ODS.",
+    "trackImmutable": "El track no puede cambiarse una vez fijado. Para otro track, crea un nuevo plan.",
+    "citationRequired": "Cada sección redactada por IA (excepto el resumen) debe citar una fuente primaria de la plataforma.",
+    "pledgeWordCap": "Las secciones del track de compromiso deben tener ≤ 200 palabras y lenguaje sencillo.",
+    "twoReviewerNotice": "Los tracks AOD y política requieren dos revisores humanos (uno experto del dominio) antes de ready_for_use."
+  },
+  "feasibility": {
+    "title": "Revisión de viabilidad multidisciplinar (6 ejes)",
+    "intro": "Impacto, financiero, técnico, legal, ético, evidencia — cada eje 0–100. Si algún eje cae por debajo de 40, el plan no puede pasar a ready_for_use.",
+    "axisImpact": "Impacto — potencial de resultado ODS",
+    "axisFinancial": "Financiero — coherencia presupuesto/hitos",
+    "axisTechnical": "Técnico — TRL y operatividad",
+    "axisLegal": "Legal — encaje no comercial y normativo",
+    "axisEthical": "Ético — guarda de daño y daño no dirigido",
+    "axisEvidence": "Evidencia — diversidad y fuerza de citas",
+    "passFloor": "Umbral de aprobación: cada eje ≥ 40",
+    "humanAdjustNotice": "Los expertos del dominio pueden ajustar cada eje; la razón se conserva para siempre."
+  },
+  "expert": {
+    "title": "Emparejamiento de competencias expertas",
+    "intro": "Sugerimos expertos según dominio, idioma, experiencia de campo, peso PMA y disponibilidad. La plataforma nunca envía mensajes automáticos.",
+    "availabilityOpen": "Abierta a nuevas colaboraciones",
+    "availabilityBusy": "Capacidad limitada",
+    "availabilityClosed": "Cerrado a nuevos matches",
+    "visibilityPlatformOnly": "Visible solo en el emparejamiento de la plataforma (por defecto)",
+    "visibilityPublic": "Visible en la búsqueda pública",
+    "visibilityPrivate": "Perfil privado",
+    "verifiedBadge": "Credencial verificada — solo concedida por autoridad externa o admin",
+    "selfReportNotice": "Los usuarios no pueden auto-asignarse el nivel 'verified'.",
+    "contactMaskNotice": "Hasta que AMBAS partes acepten, los datos de contacto no aparecen en la respuesta.",
+    "ldcBoostNotice": "Los expertos con experiencia de campo en PMA aparecen primero en planes con impacto en PMA."
   }
 }

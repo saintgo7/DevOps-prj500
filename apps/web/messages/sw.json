@@ -271,5 +271,47 @@
     "contactMaskNotice": "Hadi pande ZOTE MBILI zikubali, hakuna upande utakayoona maelezo ya mawasiliano ya mwingine — majibu ya seva yanawaficha.",
     "fulfilmentSignClause": "Ninathibitisha kupokea na kukubali masharti ya jukwaa.",
     "ldcBoostNotice": "Maombi ya dharura kutoka maeneo ya nchi maskini zaidi yanaonekana moja kwa moja juu ya utafutaji na milisho."
+  },
+  "bizplan": {
+    "title": "Uandishi wa mpango uliosaidiwa na AI — biashara, sera, ODA",
+    "intro": "Tukitumia data za jukwaa za wakati halisi (hati miliki, ugunduzi wa kila wiki, safu, miswada), tunaandika kwa pamoja mipango inayolingana na SDG. AI haitoi kauli bila kunukuu.",
+    "trackBusiness": "Mpango wa biashara",
+    "trackPolicy": "Pendekezo la sera",
+    "trackPledge": "Ahadi ya umma",
+    "trackInvestment": "Uwasilishaji wa uwekezaji",
+    "trackOda": "Pendekezo la ODA",
+    "trackExecution": "Utekelezaji wa mradi",
+    "trackManagement": "Usimamizi wa mradi",
+    "noncommercialClause": "Nakubali kutumia mpango huu tu kwa utekelezaji usio wa kibiashara wa SDG.",
+    "trackImmutable": "Njia haiwezi kubadilishwa baada ya kuwekwa. Njia tofauti inahitaji mpango mpya.",
+    "citationRequired": "Kila sehemu iliyoandikwa na AI (isipokuwa muhtasari) lazima itaje chanzo cha msingi cha jukwaa.",
+    "pledgeWordCap": "Sehemu za njia ya ahadi lazima ziwe ≤ maneno 200 na kwa lugha rahisi.",
+    "twoReviewerNotice": "Njia za ODA na sera zinahitaji idhini ya wakaguzi wawili (mmoja akiwa mtaalamu wa eneo) kabla ya ready_for_use."
+  },
+  "feasibility": {
+    "title": "Ukaguzi wa uwezekano wa kitaaluma mengi (mhimili 6)",
+    "intro": "Athari, fedha, kiufundi, kisheria, kimaadili, ushahidi — kila mhimili 0–100. Kama mhimili wowote ushuke chini ya 40, mpango hauwezi kwenda ready_for_use.",
+    "axisImpact": "Athari — uwezo wa matokeo ya SDG",
+    "axisFinancial": "Fedha — uwiano wa bajeti / hatua",
+    "axisTechnical": "Kiufundi — TRL na uwezo wa uendeshaji",
+    "axisLegal": "Kisheria — kufaa kwa hali ya kibiashara na sheria",
+    "axisEthical": "Kimaadili — ulinzi dhidi ya maudhui hatari na madhara yasiyokusudiwa",
+    "axisEvidence": "Ushahidi — anuwai na nguvu ya nukuu",
+    "passFloor": "Kiwango cha kupita: kila mhimili ≥ 40",
+    "humanAdjustNotice": "Wataalamu wa eneo wanaweza kurekebisha kila mhimili; sababu inahifadhiwa milele."
+  },
+  "expert": {
+    "title": "Mechi ya uwezo wa wataalamu",
+    "intro": "Tunapendekeza wataalamu kulingana na eneo, lugha, uzoefu wa uwandani, uzito wa LDC na upatikanaji. Jukwaa kamwe halitumi ujumbe kiotomatiki.",
+    "availabilityOpen": "Mwazi kwa ushirikiano mpya",
+    "availabilityBusy": "Uwezo mdogo",
+    "availabilityClosed": "Imefungwa kwa mechi mpya",
+    "visibilityPlatformOnly": "Inaonekana tu katika mechi ya jukwaa (chaguo-msingi)",
+    "visibilityPublic": "Inaonekana katika utafutaji wa umma",
+    "visibilityPrivate": "Profaili faragha",
+    "verifiedBadge": "Hati iliyothibitishwa — inatolewa tu na mamlaka ya nje au msimamizi",
+    "selfReportNotice": "Watumiaji hawawezi kujipatia ngazi ya 'verified'.",
+    "contactMaskNotice": "Hadi pande zote mbili zikubali, maelezo ya mawasiliano hayapo katika jibu.",
+    "ldcBoostNotice": "Wataalamu wenye uzoefu wa uwandani katika LDC wanaonyeshwa kwanza kwa mipango yenye athari katika LDC."
   }
 }

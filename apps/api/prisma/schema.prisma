@@ -1336,3 +1336,249 @@ model NeedFulfillment {
   @@index([tenantId])
   @@map("need_fulfillments")
 }
+
+// ============================================================
+// AI BizPlan + Feasibility + Expert Matching (ADR-0019)
+// ============================================================
+
+// One AI-assisted plan document. Tracks: business plan, policy proposal,
+// public pledge, investment pitch, ODA proposal, execution plan, project
+// management plan. Track is set at create time and cannot be changed
+// later — a different track requires a new BizPlan.
+model BizPlan {
+  id                  String   @id @default(uuid()) @db.Uuid
+  tenantId            String   @map("tenant_id") @db.Uuid
+  ownerId             String   @map("owner_id") @db.Uuid
+  /// 'business' | 'policy' | 'pledge' | 'investment' | 'oda' | 'execution' | 'management'
+  track               String
+  /// { en: { title, audience, periodLabel }, ko: ..., ... }
+  bodyI18n            Json     @map("body_i18n")
+  primaryLocale       String   @default("ko") @map("primary_locale")
+  sdgFocus            String[] @default([]) @map("sdg_focus")
+  applicableRegions   String[] @default([]) @map("applicable_regions")
+  /// Plan period in months (for budget / timeline reasoning).
+  periodMonths        Int      @map("period_months")
+  /// Target audience plain-language label, e.g. 'rural water cooperative'.
+  audienceLabel       String?  @map("audience_label")
+  /// 'drafting' | 'ai_drafted' | 'human_review' | 'revising'
+  /// | 'ready_for_use' | 'archived'
+  state               String   @default("drafting")
+  /// Hard rule: must be true at create time. Defence-in-depth via DB CHECK.
+  noncommercialNotice Boolean  @default(false) @map("noncommercial_notice")
+  readyForUseAt       DateTime? @map("ready_for_use_at")
+  archivedAt          DateTime? @map("archived_at")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  sections    BizPlanSection[]
+  feasibility BizPlanFeasibility?
+  matches     ExpertMatch[]    @relation("BizPlanExpertMatches")
+
+  @@index([tenantId, state, createdAt])
+  @@index([sdgFocus], type: Gin)
+  @@index([track])
+  @@map("biz_plans")
+}
+
+// One section of a BizPlan. Sections are addressed by `kind` (executive
+// summary, problem, solution, theory of change, etc.) so a downstream
+// renderer can compose the document deterministically.
+model BizPlanSection {
+  id            String   @id @default(uuid()) @db.Uuid
+  tenantId      String   @map("tenant_id") @db.Uuid
+  planId        String   @map("plan_id") @db.Uuid
+  position      Int
+  /// 'executive_summary' | 'problem_statement' | 'solution'
+  /// | 'theory_of_change' | 'beneficiaries' | 'budget' | 'timeline'
+  /// | 'risk' | 'monitoring' | 'sustainability' | 'partners'
+  kind          String
+  /// { en: string, ko: string, ... } — multilingual section body.
+  bodyI18n      Json     @map("body_i18n")
+  /// Plain-language score (≥ 60 expected for ready_for_use).
+  plainLanguageScore Int? @map("plain_language_score")
+  /// AI provenance when AI-assisted: { model, promptVersion, generatedAt,
+  /// tokensIn, tokensOut }. Null for purely human-authored sections.
+  aiProvenance  Json?    @map("ai_provenance")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  plan       BizPlan              @relation(fields: [planId], references: [id])
+  sourceRefs BizPlanSourceRef[]
+
+  @@unique([planId, kind])
+  @@index([planId])
+  @@map("biz_plan_sections")
+}
+
+// One citation entry on a section. Exactly one source must be set; the DB
+// CHECK enforces it (mirrors ManuscriptCitation in ADR-0017).
+model BizPlanSourceRef {
+  id                    String  @id @default(uuid()) @db.Uuid
+  tenantId              String  @map("tenant_id") @db.Uuid
+  sectionId             String  @map("section_id") @db.Uuid
+  position              Int
+  sourceWatchItemId     String? @map("source_watch_item_id") @db.Uuid
+  sourceColumnId        String? @map("source_column_id") @db.Uuid
+  sourcePatentInsightId String? @map("source_patent_insight_id") @db.Uuid
+  sourceManuscriptId    String? @map("source_manuscript_id") @db.Uuid
+  externalDoi           String? @map("external_doi")
+  externalUrl           String? @map("external_url")
+  /// Free-text rendered citation (e.g. "[Watch §43 — UNDP Bangladesh, 2026]").
+  rendered              String
+  createdAt             DateTime @default(now()) @map("created_at")
+
+  section BizPlanSection @relation(fields: [sectionId], references: [id])
+
+  @@unique([sectionId, position])
+  @@index([sectionId])
+  @@map("biz_plan_source_refs")
+}
+
+// One feasibility snapshot per BizPlan. 1:1 — a new feasibility check
+// replaces the previous snapshot rather than appending, but the audit log
+// (separate) preserves history.
+model BizPlanFeasibility {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  planId          String   @unique @map("plan_id") @db.Uuid
+  /// Aggregate weighted score (0..100). Computed from FeasibilityAxisScore.
+  feasibilityScore Int     @map("feasibility_score")
+  /// 'pass' | 'fail' — fails if any axis < 40.
+  outcome         String
+  /// 'deterministic-only' | 'human-adjusted' — gate for ODA/policy tracks.
+  reviewMode      String   @map("review_mode")
+  computedAt      DateTime @default(now()) @map("computed_at")
+
+  plan        BizPlan                @relation(fields: [planId], references: [id])
+  axisScores  FeasibilityAxisScore[]
+  reviews     FeasibilityReview[]
+
+  @@index([tenantId, planId])
+  @@map("biz_plan_feasibility")
+}
+
+// One axis × one feasibility snapshot. Six axes per snapshot.
+model FeasibilityAxisScore {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  feasibilityId   String   @map("feasibility_id") @db.Uuid
+  /// 'impact' | 'financial' | 'technical' | 'legal' | 'ethical' | 'evidence'
+  axis            String
+  score           Int
+  /// Reasons that produced the score, e.g. {determinismRules:[...], humanAdjustments:[...]}.
+  rationale       Json
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  feasibility BizPlanFeasibility @relation(fields: [feasibilityId], references: [id])
+
+  @@unique([feasibilityId, axis])
+  @@index([feasibilityId])
+  @@map("feasibility_axis_scores")
+}
+
+// Append-only ledger of human reviewer adjustments. ODA / policy tracks
+// require ≥ 2 entries with decision='approve' (one with domainExpert=true).
+model FeasibilityReview {
+  id            String   @id @default(uuid()) @db.Uuid
+  tenantId      String   @map("tenant_id") @db.Uuid
+  feasibilityId String   @map("feasibility_id") @db.Uuid
+  reviewerId    String   @map("reviewer_id") @db.Uuid
+  /// 'approve' | 'request_changes' | 'reject'
+  decision      String
+  /// True if reviewer is a recognised SDG-domain expert.
+  domainExpert  Boolean  @default(false) @map("domain_expert")
+  comment       String?
+  decidedAt     DateTime @default(now()) @map("decided_at")
+
+  feasibility BizPlanFeasibility @relation(fields: [feasibilityId], references: [id])
+
+  @@index([tenantId, feasibilityId])
+  @@index([reviewerId])
+  @@map("feasibility_reviews")
+}
+
+// One person who can be matched to BizPlans / Studies / Proposals / etc.
+// Profiles default to 'platform-only' visibility; the user opts up to
+// 'public' or down to 'private'. Hourly rates are NOT stored — money
+// matters happen between parties off-platform.
+model ExpertProfile {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  userId          String   @unique @map("user_id") @db.Uuid
+  /// Plain-language headline visible in matches; e.g. 'water systems engineer'.
+  headlineI18n    Json     @map("headline_i18n")
+  /// Domain tags — SDG-1..SDG-17 + post-SDG categories.
+  sdgFocus        String[] @default([]) @map("sdg_focus")
+  /// 13-locale codes the expert can work in.
+  workingLocales  String[] @default([]) @map("working_locales")
+  /// ISO-3166 codes — regions the expert has field experience in.
+  fieldRegions    String[] @default([]) @map("field_regions")
+  /// 'open' | 'busy' | 'closed'
+  availability    String   @default("open")
+  /// 'public' | 'platform-only' | 'private'
+  visibility      String   @default("platform-only")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  credentials ExpertCredential[]
+  matches     ExpertMatch[]
+
+  @@index([tenantId, availability])
+  @@index([sdgFocus], type: Gin)
+  @@index([fieldRegions], type: Gin)
+  @@map("expert_profiles")
+}
+
+// One credential proving an expert's claim. 'verified' kind requires
+// verified_by + verified_at to be set (DB CHECK + service guard) — never
+// self-reportable as verified.
+model ExpertCredential {
+  id          String   @id @default(uuid()) @db.Uuid
+  tenantId    String   @map("tenant_id") @db.Uuid
+  expertId    String   @map("expert_id") @db.Uuid
+  /// 'orcid' | 'linkedin' | 'official_org' | 'community-vouched' | 'self-reported'
+  kind        String
+  /// External identifier the credential refers to (ORCID, URL, etc.).
+  ref         String
+  /// Verifier (admin or partner) who confirmed the credential.
+  verifiedBy  String?  @map("verified_by") @db.Uuid
+  verifiedAt  DateTime? @map("verified_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  expert ExpertProfile @relation(fields: [expertId], references: [id])
+
+  @@unique([expertId, kind, ref])
+  @@index([expertId])
+  @@map("expert_credentials")
+}
+
+// One expert ↔ one subject (BizPlan / Impact study / Funding proposal /
+// Maker project / Need request). Until BOTH sides accept, contact details
+// are masked at the API layer (consumer must enforce).
+model ExpertMatch {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  expertId        String   @map("expert_id") @db.Uuid
+  /// 'bizplan' | 'impact_study' | 'funding_proposal' | 'maker_project' | 'need_request'
+  subjectKind     String   @map("subject_kind")
+  subjectId       String   @map("subject_id") @db.Uuid
+  /// Match score (0..100) from the deterministic algorithm at suggest time.
+  matchScore      Int      @map("match_score")
+  /// 'suggested' | 'invited' | 'accepted' | 'engaged' | 'completed'
+  /// | 'declined' | 'cancelled'
+  state           String   @default("suggested")
+  expertAcceptedAt DateTime? @map("expert_accepted_at")
+  ownerAcceptedAt  DateTime? @map("owner_accepted_at")
+  declinedReason   String?  @map("declined_reason")
+  cancelReason     String?  @map("cancel_reason")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  expert  ExpertProfile @relation(fields: [expertId], references: [id])
+  bizplan BizPlan?      @relation("BizPlanExpertMatches", fields: [subjectId], references: [id], map: "expert_matches_bizplan_fk")
+
+  @@unique([expertId, subjectKind, subjectId])
+  @@index([tenantId, state])
+  @@index([subjectKind, subjectId])
+  @@map("expert_matches")
+}

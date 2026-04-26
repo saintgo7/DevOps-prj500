@@ -271,5 +271,47 @@
     "contactMaskNotice": "在双方都接受之前,任何一方都看不到对方联系方式 —— 服务器响应中即被隐去。",
     "fulfilmentSignClause": "我确认收到并同意平台条款。",
     "ldcBoostNotice": "来自最不发达国家、紧急程度为 critical 的请求会自动置于检索与信息流的顶部。"
+  },
+  "bizplan": {
+    "title": "AI 协作的事业计划书 / 政策 / ODA 撰写",
+    "intro": "基于本平台累积的实时数据(专利、每周发现、专栏、论文),协作撰写 SDG 相关计划书。AI 绝不在没有引用的情况下下结论。",
+    "trackBusiness": "事业计划书",
+    "trackPolicy": "政策提案",
+    "trackPledge": "公约",
+    "trackInvestment": "投资引介",
+    "trackOda": "ODA 提案",
+    "trackExecution": "项目执行",
+    "trackManagement": "项目管理",
+    "noncommercialClause": "我同意本计划书仅用于非商业的 SDG 实施。",
+    "trackImmutable": "轨道一旦确定不可更改。要使用其他轨道,请创建新计划。",
+    "citationRequired": "AI 撰写的所有章节(执行摘要除外)必须引用本平台的一手资料。",
+    "pledgeWordCap": "公约轨道的每个章节须 ≤ 200 词,使用平实语言。",
+    "twoReviewerNotice": "ODA · 政策轨道在 ready_for_use 前需要两位人工审核者(其中一位为 SDG 领域专家)的批准。"
+  },
+  "feasibility": {
+    "title": "多学科可行性评审(6 轴)",
+    "intro": "影响、财务、技术、法律、伦理、证据,每轴 0–100 分。任一轴低于 40 则计划书不可进入 ready_for_use。",
+    "axisImpact": "影响 —— SDG 成果潜力",
+    "axisFinancial": "财务 —— 预算 / 里程碑一致性",
+    "axisTechnical": "技术 —— TRL 与可运营性",
+    "axisLegal": "法律 —— 非商业与合规适配",
+    "axisEthical": "伦理 —— 防有害内容与非目标伤害",
+    "axisEvidence": "证据 —— 引用多样性与强度",
+    "passFloor": "通过门槛:每轴 ≥ 40",
+    "humanAdjustNotice": "领域专家可以对各轴进行修正,原因永久保存。"
+  },
+  "expert": {
+    "title": "专家能力匹配",
+    "intro": "基于领域、语言、现场经验、LDC 加权与可用性,我们推荐专家。平台从不自动发送消息。",
+    "availabilityOpen": "可接受新合作",
+    "availabilityBusy": "档期紧张",
+    "availabilityClosed": "暂不接受新匹配",
+    "visibilityPlatformOnly": "仅在平台内匹配中可见(默认)",
+    "visibilityPublic": "在公开搜索中可见",
+    "visibilityPrivate": "档案不公开",
+    "verifiedBadge": "已认证凭据 —— 仅由外部权威机构或管理员授予",
+    "selfReportNotice": "用户不能自行授予 'verified' 等级。",
+    "contactMaskNotice": "在双方都接受之前,响应中不会包含联系方式。",
+    "ldcBoostNotice": "拥有最不发达国家现场经验的专家会被优先推荐给覆盖最不发达国家的计划。"
   }
 }

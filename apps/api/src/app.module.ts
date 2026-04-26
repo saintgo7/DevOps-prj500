@@ -4,9 +4,12 @@ import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { AuditModule } from './audit/audit.module';
 import { AuthModule } from './auth/auth.module';
+import { BizPlanModule } from './bizplan/bizplan.module';
 import { BooksModule } from './books/books.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { ColumnsModule } from './columns/columns.module';
+import { ExpertsModule } from './experts/experts.module';
+import { FeasibilityModule } from './feasibility/feasibility.module';
 import { FundingModule } from './funding/funding.module';
 import { ImpactModule } from './impact/impact.module';
 import { MakerModule } from './maker/maker.module';
@@ -34,9 +37,12 @@ import { TenantContextMiddleware } from './tenant/tenant-context.middleware';
     PrismaModule,
     AuditModule,
     AuthModule,
+    BizPlanModule,
     BooksModule,
     CatalogModule,
     ColumnsModule,
+    ExpertsModule,
+    FeasibilityModule,
     FundingModule,
     ImpactModule,
     MakerModule,

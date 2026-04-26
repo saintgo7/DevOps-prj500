@@ -271,5 +271,47 @@
     "contactMaskNotice": "Tant que les DEUX parties n'ont pas accepté, aucune ne voit les coordonnées de l'autre — les réponses du serveur les masquent.",
     "fulfilmentSignClause": "Je confirme la réception et accepte les conditions de la plateforme.",
     "ldcBoostNotice": "Les demandes d'urgence critique provenant de PMA remontent automatiquement en haut des recherches et des fils."
+  },
+  "bizplan": {
+    "title": "Rédaction assistée par IA — plan, politique, APD",
+    "intro": "À partir des données en temps réel de la plateforme (brevets, découvertes hebdomadaires, chroniques, manuscrits), nous co-rédigeons des plans alignés sur les ODD. L'IA n'affirme jamais sans citer.",
+    "trackBusiness": "Plan d'affaires",
+    "trackPolicy": "Proposition de politique",
+    "trackPledge": "Engagement public",
+    "trackInvestment": "Présentation aux investisseurs",
+    "trackOda": "Proposition d'APD",
+    "trackExecution": "Exécution du projet",
+    "trackManagement": "Gestion du projet",
+    "noncommercialClause": "J'accepte d'utiliser ce plan uniquement pour la mise en œuvre non commerciale des ODD.",
+    "trackImmutable": "La piste ne peut pas être modifiée après création. Une autre piste exige un nouveau plan.",
+    "citationRequired": "Chaque section rédigée par l'IA (sauf le résumé) doit citer une source primaire de la plateforme.",
+    "pledgeWordCap": "Les sections de la piste engagement doivent comporter ≤ 200 mots et un langage simple.",
+    "twoReviewerNotice": "Les pistes APD et politique exigent deux relecteurs humains (dont un expert du domaine) avant ready_for_use."
+  },
+  "feasibility": {
+    "title": "Revue de faisabilité multidisciplinaire (6 axes)",
+    "intro": "Impact, financier, technique, juridique, éthique, preuves — chaque axe 0–100. Si un axe tombe sous 40, le plan ne peut pas passer en ready_for_use.",
+    "axisImpact": "Impact — potentiel de résultat ODD",
+    "axisFinancial": "Financier — cohérence budget/jalons",
+    "axisTechnical": "Technique — TRL et opérabilité",
+    "axisLegal": "Juridique — adéquation non commerciale et réglementaire",
+    "axisEthical": "Éthique — garde-fou contre les contenus nuisibles et préjudices non ciblés",
+    "axisEvidence": "Preuves — diversité et force des citations",
+    "passFloor": "Seuil d'approbation : chaque axe ≥ 40",
+    "humanAdjustNotice": "Les experts peuvent ajuster chaque axe ; la raison est conservée à jamais."
+  },
+  "expert": {
+    "title": "Mise en relation par compétence",
+    "intro": "Nous suggérons des experts selon domaine, langue, expérience de terrain, poids PMA et disponibilité. La plateforme n'envoie jamais de message automatiquement.",
+    "availabilityOpen": "Ouvert(e) à de nouvelles collaborations",
+    "availabilityBusy": "Capacité limitée",
+    "availabilityClosed": "Fermé(e) aux nouvelles mises en relation",
+    "visibilityPlatformOnly": "Visible uniquement dans la mise en relation interne (défaut)",
+    "visibilityPublic": "Visible dans la recherche publique",
+    "visibilityPrivate": "Profil privé",
+    "verifiedBadge": "Justificatif vérifié — accordé uniquement par autorité externe ou admin",
+    "selfReportNotice": "Les utilisateurs ne peuvent pas s'auto-attribuer le niveau « verified ».",
+    "contactMaskNotice": "Tant que les DEUX parties n'ont pas accepté, les coordonnées sont absentes de la réponse.",
+    "ldcBoostNotice": "Les experts ayant une expérience de terrain en PMA sont mis en avant pour les plans avec impact PMA."
   }
 }

@@ -271,5 +271,47 @@
     "contactMaskNotice": "양측이 모두 수락(accept)하기 전에는 상대 연락처가 노출되지 않습니다. 응답 자체에서 마스킹됩니다.",
     "fulfilmentSignClause": "수령을 확인하고 본 플랫폼의 약관에 동의합니다.",
     "ldcBoostNotice": "긴급도 'critical' + 최저개발국 지역 요청은 검색·피드에서 자동 상단 노출됩니다."
+  },
+  "bizplan": {
+    "title": "AI 보조 사업계획서·정책·ODA 작성",
+    "intro": "본 플랫폼에 누적된 실시간 데이터(특허·위클리 발견·칼럼·논문)를 근거로, SDG 관련 계획서를 함께 씁니다. AI는 인용 없이 단정하지 않습니다.",
+    "trackBusiness": "사업계획",
+    "trackPolicy": "정책 제안",
+    "trackPledge": "공약",
+    "trackInvestment": "투자 유치",
+    "trackOda": "ODA 제안",
+    "trackExecution": "사업 실행",
+    "trackManagement": "사업 관리",
+    "noncommercialClause": "본 계획서는 비영리 SDG 실천에만 사용한다고 동의합니다.",
+    "trackImmutable": "트랙은 처음 정한 뒤 변경할 수 없습니다. 다른 트랙은 새 계획서로 시작하세요.",
+    "citationRequired": "AI가 작성한 모든 섹션(요약 제외)은 본 플랫폼의 1차 자료를 인용해야 합니다.",
+    "pledgeWordCap": "공약 트랙의 한 섹션은 200단어 이하로 평이하게 씁니다.",
+    "twoReviewerNotice": "ODA · 정책 트랙은 사용 준비 전 인간 검토자 2명(SDG 도메인 전문가 1명 포함) 승인이 필요합니다."
+  },
+  "feasibility": {
+    "title": "다학제 타당성 검토 (6축)",
+    "intro": "임팩트·재무·기술·법·윤리·증거 6축으로 0–100점 평가. 한 축이라도 40 미만이면 사용 준비 불가.",
+    "axisImpact": "임팩트 — SDG 영향 잠재력",
+    "axisFinancial": "재무 — 예산·마일스톤 일관성",
+    "axisTechnical": "기술 — TRL · 운영 가능성",
+    "axisLegal": "법 — 비영리·규제 적합성",
+    "axisEthical": "윤리 — 해로운 콘텐츠·비대상 피해",
+    "axisEvidence": "증거 — 인용 다양성·강도",
+    "passFloor": "통과 기준: 6축 모두 ≥ 40",
+    "humanAdjustNotice": "도메인 전문가는 각 축을 보정할 수 있고 보정 사유는 영구 보존됩니다."
+  },
+  "expert": {
+    "title": "전문가 역량 매칭",
+    "intro": "도메인·언어·지역 경험·LDC 가중·가용성을 종합해 전문가를 추천합니다. 자동 메시지는 절대 발송하지 않습니다.",
+    "availabilityOpen": "신규 협업 가능",
+    "availabilityBusy": "여유 적음",
+    "availabilityClosed": "신규 매칭 차단",
+    "visibilityPlatformOnly": "플랫폼 내 매칭에만 노출 (기본)",
+    "visibilityPublic": "공개 검색에 노출",
+    "visibilityPrivate": "프로필 비공개",
+    "verifiedBadge": "검증된 자격 — 외부 발급기관·관리자만 부여",
+    "selfReportNotice": "본인이 직접 'verified' 등급을 부여할 수 없습니다.",
+    "contactMaskNotice": "양측이 모두 수락(accept)하기 전에는 상대 연락처가 응답에 포함되지 않습니다.",
+    "ldcBoostNotice": "최저개발국 지역 경험을 가진 전문가는 LDC 영향이 큰 안에 가중 추천됩니다."
   }
 }
