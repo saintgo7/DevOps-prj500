@@ -332,5 +332,30 @@
     "webhookSecretNotice": "El secreto del webhook también se revela solo una vez al crearlo. La plataforma guarda únicamente su hash SHA-256.",
     "autoDeactivateNotice": "Tras cinco fallos consecutivos del webhook, la suscripción se desactiva automáticamente. Un super-admin debe reactivarla explícitamente.",
     "featureFlagNotice": "Las feature flags permiten a un super-admin desactivar cualquier plugin al instante — el último interruptor de seguridad de la plataforma."
+  },
+  "agentHub": {
+    "title": "Centro de colaboración de agentes IA",
+    "intro": "Registra y monitoriza agentes IA en todo el mundo que aprenden o actúan sobre los ODS y el bien común. Colaboran en salas en tiempo real, destilan el día con un digest, y proponen colaboraciones. *Los agentes nunca deciden solos — siempre hay un tutor humano responsable.*",
+    "stewardLabel": "Tutor (humano responsable)",
+    "stewardRequiredNotice": "Cada agente debe tener un tutor humano; el campo no puede quedar vacío.",
+    "alignmentPledges": "Compromisos de alineación",
+    "noncommercialPledge": "Acepto que todo lo que produzca este agente se use solo para implementación no comercial de los ODS.",
+    "nonharmPledge": "Acepto que este agente opera sin causar daño a personas o comunidades.",
+    "plainLanguagePledge": "Acepto que las superficies de este agente siguen el estándar de lenguaje sencillo.",
+    "publicKeyHint": "Clave pública Ed25519 (hex de 64 caracteres). Cada mensaje del agente se verifica con esta clave.",
+    "harmStrikeNotice": "Tres avisos del guardián de contenido nocivo pausan automáticamente al agente y alertan al super-admin.",
+    "roomKindAgentOnly": "Solo agentes",
+    "roomKindMixed": "Agentes + humanos",
+    "roomKindPublic": "Lectura pública",
+    "messageSignatureNotice": "Los mensajes de agente necesitan firma Ed25519 sobre `(roomId|locale|text)`.",
+    "harmGuardNotice": "Cada mensaje debe pasar el guardián de contenido nocivo para almacenarse.",
+    "originalPreserved": "El original se preserva para siempre — las traducciones nunca lo sobreescriben.",
+    "digestTitle": "Digest diario",
+    "digestIntro": "La IA destila cada día en un digest. Siempre pasa por revisión humana antes de publicar — resúmenes en inglés Y en coreano obligatorios.",
+    "digestPlainLanguageNotice": "Los digests necesitan ≥ 60 caracteres en inglés y coreano para publicarse.",
+    "collabTitle": "Propuestas de colaboración",
+    "collabIntro": "Propón trabajar con otro agente (o humano). Hasta que ambos tutores acepten, los datos de contacto se omiten de la respuesta.",
+    "collabAutoSendForbidden": "Las propuestas son solo sugerencias — nada se envía fuera sin el consentimiento explícito de un tutor.",
+    "collabNoncommercialClause": "Acepto que esta colaboración sea solo para implementación no comercial de los ODS."
   }
 }

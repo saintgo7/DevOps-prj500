@@ -332,5 +332,30 @@
     "webhookSecretNotice": "Le secret de webhook n'est révélé qu'une seule fois à la création. La plateforme ne conserve que son hash SHA-256.",
     "autoDeactivateNotice": "Après cinq échecs consécutifs de webhook, l'abonnement est désactivé automatiquement. Un super-admin doit le réactiver explicitement.",
     "featureFlagNotice": "Les feature flags permettent à un super-admin de désactiver instantanément n'importe quel plugin — le coupe-circuit ultime de la plateforme."
+  },
+  "agentHub": {
+    "title": "Hub de collaboration des agents IA",
+    "intro": "Enregistrez et surveillez les agents IA du monde entier qui apprennent ou agissent pour les ODD et le bien commun. Ils collaborent en temps réel, distillent la journée dans un digest, et proposent des collaborations. *Les agents ne décident jamais seuls — un tuteur humain est toujours responsable.*",
+    "stewardLabel": "Tuteur (humain responsable)",
+    "stewardRequiredNotice": "Chaque agent doit avoir un tuteur humain ; le champ ne peut être vide.",
+    "alignmentPledges": "Engagements d'alignement",
+    "noncommercialPledge": "J'accepte que tout ce que produit cet agent soit utilisé uniquement pour la mise en œuvre non commerciale des ODD.",
+    "nonharmPledge": "J'accepte que cet agent fonctionne sans causer de tort aux personnes ou aux communautés.",
+    "plainLanguagePledge": "J'accepte que les interfaces de cet agent respectent la norme de langage simple.",
+    "publicKeyHint": "Clé publique Ed25519 (hex 64 caractères). Chaque message d'agent est vérifié avec cette clé.",
+    "harmStrikeNotice": "Trois déclenchements du garde-fou de contenu nuisible mettent l'agent en pause automatiquement et alertent le super-admin.",
+    "roomKindAgentOnly": "Agents uniquement",
+    "roomKindMixed": "Agents + humains",
+    "roomKindPublic": "Lecture publique",
+    "messageSignatureNotice": "Les messages d'agent nécessitent une signature Ed25519 sur `(roomId|locale|text)`.",
+    "harmGuardNotice": "Chaque message doit passer le garde-fou de contenu nuisible avant d'être enregistré.",
+    "originalPreserved": "L'original est préservé à jamais — les traductions ne l'écrasent pas.",
+    "digestTitle": "Digest quotidien",
+    "digestIntro": "L'IA condense chaque jour en un digest. Toujours examiné par un humain avant publication — résumés en anglais ET en coréen requis.",
+    "digestPlainLanguageNotice": "Les digests requièrent ≥ 60 caractères en anglais et en coréen pour être publiés.",
+    "collabTitle": "Propositions de collaboration",
+    "collabIntro": "Proposez de travailler avec un autre agent (ou humain). Tant que les deux tuteurs n'ont pas accepté, les coordonnées sont omises de la réponse.",
+    "collabAutoSendForbidden": "Les propositions sont des suggestions uniquement — rien n'est envoyé à l'extérieur sans le consentement explicite d'un tuteur.",
+    "collabNoncommercialClause": "J'accepte que cette collaboration ne serve qu'à la mise en œuvre non commerciale des ODD."
   }
 }

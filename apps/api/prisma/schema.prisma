@@ -1795,3 +1795,216 @@ model FeatureFlag {
   @@index([tenantId, enabled])
   @@map("feature_flags")
 }
+
+// ============================================================
+// AI agent collaboration hub (ADR-0021)
+// ============================================================
+
+// One AI agent registered by a tenant. Stewards (humans) are mandatory:
+// no agent runs unattended. The three alignment pledges (DB CHECK true)
+// are the platform's preconditions for accepting agent traffic.
+model AgentRegistration {
+  id                  String   @id @default(uuid()) @db.Uuid
+  tenantId            String   @map("tenant_id") @db.Uuid
+  agentKey            String   @map("agent_key")
+  /// { en: { name, blurb }, ko: ..., ... }
+  nameI18n            Json     @map("name_i18n")
+  operatorOrg         String   @map("operator_org")
+  /// REQUIRED — the human accountable for this agent. FK to users.
+  stewardUserId       String   @map("steward_user_id") @db.Uuid
+  /// All three must be true (DB CHECK).
+  noncommercialPledge Boolean  @default(false) @map("noncommercial_pledge")
+  nonharmPledge       Boolean  @default(false) @map("nonharm_pledge")
+  plainLanguagePledge Boolean  @default(false) @map("plain_language_pledge")
+  sdgFocus            String[] @default([]) @map("sdg_focus")
+  /// 'translate' | 'summarise' | 'monitor' | 'plan-draft' | ...
+  capabilities        String[] @default([])
+  workingLocales      String[] @default([]) @map("working_locales")
+  fieldRegions        String[] @default([]) @map("field_regions")
+  homepageUrl         String?  @map("homepage_url")
+  /// Ed25519 public key (raw 32-byte hex). Used to verify agent message signatures.
+  publicKey           String   @map("public_key")
+  /// SHA-256 of the canonical manifest fields.
+  manifestHash        String   @map("manifest_hash")
+  /// 'draft' | 'review' | 'active' | 'paused' | 'retired'
+  state               String   @default("draft")
+  approvedAt          DateTime? @map("approved_at")
+  approvedBy          String?  @map("approved_by") @db.Uuid
+  pausedAt            DateTime? @map("paused_at")
+  pauseReason         String?  @map("pause_reason")
+  retiredAt           DateTime? @map("retired_at")
+  /// Cumulative count of harmful-content guard trips by this agent's
+  /// outbound messages. Reaches 3 → auto pause + super-admin alert.
+  harmStrikes         Int      @default(0) @map("harm_strikes")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  sessions      AgentSession[]
+  roomMembers   AgentRoomMember[]
+  messagesSent  AgentMessage[]      @relation("AgentMessagesSent")
+  proposalsOut  AgentCollaborationProposal[] @relation("AgentProposalsOut")
+  proposalsIn   AgentCollaborationProposal[] @relation("AgentProposalsIn")
+
+  @@unique([tenantId, agentKey])
+  @@index([tenantId, state])
+  @@index([sdgFocus], type: Gin)
+  @@map("agent_registrations")
+}
+
+// One activity / heartbeat session for an agent. The watchdog (out of
+// MVP scope) flips dead sessions to 'crashed'.
+model AgentSession {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  agentId         String   @map("agent_id") @db.Uuid
+  startedAt       DateTime @default(now()) @map("started_at")
+  lastHeartbeatAt DateTime @default(now()) @map("last_heartbeat_at")
+  endedAt         DateTime? @map("ended_at")
+  /// 'started' | 'idle' | 'busy' | 'ended' | 'crashed'
+  state           String   @default("started")
+  /// What the agent says it is doing right now.
+  currentTaskI18n Json?    @map("current_task_i18n")
+  eventsEmitted   Int      @default(0) @map("events_emitted")
+  /// Strikes within this session (separate from agent's lifetime counter).
+  harmStrikes     Int      @default(0) @map("harm_strikes")
+
+  agent AgentRegistration @relation(fields: [agentId], references: [id])
+
+  @@index([tenantId, agentId, startedAt])
+  @@index([state, lastHeartbeatAt])
+  @@map("agent_sessions")
+}
+
+// A persistent collaboration room. agent-only / mixed / public-readable.
+model AgentRoom {
+  id                  String   @id @default(uuid()) @db.Uuid
+  tenantId            String   @map("tenant_id") @db.Uuid
+  topicI18n           Json     @map("topic_i18n")
+  sdgFocus            String[] @default([]) @map("sdg_focus")
+  /// 'agent-only' | 'mixed' | 'public-readable'
+  kind                String   @default("mixed")
+  publicReadable      Boolean  @default(false) @map("public_readable")
+  createdBy           String   @map("created_by") @db.Uuid
+  /// 'active' | 'archived'
+  state               String   @default("active")
+  archivedAt          DateTime? @map("archived_at")
+  dailyDigestEnabled  Boolean  @default(false) @map("daily_digest_enabled")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  members  AgentRoomMember[]
+  messages AgentMessage[]
+  digests  AgentDailyDigest[]
+
+  @@index([tenantId, state, createdAt])
+  @@index([sdgFocus], type: Gin)
+  @@map("agent_rooms")
+}
+
+// One member in a room. Either an agent or a human user — never both.
+model AgentRoomMember {
+  id          String   @id @default(uuid()) @db.Uuid
+  tenantId    String   @map("tenant_id") @db.Uuid
+  roomId      String   @map("room_id") @db.Uuid
+  agentId     String?  @map("agent_id") @db.Uuid
+  userId      String?  @map("user_id") @db.Uuid
+  /// 'observer' | 'contributor' | 'moderator'
+  memberRole  String   @default("contributor") @map("member_role")
+  joinedAt    DateTime @default(now()) @map("joined_at")
+
+  room  AgentRoom         @relation(fields: [roomId], references: [id])
+  agent AgentRegistration? @relation(fields: [agentId], references: [id])
+
+  @@index([tenantId, roomId])
+  @@index([agentId])
+  @@index([userId])
+  @@map("agent_room_members")
+}
+
+// One message in a room. Either an agent or a human posts. Agent posts
+// must carry an Ed25519 signature verified against the agent's publicKey.
+model AgentMessage {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  roomId          String   @map("room_id") @db.Uuid
+  senderAgentId   String?  @map("sender_agent_id") @db.Uuid
+  senderUserId    String?  @map("sender_user_id") @db.Uuid
+  originalText    String   @map("original_text")
+  originalLocale  String   @map("original_locale")
+  /// { en: { text, model, confidence, translatedAt }, ... } — original is NEVER overwritten.
+  translations    Json?
+  /// 'chat' | 'proposal' | 'observation' | 'data-handoff'
+  kind            String   @default("chat")
+  /// Ed25519 signature hex when senderAgentId is set.
+  signature       String?
+  /// Outcome of harmful-content guard at insert time. Only 'pass' is persisted; failures are rejected.
+  harmReport      Json?    @map("harm_report")
+  postedAt        DateTime @default(now()) @map("posted_at")
+
+  room   AgentRoom          @relation(fields: [roomId], references: [id])
+  agent  AgentRegistration? @relation("AgentMessagesSent", fields: [senderAgentId], references: [id])
+
+  @@index([tenantId, roomId, postedAt])
+  @@index([senderAgentId])
+  @@index([senderUserId])
+  @@map("agent_messages")
+}
+
+// Daily digest summarising a room's traffic. Always passes through
+// human review before publish (ADR-0013 pattern).
+model AgentDailyDigest {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  /// Null → platform-wide digest across all rooms the steward owns.
+  roomId          String?  @map("room_id") @db.Uuid
+  digestDate      DateTime @map("digest_date") @db.Date
+  /// { en: '...', ko: '...', ... } — en + ko required at publish.
+  summaryI18n     Json     @map("summary_i18n")
+  /// Source message ids (audit trail).
+  sourceMessageIds String[] @default([]) @map("source_message_ids")
+  /// AI provenance: { model, promptVersion, generatedAt, tokensIn, tokensOut }.
+  aiProvenance    Json?    @map("ai_provenance")
+  /// 'draft' | 'human_review' | 'published' | 'rejected'
+  state           String   @default("draft")
+  approvedAt      DateTime? @map("approved_at")
+  approvedBy      String?  @map("approved_by") @db.Uuid
+  publishedAt     DateTime? @map("published_at")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  room AgentRoom? @relation(fields: [roomId], references: [id])
+
+  @@unique([tenantId, roomId, digestDate])
+  @@index([tenantId, state, digestDate])
+  @@map("agent_daily_digests")
+}
+
+// One collaboration proposal. Both stewards must accept before contact
+// details unmask at the API layer. Mirrors ADR-0018 NeedMatch pattern.
+model AgentCollaborationProposal {
+  id                  String   @id @default(uuid()) @db.Uuid
+  tenantId            String   @map("tenant_id") @db.Uuid
+  proposerAgentId     String?  @map("proposer_agent_id") @db.Uuid
+  proposerUserId      String?  @map("proposer_user_id") @db.Uuid
+  recipientAgentId    String?  @map("recipient_agent_id") @db.Uuid
+  recipientUserId     String?  @map("recipient_user_id") @db.Uuid
+  subjectI18n         Json     @map("subject_i18n")
+  contextI18n         Json     @map("context_i18n")
+  /// DB CHECK true.
+  noncommercialNotice Boolean  @default(false) @map("noncommercial_notice")
+  /// 'suggested' | 'recipient_review' | 'accepted' | 'engaged'
+  /// | 'completed' | 'declined' | 'cancelled'
+  state               String   @default("suggested")
+  proposerStewardAcceptedAt DateTime? @map("proposer_steward_accepted_at")
+  recipientStewardAcceptedAt DateTime? @map("recipient_steward_accepted_at")
+  declinedReason      String?  @map("declined_reason")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  proposerAgent  AgentRegistration? @relation("AgentProposalsOut", fields: [proposerAgentId], references: [id])
+  recipientAgent AgentRegistration? @relation("AgentProposalsIn", fields: [recipientAgentId], references: [id])
+
+  @@index([tenantId, state])
+  @@index([recipientAgentId])
+  @@index([proposerAgentId])
+  @@map("agent_collaboration_proposals")
+}

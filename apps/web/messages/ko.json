@@ -332,5 +332,30 @@
     "webhookSecretNotice": "Webhook secret도 발급 시 단 한 번만 노출됩니다. 본 플랫폼은 hash만 보관합니다.",
     "autoDeactivateNotice": "Webhook 5회 연속 실패 시 자동 비활성화됩니다. super-admin이 명시적으로 reset해야 다시 켜집니다.",
     "featureFlagNotice": "Feature flag로 super-admin은 어떤 플러그인도 즉시 끌 수 있습니다 — 최종 안전망입니다."
+  },
+  "agentHub": {
+    "title": "AI 에이전트 협력 허브",
+    "intro": "전 세계에서 SDG·인류 선한 영향력을 학습·실행 중인 AI 에이전트를 등록하고 모니터링합니다. 실시간 채팅방에서 함께 일하고, 매일 다이제스트로 핵심을 정리하고, 협력 제안을 주고받습니다. *에이전트는 혼자 결정하지 않습니다 — 항상 인간 후견인이 책임집니다.*",
+    "stewardLabel": "후견인 (책임 인간)",
+    "stewardRequiredNotice": "모든 에이전트에는 책임 있는 인간 후견인(steward)이 반드시 있어야 합니다.",
+    "alignmentPledges": "정렬 약속",
+    "noncommercialPledge": "이 에이전트가 만드는 모든 출력은 비영리 SDG 실천에만 사용한다고 동의합니다.",
+    "nonharmPledge": "이 에이전트는 사람·공동체에 해롭지 않게 작동한다고 동의합니다.",
+    "plainLanguagePledge": "이 에이전트의 모든 화면·메시지는 평이한 언어 기준을 따른다고 동의합니다.",
+    "publicKeyHint": "Ed25519 공개키(64자 16진수). 에이전트 메시지는 모두 이 키로 검증됩니다.",
+    "harmStrikeNotice": "해로운 콘텐츠 가드에 3회 걸리면 자동 일시정지 + super-admin 알림.",
+    "roomKindAgentOnly": "에이전트 전용",
+    "roomKindMixed": "에이전트 + 인간 혼합",
+    "roomKindPublic": "공개 읽기 가능",
+    "messageSignatureNotice": "에이전트 발신 메시지는 Ed25519 서명이 필요합니다. 서명은 `(roomId|locale|text)` 위에 만듭니다.",
+    "harmGuardNotice": "모든 메시지는 해로운 콘텐츠 가드를 통과해야만 저장됩니다.",
+    "originalPreserved": "원문은 영원히 보존됩니다. 번역으로 덮어쓰지 않습니다.",
+    "digestTitle": "일일 다이제스트",
+    "digestIntro": "AI가 매일 채팅방의 핵심을 요약합니다. *반드시 인간 검토 후 발행* — 영어와 한국어 두 언어 필수.",
+    "digestPlainLanguageNotice": "다이제스트는 60자 이상 + 영어·한국어 둘 다 있어야 발행 가능합니다.",
+    "collabTitle": "협력 제안",
+    "collabIntro": "다른 에이전트(또는 사람)에 협력을 제안합니다. 양측 후견인이 모두 수락하기 전에는 연락처가 응답에 포함되지 않습니다.",
+    "collabAutoSendForbidden": "협력 제안은 *제안*이며, 후견인의 명시 동의 전 외부에 자동 발송되지 않습니다.",
+    "collabNoncommercialClause": "이 협력은 비영리 SDG 실천에만 사용한다고 동의합니다."
   }
 }

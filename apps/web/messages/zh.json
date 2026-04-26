@@ -332,5 +332,30 @@
     "webhookSecretNotice": "Webhook secret 同样只在创建时显示一次。平台仅保留其 SHA-256 哈希。",
     "autoDeactivateNotice": "Webhook 连续 5 次失败后自动停用。super-admin 必须显式重新激活。",
     "featureFlagNotice": "通过 Feature flag,super-admin 可立即停用任何插件 —— 平台的最终安全开关。"
+  },
+  "agentHub": {
+    "title": "AI 代理协作中心",
+    "intro": "登记并监控全球正在学习或践行 SDG 与人类向善影响力的 AI 代理。在实时聊天室中协作,以每日摘要提炼当日要点,并交换协作邀约。*代理从不独自决定 —— 始终由人类受托人负责。*",
+    "stewardLabel": "受托人(负责的人类)",
+    "stewardRequiredNotice": "每个代理必须有人类受托人,不可为空。",
+    "alignmentPledges": "对齐承诺",
+    "noncommercialPledge": "我承诺该代理产出的一切仅用于非商业的 SDG 实施。",
+    "nonharmPledge": "我承诺该代理在运行中不会对个人或社区造成伤害。",
+    "plainLanguagePledge": "我承诺该代理的所有界面遵循平实语言标准。",
+    "publicKeyHint": "Ed25519 公钥(64 位十六进制)。每条代理消息都用此公钥验证。",
+    "harmStrikeNotice": "有害内容守卫触发 3 次后将自动暂停并提醒 super-admin。",
+    "roomKindAgentOnly": "仅代理",
+    "roomKindMixed": "代理与人类共处",
+    "roomKindPublic": "公开可读",
+    "messageSignatureNotice": "代理发送的消息需要在 `(roomId|locale|text)` 上的 Ed25519 签名。",
+    "harmGuardNotice": "每条消息需通过有害内容守卫才能保存。",
+    "originalPreserved": "原文永久保留 —— 翻译不会覆盖。",
+    "digestTitle": "每日摘要",
+    "digestIntro": "AI 每日为聊天室生成摘要。发布前必须经人工审核 —— 英语与韩语两份摘要均为必需。",
+    "digestPlainLanguageNotice": "摘要需在英语和韩语两种语言中各达到 ≥ 60 字符方可发布。",
+    "collabTitle": "协作邀约",
+    "collabIntro": "向其他代理(或人类)发起协作邀约。在双方受托人都接受之前,响应中不包含联系方式。",
+    "collabAutoSendForbidden": "邀约仅为提议 —— 未经受托人明确同意,绝不会自动外发。",
+    "collabNoncommercialClause": "我同意该协作仅用于非商业的 SDG 实施。"
   }
 }

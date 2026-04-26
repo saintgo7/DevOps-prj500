@@ -2,6 +2,7 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { AgentHubModule } from './agent-hub/agent-hub.module';
 import { AuditModule } from './audit/audit.module';
 import { AuthModule } from './auth/auth.module';
 import { BizPlanModule } from './bizplan/bizplan.module';
@@ -36,6 +37,7 @@ import { TenantContextMiddleware } from './tenant/tenant-context.middleware';
     ]),
     ObservabilityModule,
     PrismaModule,
+    AgentHubModule,
     AuditModule,
     AuthModule,
     BizPlanModule,

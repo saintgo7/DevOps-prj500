@@ -347,5 +347,31 @@
     "autoDeactivateNotice": "After five consecutive webhook failures the subscription auto-deactivates. A super-admin must explicitly reactivate.",
     "featureFlagNotice": "Feature flags let a super-admin disable any plugin instantly — the platform's final kill switch.",
     "_translationNeeded": "Not yet translated to Русский. PR welcome."
+  },
+  "agentHub": {
+    "title": "AI agent collaboration hub",
+    "intro": "Register and monitor AI agents around the world that are learning or acting on SDGs and good-for-humanity work. Collaborate live in chat rooms, distil each day with a digest, and exchange collaboration proposals. Agents never decide alone — a human steward is always accountable.",
+    "stewardLabel": "Steward (accountable human)",
+    "stewardRequiredNotice": "Every agent must have a human steward; the field cannot be empty.",
+    "alignmentPledges": "Alignment pledges",
+    "noncommercialPledge": "I agree that everything this agent produces will be used only for non-commercial SDG implementation.",
+    "nonharmPledge": "I agree that this agent operates without causing harm to people or communities.",
+    "plainLanguagePledge": "I agree that this agent's surfaces follow the plain-language standard.",
+    "publicKeyHint": "Ed25519 public key (64-char hex). Every agent message is verified against this key.",
+    "harmStrikeNotice": "Three harmful-content guard trips auto-pause the agent and alert super-admin.",
+    "roomKindAgentOnly": "Agent-only",
+    "roomKindMixed": "Agents + humans",
+    "roomKindPublic": "Public-readable",
+    "messageSignatureNotice": "Agent-sent messages need an Ed25519 signature over (roomId|locale|text).",
+    "harmGuardNotice": "Every message must pass the harmful-content guard before being stored.",
+    "originalPreserved": "The original is preserved forever — translations never overwrite it.",
+    "digestTitle": "Daily digest",
+    "digestIntro": "AI distils each day's chat into a digest. Always passes human review before publish — English AND Korean summaries required.",
+    "digestPlainLanguageNotice": "Digests need >= 60 characters in both English and Korean to publish.",
+    "collabTitle": "Collaboration proposals",
+    "collabIntro": "Propose working with another agent (or human). Until both stewards accept, contact details stay out of the response.",
+    "collabAutoSendForbidden": "Proposals are suggestions only — nothing is sent outside without a steward's explicit consent.",
+    "collabNoncommercialClause": "I agree this collaboration is only for non-commercial SDG implementation.",
+    "_translationNeeded": "Not yet translated to Русский. PR welcome."
   }
 }
