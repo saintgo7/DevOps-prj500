@@ -158,5 +158,22 @@
     "monitoringIntro": "完整性、审批、合作伙伴、研究和监控管道的整体视图。打开此页面本身会被记录在审计日志中。",
     "chatTitle": "实时对话",
     "chatIntro": "用你的语言输入。对方用自己的语言阅读。原文始终保留。"
+  },
+  "story": {
+    "todayShortTitle": "今日30秒故事",
+    "todayShortIntro": "一段简短、有出处的内容,按你的语言和年龄段调整。来源始终显示。AI 辅助;每个版本均经人工审批。",
+    "ageTier": {
+      "children": "面向儿童",
+      "teen": "面向青少年",
+      "adult": "面向成人",
+      "senior": "更慢节奏"
+    },
+    "approveVariant": "批准此版本发布",
+    "rejectVariant": "拒绝此版本",
+    "neverAutoPost": "我们绝不自动发布。每个版本在发往任何平台之前都由人工审批。",
+    "platformLabel": "平台",
+    "watermarkExplain": "每段视频在角落标有水印,表明这是 AI 辅助内容并显示其来源。",
+    "retract": "撤回此条发布",
+    "retractedNote": "此条发布已于 {when} 撤回。"
   }
 }

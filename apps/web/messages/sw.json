@@ -158,5 +158,22 @@
     "monitoringIntro": "Mwonekano wa jumla wa uthibitisho, idhini, washirika, utafiti, na mlolongo wa kuangalia. Kutazama ukurasa huu kunarekodiwa katika kumbukumbu ya ukaguzi.",
     "chatTitle": "Mazungumzo ya wakati halisi",
     "chatIntro": "Andika kwa lugha yako. Mwingine anasoma kwa lugha yake. Maandishi ya asili huhifadhiwa daima."
+  },
+  "story": {
+    "todayShortTitle": "Hadithi ya sekunde 30 ya leo",
+    "todayShortIntro": "Kipande kifupi chenye chanzo, kilichobadilishwa kwa lugha yako na rika lako. Chanzo huonyeshwa daima. Kwa msaada wa AI; binadamu huidhinisha kila toleo.",
+    "ageTier": {
+      "children": "kwa watoto",
+      "teen": "kwa vijana",
+      "adult": "kwa watu wazima",
+      "senior": "mwendo wa polepole"
+    },
+    "approveVariant": "Idhinisha toleo hili kuchapishwa",
+    "rejectVariant": "Kataa toleo hili",
+    "neverAutoPost": "Hatuchapishi kiotomatiki kamwe. Mtu huidhinisha kila toleo kabla ya kutumwa popote.",
+    "platformLabel": "Jukwaa",
+    "watermarkExplain": "Kila video hubeba alama ya maji ya kona inayoonyesha imechukuliwa kwa msaada wa AI na chanzo chake.",
+    "retract": "Ondoa chapisho hili",
+    "retractedNote": "Chapisho hili liliondolewa tarehe {when}."
   }
 }

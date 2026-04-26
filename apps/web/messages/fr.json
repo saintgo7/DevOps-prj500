@@ -158,5 +158,22 @@
     "monitoringIntro": "Vue d'ensemble : intégrité, approbations, partenaires, recherches, pipeline de veille. Voir cette page est en soi enregistré dans le journal d'audit.",
     "chatTitle": "Conversation en temps réel",
     "chatIntro": "Écrivez dans votre langue. L'autre lit dans la sienne. L'original est toujours préservé."
+  },
+  "story": {
+    "todayShortTitle": "L'histoire de 30 secondes du jour",
+    "todayShortIntro": "Une courte pièce sourcée, adaptée à votre langue et à votre âge. La source est toujours affichée. Assistée par l'IA ; chaque variante est approuvée par un humain.",
+    "ageTier": {
+      "children": "pour les jeunes spectateurs",
+      "teen": "pour les ados",
+      "adult": "pour les adultes",
+      "senior": "rythme plus calme"
+    },
+    "approveVariant": "Approuver cette variante pour publication",
+    "rejectVariant": "Rejeter cette variante",
+    "neverAutoPost": "Nous ne publions jamais automatiquement. Un humain approuve chaque variante avant tout envoi.",
+    "platformLabel": "Plateforme",
+    "watermarkExplain": "Chaque vidéo porte un filigrane indiquant qu'elle est assistée par l'IA et montrant sa source.",
+    "retract": "Retirer cette publication",
+    "retractedNote": "Cette publication a été retirée le {when}."
   }
 }

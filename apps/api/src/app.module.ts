@@ -6,6 +6,7 @@ import { AuditModule } from './audit/audit.module';
 import { AuthModule } from './auth/auth.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { ColumnsModule } from './columns/columns.module';
+import { StoriesModule } from './stories/stories.module';
 import { WatchModule } from './watch/watch.module';
 import { HealthController } from './health/health.controller';
 import { LocaleMiddleware } from './i18n/locale.middleware';
@@ -29,6 +30,7 @@ import { TenantContextMiddleware } from './tenant/tenant-context.middleware';
     CatalogModule,
     ColumnsModule,
     MonitoringModule,
+    StoriesModule,
     WatchModule,
   ],
   controllers: [HealthController],

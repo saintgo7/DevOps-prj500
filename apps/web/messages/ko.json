@@ -158,5 +158,22 @@
     "monitoringIntro": "정합성·승인·파트너·연구·워치를 통합 관리. 이 화면을 보는 행위 자체가 감사 기록에 남습니다.",
     "chatTitle": "실시간 대화",
     "chatIntro": "당신은 자신의 언어로 입력하세요. 상대는 자기 언어로 읽습니다. 원문은 언제나 보존됩니다."
+  },
+  "story": {
+    "todayShortTitle": "오늘의 30초 이야기",
+    "todayShortIntro": "당신의 언어와 연령에 맞춘 짧고 출처 있는 이야기입니다. 출처는 항상 표시됩니다. AI가 보조하되 모든 변형은 사람이 승인합니다.",
+    "ageTier": {
+      "children": "어린이용",
+      "teen": "청소년용",
+      "adult": "성인용",
+      "senior": "천천히 보기"
+    },
+    "approveVariant": "이 변형을 게시 승인",
+    "rejectVariant": "이 변형을 반려",
+    "neverAutoPost": "자동 게시는 없습니다. 어느 플랫폼에 보내기 전에 사람이 변형마다 승인합니다.",
+    "platformLabel": "플랫폼",
+    "watermarkExplain": "모든 영상은 우측 하단에 'AI 보조 · 출처 표시' 워터마크를 영구 표기합니다.",
+    "retract": "이 게시 철회",
+    "retractedNote": "이 게시는 {when}에 철회되었습니다."
   }
 }

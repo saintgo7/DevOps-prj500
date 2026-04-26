@@ -447,3 +447,117 @@ model Message {
   @@index([tenantId, conversationId, createdAt])
   @@map("messages")
 }
+
+// ============================================================
+// Short-form video stories (ADR-0015)
+// ============================================================
+
+// One story spawned from one published Column. Variants below are produced
+// per locale × age tier. State applies to the story-as-a-whole; each variant
+// has its own state so partial publication is supported.
+model ShortStory {
+  id           String   @id @default(uuid()) @db.Uuid
+  tenantId     String   @map("tenant_id") @db.Uuid
+  sourceColumnId String  @map("source_column_id") @db.Uuid
+  state        String   @default("drafting") // drafting | ready | retired
+  // SDG focus copied from the source for fast filtering.
+  sdgFocus     String[] @default([]) @map("sdg_focus")
+  // Region tag for equity-weight boost (LDC ISO codes -> +30% priority)
+  region       String?
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  variants StoryVariant[]
+
+  @@index([tenantId, state, createdAt])
+  @@index([sourceColumnId])
+  @@index([sdgFocus], type: Gin)
+  @@map("short_stories")
+}
+
+// One variant = one (locale × age tier) combination of a ShortStory.
+// Each variant carries its own caption, hashtags, storyboard, and approval
+// cycle. Sensitive age-tier (children) variants run an extra safety check.
+model StoryVariant {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  shortStoryId    String   @map("short_story_id") @db.Uuid
+  locale          String   // e.g. 'ko', 'sw', 'ar'
+  ageTier         String   @map("age_tier") // 'children' | 'teen' | 'adult' | 'senior'
+  // Plain-text caption / hook / cta in the target locale.
+  caption         String
+  hooks           String[] @default([])
+  ctaText         String?  @map("cta_text")
+  hashtags        String[] @default([])
+  // Full storyboard JSON — see ADR-0015 §3 for structure.
+  storyboard      Json
+  // 'ai-assisted' or 'curator-only' or 'community' — for the watermark.
+  attribution     String   @default("ai-assisted")
+  // Per-variant editorial state. Variants of one story can be approved/posted
+  // independently so that, e.g., the Swahili senior variant can ship before
+  // the Korean children variant.
+  state           String   @default("draft") // draft | pending | approved | rejected | retired
+  // Safety check outcome: { ok: bool, results: [{rule, ok, message}] }
+  safetyReport    Json?    @map("safety_report")
+  approvedAt      DateTime? @map("approved_at")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  shortStory ShortStory          @relation(fields: [shortStoryId], references: [id])
+  posts      DistributionPost[]
+
+  @@unique([shortStoryId, locale, ageTier])
+  @@index([tenantId, state, createdAt])
+  @@map("story_variants")
+}
+
+// A registered destination (platform × tenant account). The OAuth/API
+// credentials live on the tenant side, not in our DB; we store only the
+// reference id and posting policy. See ADR-0015 §4.
+model DistributionTarget {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  platform        String   // 'youtube_shorts' | 'instagram_reels' | 'tiktok' | 'x_video'
+                           // 'facebook_reels' | 'linkedin_video' | 'kakao_clip' | 'weibo_video'
+  accountHandle   String   @map("account_handle") // public handle, e.g. '@sdgi_global'
+  // Reference to a partner-side credential (e.g. token id stored in their KMS).
+  // We never store raw OAuth tokens. See ADR-0015 §4 ('partner holds tokens').
+  credentialRef   String?  @map("credential_ref")
+  active          Boolean  @default(true)
+  // Per-target posting policy: timezone, allowed age tiers, allowed SDGs, etc.
+  policy          Json?
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  posts DistributionPost[]
+
+  @@unique([tenantId, platform, accountHandle])
+  @@index([tenantId, active])
+  @@map("distribution_targets")
+}
+
+// One scheduled post = one StoryVariant × one DistributionTarget. The unique
+// constraint guarantees we never double-post the same variant to the same
+// target. State machine: ready → queued → posted / failed; posted → retracted.
+model DistributionPost {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  variantId       String   @map("variant_id") @db.Uuid
+  targetId        String   @map("target_id") @db.Uuid
+  state           String   @default("ready") // ready | queued | posted | failed | retracted
+  scheduledFor    DateTime? @map("scheduled_for")
+  postedAt        DateTime? @map("posted_at")
+  retractedAt     DateTime? @map("retracted_at")
+  externalPostId  String?   @map("external_post_id") // platform-side id once posted
+  externalUrl     String?   @map("external_url")
+  // Last metric snapshot from the platform (impressions, likes, shares, comments, ts).
+  metrics         Json?
+  metricsUpdatedAt DateTime? @map("metrics_updated_at")
+  // Failure information so curators can fix and retry.
+  lastError       String?   @map("last_error")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  variant StoryVariant       @relation(fields: [variantId], references: [id])
+  target  DistributionTarget @relation(fields: [targetId], references: [id])
+
+  @@unique([variantId, targetId])
+  @@index([tenantId, state, scheduledFor])
+  @@map("distribution_posts")
+}

@@ -161,5 +161,23 @@
     "chatTitle": "Real-time conversation",
     "chatIntro": "Type in your language. The other side reads in theirs. The original is always preserved.",
     "_translationNeeded": "Not yet translated to Русский. PR welcome."
+  },
+  "story": {
+    "todayShortTitle": "Today's 30-second story",
+    "todayShortIntro": "A short, sourced piece adapted to your language and age group. Always shows the source. AI-assisted; humans approve every variant.",
+    "ageTier": {
+      "children": "for younger viewers",
+      "teen": "for teens",
+      "adult": "for adults",
+      "senior": "calmer pace"
+    },
+    "approveVariant": "Approve this variant for posting",
+    "rejectVariant": "Reject this variant",
+    "neverAutoPost": "We never auto-post. A human approves each variant before it can be sent to any platform.",
+    "platformLabel": "Platform",
+    "watermarkExplain": "Every video carries a corner watermark indicating it is AI-assisted and showing its source.",
+    "retract": "Retract this post",
+    "retractedNote": "This post was retracted on {when}.",
+    "_translationNeeded": "Not yet translated to Русский. PR welcome."
   }
 }

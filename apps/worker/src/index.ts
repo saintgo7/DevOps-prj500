@@ -67,6 +67,24 @@ const worker = new Worker(
       return { ok: true };
     }
 
+    if (job.name === 'stories:generate-daily') {
+      // ADR-0015: each morning, fan out short-story variant generation for
+      // yesterday's published columns. The fan-out itself is performed on
+      // the api side under tenant context; this worker job is the schedule
+      // anchor and (later) the trigger for service-to-service requests.
+      log.info('daily short-story generation tick');
+      return { ok: true };
+    }
+
+    if (job.name === 'stories:dispatch-post') {
+      // Stub for outbound platform posting. Real platform integrations live
+      // here (YouTube Data API v3, Meta Graph, TikTok, etc.). For now we
+      // record the intent and exit successfully so retry policy is testable.
+      const data = job.data as { postId: string; platform: string };
+      log.info({ post_id: data.postId, platform: data.platform }, 'platform post dispatched (stub)');
+      return { ok: true };
+    }
+
     if (job.name === 'partner-webhook:dispatch') {
       // Outbound HMAC-signed webhook to a partner. Retries with exponential
       // backoff are handled by BullMQ's job options (set when enqueued).
@@ -130,6 +148,20 @@ async function registerSchedules(): Promise<void> {
     },
   );
   baseLogger.info('daily column candidate generation scheduled (Mon-Fri 05:00 UTC)');
+
+  // Daily short-story variant generation — every day 06:30 UTC, after the
+  // column candidate fan-out so newly-published columns have time to settle.
+  await queue.add(
+    'stories:generate-daily',
+    {},
+    {
+      repeat: { pattern: '30 6 * * *', tz: 'UTC' },
+      jobId: 'stories:generate-daily',
+      removeOnComplete: { count: 50 },
+      removeOnFail: { count: 50 },
+    },
+  );
+  baseLogger.info('daily short-story variant generation scheduled (06:30 UTC)');
 }
 
 worker.on('failed', (job, err) => {

@@ -158,5 +158,22 @@
     "monitoringIntro": "Vista holística de integridad, aprobaciones, aliados, investigación y pipeline de monitoreo. Ver esta página queda registrado en el registro de auditoría.",
     "chatTitle": "Conversación en tiempo real",
     "chatIntro": "Escribe en tu idioma. La otra persona lee en el suyo. El original siempre se conserva."
+  },
+  "story": {
+    "todayShortTitle": "Historia de 30 segundos de hoy",
+    "todayShortIntro": "Una pieza breve y con fuente, adaptada a tu idioma y edad. La fuente siempre se muestra. Con asistencia de IA; humanos aprueban cada variante.",
+    "ageTier": {
+      "children": "para los más pequeños",
+      "teen": "para adolescentes",
+      "adult": "para adultos",
+      "senior": "ritmo más calmado"
+    },
+    "approveVariant": "Aprobar esta variante para publicación",
+    "rejectVariant": "Rechazar esta variante",
+    "neverAutoPost": "Nunca publicamos automáticamente. Un humano aprueba cada variante antes del envío.",
+    "platformLabel": "Plataforma",
+    "watermarkExplain": "Cada video lleva una marca de agua que indica que es asistido por IA y muestra su fuente.",
+    "retract": "Retirar esta publicación",
+    "retractedNote": "Esta publicación fue retirada el {when}."
   }
 }
