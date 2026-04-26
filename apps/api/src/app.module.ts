@@ -7,7 +7,10 @@ import { AuthModule } from './auth/auth.module';
 import { BooksModule } from './books/books.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { ColumnsModule } from './columns/columns.module';
+import { FundingModule } from './funding/funding.module';
 import { ImpactModule } from './impact/impact.module';
+import { MakerModule } from './maker/maker.module';
+import { NeedsModule } from './needs/needs.module';
 import { ResearchModule } from './research/research.module';
 import { SessionsModule } from './sessions/sessions.module';
 import { StoriesModule } from './stories/stories.module';
@@ -34,8 +37,11 @@ import { TenantContextMiddleware } from './tenant/tenant-context.middleware';
     BooksModule,
     CatalogModule,
     ColumnsModule,
+    FundingModule,
     ImpactModule,
+    MakerModule,
     MonitoringModule,
+    NeedsModule,
     ResearchModule,
     SessionsModule,
     StoriesModule,

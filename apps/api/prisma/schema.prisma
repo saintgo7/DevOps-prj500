@@ -960,3 +960,379 @@ model ImpactDisclosure {
   @@index([disclosedAt])
   @@map("impact_disclosures")
 }
+
+// ============================================================
+// Funding (crowdfunding + impact investment) — ADR-0018 §A
+// ============================================================
+
+// One published proposal asking for funds. The platform is a coordination
+// layer: real money flows live in payment partners (Stripe / Toss / etc.);
+// here we hold only the proposal, the milestones, and partner-side refs.
+model FundingProposal {
+  id                  String   @id @default(uuid()) @db.Uuid
+  tenantId            String   @map("tenant_id") @db.Uuid
+  ownerId             String   @map("owner_id") @db.Uuid
+  /// { en: { title, summary, plan, budget }, ko: ..., ... }
+  bodyI18n            Json     @map("body_i18n")
+  primaryLocale       String   @default("ko") @map("primary_locale")
+  sdgFocus            String[] @default([]) @map("sdg_focus")
+  region              String   // ISO-3166 alpha-2 — LDC tags get equity weight.
+  /// 'all-or-nothing' | 'keep-it-all'
+  fundingModel        String   @map("funding_model")
+  /// Allowed contribution kinds: 'donation' | 'impact-investment' | 'in-kind'
+  contributionKinds   String[] @map("contribution_kinds")
+  currency            String   @default("USD")
+  softGoalMinor       Int      @map("soft_goal_minor")
+  hardGoalMinor       Int      @map("hard_goal_minor")
+  raisedMinor         Int      @default(0) @map("raised_minor")
+  contributorCount    Int      @default(0) @map("contributor_count")
+  /// Live until this timestamp; auto-locked afterwards.
+  endsAt              DateTime @map("ends_at")
+  /// Hard rule: must be true. DB CHECK enforces; service rejects on false.
+  noncommercialNotice Boolean  @default(false) @map("noncommercial_notice")
+  /// 'draft' | 'review' | 'live' | 'funding_locked' | 'completed' |
+  /// 'reported' | 'cancelled' | 'refunded' | 'paused'
+  state               String   @default("draft")
+  approvedAt          DateTime? @map("approved_at")
+  approvedBy          String?  @map("approved_by") @db.Uuid
+  /// Recorded if super-admin pauses; reason is permanent (audit log).
+  pausedAt            DateTime? @map("paused_at")
+  pauseReason         String?  @map("pause_reason")
+  cancelledAt         DateTime? @map("cancelled_at")
+  cancelReason        String?  @map("cancel_reason")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  milestones    FundingMilestone[]
+  contributions FundingContribution[]
+  reports       FundingReport[]
+  flags         FundingFlag[]
+
+  @@index([tenantId, state, createdAt])
+  @@index([sdgFocus], type: Gin)
+  @@index([region])
+  @@map("funding_proposals")
+}
+
+// One milestone of a proposal. Funds are released milestone-by-milestone,
+// not in one lump. A milestone can release only after >=2 reviewers
+// approve its evidence.
+model FundingMilestone {
+  id           String   @id @default(uuid()) @db.Uuid
+  tenantId     String   @map("tenant_id") @db.Uuid
+  proposalId   String   @map("proposal_id") @db.Uuid
+  position     Int
+  title        String
+  description  String
+  /// Amount to release on this milestone, in the proposal's currency.
+  amountMinor  Int      @map("amount_minor")
+  /// 'pending' | 'evidence_submitted' | 'released' | 'rejected'
+  state        String   @default("pending")
+  evidenceUrl  String?  @map("evidence_url")
+  /// SHA-256 of attached photo/video — proves the file we approved is the
+  /// file that's still attached (defence against silent swap).
+  evidenceHash String?  @map("evidence_hash")
+  releasedAt   DateTime? @map("released_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  proposal FundingProposal @relation(fields: [proposalId], references: [id])
+
+  @@unique([proposalId, position])
+  @@index([proposalId])
+  @@map("funding_milestones")
+}
+
+// One contribution. Identity disclosure is opt-in per contribution.
+// Card / bank data is NEVER stored — only the partner-side ref.
+model FundingContribution {
+  id                 String   @id @default(uuid()) @db.Uuid
+  tenantId           String   @map("tenant_id") @db.Uuid
+  proposalId         String   @map("proposal_id") @db.Uuid
+  /// Optional — only set if the backer has a platform account.
+  backerUserId       String?  @map("backer_user_id") @db.Uuid
+  /// 'donation' | 'impact-investment' | 'in-kind'
+  kind               String
+  amountMinor        Int      @map("amount_minor")
+  currency           String
+  /// 'public' | 'pseudonymous' | 'private'
+  visibility         String   @default("private")
+  /// External payment partner reference; raw payment data is held there.
+  paymentProviderRef String?  @map("payment_provider_ref")
+  /// 'pending' | 'collected' | 'refunded' | 'failed'
+  state              String   @default("pending")
+  refundedAt         DateTime? @map("refunded_at")
+  createdAt          DateTime @default(now()) @map("created_at")
+
+  proposal FundingProposal @relation(fields: [proposalId], references: [id])
+
+  @@index([tenantId, proposalId])
+  @@index([backerUserId])
+  @@index([state])
+  @@map("funding_contributions")
+}
+
+// Post-completion impact report tied (optionally) to an ImpactStudy
+// (ADR-0017) so backers can see the verified outcome of their funds.
+model FundingReport {
+  id            String   @id @default(uuid()) @db.Uuid
+  tenantId      String   @map("tenant_id") @db.Uuid
+  proposalId    String   @map("proposal_id") @db.Uuid
+  /// { en: { headline, narrative }, ko: ..., ... }
+  bodyI18n      Json     @map("body_i18n")
+  /// Optional pointer to a published ImpactStudy.
+  impactStudyId String?  @map("impact_study_id") @db.Uuid
+  publishedAt   DateTime? @map("published_at")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  proposal FundingProposal @relation(fields: [proposalId], references: [id])
+
+  @@index([tenantId, proposalId])
+  @@map("funding_reports")
+}
+
+// Anyone signed-in may flag a live proposal. Reasons are permanent and
+// drive the super-admin pause workflow.
+model FundingFlag {
+  id          String   @id @default(uuid()) @db.Uuid
+  tenantId    String   @map("tenant_id") @db.Uuid
+  proposalId  String   @map("proposal_id") @db.Uuid
+  reporterId  String   @map("reporter_id") @db.Uuid
+  /// 'fraud' | 'commercial' | 'harm' | 'misinformation' | 'other'
+  category    String
+  reason      String
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  proposal FundingProposal @relation(fields: [proposalId], references: [id])
+
+  @@index([tenantId, proposalId])
+  @@map("funding_flags")
+}
+
+// ============================================================
+// Maker space — easy tool authoring for SDG practitioners (ADR-0018 §B)
+// ============================================================
+
+// A platform-vetted starting template. Templates ship pre-wired with
+// i18n (13 locales), RLS, plain-language defaults, ethics tones library,
+// and the harmful-content guard. tenant_id is NULL for global templates
+// (RLS treats NULL as cross-tenant readable).
+model MakerTemplate {
+  id            String   @id @default(uuid()) @db.Uuid
+  tenantId      String?  @map("tenant_id") @db.Uuid
+  /// 'static-site' | 'next-app' | 'pwa' | 'mobile-rn' | 'data-dashboard'
+  /// | 'sms-bot' | 'whatsapp-bot'
+  kind          String
+  name          String
+  /// SPDX-style identifier — 'MIT' | 'Apache-2.0' | 'CC-BY-NC-SA-4.0' ...
+  licenseSpdx   String   @map("license_spdx")
+  /// { en: { description, gettingStarted }, ko: ..., ... }
+  descriptionI18n Json   @map("description_i18n")
+  /// Hosted reference for the template (Git URL, etc.).
+  sourceRef     String   @map("source_ref")
+  active        Boolean  @default(true)
+  retiredAt     DateTime? @map("retired_at")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  projects MakerProject[]
+
+  @@index([kind, active])
+  @@map("maker_templates")
+}
+
+// One concrete project a practitioner is building from a template.
+model MakerProject {
+  id                  String   @id @default(uuid()) @db.Uuid
+  tenantId            String   @map("tenant_id") @db.Uuid
+  ownerId             String   @map("owner_id") @db.Uuid
+  templateId          String   @map("template_id") @db.Uuid
+  /// { en: { title, blurb }, ko: ..., ... }
+  bodyI18n            Json     @map("body_i18n")
+  primaryLocale       String   @default("ko") @map("primary_locale")
+  sdgFocus            String[] @default([]) @map("sdg_focus")
+  /// LDC priority surfacing.
+  targetRegions       String[] @default([]) @map("target_regions")
+  /// 'scaffolding' | 'building' | 'review' | 'live' | 'archived' | 'paused'
+  state               String   @default("scaffolding")
+  /// Hard rule for live transition: must be true.
+  noncommercialNotice Boolean  @default(false) @map("noncommercial_notice")
+  pausedAt            DateTime? @map("paused_at")
+  pauseReason         String?  @map("pause_reason")
+  liveAt              DateTime? @map("live_at")
+  archivedAt          DateTime? @map("archived_at")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  template     MakerTemplate       @relation(fields: [templateId], references: [id])
+  contributors MakerContributor[]
+  artifacts    MakerArtifact[]
+
+  @@index([tenantId, state, createdAt])
+  @@index([sdgFocus], type: Gin)
+  @@map("maker_projects")
+}
+
+// One co-builder.
+model MakerContributor {
+  id          String   @id @default(uuid()) @db.Uuid
+  tenantId    String   @map("tenant_id") @db.Uuid
+  projectId   String   @map("project_id") @db.Uuid
+  userId      String   @map("user_id") @db.Uuid
+  /// 'maintainer' | 'editor' | 'translator' | 'tester'
+  role        String
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  project MakerProject @relation(fields: [projectId], references: [id])
+
+  @@unique([projectId, userId, role])
+  @@index([projectId])
+  @@map("maker_contributors")
+}
+
+// One built artifact. Includes a content hash so curators can tell that
+// the live URL still points at the bundle they approved.
+model MakerArtifact {
+  id            String   @id @default(uuid()) @db.Uuid
+  tenantId      String   @map("tenant_id") @db.Uuid
+  projectId     String   @map("project_id") @db.Uuid
+  /// 'repo' (Git URL) | 'bundle' (S3 ref) | 'preview' (HTTP URL)
+  kind          String
+  ref           String
+  contentHash   String   @map("content_hash")
+  /// { model, promptVersion, draftedAt } when AI-assisted.
+  aiProvenance  Json?    @map("ai_provenance")
+  /// Auto plain-language score on the README ≥ 60 for live.
+  readmeScore   Int?     @map("readme_score")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  project MakerProject @relation(fields: [projectId], references: [id])
+
+  @@index([projectId])
+  @@map("maker_artifacts")
+}
+
+// ============================================================
+// Needs / Offers / Match — relief & sharing exchange (ADR-0018 §C)
+// ============================================================
+
+// A region/country says "we need X by date Y". Relief, supplies,
+// equipment, knowledge, or volunteers.
+model NeedRequest {
+  id                String   @id @default(uuid()) @db.Uuid
+  tenantId          String   @map("tenant_id") @db.Uuid
+  ownerId           String   @map("owner_id") @db.Uuid
+  /// 'relief' | 'supplies' | 'equipment' | 'knowledge' | 'volunteers'
+  category          String
+  /// { en: { title, description }, ko: ..., ... }
+  bodyI18n          Json     @map("body_i18n")
+  primaryLocale     String   @default("ko") @map("primary_locale")
+  sdgFocus          String[] @default([]) @map("sdg_focus")
+  region            String
+  subregion         String?
+  /// Plain-language quantity. e.g. 500, 'units': 'water filters'.
+  quantity          Int
+  unit              String
+  /// 'critical' | 'high' | 'normal' | 'low'
+  urgency           String   @default("normal")
+  neededBy          DateTime @map("needed_by")
+  /// Identity verification of the owner: 'verified' | 'community-vouched'
+  /// | 'unverified'. Surfaced to potential providers; cannot be self-reported.
+  verificationLevel String   @default("unverified") @map("verification_level")
+  verifiedBy        String?  @map("verified_by") @db.Uuid
+  verifiedAt        DateTime? @map("verified_at")
+  /// 'draft' | 'published' | 'matching' | 'fulfilled' | 'closed'
+  /// | 'cancelled' | 'expired' | 'paused'
+  state             String   @default("draft")
+  pausedAt          DateTime? @map("paused_at")
+  pauseReason       String?  @map("pause_reason")
+  closedAt          DateTime? @map("closed_at")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  matches NeedMatch[]
+
+  @@index([tenantId, state, createdAt])
+  @@index([category, region, urgency])
+  @@index([sdgFocus], type: Gin)
+  @@map("need_requests")
+}
+
+// A provider says "I can offer X by date Y". Same shape as NeedRequest.
+model OfferListing {
+  id                String   @id @default(uuid()) @db.Uuid
+  tenantId          String   @map("tenant_id") @db.Uuid
+  ownerId           String   @map("owner_id") @db.Uuid
+  category          String
+  bodyI18n          Json     @map("body_i18n")
+  primaryLocale     String   @default("ko") @map("primary_locale")
+  sdgFocus          String[] @default([]) @map("sdg_focus")
+  region            String
+  subregion         String?
+  quantity          Int
+  unit              String
+  availableUntil    DateTime @map("available_until")
+  verificationLevel String   @default("unverified") @map("verification_level")
+  verifiedBy        String?  @map("verified_by") @db.Uuid
+  verifiedAt        DateTime? @map("verified_at")
+  state             String   @default("draft")
+  pausedAt          DateTime? @map("paused_at")
+  pauseReason       String?  @map("pause_reason")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  matches NeedMatch[]
+
+  @@index([tenantId, state, createdAt])
+  @@index([category, region])
+  @@index([sdgFocus], type: Gin)
+  @@map("offer_listings")
+}
+
+// One pairing. Until both sides 'accept', neither side sees the other's
+// contact details — server responses mask them at the application layer.
+model NeedMatch {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  requestId       String   @map("request_id") @db.Uuid
+  offerId         String   @map("offer_id") @db.Uuid
+  /// Same category as both endpoints — DB CHECK in migration enforces.
+  category        String
+  /// 'suggested' | 'contacted' | 'accepted' | 'shipped' | 'delivered'
+  /// | 'cancelled'
+  state           String   @default("suggested")
+  /// Recorded only after BOTH sides hit accept.
+  requesterAcceptedAt DateTime? @map("requester_accepted_at")
+  providerAcceptedAt  DateTime? @map("provider_accepted_at")
+  cancelledAt     DateTime? @map("cancelled_at")
+  cancelReason    String?  @map("cancel_reason")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  request NeedRequest  @relation(fields: [requestId], references: [id])
+  offer   OfferListing @relation(fields: [offerId], references: [id])
+  fulfillment NeedFulfillment?
+
+  @@unique([requestId, offerId])
+  @@index([tenantId, state])
+  @@map("need_matches")
+}
+
+// Final delivery record — both sides electronically sign that the goods
+// arrived. Photos/videos stored as content hashes only; raw uploads live
+// in S3 (out of scope for MVP).
+model NeedFulfillment {
+  id                  String   @id @default(uuid()) @db.Uuid
+  tenantId            String   @map("tenant_id") @db.Uuid
+  matchId             String   @unique @map("match_id") @db.Uuid
+  trackingRef         String?  @map("tracking_ref")
+  /// Array of SHA-256 hashes of evidence files.
+  evidenceHashes      String[] @default([]) @map("evidence_hashes")
+  requesterSignedAt   DateTime? @map("requester_signed_at")
+  providerSignedAt    DateTime? @map("provider_signed_at")
+  /// Hash of agreed-to text at signing time.
+  agreedClauseHash    String   @map("agreed_clause_hash")
+  createdAt           DateTime @default(now()) @map("created_at")
+
+  match NeedMatch @relation(fields: [matchId], references: [id])
+
+  @@index([tenantId])
+  @@map("need_fulfillments")
+}
