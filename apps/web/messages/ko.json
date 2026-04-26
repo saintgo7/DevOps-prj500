@@ -313,5 +313,24 @@
     "selfReportNotice": "본인이 직접 'verified' 등급을 부여할 수 없습니다.",
     "contactMaskNotice": "양측이 모두 수락(accept)하기 전에는 상대 연락처가 응답에 포함되지 않습니다.",
     "ldcBoostNotice": "최저개발국 지역 경험을 가진 전문가는 LDC 영향이 큰 안에 가중 추천됩니다."
+  },
+  "extensibility": {
+    "title": "확장 — 미래의 기능을 코어 수정 없이",
+    "intro": "내일의 SDG 실천가가 오늘 우리가 미처 생각하지 못한 기능을 만들 수 있도록, 코어를 건드리지 않고 새 도메인·워크플로·이벤트 구독을 추가하는 길을 열어 둡니다.",
+    "pluginManifestTitle": "플러그인 매니페스트",
+    "pluginManifestIntro": "플러그인 한 건의 신원, 버전, 요청 권한을 선언합니다. 비영리 동의와 평이한 언어 동의는 필수입니다.",
+    "noncommercialPledge": "이 플러그인이 만드는 모든 콘텐츠는 비영리 SDG 실천에만 사용한다고 동의합니다.",
+    "plainLanguagePledge": "이 플러그인의 사용자 화면은 평이한 언어 기준을 따른다고 동의합니다.",
+    "governanceTierStrict": "엄격 거버넌스 — ODA·정책 영향 플러그인은 super-admin 추가 승인 필요",
+    "customDomainTitle": "커스텀 도메인",
+    "customDomainIntro": "JSON Schema로 새 데이터 타입을 선언하면, 모든 record 작성은 자동 검증됩니다. piiFields로 표시한 필드는 AI 호출 전 자동 마스킹됩니다.",
+    "workflowTitle": "선언적 워크플로",
+    "workflowIntro": "임의 코드 없이 상태 머신을 선언합니다. 트리거의 emit은 *이벤트 이름만* 가질 수 있습니다.",
+    "eventLogNotice": "모든 도메인 이벤트는 append-only — 한 번 기록되면 수정·삭제 불가. 잘못된 이벤트는 정정 이벤트로 보충합니다.",
+    "capabilityTokenNotice": "Capability 토큰은 발급 시 *원본을 단 한 번만* 회신합니다. 잃어버리면 새 토큰을 발급받아야 합니다.",
+    "tokenScopeNotice": "토큰의 grantedScopes는 매니페스트의 requestedScopes의 부분집합이어야 합니다.",
+    "webhookSecretNotice": "Webhook secret도 발급 시 단 한 번만 노출됩니다. 본 플랫폼은 hash만 보관합니다.",
+    "autoDeactivateNotice": "Webhook 5회 연속 실패 시 자동 비활성화됩니다. super-admin이 명시적으로 reset해야 다시 켜집니다.",
+    "featureFlagNotice": "Feature flag로 super-admin은 어떤 플러그인도 즉시 끌 수 있습니다 — 최종 안전망입니다."
   }
 }

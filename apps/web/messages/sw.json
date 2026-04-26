@@ -313,5 +313,24 @@
     "selfReportNotice": "Watumiaji hawawezi kujipatia ngazi ya 'verified'.",
     "contactMaskNotice": "Hadi pande zote mbili zikubali, maelezo ya mawasiliano hayapo katika jibu.",
     "ldcBoostNotice": "Wataalamu wenye uzoefu wa uwandani katika LDC wanaonyeshwa kwanza kwa mipango yenye athari katika LDC."
+  },
+  "extensibility": {
+    "title": "Upanuzi — vipengele vya baadaye bila kugusa kiini",
+    "intro": "Wakati watendaji wa SDG wa kesho watakapohitaji kipengele tusichokifikiria leo, wanaweza kukiongeza bila kubadilisha kiini. Vikoa vipya, mtiririko wa kazi na usajili wa matukio vinaungana kwa usalama.",
+    "pluginManifestTitle": "Tamko la programu-jalizi",
+    "pluginManifestIntro": "Inatangaza utambulisho, toleo na ruhusa zinazoombwa za programu-jalizi. Ahadi ya yasiyo ya kibiashara na ya lugha rahisi ni za lazima.",
+    "noncommercialPledge": "Nakubali kwamba maudhui yote yanayozalishwa na programu-jalizi hii yatumike tu kwa utekelezaji usio wa kibiashara wa SDG.",
+    "plainLanguagePledge": "Nakubali kwamba violesura vya mtumiaji vya programu-jalizi hii vinafuata kiwango cha lugha rahisi.",
+    "governanceTierStrict": "Utawala mkali — programu-jalizi za ODA / sera zinahitaji idhini ya ziada ya msimamizi mkuu.",
+    "customDomainTitle": "Kikoa maalum",
+    "customDomainIntro": "Tangaza aina mpya ya data kupitia JSON Schema; kila uandishi wa rekodi unathibitishwa kiotomatiki. Sehemu zilizoorodheshwa katika piiFields zinafichwa kabla ya simu yoyote ya AI.",
+    "workflowTitle": "Mtiririko wa kazi wa tangazo",
+    "workflowIntro": "Tangaza mashine ya hali bila kuandika msimbo. Thamani za 'emit' za vichocheo lazima ziwe majina ya matukio — utekelezaji wowote hautolewi.",
+    "eventLogNotice": "Matukio ya kikoa yanaongezwa tu — yakishaandikwa hayawezi kuhaririwa au kufutwa. Makosa yanasahihishwa kwa kutoa tukio la kusahihisha.",
+    "capabilityTokenNotice": "Tokeni za uwezo zinarudishwa kwa maandishi MARA MOJA TU wakati wa kutoa. Tokeni zilizopotea haziwezi kupatikana — toa mpya.",
+    "tokenScopeNotice": "grantedScopes ya tokeni lazima iwe sehemu ndogo ya requestedScopes ya tamko.",
+    "webhookSecretNotice": "Siri ya Webhook pia inafichuliwa mara moja tu wakati wa kuunda. Jukwaa linahifadhi tu hash yake ya SHA-256.",
+    "autoDeactivateNotice": "Baada ya kushindwa mara tano mfululizo, usajili unazimwa kiotomatiki. Msimamizi mkuu lazima auwashe tena waziwazi.",
+    "featureFlagNotice": "Feature flags huruhusu msimamizi mkuu kuzima programu-jalizi yoyote mara moja — swichi ya mwisho ya usalama ya jukwaa."
   }
 }

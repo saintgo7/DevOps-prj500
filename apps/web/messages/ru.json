@@ -327,5 +327,25 @@
     "contactMaskNotice": "Until BOTH sides accept, contact details are excluded from the response.",
     "ldcBoostNotice": "Experts with LDC field experience are surfaced for plans whose impact reaches LDC regions.",
     "_translationNeeded": "Not yet translated to Русский. PR welcome."
+  },
+  "extensibility": {
+    "title": "Extensibility — future features without touching the core",
+    "intro": "When tomorrow's SDG practitioners need a feature we never imagined, they can add it without forking the core. New domains, workflows, and event subscriptions slot in safely.",
+    "pluginManifestTitle": "Plugin manifest",
+    "pluginManifestIntro": "Declares a plugin's identity, version, and requested capabilities. Non-commercial and plain-language pledges are mandatory.",
+    "noncommercialPledge": "All content this plugin produces will be used only for non-commercial SDG implementation.",
+    "plainLanguagePledge": "User-facing surfaces of this plugin follow the plain-language standard.",
+    "governanceTierStrict": "Strict governance — ODA / policy plugins require an extra super-admin approval.",
+    "customDomainTitle": "Custom domain",
+    "customDomainIntro": "Declare a new data type via JSON Schema; every record write is validated automatically. Fields listed in piiFields are masked before any AI call.",
+    "workflowTitle": "Declarative workflow",
+    "workflowIntro": "Declare a state machine without writing code. Trigger 'emit' values must be event names — arbitrary execution is not supported.",
+    "eventLogNotice": "Domain events are append-only — once recorded they cannot be edited or deleted. Mistakes are corrected by emitting a corrective event.",
+    "capabilityTokenNotice": "Capability tokens are returned in raw form ONLY ONCE on issue. Lost tokens cannot be retrieved — issue a new one.",
+    "tokenScopeNotice": "A token's grantedScopes must be a subset of the manifest's requestedScopes.",
+    "webhookSecretNotice": "Webhook secrets are also revealed only once at creation. The platform stores only their SHA-256 hash.",
+    "autoDeactivateNotice": "After five consecutive webhook failures the subscription auto-deactivates. A super-admin must explicitly reactivate.",
+    "featureFlagNotice": "Feature flags let a super-admin disable any plugin instantly — the platform's final kill switch.",
+    "_translationNeeded": "Not yet translated to Русский. PR welcome."
   }
 }

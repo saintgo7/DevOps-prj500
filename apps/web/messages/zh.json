@@ -313,5 +313,24 @@
     "selfReportNotice": "用户不能自行授予 'verified' 等级。",
     "contactMaskNotice": "在双方都接受之前,响应中不会包含联系方式。",
     "ldcBoostNotice": "拥有最不发达国家现场经验的专家会被优先推荐给覆盖最不发达国家的计划。"
+  },
+  "extensibility": {
+    "title": "可扩展性 —— 未来功能,无需修改核心",
+    "intro": "当明天的 SDG 实践者需要我们今天还未设想的功能时,他们可以在不修改核心的情况下添加。新域、工作流、事件订阅都能安全接入。",
+    "pluginManifestTitle": "插件清单",
+    "pluginManifestIntro": "声明插件的身份、版本、请求权限。非商业承诺与平实语言承诺为必填项。",
+    "noncommercialPledge": "我承诺该插件产出的所有内容仅用于非商业的 SDG 实施。",
+    "plainLanguagePledge": "我承诺该插件面向用户的界面遵循平实语言标准。",
+    "governanceTierStrict": "严格治理 —— ODA / 政策类插件需要 super-admin 额外批准。",
+    "customDomainTitle": "自定义域",
+    "customDomainIntro": "通过 JSON Schema 声明新的数据类型;每次写入记录都会自动校验。piiFields 列出的字段在调用 AI 前自动屏蔽。",
+    "workflowTitle": "声明式工作流",
+    "workflowIntro": "无需写代码即可声明状态机。触发器的 emit 必须是事件名 —— 不支持任意代码执行。",
+    "eventLogNotice": "领域事件是只追加的 —— 一经写入即不可编辑或删除。错误的事件应通过补丁事件来纠正。",
+    "capabilityTokenNotice": "Capability 令牌仅在签发时返回一次原文。丢失后无法找回,需要重新签发。",
+    "tokenScopeNotice": "令牌的 grantedScopes 必须是清单 requestedScopes 的子集。",
+    "webhookSecretNotice": "Webhook secret 同样只在创建时显示一次。平台仅保留其 SHA-256 哈希。",
+    "autoDeactivateNotice": "Webhook 连续 5 次失败后自动停用。super-admin 必须显式重新激活。",
+    "featureFlagNotice": "通过 Feature flag,super-admin 可立即停用任何插件 —— 平台的最终安全开关。"
   }
 }

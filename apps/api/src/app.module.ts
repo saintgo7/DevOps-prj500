@@ -9,6 +9,7 @@ import { BooksModule } from './books/books.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { ColumnsModule } from './columns/columns.module';
 import { ExpertsModule } from './experts/experts.module';
+import { ExtensibilityModule } from './extensibility/extensibility.module';
 import { FeasibilityModule } from './feasibility/feasibility.module';
 import { FundingModule } from './funding/funding.module';
 import { ImpactModule } from './impact/impact.module';
@@ -42,6 +43,7 @@ import { TenantContextMiddleware } from './tenant/tenant-context.middleware';
     CatalogModule,
     ColumnsModule,
     ExpertsModule,
+    ExtensibilityModule,
     FeasibilityModule,
     FundingModule,
     ImpactModule,

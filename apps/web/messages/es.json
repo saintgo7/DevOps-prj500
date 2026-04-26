@@ -313,5 +313,24 @@
     "selfReportNotice": "Los usuarios no pueden auto-asignarse el nivel 'verified'.",
     "contactMaskNotice": "Hasta que AMBAS partes acepten, los datos de contacto no aparecen en la respuesta.",
     "ldcBoostNotice": "Los expertos con experiencia de campo en PMA aparecen primero en planes con impacto en PMA."
+  },
+  "extensibility": {
+    "title": "Extensibilidad — funciones futuras sin tocar el núcleo",
+    "intro": "Cuando los y las futuras practicantes de los ODS necesiten una función que hoy no imaginamos, podrán añadirla sin modificar el núcleo. Nuevos dominios, flujos y suscripciones se acoplan con seguridad.",
+    "pluginManifestTitle": "Manifiesto del plugin",
+    "pluginManifestIntro": "Declara identidad, versión y permisos solicitados del plugin. Los compromisos de no comercial y lenguaje sencillo son obligatorios.",
+    "noncommercialPledge": "Acepto que todo el contenido producido por este plugin se use solo para implementación no comercial de los ODS.",
+    "plainLanguagePledge": "Acepto que las interfaces de usuario de este plugin sigan el estándar de lenguaje sencillo.",
+    "governanceTierStrict": "Gobernanza estricta — los plugins de AOD / política requieren aprobación adicional de un super-admin.",
+    "customDomainTitle": "Dominio personalizado",
+    "customDomainIntro": "Declara un nuevo tipo de dato mediante JSON Schema; cada escritura de registro se valida automáticamente. Los campos en piiFields se enmascaran antes de cualquier llamada a IA.",
+    "workflowTitle": "Flujo declarativo",
+    "workflowIntro": "Declara una máquina de estados sin escribir código. Los 'emit' de los disparadores deben ser nombres de eventos; no se admite ejecución arbitraria.",
+    "eventLogNotice": "Los eventos de dominio son solo de adición — una vez registrados no se pueden editar ni borrar. Los errores se corrigen emitiendo un evento correctivo.",
+    "capabilityTokenNotice": "Los tokens de capacidad se devuelven en bruto SOLO UNA VEZ. Los tokens perdidos no se pueden recuperar — emite uno nuevo.",
+    "tokenScopeNotice": "El conjunto grantedScopes de un token debe ser un subconjunto del requestedScopes del manifiesto.",
+    "webhookSecretNotice": "El secreto del webhook también se revela solo una vez al crearlo. La plataforma guarda únicamente su hash SHA-256.",
+    "autoDeactivateNotice": "Tras cinco fallos consecutivos del webhook, la suscripción se desactiva automáticamente. Un super-admin debe reactivarla explícitamente.",
+    "featureFlagNotice": "Las feature flags permiten a un super-admin desactivar cualquier plugin al instante — el último interruptor de seguridad de la plataforma."
   }
 }

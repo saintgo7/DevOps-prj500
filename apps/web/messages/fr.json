@@ -313,5 +313,24 @@
     "selfReportNotice": "Les utilisateurs ne peuvent pas s'auto-attribuer le niveau « verified ».",
     "contactMaskNotice": "Tant que les DEUX parties n'ont pas accepté, les coordonnées sont absentes de la réponse.",
     "ldcBoostNotice": "Les experts ayant une expérience de terrain en PMA sont mis en avant pour les plans avec impact PMA."
+  },
+  "extensibility": {
+    "title": "Extensibilité — fonctions futures sans toucher au cœur",
+    "intro": "Quand les praticien·ne·s ODD de demain auront besoin d'une fonction que nous n'avons pas imaginée, ils pourront l'ajouter sans modifier le cœur. Nouveaux domaines, flux et abonnements s'intègrent en toute sécurité.",
+    "pluginManifestTitle": "Manifeste de plugin",
+    "pluginManifestIntro": "Déclare l'identité, la version et les permissions demandées d'un plugin. Les engagements non commercial et langage simple sont obligatoires.",
+    "noncommercialPledge": "J'accepte que tout contenu produit par ce plugin ne serve qu'à la mise en œuvre non commerciale des ODD.",
+    "plainLanguagePledge": "J'accepte que les interfaces utilisateur de ce plugin respectent la norme de langage simple.",
+    "governanceTierStrict": "Gouvernance stricte — les plugins APD / politique exigent une approbation supplémentaire d'un super-admin.",
+    "customDomainTitle": "Domaine personnalisé",
+    "customDomainIntro": "Déclarez un nouveau type de données via JSON Schema ; chaque écriture est validée automatiquement. Les champs listés dans piiFields sont masqués avant tout appel IA.",
+    "workflowTitle": "Flux déclaratif",
+    "workflowIntro": "Déclarez une machine à états sans écrire de code. Les 'emit' des déclencheurs doivent être des noms d'événements — l'exécution arbitraire n'est pas prise en charge.",
+    "eventLogNotice": "Les événements de domaine sont en append-only — une fois enregistrés, ils ne peuvent être édités ni supprimés. Les erreurs se corrigent en émettant un événement correctif.",
+    "capabilityTokenNotice": "Les jetons de capacité sont renvoyés en clair UNE SEULE FOIS à l'émission. Un jeton perdu ne peut être récupéré — émettez-en un nouveau.",
+    "tokenScopeNotice": "Les grantedScopes d'un jeton doivent être un sous-ensemble des requestedScopes du manifeste.",
+    "webhookSecretNotice": "Le secret de webhook n'est révélé qu'une seule fois à la création. La plateforme ne conserve que son hash SHA-256.",
+    "autoDeactivateNotice": "Après cinq échecs consécutifs de webhook, l'abonnement est désactivé automatiquement. Un super-admin doit le réactiver explicitement.",
+    "featureFlagNotice": "Les feature flags permettent à un super-admin de désactiver instantanément n'importe quel plugin — le coupe-circuit ultime de la plateforme."
   }
 }

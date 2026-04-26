@@ -1582,3 +1582,216 @@ model ExpertMatch {
   @@index([subjectKind, subjectId])
   @@map("expert_matches")
 }
+
+// ============================================================
+// Extensibility framework — plugins / custom domains / events
+// (ADR-0020)
+// ============================================================
+
+// One plugin (extension) registered by a tenant. Holds its identity,
+// version, and the pledges it has signed. Approved manifests grant the
+// plugin the right to declare CustomDomains and emit/subscribe to events.
+model PluginManifest {
+  id                  String   @id @default(uuid()) @db.Uuid
+  tenantId            String   @map("tenant_id") @db.Uuid
+  pluginKey           String   @map("plugin_key")
+  name                String
+  version             String
+  authorEmail         String   @map("author_email")
+  homepageUrl         String?  @map("homepage_url")
+  ownerUserId         String   @map("owner_user_id") @db.Uuid
+  /// Scope strings the plugin requested. Granted set may be a subset
+  /// (capability_tokens.granted_scopes is the source of truth at runtime).
+  requestedScopes     String[] @default([]) @map("requested_scopes")
+  /// Hard rules — both must be true (DB CHECK).
+  noncommercialPledge Boolean  @default(false) @map("noncommercial_pledge")
+  plainLanguagePledge Boolean  @default(false) @map("plain_language_pledge")
+  /// SHA-256 of the manifest text. Recompute on every update; mismatch
+  /// detects unauthorised tampering.
+  manifestHash        String   @map("manifest_hash")
+  /// 'standard' | 'strict' — strict adds a super-admin gate at approve.
+  governanceTier      String   @default("standard") @map("governance_tier")
+  /// 'draft' | 'review' | 'approved' | 'paused' | 'retired'
+  state               String   @default("draft")
+  approvedAt          DateTime? @map("approved_at")
+  approvedBy          String?  @map("approved_by") @db.Uuid
+  pausedAt            DateTime? @map("paused_at")
+  pauseReason         String?  @map("pause_reason")
+  retiredAt           DateTime? @map("retired_at")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  domains       CustomDomain[]
+  subscriptions EventSubscription[]
+  capabilityTokens CapabilityToken[]
+
+  @@unique([tenantId, pluginKey])
+  @@index([tenantId, state])
+  @@map("plugin_manifests")
+}
+
+// One custom data type declared by a plugin. The JSON schema describes
+// what records must look like; piiFields tells the platform which keys
+// to mask before any AI call.
+model CustomDomain {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  pluginId        String   @map("plugin_id") @db.Uuid
+  domainKey       String   @map("domain_key")
+  /// { en: { name, description }, ko: ..., ... }
+  nameI18n        Json     @map("name_i18n")
+  /// JSON Schema (draft 2020-12).
+  jsonSchema      Json     @map("json_schema")
+  /// Core entity kinds this domain may link to. Validated at link time.
+  linksToCoreKinds String[] @default([]) @map("links_to_core_kinds")
+  /// JSON path expressions or top-level keys flagged as PII. Auto-masked
+  /// before AI invocation.
+  piiFields       String[] @default([]) @map("pii_fields")
+  /// 'draft' | 'active' | 'retired'
+  state           String   @default("draft")
+  retiredAt       DateTime? @map("retired_at")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  plugin   PluginManifest    @relation(fields: [pluginId], references: [id])
+  records  CustomRecord[]
+  workflows CustomWorkflow[]
+
+  @@unique([tenantId, pluginId, domainKey])
+  @@index([tenantId, state])
+  @@map("custom_domains")
+}
+
+// One instance of a CustomDomain. Payload is JSON-validated against the
+// declared schema on every write. State is set by an optional workflow.
+model CustomRecord {
+  id        String   @id @default(uuid()) @db.Uuid
+  tenantId  String   @map("tenant_id") @db.Uuid
+  domainId  String   @map("domain_id") @db.Uuid
+  ownerId   String   @map("owner_id") @db.Uuid
+  /// Validated against CustomDomain.jsonSchema on write.
+  payload   Json
+  /// Optional workflow state. Null when no workflow is attached.
+  state     String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  domain CustomDomain @relation(fields: [domainId], references: [id])
+
+  @@index([tenantId, domainId, createdAt])
+  @@index([ownerId])
+  @@map("custom_records")
+}
+
+// Declarative state machine bolted on top of a CustomDomain.
+model CustomWorkflow {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  domainId        String   @map("domain_id") @db.Uuid
+  workflowKey     String   @map("workflow_key")
+  /// { 'requested': ['approved','denied'], 'approved': [...], ... }
+  transitions     Json
+  /// [{ on: 'approved', emit: 'reservation.approved' }, ...]
+  /// 'emit' values are event names; arbitrary code execution is not
+  /// supported here.
+  triggers        Json     @default("[]")
+  initialState    String   @map("initial_state")
+  terminalStates  String[] @default([]) @map("terminal_states")
+  active          Boolean  @default(true)
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  domain CustomDomain @relation(fields: [domainId], references: [id])
+
+  @@unique([tenantId, domainId, workflowKey])
+  @@index([tenantId, domainId])
+  @@map("custom_workflows")
+}
+
+// Append-only event log. Both core modules and plugins emit. Triggers
+// 30-day retention sweep (out of MVP scope).
+model DomainEvent {
+  id            String   @id @default(uuid()) @db.Uuid
+  tenantId      String   @map("tenant_id") @db.Uuid
+  /// 'core.column' | 'plugin.biodiv-monitor' | ...
+  source        String
+  /// 'column.published' | 'biodiv-card.created' | ...
+  eventName     String   @map("event_name")
+  /// PII-masked payload. Raw payloads must NOT be stored here.
+  payload       Json
+  /// Tie a sequence of related events together for downstream tracing.
+  correlationId String?  @map("correlation_id")
+  occurredAt    DateTime @default(now()) @map("occurred_at")
+
+  @@index([tenantId, eventName, occurredAt])
+  @@index([tenantId, correlationId])
+  @@index([occurredAt])
+  @@map("domain_events")
+}
+
+// One outbound delivery destination for events matching the pattern.
+// HMAC-SHA256 signing follows ADR-0013 partner webhook conventions.
+model EventSubscription {
+  id                String   @id @default(uuid()) @db.Uuid
+  tenantId          String   @map("tenant_id") @db.Uuid
+  pluginId          String   @map("plugin_id") @db.Uuid
+  /// Pattern: exact event name or wildcard ('core.*' / '*.failed').
+  eventPattern      String   @map("event_pattern")
+  /// 'inproc' | 'webhook'
+  deliveryKind      String   @map("delivery_kind")
+  webhookUrl        String?  @map("webhook_url")
+  /// SHA-256 of the secret. Raw is returned only once at create time.
+  webhookSecretHash String?  @map("webhook_secret_hash")
+  active            Boolean  @default(true)
+  failureCount      Int      @default(0) @map("failure_count")
+  lastDeliveredAt   DateTime? @map("last_delivered_at")
+  createdAt         DateTime @default(now()) @map("created_at")
+  updatedAt         DateTime @updatedAt @map("updated_at")
+
+  plugin PluginManifest @relation(fields: [pluginId], references: [id])
+
+  @@index([tenantId, eventPattern])
+  @@index([pluginId, active])
+  @@map("event_subscriptions")
+}
+
+// Scoped API token issued to a plugin. Plugins authenticate to the
+// platform by presenting this token; the granted scopes are checked on
+// every call.
+model CapabilityToken {
+  id            String   @id @default(uuid()) @db.Uuid
+  tenantId      String   @map("tenant_id") @db.Uuid
+  pluginId      String   @map("plugin_id") @db.Uuid
+  /// Scopes actually granted by the approver — subset (or equal) to
+  /// PluginManifest.requestedScopes.
+  grantedScopes String[] @map("granted_scopes")
+  /// SHA-256 of the raw token. Raw is returned only once at issue.
+  tokenHash     String   @unique @map("token_hash")
+  expiresAt     DateTime @map("expires_at")
+  revokedAt     DateTime? @map("revoked_at")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  plugin PluginManifest @relation(fields: [pluginId], references: [id])
+
+  @@index([tenantId, pluginId])
+  @@index([expiresAt])
+  @@map("capability_tokens")
+}
+
+// Per-tenant feature flag — the ultimate kill switch. Setting to false
+// instantly disables a plugin or experimental core feature.
+model FeatureFlag {
+  id        String   @id @default(uuid()) @db.Uuid
+  tenantId  String   @map("tenant_id") @db.Uuid
+  flagKey   String   @map("flag_key")
+  enabled   Boolean  @default(false)
+  /// Optional partial-rollout audience: { userIds: [...], roles: [...] }.
+  audience  Json?
+  updatedBy String   @map("updated_by") @db.Uuid
+  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([tenantId, flagKey])
+  @@index([tenantId, enabled])
+  @@map("feature_flags")
+}
