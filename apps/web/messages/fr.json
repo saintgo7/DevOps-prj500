@@ -189,5 +189,37 @@
     "noncommercialClause": "J'accepte d'utiliser le contenu de cette session uniquement pour la mise en œuvre non commerciale des ODD.",
     "revokeNotice": "Un super-administrateur peut révoquer cette session à tout moment si elle cesse de servir les ODD. La raison est conservée pour toujours.",
     "sessionRevokedBanner": "Cette session a été révoquée le {when}. Raison : {reason}"
+  },
+  "research": {
+    "title": "Sessions de rédaction de recherche",
+    "intro": "Les idées rassemblées de nombreuses sources sont tissées en manuscrits multidisciplinaires — au niveau Nature ou SSCI — rédigés en collaboration ici. Chaque article publié comporte un résumé en cinq paragraphes en langage simple que n'importe qui peut lire.",
+    "natureTier": "Niveau Nature — recherche primaire en sciences naturelles / impact",
+    "ssciTier": "Niveau SSCI — recherche en sciences sociales, politique, pratique",
+    "plainSummaryRequired": "Avant la publication, un résumé en langage simple en anglais ET dans la langue principale est requis.",
+    "ldcCoauthorPrompt": "Au moins un co-auteur d'une institution affiliée à un PMA élargit la vue.",
+    "selfCiteWarning": "L'auto-citation dépasse 20%. Veuillez enregistrer une raison de l'éditeur.",
+    "publishedNote": "Les citations sont gelées à la publication. Les corrections se font uniquement via un erratum séparé."
+  },
+  "book": {
+    "title": "Rédaction de livres — accessible à tous",
+    "intro": "Les livres sont des réorganisations de chroniques, infographies et articles déjà approuvés. Le travail est de curation et raffinement du langage simple — pas d'écriture à partir de zéro.",
+    "license": "Licence par défaut : CC BY-NC-SA 4.0",
+    "chapterSourceLabel": "Source du chapitre (exactement une)",
+    "plainScoreGate": "Le score de langage simple doit être d'au moins 60 pour publier.",
+    "ldcLanguageHint": "Les livres ciblant les PMA doivent inclure au moins une langue de chapitre locale à cette région."
+  },
+  "impact": {
+    "title": "Vérification d'impact — sans envahir la vie privée",
+    "intro": "Un abonnement ou un j'aime n'est pas un consentement. Pour inclure votre participation dans toute étude d'impact, vous devez choisir séparément de participer. Vous pouvez révoquer à tout moment.",
+    "consentClause": "J'accepte que mes signaux liés aux ODD puissent être inclus, de manière anonyme et uniquement agrégée, dans les études d'impact des ODD.",
+    "scope": "Portée (ODD / région / sujet)",
+    "level": "Niveau",
+    "levelAggregate": "Agrégé sur un seul cycle uniquement (niveau le plus faible)",
+    "levelLongitudinal": "Longitudinal (jusqu'à expiration)",
+    "expiresIn": "Expiration par défaut : 12 mois",
+    "revoke": "Révoquer le consentement",
+    "revokedNote": "Les études déjà publiées restent, mais vous êtes exclu du prochain cycle d'agrégation.",
+    "kFloorNote": "Aucun résultat n'est jamais publié à l'extérieur à moins qu'au moins {floor} personnes partagent la même cohorte.",
+    "publishGate": "La publication nécessite l'approbation de deux relecteurs humains (dont l'un est expert du domaine ODD)."
   }
 }

@@ -189,5 +189,37 @@
     "noncommercialClause": "Acepto utilizar el contenido de esta sesión solo para la implementación no comercial de los ODS.",
     "revokeNotice": "Un super-administrador puede revocar esta sesión en cualquier momento si deja de servir a los ODS. La razón se conserva para siempre.",
     "sessionRevokedBanner": "Esta sesión fue revocada el {when}. Razón: {reason}"
+  },
+  "research": {
+    "title": "Sesiones de redacción de investigación",
+    "intro": "Las ideas reunidas de muchas fuentes se entretejen en manuscritos multidisciplinarios — a nivel Nature o SSCI — escritos colaborativamente aquí. Cada artículo publicado lleva un resumen de cinco párrafos en lenguaje sencillo que cualquiera puede leer.",
+    "natureTier": "Nivel Nature — investigación primaria de ciencia natural / impacto",
+    "ssciTier": "Nivel SSCI — investigación social, política y de práctica",
+    "plainSummaryRequired": "Antes de publicar, se requiere un resumen en lenguaje sencillo en inglés Y en el idioma principal.",
+    "ldcCoauthorPrompt": "Al menos un coautor de una institución afiliada a un PMA amplía la perspectiva.",
+    "selfCiteWarning": "La autocita supera el 20%. Por favor, registra el motivo del editor.",
+    "publishedNote": "Las citas se congelan al publicar. Las correcciones solo se hacen mediante una errata separada."
+  },
+  "book": {
+    "title": "Redacción de libros — accesibles para cualquiera",
+    "intro": "Los libros son reordenamientos de columnas, infografías y artículos ya aprobados. El trabajo es curaduría y refinamiento del lenguaje sencillo — no escritura desde cero.",
+    "license": "Licencia predeterminada: CC BY-NC-SA 4.0",
+    "chapterSourceLabel": "Fuente del capítulo (exactamente una)",
+    "plainScoreGate": "La puntuación de lenguaje sencillo debe ser al menos 60 para publicar.",
+    "ldcLanguageHint": "Los libros dirigidos a PMA deben incluir al menos un idioma de capítulo local de esa región."
+  },
+  "impact": {
+    "title": "Verificación de impacto — sin invadir la privacidad",
+    "intro": "Una suscripción o un me gusta no es consentimiento. Para incluir tu participación en cualquier estudio de impacto debes optar por separado. Puedes revocar en cualquier momento.",
+    "consentClause": "Acepto que mis señales relacionadas con los ODS puedan incluirse, de forma anónima y solo agregada, en estudios de impacto de los ODS.",
+    "scope": "Alcance (ODS / región / tema)",
+    "level": "Nivel",
+    "levelAggregate": "Solo agregado de un ciclo (nivel más débil)",
+    "levelLongitudinal": "Longitudinal (hasta el vencimiento)",
+    "expiresIn": "Vencimiento predeterminado: 12 meses",
+    "revoke": "Revocar consentimiento",
+    "revokedNote": "Los estudios ya publicados se mantienen, pero se te excluye desde el siguiente ciclo de agregación.",
+    "kFloorNote": "Ningún resultado se publica externamente a menos que al menos {floor} personas compartan la misma cohorte.",
+    "publishGate": "La publicación necesita la aprobación de dos revisores humanos (uno de los cuales sea experto en el dominio ODS)."
   }
 }

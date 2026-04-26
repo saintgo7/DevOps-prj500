@@ -678,3 +678,285 @@ model SessionInvite {
   @@index([expiresAt])
   @@map("session_invites")
 }
+
+// ============================================================
+// Research authoring + Book authoring + Impact verification (ADR-0017)
+// ============================================================
+
+// A multidisciplinary manuscript authored inside the platform. Targets either
+// 'nature' (natural-science / Nature-tier) or 'ssci' (social-science / SSCI)
+// audiences. State machine is append-only; transitions also produce audit
+// events. See ADR-0017 §A for the full lifecycle and citation rules.
+model ResearchManuscript {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  ownerId         String   @map("owner_id") @db.Uuid
+  /// 'nature' | 'ssci' — drives required peer-review depth and metadata schema.
+  tier            String
+  /// Multilingual title + abstracts: { en: { title, scientificAbstract }, ko: ..., ... }
+  bodyI18n        Json     @map("body_i18n")
+  primaryLocale   String   @default("ko") @map("primary_locale")
+  /// Plain-language summary in 5 paragraphs or fewer; required at publish time.
+  /// { en: string, ko: string, sw?: string, ... }
+  plainLanguageSummary Json? @map("plain_language_summary")
+  sdgFocus        String[] @default([]) @map("sdg_focus")
+  /// Regions where the implications apply most directly (LDC tags get priority).
+  applicableRegions String[] @default([]) @map("applicable_regions")
+  /// 'draft' | 'internal_review' | 'external_peer_review' | 'revise_requested'
+  /// | 'accepted' | 'published' | 'withdrawn'
+  state           String   @default("draft")
+  submittedAt     DateTime? @map("submitted_at")
+  acceptedAt      DateTime? @map("accepted_at")
+  publishedAt     DateTime? @map("published_at")
+  withdrawnAt     DateTime? @map("withdrawn_at")
+  withdrawReason  String?  @map("withdraw_reason")
+  /// Internal DOI or partner-issued DOI once minted; nullable until published.
+  doi             String?
+  /// Citations frozen at publish time — copy of citation rows for tamper resistance.
+  frozenCitations Json?    @map("frozen_citations")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  coauthors  ManuscriptCoauthor[]
+  citations  ManuscriptCitation[]
+  bookChapters BookChapter[]
+
+  @@index([tenantId, state, createdAt])
+  @@index([sdgFocus], type: Gin)
+  @@map("research_manuscripts")
+}
+
+// One co-author of a manuscript. ORCID is preferred; if absent, contactEmail
+// + affiliation are required (enforced at the service layer).
+model ManuscriptCoauthor {
+  id            String  @id @default(uuid()) @db.Uuid
+  tenantId      String  @map("tenant_id") @db.Uuid
+  manuscriptId  String  @map("manuscript_id") @db.Uuid
+  /// Display name as the author wishes it printed in the byline.
+  displayName   String  @map("display_name")
+  orcid         String? // 0000-0000-0000-0000 form
+  contactEmail  String? @map("contact_email")
+  affiliation   String?
+  /// CRediT roles: 'conceptualization' | 'methodology' | 'software' | 'validation' | ...
+  creditRoles   String[] @default([]) @map("credit_roles")
+  /// True if author is in an LDC-affiliated institution — surfaces equity weight.
+  ldcAffiliated Boolean  @default(false) @map("ldc_affiliated")
+  position      Int     @default(0)
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  manuscript ResearchManuscript @relation(fields: [manuscriptId], references: [id])
+
+  @@unique([manuscriptId, position])
+  @@index([manuscriptId])
+  @@map("manuscript_coauthors")
+}
+
+// One citation entry. Exactly one of { sourceColumnId, sourceManuscriptId,
+// sourcePatentInsightId, sourceWatchItemId, externalDoi, externalUrl } is set
+// (enforced via DB CHECK).
+model ManuscriptCitation {
+  id                   String  @id @default(uuid()) @db.Uuid
+  tenantId             String  @map("tenant_id") @db.Uuid
+  manuscriptId         String  @map("manuscript_id") @db.Uuid
+  position             Int
+  sourceColumnId       String? @map("source_column_id") @db.Uuid
+  sourceManuscriptId   String? @map("source_manuscript_id") @db.Uuid
+  sourcePatentInsightId String? @map("source_patent_insight_id") @db.Uuid
+  sourceWatchItemId    String? @map("source_watch_item_id") @db.Uuid
+  externalDoi          String? @map("external_doi")
+  externalUrl          String? @map("external_url")
+  /// Free-text rendered citation (e.g. "Smith et al., 2025") — the canonical link
+  /// is held by the source* / external* fields above.
+  rendered             String
+  createdAt            DateTime @default(now()) @map("created_at")
+
+  manuscript ResearchManuscript @relation(fields: [manuscriptId], references: [id])
+
+  @@unique([manuscriptId, position])
+  @@index([manuscriptId])
+  @@map("manuscript_citations")
+}
+
+// A book that re-uses already-curated content (columns, manuscripts, short
+// stories, watch digests). Books almost never carry brand-new prose — the
+// editorial work is *re-arrangement and plain-language refinement*.
+model BookProject {
+  id            String   @id @default(uuid()) @db.Uuid
+  tenantId      String   @map("tenant_id") @db.Uuid
+  ownerId       String   @map("owner_id") @db.Uuid
+  /// { en: { title, subtitle, blurb }, ko: ..., ... }
+  bodyI18n      Json     @map("body_i18n")
+  primaryLocale String   @default("ko") @map("primary_locale")
+  sdgFocus      String[] @default([]) @map("sdg_focus")
+  /// LDC focus regions — ensures at least one chapter locale matches.
+  applicableRegions String[] @default([]) @map("applicable_regions")
+  /// CC BY-NC-SA 4.0 default; partner agreements may override per-project.
+  license       String   @default("CC-BY-NC-SA-4.0")
+  /// 'draft' | 'review' | 'published' | 'retired'
+  state         String   @default("draft")
+  publishedAt   DateTime? @map("published_at")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  chapters BookChapter[]
+
+  @@index([tenantId, state, createdAt])
+  @@map("book_projects")
+}
+
+// One chapter. Source rule (also enforced via DB CHECK):
+//   exactly one of { sourceColumnId, sourceManuscriptId, sourceShortStoryId,
+//                    sourceWatchDigestId, sourceCustom } is non-null.
+// `sourceCustom` carries free editor text — only used when no curated source
+// fits. Editor must record `sourceCustomReason` when this is set.
+model BookChapter {
+  id                  String  @id @default(uuid()) @db.Uuid
+  tenantId            String  @map("tenant_id") @db.Uuid
+  bookId              String  @map("book_id") @db.Uuid
+  position            Int
+  /// { en: { title, lead }, ko: ..., ... }
+  headerI18n          Json    @map("header_i18n")
+  sourceColumnId      String? @map("source_column_id") @db.Uuid
+  sourceManuscriptId  String? @map("source_manuscript_id") @db.Uuid
+  sourceShortStoryId  String? @map("source_short_story_id") @db.Uuid
+  sourceWatchDigestId String? @map("source_watch_digest_id") @db.Uuid
+  sourceCustom        String? @map("source_custom")
+  sourceCustomReason  String? @map("source_custom_reason")
+  /// Plain-language pass score; needs ≥ 60 to ship.
+  plainLanguageScore  Int?    @map("plain_language_score")
+  createdAt           DateTime @default(now()) @map("created_at")
+  updatedAt           DateTime @updatedAt @map("updated_at")
+
+  book       BookProject         @relation(fields: [bookId], references: [id])
+  manuscript ResearchManuscript? @relation(fields: [sourceManuscriptId], references: [id])
+
+  @@unique([bookId, position])
+  @@index([bookId])
+  @@map("book_chapters")
+}
+
+// One subscriber/liker's explicit opt-in to be counted in impact studies.
+// We never assume "subscribe = consent". Revocation is honoured at the next
+// aggregation cycle; existing observations remain timestamped.
+model ImpactConsentRecord {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  userId          String   @map("user_id") @db.Uuid
+  /// Scope this consent applies to:
+  ///   { sdgFocus: ['SDG-6'], regions: ['BD','TZ'], topicTags: ['water'] }
+  scope           Json
+  /// 'aggregate-only' = single-cycle aggregate only.
+  /// 'longitudinal'   = multi-cycle (still aggregate output) until expiry.
+  level           String   @default("aggregate-only")
+  /// Version of the consent text the user agreed to.
+  consentVersion  String   @map("consent_version")
+  /// SHA-256 of the exact text shown — defence against retroactive edits.
+  agreedClauseHash String  @map("agreed_clause_hash")
+  expiresAt       DateTime @map("expires_at")
+  revokedAt       DateTime? @map("revoked_at")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  @@unique([tenantId, userId, consentVersion])
+  @@index([tenantId, userId])
+  @@index([expiresAt])
+  @@index([revokedAt])
+  @@map("impact_consent_records")
+}
+
+// One scientifically-defined study: region × country × SDG-topic × time window.
+// Lifecycle: draft → enrolling → analysing → review → published → retired.
+model ImpactStudy {
+  id              String   @id @default(uuid()) @db.Uuid
+  tenantId        String   @map("tenant_id") @db.Uuid
+  ownerId         String   @map("owner_id") @db.Uuid
+  title           String
+  hypothesis      String
+  /// Aggregation method ('count', 'rate', 'delta', ...) — referenced by service.
+  method          String
+  /// k-anonymity floor for this study (default 10; 25 for sensitive topics).
+  kAnonymityFloor Int      @default(10) @map("k_anonymity_floor")
+  sensitiveTopic  Boolean  @default(false) @map("sensitive_topic")
+  sdgFocus        String[] @default([]) @map("sdg_focus")
+  regions         String[] @default([])
+  topicTags       String[] @default([]) @map("topic_tags")
+  windowStart     DateTime @map("window_start")
+  windowEnd       DateTime @map("window_end")
+  /// 'draft' | 'enrolling' | 'analysing' | 'review' | 'published' | 'retired'
+  state           String   @default("draft")
+  enrolledCount   Int      @default(0) @map("enrolled_count")
+  publishedAt     DateTime? @map("published_at")
+  retiredAt       DateTime? @map("retired_at")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  observations ImpactObservation[]
+  reviews      ImpactStudyReview[]
+  disclosures  ImpactDisclosure[]
+
+  @@index([tenantId, state, createdAt])
+  @@index([sdgFocus], type: Gin)
+  @@map("impact_studies")
+}
+
+// Aggregate-only observation. The DB CHECK guarantees cohortSize >= 1, but
+// the *application layer* enforces cohortSize >= study.kAnonymityFloor at
+// publish time. Anything below is held back from external disclosure.
+model ImpactObservation {
+  id            String   @id @default(uuid()) @db.Uuid
+  tenantId      String   @map("tenant_id") @db.Uuid
+  studyId       String   @map("study_id") @db.Uuid
+  /// Cohort key: { region, sdgFocus, topicTag, ageBand? } — combined identity.
+  cohortKey     Json     @map("cohort_key")
+  cohortSize    Int      @map("cohort_size")
+  /// Numeric / structured aggregate (e.g. { signups: 124, weekOverWeek: 1.18 }).
+  metric        Json
+  /// Set true once a publish-time k-anonymity check passed.
+  releaseReady  Boolean  @default(false) @map("release_ready")
+  /// Set true if the cohort fell below the floor and was held back.
+  suppressed    Boolean  @default(false)
+  observedAt    DateTime @map("observed_at")
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  study ImpactStudy @relation(fields: [studyId], references: [id])
+
+  @@index([tenantId, studyId, observedAt])
+  @@map("impact_observations")
+}
+
+// Append-only review ledger. Sensitive studies need 2-of-N approvals before
+// publish (one of which must be a domain-SDG reviewer).
+model ImpactStudyReview {
+  id          String   @id @default(uuid()) @db.Uuid
+  tenantId    String   @map("tenant_id") @db.Uuid
+  studyId     String   @map("study_id") @db.Uuid
+  reviewerId  String   @map("reviewer_id") @db.Uuid
+  /// 'approve' | 'reject' | 'request_changes'
+  decision    String
+  /// True if the reviewer is recognised as an SDG-domain expert.
+  domainExpert Boolean @default(false) @map("domain_expert")
+  comment     String?
+  decidedAt   DateTime @default(now()) @map("decided_at")
+
+  study ImpactStudy @relation(fields: [studyId], references: [id])
+
+  @@index([tenantId, studyId])
+  @@index([reviewerId])
+  @@map("impact_study_reviews")
+}
+
+// Append-only record of every external disclosure of a study (Atom feed,
+// partner webhook, manual export). Used to honour revocation requests by
+// proving who saw what when.
+model ImpactDisclosure {
+  id          String   @id @default(uuid()) @db.Uuid
+  tenantId    String   @map("tenant_id") @db.Uuid
+  studyId     String   @map("study_id") @db.Uuid
+  channel     String   // 'atom' | 'webhook' | 'export'
+  recipient   String?
+  disclosedAt DateTime @default(now()) @map("disclosed_at")
+
+  study ImpactStudy @relation(fields: [studyId], references: [id])
+
+  @@index([tenantId, studyId])
+  @@index([disclosedAt])
+  @@map("impact_disclosures")
+}

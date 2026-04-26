@@ -189,5 +189,37 @@
     "noncommercialClause": "我同意将本会议内容仅用于非商业目的的 SDG 实施。",
     "revokeNotice": "若不再服务于 SDGs,超级管理员可随时撤回本会议。撤回原因永久保存。",
     "sessionRevokedBanner": "本会议已于 {when} 撤回。原因:{reason}"
+  },
+  "research": {
+    "title": "研究·撰稿会议",
+    "intro": "我们将多方汇集的洞见以多学科方式编织为 Nature 级或 SSCI 级论文,在本平台内合作撰写。每篇已发表论文都附有一份任何人都能读懂的五段式平实语言摘要。",
+    "natureTier": "Nature 级 —— 自然科学·影响一次研究",
+    "ssciTier": "SSCI 级 —— 社会科学·政策·实践研究",
+    "plainSummaryRequired": "发表前,必须同时具备英文与主语言的平实摘要。",
+    "ldcCoauthorPrompt": "至少一位最不发达国家所属机构的共同作者会让视野更宽广。",
+    "selfCiteWarning": "自引比例超过 20%。请记录编辑理由。",
+    "publishedNote": "发表时引用列表被冻结。订正仅通过独立勘误进行。"
+  },
+  "book": {
+    "title": "图书撰写 —— 任何人都能读懂",
+    "intro": "图书是对已经过人工审批的专栏、卡片新闻、论文的重新编排。重点是策展与平实语言润色,而非从头写作。",
+    "license": "默认许可:CC BY-NC-SA 4.0",
+    "chapterSourceLabel": "章节来源(必须恰好一个)",
+    "plainScoreGate": "平实语言评分需达到 60 以上方可发行。",
+    "ldcLanguageHint": "面向最不发达国家的图书必须至少包含一种当地语言的章节。"
+  },
+  "impact": {
+    "title": "影响验证 —— 不侵犯隐私",
+    "intro": "订阅或点赞并不等同于同意。若要将您的参与计入任何影响研究,您必须另行选择加入。您可以随时撤回。",
+    "consentClause": "我同意将与我相关的 SDG 信号以匿名和仅集合的方式纳入 SDG 影响研究。",
+    "scope": "范围(SDG / 地区 / 主题)",
+    "level": "级别",
+    "levelAggregate": "仅单周期集合(最弱级别)",
+    "levelLongitudinal": "时间序列(直到到期)",
+    "expiresIn": "默认到期:12 个月",
+    "revoke": "撤回同意",
+    "revokedNote": "已发布的研究保持不变,但从下一次集合周期起将不再包含您。",
+    "kFloorNote": "除非至少 {floor} 人共享同一群组,否则任何结果都不会对外公开。",
+    "publishGate": "发表需要两位人工审稿人(其中一位为 SDG 领域专家)批准。"
   }
 }

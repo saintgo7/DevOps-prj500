@@ -194,5 +194,40 @@
     "revokeNotice": "A super-administrator may revoke this session at any time if it stops serving the SDGs. The reason is recorded forever.",
     "sessionRevokedBanner": "This session was revoked on {when}. Reason: {reason}",
     "_translationNeeded": "Not yet translated to Português. PR welcome."
+  },
+  "research": {
+    "title": "Research authoring sessions",
+    "intro": "Insights gathered from many sources are woven into multidisciplinary manuscripts — at Nature tier or SSCI tier — written collaboratively here. Every published paper carries a five-paragraph plain-language summary anyone can read.",
+    "natureTier": "Nature tier — natural-science / impact primary research",
+    "ssciTier": "SSCI tier — social-science, policy, practice research",
+    "plainSummaryRequired": "Before publishing, a plain-language summary in English AND in the primary locale is required.",
+    "ldcCoauthorPrompt": "At least one co-author from an LDC-affiliated institution broadens the view.",
+    "selfCiteWarning": "Self-citation exceeds 20%. Please record an editor's reason.",
+    "publishedNote": "Citations freeze at publication. Corrections happen only via separate erratum.",
+    "_translationNeeded": "Not yet translated to Português. PR welcome."
+  },
+  "book": {
+    "title": "Book authoring — accessible to anyone",
+    "intro": "Books are re-arrangements of already-approved columns, card news, and papers. The work is curation and plain-language refinement — not writing from scratch.",
+    "license": "Default licence: CC BY-NC-SA 4.0",
+    "chapterSourceLabel": "Chapter source (exactly one)",
+    "plainScoreGate": "Plain-language score must be at least 60 to publish.",
+    "ldcLanguageHint": "Books targeting LDCs must include at least one chapter language local to that region.",
+    "_translationNeeded": "Not yet translated to Português. PR welcome."
+  },
+  "impact": {
+    "title": "Impact verification — without invading privacy",
+    "intro": "A subscription or a like is not consent. To include your engagement in any impact study you must opt in separately. You can revoke any time.",
+    "consentClause": "I agree that my SDG-related signals may be included, anonymously and aggregate-only, in SDG impact studies.",
+    "scope": "Scope (SDG / region / topic)",
+    "level": "Level",
+    "levelAggregate": "Single-cycle aggregate only (weakest level)",
+    "levelLongitudinal": "Longitudinal (until expiry)",
+    "expiresIn": "Default expiry: 12 months",
+    "revoke": "Revoke consent",
+    "revokedNote": "Already-published studies remain, but you are excluded from the next aggregation cycle onward.",
+    "kFloorNote": "No result is ever released externally unless at least {floor} people share the same cohort.",
+    "publishGate": "Publication needs two human reviewers (one of whom is an SDG domain expert) to approve.",
+    "_translationNeeded": "Not yet translated to Português. PR welcome."
   }
 }

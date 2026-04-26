@@ -4,8 +4,11 @@ import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { AuditModule } from './audit/audit.module';
 import { AuthModule } from './auth/auth.module';
+import { BooksModule } from './books/books.module';
 import { CatalogModule } from './catalog/catalog.module';
 import { ColumnsModule } from './columns/columns.module';
+import { ImpactModule } from './impact/impact.module';
+import { ResearchModule } from './research/research.module';
 import { SessionsModule } from './sessions/sessions.module';
 import { StoriesModule } from './stories/stories.module';
 import { WatchModule } from './watch/watch.module';
@@ -28,9 +31,12 @@ import { TenantContextMiddleware } from './tenant/tenant-context.middleware';
     PrismaModule,
     AuditModule,
     AuthModule,
+    BooksModule,
     CatalogModule,
     ColumnsModule,
+    ImpactModule,
     MonitoringModule,
+    ResearchModule,
     SessionsModule,
     StoriesModule,
     WatchModule,
