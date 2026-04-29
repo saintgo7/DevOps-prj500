@@ -62,3 +62,6 @@ storybook-static/
 # Misc
 tmp/
 .cache/
+
+# Generated document exports (regenerable from docs/ via scripts/md2docx.py)
+exports/
