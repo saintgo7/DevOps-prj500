@@ -1,0 +1,361 @@
+{
+  "common": {
+    "appName": "SDG Impact Cloud",
+    "tagline": "UN 지속가능발전목표(SDGs) 기반 임팩트 측정·보고 SaaS",
+    "loading": "불러오는 중…",
+    "submit": "확인",
+    "cancel": "취소",
+    "back": "뒤로",
+    "home": "홈으로",
+    "signOut": "로그아웃",
+    "signIn": "로그인",
+    "signUp": "가입",
+    "myProfile": "내 프로필",
+    "language": "언어"
+  },
+  "home": {
+    "goalsHeading": "17개 지속가능발전목표",
+    "apiOffline": "카탈로그 API에 연결되지 않았습니다. {dev} 또는 {compose}로 로컬 환경을 기동하세요.",
+    "footerDocs": "문서"
+  },
+  "auth": {
+    "signUpTitle": "가입 (Sign Up)",
+    "signUpHint": "새 워크스페이스(Tenant)와 관리자 계정을 만듭니다.",
+    "signInTitle": "로그인 (Sign In)",
+    "email": "이메일",
+    "password": "비밀번호",
+    "passwordHint": "비밀번호 (12자 이상)",
+    "organizationName": "조직명 (선택)",
+    "displayName": "이름 (선택)",
+    "submitting": "처리 중…",
+    "haveAccount": "이미 계정이 있으신가요?",
+    "noAccount": "계정이 없으신가요?",
+    "signupFailed": "가입 실패",
+    "signinFailed": "로그인 실패"
+  },
+  "me": {
+    "title": "내 프로필",
+    "email": "이메일",
+    "name": "이름",
+    "status": "상태",
+    "mfa": "MFA",
+    "mfaActive": "활성",
+    "mfaInactive": "비활성",
+    "tenantId": "Tenant ID",
+    "userId": "User ID",
+    "loadFailed": "프로필을 불러오지 못했습니다"
+  },
+  "goal": {
+    "back": "← 17 Goals",
+    "targets": "Targets ({count})",
+    "noTargets": "이 Goal에 대한 샘플 Target이 아직 시드되어 있지 않습니다.",
+    "tier": "Tier"
+  },
+  "languageSwitcher": {
+    "label": "언어 선택"
+  },
+  "glossary": {
+    "title": "평이한 말 용어집",
+    "intro": "우리는 우리가 하는 일을 평이한 말로 부릅니다. 각 기술 용어가 일상의 말로 무엇을 뜻하는지 정리합니다.",
+    "yourCallingCard": {
+      "plain": "내 소명 카드",
+      "technical": "MatchProfile",
+      "explain": "내가 어떤 SDG를 마음에 품고 있는지, 무엇을 줄 수 있고 무엇이 필요한지를 짧게 적어 다른 사람에게 보여주는 페이지."
+    },
+    "spark": {
+      "plain": "관심의 불씨",
+      "technical": "MatchSignal",
+      "explain": "저장이나 좋아요 같은 작은 행동. 누군가에 대해 더 알고 싶을 수도 있다는 신호."
+    },
+    "companion": {
+      "plain": "동행",
+      "technical": "MatchPair",
+      "explain": "양쪽 모두가 연결에 동의한 사람."
+    },
+    "kindred": {
+      "plain": "비슷한 마음 찾기",
+      "technical": "벡터 유사도",
+      "explain": "당신이 자신에 대해 쓴 글과 다른 사람의 글을 비교해, 비슷한 것을 마음에 품은 사람을 제안합니다."
+    },
+    "mustHave": {
+      "plain": "꼭 맞아야 하는 것",
+      "technical": "hard filter",
+      "explain": "절대 매칭되지 않을 조건들. 예: 공통 언어가 최소 1개는 있어야 함."
+    },
+    "fairnessBoost": {
+      "plain": "공평함의 가중치",
+      "technical": "equity weight",
+      "explain": "보통 목소리가 묻히는 사람들 — 예를 들어 최빈국에서 일하는 활동가 — 에게 약간 더 가시성을 줍니다. 네트워크가 이미 큰 목소리만 더 키우지 않도록."
+    },
+    "yourSpace": {
+      "plain": "당신만의 공간",
+      "technical": "tenant isolation",
+      "explain": "당신의 데이터는 다른 모든 조직과 완전히 분리되어 저장됩니다. 다른 조직의 누구도 절대 볼 수 없습니다."
+    },
+    "privacyLine": {
+      "plain": "프라이버시 선",
+      "technical": "RLS (Row-Level Security)",
+      "explain": "데이터베이스에 새겨진 규칙. 우리 자신의 코드도 실수로 다른 사람의 데이터를 보여줄 수 없게 합니다."
+    },
+    "changeRecord": {
+      "plain": "변경 기록",
+      "technical": "audit event",
+      "explain": "중요한 변경이 일어날 때마다 누가 언제 바꿨는지 기록합니다. 언제든 이력을 확인할 수 있습니다."
+    },
+    "privacyMask": {
+      "plain": "프라이버시 마스크",
+      "technical": "PII 마스킹",
+      "explain": "AI가 당신의 글을 읽기 전에 이름·전화번호·주소 같은 개인정보를 가립니다."
+    }
+  },
+  "watch": {
+    "title": "이번 주의 발견",
+    "intro": "매주, 당신이 마음에 품은 SDG에 관해 UN 기관·공여자·연구자·풀뿌리 단체들이 무엇을 이야기하는지 살핍니다.",
+    "noFindings": "이번 주 조건에 맞는 발견이 없습니다. 필터를 넓혀보세요.",
+    "subscribe": "매주 내 언어로 받기",
+    "expressInterest": "더 배우고 싶어요 / 함께 일하고 싶어요",
+    "interestRecorded": "내 비공개 목록에 저장했어요. 제가 누구에게도 연락하지 않습니다 — 당신이 결정하세요.",
+    "publicFeed": "공개 주간 피드 (CC BY 4.0으로 자유롭게 재신디케이트)"
+  },
+  "column": {
+    "todayTitle": "오늘의 칼럼",
+    "todayIntro": "공개된 콘텐츠 기준에 따라 출처가 명확한 짧은 큐레이션입니다.",
+    "byStandard": "콘텐츠 기준 {version}에 따라 큐레이션됨 — 발행된 모든 글에 이 버전이 기록됩니다.",
+    "originalSource": "원문 출처",
+    "translatedFrom": "{sourceLanguage}에서 번역됨",
+    "approveTitle": "발행 전 승인",
+    "approveDescription": "자동 발행은 없습니다. 최소 한 명의 사람이 승인 버튼을 클릭해야만 독자에게 도달합니다. 민감한 주제는 두 명이 필요합니다.",
+    "approveDecision": {
+      "approve": "승인하고 발행",
+      "reject": "반려 (이 발견은 발행되지 않습니다)",
+      "revise": "수정 요청으로 돌려보내기"
+    },
+    "approveExpired": "이 승인 링크는 만료되었습니다. 편집자에게 재발급을 요청해 주세요.",
+    "approveAlreadyDecided": "이 승인 링크는 이미 사용되었습니다. 각 링크는 단 한 번만 사용할 수 있습니다.",
+    "approveTokenInvalid": "이 승인 링크를 검증할 수 없습니다. 서명이 일치하지 않습니다.",
+    "approveSuccess": "감사합니다. 당신의 결정이 {time}에 기록되었습니다.",
+    "managingApprovers": "승인자 관리",
+    "managingApproversBody": "승인자를 추가하거나 제거하는 것 자체가 민감한 작업입니다. 두 명의 관리자가 동의해야 하며, 변경은 변경 불가능한 감사 기록에 남습니다.",
+    "partnerTitle": "협력 기관",
+    "partnerBody": "협력 기관은 서명된 웹훅(HMAC-SHA256) 또는 CC BY 4.0의 공개 Atom 피드를 통해 발행된 모든 칼럼을 받을 수 있습니다. 파트너는 초안·구독·비공개 관심을 절대 볼 수 없습니다."
+  },
+  "dashboard": {
+    "dashboardTitle": "대시보드",
+    "sectionGoals": "17개 목표",
+    "sectionTargets": "169개 세부목표",
+    "sectionPostSdgs": "Post-2030 의제",
+    "sectionPostSdgsBody": "SDG 이후 시대를 위해 국제사회가 논의하기 시작한 주제들입니다.",
+    "sectionImpact": "우리가 측정한 우리의 임팩트",
+    "sourceTabExternal": "세계의 자료",
+    "sourceTabExternalBody": "외부의 연구·논문·기사·칼럼·뉴스레터·검증된 SNS 자료 중 12개 정합성 규칙을 모두 통과한 것만.",
+    "sourceTabInternal": "이 플랫폼의 자료",
+    "sourceTabInternalBody": "우리가 직접 발행하는 뉴스레터·칼럼·논문.",
+    "researchTitle": "연구·프로젝트 기획",
+    "researchIntro": "발견한 것에서 영감을 받아 새 연구나 사업을 기획하세요. 공유하기 전에는 본인 워크스페이스에서만 보입니다.",
+    "outreachTitle": "전문가에게 협력 제안",
+    "outreachIntro": "연구자·실무자·파트너에게 보낼 메시지 초안을 만드세요. 자동 발신은 절대 없습니다 — 당신이 보내기를 클릭합니다.",
+    "monitoringTitle": "모니터링 (관리자 전용)",
+    "monitoringIntro": "정합성·승인·파트너·연구·워치를 통합 관리. 이 화면을 보는 행위 자체가 감사 기록에 남습니다.",
+    "chatTitle": "실시간 대화",
+    "chatIntro": "당신은 자신의 언어로 입력하세요. 상대는 자기 언어로 읽습니다. 원문은 언제나 보존됩니다."
+  },
+  "story": {
+    "todayShortTitle": "오늘의 30초 이야기",
+    "todayShortIntro": "당신의 언어와 연령에 맞춘 짧고 출처 있는 이야기입니다. 출처는 항상 표시됩니다. AI가 보조하되 모든 변형은 사람이 승인합니다.",
+    "ageTier": {
+      "children": "어린이용",
+      "teen": "청소년용",
+      "adult": "성인용",
+      "senior": "천천히 보기"
+    },
+    "approveVariant": "이 변형을 게시 승인",
+    "rejectVariant": "이 변형을 반려",
+    "neverAutoPost": "자동 게시는 없습니다. 어느 플랫폼에 보내기 전에 사람이 변형마다 승인합니다.",
+    "platformLabel": "플랫폼",
+    "watermarkExplain": "모든 영상은 우측 하단에 'AI 보조 · 출처 표시' 워터마크를 영구 표기합니다.",
+    "retract": "이 게시 철회",
+    "retractedNote": "이 게시는 {when}에 철회되었습니다."
+  },
+  "strategy": {
+    "toneTitle": "어조",
+    "toneIntro": "다섯 어조 — 재미있게·친구처럼·엄중하게·차분히 가르치며·잠시 멈추어. 순간에 맞는 어조를 고르세요. 설교는 절대 X.",
+    "ethicsClosing": "은유적 환기: 우리가 오늘 만드는 것이 내일의 AI를, 그 AI가 그다음의 인간을 만듭니다.",
+    "trendBenchTitle": "트렌드 벤치마크 (메타데이터만)",
+    "trendBenchBody": "플랫폼·언어·시간대별 평균 길이·훅 타이밍·해시태그 빈도를 추적합니다. 외부 콘텐츠 자체는 절대 복제·재배포 X.",
+    "patentTitle": "오늘의 발명 — SDG 실천을 위한",
+    "patentBody": "새로 공개된 특허·저작권 한 건. 어느 SDG에, 어느 지역에 도움이 되는지 매핑. 영리 목적 재배포 절대 X.",
+    "sessionTitle": "초대제 전략 회의",
+    "sessionIntro": "새 기술이 어떤 SDG를 어떻게 도울 수 있는지, 당신이 초대한 사람들과만 깊이 의논합니다. 비영리 목적만.",
+    "noncommercialClause": "이 회의의 내용을 비영리 목적의 SDG 실천에만 사용하겠다고 동의합니다.",
+    "revokeNotice": "최고관리자는 SDG 실현에 부적합하다고 판단되는 즉시 이 회의를 회수할 수 있습니다. 사유는 영구 보존됩니다.",
+    "sessionRevokedBanner": "이 회의는 {when}에 회수되었습니다. 사유: {reason}"
+  },
+  "research": {
+    "title": "연구·집필 세션",
+    "intro": "여러 출처에서 모은 시사점을 다학제 방식으로 엮어 Nature 수준 또는 SSCI 수준 논문을 본 플랫폼 안에서 함께 씁니다. 게재된 모든 논문은 누구나 읽을 수 있는 5문단 요약을 함께 갖습니다.",
+    "natureTier": "Nature 수준 — 자연과학·임팩트 1차 연구",
+    "ssciTier": "SSCI 수준 — 사회과학·정책·실천 연구",
+    "plainSummaryRequired": "게재 전, 영어와 모국어 두 언어로 평이한 요약이 반드시 있어야 합니다.",
+    "ldcCoauthorPrompt": "최저개발국 소속 공동저자가 한 명 이상 함께하면 시야가 더 넓어집니다.",
+    "selfCiteWarning": "자기 인용이 20%를 넘었습니다. 편집자 사유를 적어 주세요.",
+    "publishedNote": "게재된 시점에 인용 목록이 동결됩니다. 정정은 별도 erratum으로만 수행합니다."
+  },
+  "book": {
+    "title": "도서 집필 — 누구나 읽을 수 있게",
+    "intro": "이미 사람이 승인한 칼럼·카드뉴스·논문을 다시 엮어 한 권의 책으로 만듭니다. 새 글을 처음부터 쓰는 대신 재구성과 평이한 언어 다듬기에 집중합니다.",
+    "license": "기본 라이선스: CC BY-NC-SA 4.0",
+    "chapterSourceLabel": "챕터 출처 (정확히 하나)",
+    "plainScoreGate": "평이한 언어 점수 60점 이상이어야 출간됩니다.",
+    "ldcLanguageHint": "최저개발국 대상 도서라면 해당 지역 언어가 한 챕터 이상에 포함되어야 합니다."
+  },
+  "impact": {
+    "title": "임팩트 검증 — 사생활을 침해하지 않으며",
+    "intro": "구독·좋아요만으로는 충분하지 않습니다. 이 플랫폼이 만든 영향을 객관적으로 측정하려면 당신의 별도 동의가 필요합니다. 동의는 언제든 철회할 수 있습니다.",
+    "consentClause": "내 SDG 관련 지표를 익명·집계 형태로만, SDG 임팩트 연구에 포함시키는 것에 동의합니다.",
+    "scope": "범위 (SDG / 지역 / 주제)",
+    "level": "수준",
+    "levelAggregate": "단발 집계만 (가장 약한 수준)",
+    "levelLongitudinal": "시계열 (만료까지)",
+    "expiresIn": "기본 만료: 12개월",
+    "revoke": "동의 철회",
+    "revokedNote": "이미 게재된 연구는 그대로 남되, 다음 집계 주기부터 당신은 제외됩니다.",
+    "kFloorNote": "어떤 결과도 같은 분류 안에 최소 {floor}명이 모이지 않으면 외부에 공개되지 않습니다.",
+    "publishGate": "게재에는 두 명의 인간 검토자(SDG 도메인 전문가 1명 포함) 승인이 필요합니다."
+  },
+  "funding": {
+    "title": "후원·임팩트 투자 연결",
+    "intro": "지역·국가별 SDG 실천가가 제안서를 공개하면 기부·후원·임팩트 투자가 연결됩니다. 본 플랫폼은 돈을 직접 보관하지 않습니다 — 외부 결제 파트너가 자금 흐름을 처리합니다.",
+    "noncommercialClause": "본 제안의 자금은 비영리 SDG 실천에만 사용한다고 동의합니다.",
+    "fundingModel": "자금 모델",
+    "modelAllOrNothing": "All-or-nothing — 목표 미달이면 전액 환불",
+    "modelKeepItAll": "Keep-it-all — 모인 만큼 사용 (긴급 구호에만 허용)",
+    "milestoneLabel": "마일스톤 (단계별 자금 풀림)",
+    "milestoneEvidenceHint": "각 마일스톤 풀림 전에 증빙(영상·사진·외부 URL) + 검토자 2명 승인 필요",
+    "singleContribCap": "단일 후원자는 목표액의 25%를 넘길 수 없습니다 — 한 사람의 큰돈이 의사결정을 좌우하지 않도록.",
+    "pauseNotice": "최고관리자는 의심스러운 제안을 즉시 일시정지할 수 있습니다. 사유는 영구 보존됩니다.",
+    "flagCta": "이 제안 신고",
+    "reportTitle": "임팩트 보고",
+    "reportIntro": "후원자는 자기 돈이 만든 변화를 검증된 데이터(임팩트 연구)로 확인할 수 있습니다."
+  },
+  "maker": {
+    "title": "SDG 실천가 메이커스페이스",
+    "intro": "코드를 처음부터 짜지 않아도 됩니다. i18n·RLS·평이한 언어·윤리 톤이 미리 들어 있는 템플릿에서 시작해, 자기에게 필요한 웹·앱·봇을 만듭니다.",
+    "templateKindStaticSite": "정적 사이트",
+    "templateKindNextApp": "Next.js 풀스택",
+    "templateKindPwa": "오프라인 PWA",
+    "templateKindMobileRn": "모바일 (React Native)",
+    "templateKindDataDashboard": "데이터 대시보드",
+    "templateKindSmsBot": "SMS 봇",
+    "templateKindWhatsappBot": "WhatsApp 봇",
+    "noncommercialClause": "이 도구는 비영리 SDG 실천에만 사용하겠습니다.",
+    "readmeGate": "공개(live) 전, 적어도 하나의 산출물이 평이한 README 60점 이상이어야 합니다.",
+    "licenseHint": "기본 라이선스 — MIT, Apache-2.0, CC-BY-NC-SA-4.0 중 선택",
+    "ldcLanguageHint": "최저개발국 대상 도구는 그 지역 언어 1개 이상 포함 권장",
+    "aiProvenance": "AI 보조로 만든 코드 라인은 모델·프롬프트 버전이 자동 기록됩니다."
+  },
+  "needs": {
+    "title": "구호·나눔 매칭",
+    "intro": "어느 지역에서 무엇이 필요하다고 알리면, 전 세계가 보고, 줄 수 있는 사람과 매칭됩니다. 본 플랫폼은 절대 자동으로 메시지를 보내지 않습니다 — 매칭은 제안일 뿐입니다.",
+    "categoryRelief": "긴급 구호",
+    "categorySupplies": "소모품",
+    "categoryEquipment": "설비",
+    "categoryKnowledge": "지식·전문가",
+    "categoryVolunteers": "자원봉사",
+    "urgencyCritical": "긴급",
+    "urgencyHigh": "높음",
+    "urgencyNormal": "일반",
+    "urgencyLow": "낮음",
+    "verificationVerified": "검증된 (외부 발급기관)",
+    "verificationCommunityVouched": "커뮤니티 보증",
+    "verificationUnverified": "미검증",
+    "contactMaskNotice": "양측이 모두 수락(accept)하기 전에는 상대 연락처가 노출되지 않습니다. 응답 자체에서 마스킹됩니다.",
+    "fulfilmentSignClause": "수령을 확인하고 본 플랫폼의 약관에 동의합니다.",
+    "ldcBoostNotice": "긴급도 'critical' + 최저개발국 지역 요청은 검색·피드에서 자동 상단 노출됩니다."
+  },
+  "bizplan": {
+    "title": "AI 보조 사업계획서·정책·ODA 작성",
+    "intro": "본 플랫폼에 누적된 실시간 데이터(특허·위클리 발견·칼럼·논문)를 근거로, SDG 관련 계획서를 함께 씁니다. AI는 인용 없이 단정하지 않습니다.",
+    "trackBusiness": "사업계획",
+    "trackPolicy": "정책 제안",
+    "trackPledge": "공약",
+    "trackInvestment": "투자 유치",
+    "trackOda": "ODA 제안",
+    "trackExecution": "사업 실행",
+    "trackManagement": "사업 관리",
+    "noncommercialClause": "본 계획서는 비영리 SDG 실천에만 사용한다고 동의합니다.",
+    "trackImmutable": "트랙은 처음 정한 뒤 변경할 수 없습니다. 다른 트랙은 새 계획서로 시작하세요.",
+    "citationRequired": "AI가 작성한 모든 섹션(요약 제외)은 본 플랫폼의 1차 자료를 인용해야 합니다.",
+    "pledgeWordCap": "공약 트랙의 한 섹션은 200단어 이하로 평이하게 씁니다.",
+    "twoReviewerNotice": "ODA · 정책 트랙은 사용 준비 전 인간 검토자 2명(SDG 도메인 전문가 1명 포함) 승인이 필요합니다."
+  },
+  "feasibility": {
+    "title": "다학제 타당성 검토 (6축)",
+    "intro": "임팩트·재무·기술·법·윤리·증거 6축으로 0–100점 평가. 한 축이라도 40 미만이면 사용 준비 불가.",
+    "axisImpact": "임팩트 — SDG 영향 잠재력",
+    "axisFinancial": "재무 — 예산·마일스톤 일관성",
+    "axisTechnical": "기술 — TRL · 운영 가능성",
+    "axisLegal": "법 — 비영리·규제 적합성",
+    "axisEthical": "윤리 — 해로운 콘텐츠·비대상 피해",
+    "axisEvidence": "증거 — 인용 다양성·강도",
+    "passFloor": "통과 기준: 6축 모두 ≥ 40",
+    "humanAdjustNotice": "도메인 전문가는 각 축을 보정할 수 있고 보정 사유는 영구 보존됩니다."
+  },
+  "expert": {
+    "title": "전문가 역량 매칭",
+    "intro": "도메인·언어·지역 경험·LDC 가중·가용성을 종합해 전문가를 추천합니다. 자동 메시지는 절대 발송하지 않습니다.",
+    "availabilityOpen": "신규 협업 가능",
+    "availabilityBusy": "여유 적음",
+    "availabilityClosed": "신규 매칭 차단",
+    "visibilityPlatformOnly": "플랫폼 내 매칭에만 노출 (기본)",
+    "visibilityPublic": "공개 검색에 노출",
+    "visibilityPrivate": "프로필 비공개",
+    "verifiedBadge": "검증된 자격 — 외부 발급기관·관리자만 부여",
+    "selfReportNotice": "본인이 직접 'verified' 등급을 부여할 수 없습니다.",
+    "contactMaskNotice": "양측이 모두 수락(accept)하기 전에는 상대 연락처가 응답에 포함되지 않습니다.",
+    "ldcBoostNotice": "최저개발국 지역 경험을 가진 전문가는 LDC 영향이 큰 안에 가중 추천됩니다."
+  },
+  "extensibility": {
+    "title": "확장 — 미래의 기능을 코어 수정 없이",
+    "intro": "내일의 SDG 실천가가 오늘 우리가 미처 생각하지 못한 기능을 만들 수 있도록, 코어를 건드리지 않고 새 도메인·워크플로·이벤트 구독을 추가하는 길을 열어 둡니다.",
+    "pluginManifestTitle": "플러그인 매니페스트",
+    "pluginManifestIntro": "플러그인 한 건의 신원, 버전, 요청 권한을 선언합니다. 비영리 동의와 평이한 언어 동의는 필수입니다.",
+    "noncommercialPledge": "이 플러그인이 만드는 모든 콘텐츠는 비영리 SDG 실천에만 사용한다고 동의합니다.",
+    "plainLanguagePledge": "이 플러그인의 사용자 화면은 평이한 언어 기준을 따른다고 동의합니다.",
+    "governanceTierStrict": "엄격 거버넌스 — ODA·정책 영향 플러그인은 super-admin 추가 승인 필요",
+    "customDomainTitle": "커스텀 도메인",
+    "customDomainIntro": "JSON Schema로 새 데이터 타입을 선언하면, 모든 record 작성은 자동 검증됩니다. piiFields로 표시한 필드는 AI 호출 전 자동 마스킹됩니다.",
+    "workflowTitle": "선언적 워크플로",
+    "workflowIntro": "임의 코드 없이 상태 머신을 선언합니다. 트리거의 emit은 *이벤트 이름만* 가질 수 있습니다.",
+    "eventLogNotice": "모든 도메인 이벤트는 append-only — 한 번 기록되면 수정·삭제 불가. 잘못된 이벤트는 정정 이벤트로 보충합니다.",
+    "capabilityTokenNotice": "Capability 토큰은 발급 시 *원본을 단 한 번만* 회신합니다. 잃어버리면 새 토큰을 발급받아야 합니다.",
+    "tokenScopeNotice": "토큰의 grantedScopes는 매니페스트의 requestedScopes의 부분집합이어야 합니다.",
+    "webhookSecretNotice": "Webhook secret도 발급 시 단 한 번만 노출됩니다. 본 플랫폼은 hash만 보관합니다.",
+    "autoDeactivateNotice": "Webhook 5회 연속 실패 시 자동 비활성화됩니다. super-admin이 명시적으로 reset해야 다시 켜집니다.",
+    "featureFlagNotice": "Feature flag로 super-admin은 어떤 플러그인도 즉시 끌 수 있습니다 — 최종 안전망입니다."
+  },
+  "agentHub": {
+    "title": "AI 에이전트 협력 허브",
+    "intro": "전 세계에서 SDG·인류 선한 영향력을 학습·실행 중인 AI 에이전트를 등록하고 모니터링합니다. 실시간 채팅방에서 함께 일하고, 매일 다이제스트로 핵심을 정리하고, 협력 제안을 주고받습니다. *에이전트는 혼자 결정하지 않습니다 — 항상 인간 후견인이 책임집니다.*",
+    "stewardLabel": "후견인 (책임 인간)",
+    "stewardRequiredNotice": "모든 에이전트에는 책임 있는 인간 후견인(steward)이 반드시 있어야 합니다.",
+    "alignmentPledges": "정렬 약속",
+    "noncommercialPledge": "이 에이전트가 만드는 모든 출력은 비영리 SDG 실천에만 사용한다고 동의합니다.",
+    "nonharmPledge": "이 에이전트는 사람·공동체에 해롭지 않게 작동한다고 동의합니다.",
+    "plainLanguagePledge": "이 에이전트의 모든 화면·메시지는 평이한 언어 기준을 따른다고 동의합니다.",
+    "publicKeyHint": "Ed25519 공개키(64자 16진수). 에이전트 메시지는 모두 이 키로 검증됩니다.",
+    "harmStrikeNotice": "해로운 콘텐츠 가드에 3회 걸리면 자동 일시정지 + super-admin 알림.",
+    "roomKindAgentOnly": "에이전트 전용",
+    "roomKindMixed": "에이전트 + 인간 혼합",
+    "roomKindPublic": "공개 읽기 가능",
+    "messageSignatureNotice": "에이전트 발신 메시지는 Ed25519 서명이 필요합니다. 서명은 `(roomId|locale|text)` 위에 만듭니다.",
+    "harmGuardNotice": "모든 메시지는 해로운 콘텐츠 가드를 통과해야만 저장됩니다.",
+    "originalPreserved": "원문은 영원히 보존됩니다. 번역으로 덮어쓰지 않습니다.",
+    "digestTitle": "일일 다이제스트",
+    "digestIntro": "AI가 매일 채팅방의 핵심을 요약합니다. *반드시 인간 검토 후 발행* — 영어와 한국어 두 언어 필수.",
+    "digestPlainLanguageNotice": "다이제스트는 60자 이상 + 영어·한국어 둘 다 있어야 발행 가능합니다.",
+    "collabTitle": "협력 제안",
+    "collabIntro": "다른 에이전트(또는 사람)에 협력을 제안합니다. 양측 후견인이 모두 수락하기 전에는 연락처가 응답에 포함되지 않습니다.",
+    "collabAutoSendForbidden": "협력 제안은 *제안*이며, 후견인의 명시 동의 전 외부에 자동 발송되지 않습니다.",
+    "collabNoncommercialClause": "이 협력은 비영리 SDG 실천에만 사용한다고 동의합니다."
+  }
+}

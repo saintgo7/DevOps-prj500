@@ -1,0 +1,361 @@
+{
+  "common": {
+    "appName": "SDG Impact Cloud",
+    "tagline": "SaaS de medición y reporte de impacto basado en los Objetivos de Desarrollo Sostenible (ODS) de la ONU",
+    "loading": "Cargando…",
+    "submit": "Enviar",
+    "cancel": "Cancelar",
+    "back": "Atrás",
+    "home": "Inicio",
+    "signOut": "Cerrar sesión",
+    "signIn": "Iniciar sesión",
+    "signUp": "Registrarse",
+    "myProfile": "Mi perfil",
+    "language": "Idioma"
+  },
+  "home": {
+    "goalsHeading": "Los 17 Objetivos de Desarrollo Sostenible",
+    "apiOffline": "No se puede conectar con la API del catálogo. Inicia tu entorno local con {dev} o {compose}.",
+    "footerDocs": "Documentación"
+  },
+  "auth": {
+    "signUpTitle": "Registrarse",
+    "signUpHint": "Crea un nuevo espacio de trabajo (tenant) y una cuenta de administrador.",
+    "signInTitle": "Iniciar sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "passwordHint": "Contraseña (mínimo 12 caracteres)",
+    "organizationName": "Nombre de la organización (opcional)",
+    "displayName": "Nombre para mostrar (opcional)",
+    "submitting": "Enviando…",
+    "haveAccount": "¿Ya tienes cuenta?",
+    "noAccount": "¿No tienes cuenta?",
+    "signupFailed": "Error en el registro",
+    "signinFailed": "Error al iniciar sesión"
+  },
+  "me": {
+    "title": "Mi perfil",
+    "email": "Correo electrónico",
+    "name": "Nombre para mostrar",
+    "status": "Estado",
+    "mfa": "MFA",
+    "mfaActive": "activado",
+    "mfaInactive": "desactivado",
+    "tenantId": "ID de Tenant",
+    "userId": "ID de Usuario",
+    "loadFailed": "No se pudo cargar el perfil"
+  },
+  "goal": {
+    "back": "← Los 17 Objetivos",
+    "targets": "Metas ({count})",
+    "noTargets": "Aún no hay metas de muestra para este objetivo.",
+    "tier": "Nivel"
+  },
+  "languageSwitcher": {
+    "label": "Elegir idioma"
+  },
+  "glossary": {
+    "title": "Glosario en lenguaje sencillo",
+    "intro": "Usamos palabras sencillas para lo que hacemos. Esto es lo que cada término técnico significa en lenguaje cotidiano.",
+    "yourCallingCard": {
+      "plain": "tu tarjeta de llamado",
+      "technical": "MatchProfile",
+      "explain": "Una página breve donde dices a otros qué ODS te importa, qué puedes ofrecer y qué necesitas."
+    },
+    "spark": {
+      "plain": "una chispa de interés",
+      "technical": "MatchSignal",
+      "explain": "Una pequeña acción — como guardar o dar me gusta — que nos dice que tal vez quieras saber más sobre alguien."
+    },
+    "companion": {
+      "plain": "un compañero",
+      "technical": "MatchPair",
+      "explain": "Alguien con quien tú y la otra persona han aceptado conectarse."
+    },
+    "kindred": {
+      "plain": "encontrar mentes afines",
+      "technical": "similitud vectorial",
+      "explain": "Comparamos lo que escribiste sobre ti con lo que escribieron otros, para sugerirte personas que piensan y se preocupan por cosas similares."
+    },
+    "mustHave": {
+      "plain": "condiciones imprescindibles",
+      "technical": "filtro estricto",
+      "explain": "Reglas que deciden con quién definitivamente no serás emparejado — por ejemplo, deben compartir al menos un idioma común."
+    },
+    "fairnessBoost": {
+      "plain": "impulso de equidad",
+      "technical": "peso de equidad",
+      "explain": "Damos un poco más de visibilidad a personas cuyas voces suelen ser ignoradas — por ejemplo, quienes trabajan en países menos desarrollados — para que la red no solo amplifique a los ya ruidosos."
+    },
+    "yourSpace": {
+      "plain": "tu espacio privado",
+      "technical": "aislamiento de inquilino",
+      "explain": "Tus datos se almacenan separadamente de cada otra organización. Nadie en otra organización puede verlos."
+    },
+    "privacyLine": {
+      "plain": "la línea de privacidad",
+      "technical": "seguridad a nivel de fila",
+      "explain": "Una regla incorporada en nuestra base de datos para que ni nuestro propio código pueda mostrar accidentalmente datos de otra persona."
+    },
+    "changeRecord": {
+      "plain": "registro de cambios",
+      "technical": "evento de auditoría",
+      "explain": "Cada vez que cambia algo importante, registramos quién lo cambió y cuándo, para que siempre puedas revisar el historial."
+    },
+    "privacyMask": {
+      "plain": "máscara de privacidad",
+      "technical": "redacción de PII",
+      "explain": "Antes de que la IA lea tu texto, ocultamos detalles personales como nombres, números de teléfono y direcciones."
+    }
+  },
+  "watch": {
+    "title": "Hallazgos de esta semana",
+    "intro": "Cada semana revisamos lo que las agencias de la ONU, donantes, investigadores y organizaciones de base dicen sobre el ODS que te importa.",
+    "noFindings": "Ningún hallazgo de esta semana coincide con tu filtro. Prueba a ampliarlo.",
+    "subscribe": "Recibir esto en mi idioma cada semana",
+    "expressInterest": "Quiero aprender más / colaborar",
+    "interestRecorded": "Guardado en tu lista privada. No contactaremos a nadie por ti — tú decides si y cuándo.",
+    "publicFeed": "Feed semanal público (re-sindicación libre bajo CC BY 4.0)"
+  },
+  "column": {
+    "todayTitle": "Columna de hoy",
+    "todayIntro": "Una pieza breve y con fuente, seleccionada según nuestro Estándar de Contenido público.",
+    "byStandard": "Curada bajo el Estándar de Contenido {version} — cada pieza publicada registra esta versión.",
+    "originalSource": "Fuente original",
+    "translatedFrom": "Traducido desde {sourceLanguage}",
+    "approveTitle": "Aprobar antes de publicar",
+    "approveDescription": "Nunca publicamos de forma automática. Una columna llega a los lectores solo después de que al menos una persona aprobadora haga clic en aprobar. Los temas sensibles requieren dos.",
+    "approveDecision": {
+      "approve": "Aprobar y publicar",
+      "reject": "Rechazar (este hallazgo no se publicará)",
+      "revise": "Devolver para revisión"
+    },
+    "approveExpired": "Este enlace de aprobación ha expirado. Por favor solicite al editor que lo vuelva a emitir.",
+    "approveAlreadyDecided": "Este enlace de aprobación ya se utilizó. Cada enlace es de un solo uso.",
+    "approveTokenInvalid": "No pudimos verificar este enlace de aprobación. La firma no coincide.",
+    "approveSuccess": "Gracias. Su decisión se registró a las {time}.",
+    "managingApprovers": "Gestionar aprobadores",
+    "managingApproversBody": "Agregar o quitar a un aprobador es en sí mismo una acción sensible. Dos administradores deben estar de acuerdo, y el cambio se registra en el registro de auditoría inmutable.",
+    "partnerTitle": "Organizaciones aliadas",
+    "partnerBody": "Las organizaciones aliadas pueden recibir cada columna publicada mediante webhook firmado (HMAC-SHA256) o consultando el feed Atom público bajo CC BY 4.0. Las aliadas nunca ven borradores, suscripciones, o intereses privados."
+  },
+  "dashboard": {
+    "dashboardTitle": "Tablero",
+    "sectionGoals": "17 Objetivos",
+    "sectionTargets": "169 Metas",
+    "sectionPostSdgs": "Agenda post-2030",
+    "sectionPostSdgsBody": "Temas que la comunidad internacional comienza a discutir para la era posterior a los ODS.",
+    "sectionImpact": "Nuestro impacto que medimos nosotros mismos",
+    "sourceTabExternal": "Del mundo",
+    "sourceTabExternalBody": "Investigación, artículos, columnas, boletines y publicaciones en redes sociales verificadas, externas a la plataforma — solo las que superan las 12 reglas de integridad.",
+    "sourceTabInternal": "De esta plataforma",
+    "sourceTabInternalBody": "Boletines, columnas y artículos que publicamos nosotros mismos.",
+    "researchTitle": "Planes de investigación y proyectos",
+    "researchIntro": "Planea un nuevo estudio o iniciativa inspirado en tus hallazgos. Solo visible dentro de tu espacio hasta que decidas compartir.",
+    "outreachTitle": "Contactar a un experto",
+    "outreachIntro": "Redacta un mensaje a un investigador, profesional o aliado. Nunca enviamos en tu nombre — tú haces clic en enviar.",
+    "monitoringTitle": "Monitoreo (solo administradores)",
+    "monitoringIntro": "Vista holística de integridad, aprobaciones, aliados, investigación y pipeline de monitoreo. Ver esta página queda registrado en el registro de auditoría.",
+    "chatTitle": "Conversación en tiempo real",
+    "chatIntro": "Escribe en tu idioma. La otra persona lee en el suyo. El original siempre se conserva."
+  },
+  "story": {
+    "todayShortTitle": "Historia de 30 segundos de hoy",
+    "todayShortIntro": "Una pieza breve y con fuente, adaptada a tu idioma y edad. La fuente siempre se muestra. Con asistencia de IA; humanos aprueban cada variante.",
+    "ageTier": {
+      "children": "para los más pequeños",
+      "teen": "para adolescentes",
+      "adult": "para adultos",
+      "senior": "ritmo más calmado"
+    },
+    "approveVariant": "Aprobar esta variante para publicación",
+    "rejectVariant": "Rechazar esta variante",
+    "neverAutoPost": "Nunca publicamos automáticamente. Un humano aprueba cada variante antes del envío.",
+    "platformLabel": "Plataforma",
+    "watermarkExplain": "Cada video lleva una marca de agua que indica que es asistido por IA y muestra su fuente.",
+    "retract": "Retirar esta publicación",
+    "retractedNote": "Esta publicación fue retirada el {when}."
+  },
+  "strategy": {
+    "toneTitle": "Tono de voz",
+    "toneIntro": "Cinco tonos — alegre, amigo, solemne, instructivo, reflexivo. Elige el que se ajuste al momento. Nunca prediques.",
+    "ethicsClosing": "Recordatorio implícito: lo que hacemos hoy moldea la IA de mañana, que moldea a los humanos del día siguiente.",
+    "trendBenchTitle": "Referencia de tendencias (solo metadatos)",
+    "trendBenchBody": "Hacemos seguimiento de duración media, momento del hook y frecuencia de hashtags por plataforma × idioma. Nunca copiamos ni republicamos contenido de nadie.",
+    "patentTitle": "El invento de hoy — al servicio de los ODS",
+    "patentBody": "Una patente o registro de derechos recién publicado, mapeado al ODS y la región a la que puede servir. Nunca republicado con fines comerciales.",
+    "sessionTitle": "Sesión estratégica solo por invitación",
+    "sessionIntro": "Conversa cómo una tecnología nueva puede servir a un ODS con las personas que tú has invitado. Uso solo no comercial.",
+    "noncommercialClause": "Acepto utilizar el contenido de esta sesión solo para la implementación no comercial de los ODS.",
+    "revokeNotice": "Un super-administrador puede revocar esta sesión en cualquier momento si deja de servir a los ODS. La razón se conserva para siempre.",
+    "sessionRevokedBanner": "Esta sesión fue revocada el {when}. Razón: {reason}"
+  },
+  "research": {
+    "title": "Sesiones de redacción de investigación",
+    "intro": "Las ideas reunidas de muchas fuentes se entretejen en manuscritos multidisciplinarios — a nivel Nature o SSCI — escritos colaborativamente aquí. Cada artículo publicado lleva un resumen de cinco párrafos en lenguaje sencillo que cualquiera puede leer.",
+    "natureTier": "Nivel Nature — investigación primaria de ciencia natural / impacto",
+    "ssciTier": "Nivel SSCI — investigación social, política y de práctica",
+    "plainSummaryRequired": "Antes de publicar, se requiere un resumen en lenguaje sencillo en inglés Y en el idioma principal.",
+    "ldcCoauthorPrompt": "Al menos un coautor de una institución afiliada a un PMA amplía la perspectiva.",
+    "selfCiteWarning": "La autocita supera el 20%. Por favor, registra el motivo del editor.",
+    "publishedNote": "Las citas se congelan al publicar. Las correcciones solo se hacen mediante una errata separada."
+  },
+  "book": {
+    "title": "Redacción de libros — accesibles para cualquiera",
+    "intro": "Los libros son reordenamientos de columnas, infografías y artículos ya aprobados. El trabajo es curaduría y refinamiento del lenguaje sencillo — no escritura desde cero.",
+    "license": "Licencia predeterminada: CC BY-NC-SA 4.0",
+    "chapterSourceLabel": "Fuente del capítulo (exactamente una)",
+    "plainScoreGate": "La puntuación de lenguaje sencillo debe ser al menos 60 para publicar.",
+    "ldcLanguageHint": "Los libros dirigidos a PMA deben incluir al menos un idioma de capítulo local de esa región."
+  },
+  "impact": {
+    "title": "Verificación de impacto — sin invadir la privacidad",
+    "intro": "Una suscripción o un me gusta no es consentimiento. Para incluir tu participación en cualquier estudio de impacto debes optar por separado. Puedes revocar en cualquier momento.",
+    "consentClause": "Acepto que mis señales relacionadas con los ODS puedan incluirse, de forma anónima y solo agregada, en estudios de impacto de los ODS.",
+    "scope": "Alcance (ODS / región / tema)",
+    "level": "Nivel",
+    "levelAggregate": "Solo agregado de un ciclo (nivel más débil)",
+    "levelLongitudinal": "Longitudinal (hasta el vencimiento)",
+    "expiresIn": "Vencimiento predeterminado: 12 meses",
+    "revoke": "Revocar consentimiento",
+    "revokedNote": "Los estudios ya publicados se mantienen, pero se te excluye desde el siguiente ciclo de agregación.",
+    "kFloorNote": "Ningún resultado se publica externamente a menos que al menos {floor} personas compartan la misma cohorte.",
+    "publishGate": "La publicación necesita la aprobación de dos revisores humanos (uno de los cuales sea experto en el dominio ODS)."
+  },
+  "funding": {
+    "title": "Financiación: donaciones e inversión de impacto",
+    "intro": "Practicantes de ODS de cada región/país publican propuestas; donantes, patrocinadores e inversores de impacto se conectan. Esta plataforma nunca custodia los fondos: los socios de pago manejan el flujo de dinero.",
+    "noncommercialClause": "Acepto que los fondos para esta propuesta se usarán solo para implementación no comercial de los ODS.",
+    "fundingModel": "Modelo de financiación",
+    "modelAllOrNothing": "Todo-o-nada: reembolso total si no se alcanza la meta",
+    "modelKeepItAll": "Quedarse con todo: usar lo recaudado (permitido solo para emergencias)",
+    "milestoneLabel": "Hitos (los fondos se liberan por fases)",
+    "milestoneEvidenceHint": "Cada hito requiere evidencia (vídeo/foto/URL externa) y aprobación de dos revisores antes de liberar fondos.",
+    "singleContribCap": "Un solo donante no puede aportar más del 25% del objetivo, para evitar decisiones dominadas por una sola persona.",
+    "pauseNotice": "Un super-administrador puede pausar una propuesta sospechosa en cualquier momento. La razón queda registrada para siempre.",
+    "flagCta": "Denunciar esta propuesta",
+    "reportTitle": "Informe de impacto",
+    "reportIntro": "Los donantes pueden ver el resultado verificado de sus fondos a través de un estudio de impacto vinculado."
+  },
+  "maker": {
+    "title": "Espacio creativo para practicantes de ODS",
+    "intro": "No necesitas escribir código desde cero. Empieza desde una plantilla que ya incluye i18n, RLS, lenguaje sencillo y tonos éticos, y construye la web, app o bot que necesites.",
+    "templateKindStaticSite": "Sitio estático",
+    "templateKindNextApp": "Next.js full-stack",
+    "templateKindPwa": "PWA con prioridad offline",
+    "templateKindMobileRn": "Móvil (React Native)",
+    "templateKindDataDashboard": "Panel de datos",
+    "templateKindSmsBot": "Bot SMS",
+    "templateKindWhatsappBot": "Bot de WhatsApp",
+    "noncommercialClause": "Usaré esta herramienta solo para implementación no comercial de los ODS.",
+    "readmeGate": "Antes de publicar, al menos un artefacto debe alcanzar 60 puntos en la prueba de lenguaje sencillo del README.",
+    "licenseHint": "Licencias por defecto: MIT, Apache-2.0, CC-BY-NC-SA-4.0; elige una.",
+    "ldcLanguageHint": "Las herramientas dirigidas a PMA deberían incluir al menos un idioma local.",
+    "aiProvenance": "Las líneas de código asistidas por IA registran automáticamente el modelo y la versión del prompt."
+  },
+  "needs": {
+    "title": "Intercambio de necesidades y compartir",
+    "intro": "Cuando una región dice qué necesita, el mundo puede verlo y se conecta con quien puede dar. La plataforma nunca envía mensajes automáticamente: una coincidencia es solo una sugerencia.",
+    "categoryRelief": "Ayuda de emergencia",
+    "categorySupplies": "Suministros",
+    "categoryEquipment": "Equipamiento",
+    "categoryKnowledge": "Conocimiento / expertos",
+    "categoryVolunteers": "Voluntarios",
+    "urgencyCritical": "Crítica",
+    "urgencyHigh": "Alta",
+    "urgencyNormal": "Normal",
+    "urgencyLow": "Baja",
+    "verificationVerified": "Verificado (autoridad externa)",
+    "verificationCommunityVouched": "Avalado por la comunidad",
+    "verificationUnverified": "Sin verificar",
+    "contactMaskNotice": "Hasta que AMBAS partes acepten, ninguna ve los datos de contacto de la otra: las respuestas del servidor los enmascaran.",
+    "fulfilmentSignClause": "Confirmo la recepción y acepto los términos de la plataforma.",
+    "ldcBoostNotice": "Las solicitudes con urgencia crítica desde regiones de PMA aparecen automáticamente en la parte superior."
+  },
+  "bizplan": {
+    "title": "Redacción asistida por IA — plan, política, ODA",
+    "intro": "Apoyándonos en los datos en tiempo real de la plataforma (patentes, hallazgos semanales, columnas, manuscritos), coescribimos planes alineados con los ODS. La IA nunca afirma sin citar.",
+    "trackBusiness": "Plan de negocio",
+    "trackPolicy": "Propuesta de política",
+    "trackPledge": "Compromiso público",
+    "trackInvestment": "Pitch de inversión",
+    "trackOda": "Propuesta de AOD/ODA",
+    "trackExecution": "Ejecución del proyecto",
+    "trackManagement": "Gestión del proyecto",
+    "noncommercialClause": "Acepto utilizar este plan solo para implementación no comercial de los ODS.",
+    "trackImmutable": "El track no puede cambiarse una vez fijado. Para otro track, crea un nuevo plan.",
+    "citationRequired": "Cada sección redactada por IA (excepto el resumen) debe citar una fuente primaria de la plataforma.",
+    "pledgeWordCap": "Las secciones del track de compromiso deben tener ≤ 200 palabras y lenguaje sencillo.",
+    "twoReviewerNotice": "Los tracks AOD y política requieren dos revisores humanos (uno experto del dominio) antes de ready_for_use."
+  },
+  "feasibility": {
+    "title": "Revisión de viabilidad multidisciplinar (6 ejes)",
+    "intro": "Impacto, financiero, técnico, legal, ético, evidencia — cada eje 0–100. Si algún eje cae por debajo de 40, el plan no puede pasar a ready_for_use.",
+    "axisImpact": "Impacto — potencial de resultado ODS",
+    "axisFinancial": "Financiero — coherencia presupuesto/hitos",
+    "axisTechnical": "Técnico — TRL y operatividad",
+    "axisLegal": "Legal — encaje no comercial y normativo",
+    "axisEthical": "Ético — guarda de daño y daño no dirigido",
+    "axisEvidence": "Evidencia — diversidad y fuerza de citas",
+    "passFloor": "Umbral de aprobación: cada eje ≥ 40",
+    "humanAdjustNotice": "Los expertos del dominio pueden ajustar cada eje; la razón se conserva para siempre."
+  },
+  "expert": {
+    "title": "Emparejamiento de competencias expertas",
+    "intro": "Sugerimos expertos según dominio, idioma, experiencia de campo, peso PMA y disponibilidad. La plataforma nunca envía mensajes automáticos.",
+    "availabilityOpen": "Abierta a nuevas colaboraciones",
+    "availabilityBusy": "Capacidad limitada",
+    "availabilityClosed": "Cerrado a nuevos matches",
+    "visibilityPlatformOnly": "Visible solo en el emparejamiento de la plataforma (por defecto)",
+    "visibilityPublic": "Visible en la búsqueda pública",
+    "visibilityPrivate": "Perfil privado",
+    "verifiedBadge": "Credencial verificada — solo concedida por autoridad externa o admin",
+    "selfReportNotice": "Los usuarios no pueden auto-asignarse el nivel 'verified'.",
+    "contactMaskNotice": "Hasta que AMBAS partes acepten, los datos de contacto no aparecen en la respuesta.",
+    "ldcBoostNotice": "Los expertos con experiencia de campo en PMA aparecen primero en planes con impacto en PMA."
+  },
+  "extensibility": {
+    "title": "Extensibilidad — funciones futuras sin tocar el núcleo",
+    "intro": "Cuando los y las futuras practicantes de los ODS necesiten una función que hoy no imaginamos, podrán añadirla sin modificar el núcleo. Nuevos dominios, flujos y suscripciones se acoplan con seguridad.",
+    "pluginManifestTitle": "Manifiesto del plugin",
+    "pluginManifestIntro": "Declara identidad, versión y permisos solicitados del plugin. Los compromisos de no comercial y lenguaje sencillo son obligatorios.",
+    "noncommercialPledge": "Acepto que todo el contenido producido por este plugin se use solo para implementación no comercial de los ODS.",
+    "plainLanguagePledge": "Acepto que las interfaces de usuario de este plugin sigan el estándar de lenguaje sencillo.",
+    "governanceTierStrict": "Gobernanza estricta — los plugins de AOD / política requieren aprobación adicional de un super-admin.",
+    "customDomainTitle": "Dominio personalizado",
+    "customDomainIntro": "Declara un nuevo tipo de dato mediante JSON Schema; cada escritura de registro se valida automáticamente. Los campos en piiFields se enmascaran antes de cualquier llamada a IA.",
+    "workflowTitle": "Flujo declarativo",
+    "workflowIntro": "Declara una máquina de estados sin escribir código. Los 'emit' de los disparadores deben ser nombres de eventos; no se admite ejecución arbitraria.",
+    "eventLogNotice": "Los eventos de dominio son solo de adición — una vez registrados no se pueden editar ni borrar. Los errores se corrigen emitiendo un evento correctivo.",
+    "capabilityTokenNotice": "Los tokens de capacidad se devuelven en bruto SOLO UNA VEZ. Los tokens perdidos no se pueden recuperar — emite uno nuevo.",
+    "tokenScopeNotice": "El conjunto grantedScopes de un token debe ser un subconjunto del requestedScopes del manifiesto.",
+    "webhookSecretNotice": "El secreto del webhook también se revela solo una vez al crearlo. La plataforma guarda únicamente su hash SHA-256.",
+    "autoDeactivateNotice": "Tras cinco fallos consecutivos del webhook, la suscripción se desactiva automáticamente. Un super-admin debe reactivarla explícitamente.",
+    "featureFlagNotice": "Las feature flags permiten a un super-admin desactivar cualquier plugin al instante — el último interruptor de seguridad de la plataforma."
+  },
+  "agentHub": {
+    "title": "Centro de colaboración de agentes IA",
+    "intro": "Registra y monitoriza agentes IA en todo el mundo que aprenden o actúan sobre los ODS y el bien común. Colaboran en salas en tiempo real, destilan el día con un digest, y proponen colaboraciones. *Los agentes nunca deciden solos — siempre hay un tutor humano responsable.*",
+    "stewardLabel": "Tutor (humano responsable)",
+    "stewardRequiredNotice": "Cada agente debe tener un tutor humano; el campo no puede quedar vacío.",
+    "alignmentPledges": "Compromisos de alineación",
+    "noncommercialPledge": "Acepto que todo lo que produzca este agente se use solo para implementación no comercial de los ODS.",
+    "nonharmPledge": "Acepto que este agente opera sin causar daño a personas o comunidades.",
+    "plainLanguagePledge": "Acepto que las superficies de este agente siguen el estándar de lenguaje sencillo.",
+    "publicKeyHint": "Clave pública Ed25519 (hex de 64 caracteres). Cada mensaje del agente se verifica con esta clave.",
+    "harmStrikeNotice": "Tres avisos del guardián de contenido nocivo pausan automáticamente al agente y alertan al super-admin.",
+    "roomKindAgentOnly": "Solo agentes",
+    "roomKindMixed": "Agentes + humanos",
+    "roomKindPublic": "Lectura pública",
+    "messageSignatureNotice": "Los mensajes de agente necesitan firma Ed25519 sobre `(roomId|locale|text)`.",
+    "harmGuardNotice": "Cada mensaje debe pasar el guardián de contenido nocivo para almacenarse.",
+    "originalPreserved": "El original se preserva para siempre — las traducciones nunca lo sobreescriben.",
+    "digestTitle": "Digest diario",
+    "digestIntro": "La IA destila cada día en un digest. Siempre pasa por revisión humana antes de publicar — resúmenes en inglés Y en coreano obligatorios.",
+    "digestPlainLanguageNotice": "Los digests necesitan ≥ 60 caracteres en inglés y coreano para publicarse.",
+    "collabTitle": "Propuestas de colaboración",
+    "collabIntro": "Propón trabajar con otro agente (o humano). Hasta que ambos tutores acepten, los datos de contacto se omiten de la respuesta.",
+    "collabAutoSendForbidden": "Las propuestas son solo sugerencias — nada se envía fuera sin el consentimiento explícito de un tutor.",
+    "collabNoncommercialClause": "Acepto que esta colaboración sea solo para implementación no comercial de los ODS."
+  }
+}

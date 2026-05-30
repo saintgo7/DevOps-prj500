@@ -1,0 +1,361 @@
+{
+  "common": {
+    "appName": "SDG Impact Cloud",
+    "tagline": "Jukwaa la SaaS la kupima na kuripoti athari kulingana na Malengo ya Maendeleo Endelevu (SDGs) ya Umoja wa Mataifa",
+    "loading": "Inapakia…",
+    "submit": "Wasilisha",
+    "cancel": "Ghairi",
+    "back": "Rudi",
+    "home": "Mwanzo",
+    "signOut": "Toka",
+    "signIn": "Ingia",
+    "signUp": "Jisajili",
+    "myProfile": "Wasifu wangu",
+    "language": "Lugha"
+  },
+  "home": {
+    "goalsHeading": "Malengo 17 ya Maendeleo Endelevu",
+    "apiOffline": "API ya Katalogi haiwezi kufikiwa. Anzisha mazingira yako ya kawaida kwa {dev} au {compose}.",
+    "footerDocs": "Nyaraka"
+  },
+  "auth": {
+    "signUpTitle": "Jisajili",
+    "signUpHint": "Unda nafasi mpya ya kazi (mpangaji) na akaunti ya msimamizi.",
+    "signInTitle": "Ingia",
+    "email": "Barua pepe",
+    "password": "Nenosiri",
+    "passwordHint": "Nenosiri (angalau herufi 12)",
+    "organizationName": "Jina la shirika (hiari)",
+    "displayName": "Jina la kuonyesha (hiari)",
+    "submitting": "Inawasilisha…",
+    "haveAccount": "Tayari una akaunti?",
+    "noAccount": "Huna akaunti?",
+    "signupFailed": "Usajili umeshindikana",
+    "signinFailed": "Kuingia kumeshindikana"
+  },
+  "me": {
+    "title": "Wasifu wangu",
+    "email": "Barua pepe",
+    "name": "Jina la kuonyesha",
+    "status": "Hali",
+    "mfa": "MFA",
+    "mfaActive": "imewashwa",
+    "mfaInactive": "imezimwa",
+    "tenantId": "Kitambulisho cha Mpangaji",
+    "userId": "Kitambulisho cha Mtumiaji",
+    "loadFailed": "Imeshindikana kupakia wasifu"
+  },
+  "goal": {
+    "back": "← Malengo 17",
+    "targets": "Shabaha ({count})",
+    "noTargets": "Hakuna shabaha za mfano zilizopandwa kwa lengo hili bado.",
+    "tier": "Daraja"
+  },
+  "languageSwitcher": {
+    "label": "Chagua lugha"
+  },
+  "glossary": {
+    "title": "Kamusi ya lugha rahisi",
+    "intro": "Tunatumia maneno rahisi kwa kile tunachofanya. Hapa ni nini kila neno la kiteknolojia linamaanisha kwa lugha ya kila siku.",
+    "yourCallingCard": {
+      "plain": "kadi yako ya wito",
+      "technical": "MatchProfile",
+      "explain": "Ukurasa mfupi unaowajulisha wengine ni SDG ipi unayojali, unayoweza kutoa nini, na unahitaji nini."
+    },
+    "spark": {
+      "plain": "cheche ya hamu",
+      "technical": "MatchSignal",
+      "explain": "Hatua ndogo — kama kuhifadhi au kupenda — inayotuambia huenda unataka kujifunza zaidi kuhusu mtu fulani."
+    },
+    "companion": {
+      "plain": "mwenza",
+      "technical": "MatchPair",
+      "explain": "Mtu ambaye wewe na yeye mmekubali kuunganishwa."
+    },
+    "kindred": {
+      "plain": "kupata akili rafiki",
+      "technical": "kufanana kwa vekta",
+      "explain": "Tunalinganisha ulichoandika kuhusu wewe na kile wengine waliandika, kupendekeza watu wanaofikiria na kujali vitu vinavyofanana."
+    },
+    "mustHave": {
+      "plain": "mahitaji ya lazima",
+      "technical": "kichungi kali",
+      "explain": "Sheria zinazoamua na nani hutaunganishwa kabisa — kwa mfano, lazima mshiriki angalau lugha moja ya pamoja."
+    },
+    "fairnessBoost": {
+      "plain": "uhakika wa usawa",
+      "technical": "uzito wa usawa",
+      "explain": "Tunatoa mwonekano kidogo zaidi kwa watu ambao sauti zao kawaida hupuuzwa — kwa mfano, wanaofanya kazi katika nchi zilizoendelea kidogo zaidi — ili mtandao usiongezee tu wale walio na sauti kubwa tayari."
+    },
+    "yourSpace": {
+      "plain": "nafasi yako binafsi",
+      "technical": "kutengwa kwa mpangaji",
+      "explain": "Data yako huhifadhiwa tofauti na kila shirika lingine. Hakuna mtu katika shirika lingine anayeweza kuiona."
+    },
+    "privacyLine": {
+      "plain": "mstari wa faragha",
+      "technical": "usalama wa kiwango cha safu",
+      "explain": "Sheria iliyojengwa katika hifadhidata yetu ili hata msimbo wetu wenyewe usiweze kuonyesha data ya mtu mwingine kwa bahati mbaya."
+    },
+    "changeRecord": {
+      "plain": "rekodi ya mabadiliko",
+      "technical": "tukio la ukaguzi",
+      "explain": "Kila wakati kitu muhimu kinabadilika, tunarekodi nani alibadilisha na lini, ili uweze kuangalia historia kila wakati."
+    },
+    "privacyMask": {
+      "plain": "kinyago cha faragha",
+      "technical": "uficho wa PII",
+      "explain": "Kabla AI haijasoma maandishi yako, tunaficha maelezo binafsi kama majina, nambari za simu, na anwani."
+    }
+  },
+  "watch": {
+    "title": "Tuliyoyaona wiki hii",
+    "intro": "Kila wiki, tunaangalia kile mashirika ya UN, wafadhili, watafiti na vikundi vya kiasili vinasema kuhusu SDG unayojali.",
+    "noFindings": "Hakuna kile tulichoona wiki hii kinacholingana na vichungi vyako. Jaribu kupanua.",
+    "subscribe": "Pokea hii kwa lugha yangu kila wiki",
+    "expressInterest": "Nataka kujifunza zaidi / kushirikiana",
+    "interestRecorded": "Imehifadhiwa katika orodha yako ya faragha. Hatutawasiliana na yeyote kwa niaba yako — wewe unaamua lini na kama.",
+    "publicFeed": "Mkondo wa kila wiki wa umma (chapisha tena kwa uhuru chini ya CC BY 4.0)"
+  },
+  "column": {
+    "todayTitle": "Safu ya leo",
+    "todayIntro": "Maandishi mafupi yenye chanzo, yaliyochaguliwa kwa kufuata Kigezo cha Maudhui cha umma.",
+    "byStandard": "Imechaguliwa kwa Kigezo cha Maudhui {version} — kila kipande kilichochapishwa kinarekodi toleo hili.",
+    "originalSource": "Chanzo asili",
+    "translatedFrom": "Imetafsiriwa kutoka {sourceLanguage}",
+    "approveTitle": "Idhinisha kabla ya kuchapisha",
+    "approveDescription": "Hatuchapishi kiotomatiki kamwe. Safu hufikia wasomaji tu baada ya angalau mtu mmoja kubonyeza idhini. Mada nyeti zinahitaji wawili.",
+    "approveDecision": {
+      "approve": "Idhinisha na chapisha",
+      "reject": "Kataa (uvumbuzi huu hautachapishwa)",
+      "revise": "Rudisha kwa marekebisho"
+    },
+    "approveExpired": "Kiungo hiki cha idhini kimemalizika. Tafadhali muulize mhariri akiifufue.",
+    "approveAlreadyDecided": "Kiungo hiki cha idhini tayari kimetumika. Kila kiungo ni cha matumizi mara moja.",
+    "approveTokenInvalid": "Hatukuweza kuthibitisha kiungo hiki cha idhini. Saini hailingani.",
+    "approveSuccess": "Asante. Uamuzi wako umesajiliwa saa {time}.",
+    "managingApprovers": "Kusimamia waidhinishaji",
+    "managingApproversBody": "Kuongeza au kuondoa muidhinishaji yenyewe ni hatua nyeti. Wasimamizi wawili lazima wakubali, na mabadiliko yamerekodiwa katika kumbukumbu ya ukaguzi isiyobadilika.",
+    "partnerTitle": "Mashirika washirika",
+    "partnerBody": "Mashirika washirika yanaweza kupokea kila safu iliyochapishwa kupitia webhook iliyosainiwa (HMAC-SHA256) au kwa kuvuta mkondo wa Atom wa umma chini ya CC BY 4.0. Washirika hawaoni kamwe rasimu, usajili, au maslahi ya faragha."
+  },
+  "dashboard": {
+    "dashboardTitle": "Dashibodi",
+    "sectionGoals": "Malengo 17",
+    "sectionTargets": "Shabaha 169",
+    "sectionPostSdgs": "Ajenda baada ya 2030",
+    "sectionPostSdgsBody": "Mada ambazo jamii ya kimataifa imeanza kujadili kwa enzi baada ya SDGs.",
+    "sectionImpact": "Athari yetu tuliyojipima",
+    "sourceTabExternal": "Kutoka ulimwenguni",
+    "sourceTabExternalBody": "Utafiti, makala, safu, jarida, na machapisho ya kijamii yaliyothibitishwa kutoka nje ya jukwaa letu — tu yale yanayopita ukaguzi wa sheria 12.",
+    "sourceTabInternal": "Kutoka jukwaa hili",
+    "sourceTabInternalBody": "Majarida, safu, na karatasi tunazochapisha sisi wenyewe.",
+    "researchTitle": "Mipango ya utafiti na miradi",
+    "researchIntro": "Panga utafiti au mpango mpya kutokana na uliyoyaona. Inaonekana tu ndani ya nafasi yako ya kazi hadi ushiriki.",
+    "outreachTitle": "Wasiliana na mtaalam",
+    "outreachIntro": "Andika rasimu ya ujumbe kwa mtafiti, mtumiaji, au mshirika. Hatutumi kamwe kwa niaba yako — wewe unabofya tuma.",
+    "monitoringTitle": "Ufuatiliaji (kwa wasimamizi tu)",
+    "monitoringIntro": "Mwonekano wa jumla wa uthibitisho, idhini, washirika, utafiti, na mlolongo wa kuangalia. Kutazama ukurasa huu kunarekodiwa katika kumbukumbu ya ukaguzi.",
+    "chatTitle": "Mazungumzo ya wakati halisi",
+    "chatIntro": "Andika kwa lugha yako. Mwingine anasoma kwa lugha yake. Maandishi ya asili huhifadhiwa daima."
+  },
+  "story": {
+    "todayShortTitle": "Hadithi ya sekunde 30 ya leo",
+    "todayShortIntro": "Kipande kifupi chenye chanzo, kilichobadilishwa kwa lugha yako na rika lako. Chanzo huonyeshwa daima. Kwa msaada wa AI; binadamu huidhinisha kila toleo.",
+    "ageTier": {
+      "children": "kwa watoto",
+      "teen": "kwa vijana",
+      "adult": "kwa watu wazima",
+      "senior": "mwendo wa polepole"
+    },
+    "approveVariant": "Idhinisha toleo hili kuchapishwa",
+    "rejectVariant": "Kataa toleo hili",
+    "neverAutoPost": "Hatuchapishi kiotomatiki kamwe. Mtu huidhinisha kila toleo kabla ya kutumwa popote.",
+    "platformLabel": "Jukwaa",
+    "watermarkExplain": "Kila video hubeba alama ya maji ya kona inayoonyesha imechukuliwa kwa msaada wa AI na chanzo chake.",
+    "retract": "Ondoa chapisho hili",
+    "retractedNote": "Chapisho hili liliondolewa tarehe {when}."
+  },
+  "strategy": {
+    "toneTitle": "Sauti ya maneno",
+    "toneIntro": "Sauti tano — kucheza, rafiki, ya kuzingatia, ya kufundisha, ya kufikiria. Chagua inayolingana na wakati. Kamwe kuhubiri.",
+    "ethicsClosing": "Ukumbusho fiche: tunachotengeneza leo kinaunda AI ya kesho, ambayo inaunda wanadamu wanaofuata.",
+    "trendBenchTitle": "Marejeo ya mwelekeo (metadata tu)",
+    "trendBenchBody": "Tunafuatilia muda wa wastani, wakati wa hook na mzunguko wa hashtags kwa kila jukwaa × lugha. Kamwe hatunakili au kuchapisha tena maudhui ya yeyote.",
+    "patentTitle": "Ugunduzi wa leo — kwa hatua ya SDG",
+    "patentBody": "Hati miliki au hakimiliki iliyochapishwa hivi karibuni, imepangwa kwa SDG ipi na eneo gani inaweza kuhudumia. Kamwe kuchapishwa tena kibiashara.",
+    "sessionTitle": "Kikao cha mkakati cha mwaliko tu",
+    "sessionIntro": "Zungumza jinsi teknolojia mpya inavyoweza kuhudumia SDG, na watu uliowaalika tu. Kwa matumizi yasiyo ya kibiashara tu.",
+    "noncommercialClause": "Nakubali kutumia maudhui ya kikao hiki tu kwa utekelezaji usio wa kibiashara wa SDG.",
+    "revokeNotice": "Msimamizi mkuu anaweza kufuta kikao hiki wakati wowote ikiwa kitaacha kuhudumia SDGs. Sababu inahifadhiwa milele.",
+    "sessionRevokedBanner": "Kikao hiki kilifutwa tarehe {when}. Sababu: {reason}"
+  },
+  "research": {
+    "title": "Vikao vya kuandika utafiti",
+    "intro": "Maarifa yaliyokusanywa kutoka vyanzo vingi yanaunganishwa katika maandiko ya kitaaluma mengi — kiwango cha Nature au SSCI — yakiandikwa kwa pamoja hapa. Kila karatasi iliyochapishwa ina muhtasari wa lugha rahisi wa aya tano ambao mtu yeyote anaweza kusoma.",
+    "natureTier": "Kiwango cha Nature — utafiti wa kwanza wa sayansi asili / athari",
+    "ssciTier": "Kiwango cha SSCI — utafiti wa sayansi za kijamii, sera, na vitendo",
+    "plainSummaryRequired": "Kabla ya kuchapisha, muhtasari wa lugha rahisi kwa Kiingereza NA kwa lugha ya msingi unahitajika.",
+    "ldcCoauthorPrompt": "Mwandishi mwenza mmoja kutoka taasisi inayohusiana na nchi maskini zaidi anapanua mtazamo.",
+    "selfCiteWarning": "Kutaja-mwenyewe kumezidi 20%. Tafadhali rekodi sababu ya mhariri.",
+    "publishedNote": "Marejeo yanagandishwa wakati wa kuchapisha. Marekebisho hufanywa tu kupitia urekebishaji tofauti."
+  },
+  "book": {
+    "title": "Kuandika vitabu — vinavyopatikana kwa kila mtu",
+    "intro": "Vitabu ni upangaji upya wa safu, habari za kadi, na karatasi zilizoidhinishwa tayari. Kazi ni uteuzi na uboreshaji wa lugha rahisi — sio kuandika kutoka mwanzo.",
+    "license": "Leseni chaguo-msingi: CC BY-NC-SA 4.0",
+    "chapterSourceLabel": "Chanzo cha sura (kimoja tu)",
+    "plainScoreGate": "Alama ya lugha rahisi lazima iwe angalau 60 ili kuchapisha.",
+    "ldcLanguageHint": "Vitabu vinavyolenga nchi maskini zaidi lazima vijumuishe lugha moja ya sura ya eneo hilo."
+  },
+  "impact": {
+    "title": "Uthibitisho wa athari — bila kuvamia faragha",
+    "intro": "Kujisajili au kupenda si idhini. Ili kujumuisha ushiriki wako katika utafiti wowote wa athari lazima ujiunge tofauti. Unaweza kufuta wakati wowote.",
+    "consentClause": "Nakubali kwamba ishara zangu zinazohusiana na SDG zinaweza kujumuishwa, bila kujulikana na kwa pamoja tu, katika tafiti za athari za SDG.",
+    "scope": "Wigo (SDG / eneo / mada)",
+    "level": "Kiwango",
+    "levelAggregate": "Mzunguko mmoja tu wa pamoja (kiwango cha chini zaidi)",
+    "levelLongitudinal": "Wakati mrefu (hadi kumalizika muda)",
+    "expiresIn": "Kumalizika muda chaguo-msingi: miezi 12",
+    "revoke": "Futa idhini",
+    "revokedNote": "Tafiti zilizochapishwa tayari zinabaki, lakini unatengwa kutoka mzunguko ujao wa kukusanya.",
+    "kFloorNote": "Hakuna matokeo yatakayotolewa nje isipokuwa angalau watu {floor} washiriki katika kundi moja.",
+    "publishGate": "Uchapishaji unahitaji idhini ya wakaguzi wawili wa kibinadamu (mmoja akiwa mtaalamu wa eneo la SDG)."
+  },
+  "funding": {
+    "title": "Ufadhili — michango na uwekezaji wa athari",
+    "intro": "Watendaji wa SDG kila eneo / nchi huchapisha mapendekezo, na wafadhili, washirika, na wawekezaji wa athari huunganishwa. Jukwaa hili kamwe halishiki fedha — washirika wa malipo ndio wanaohusika na mtiririko.",
+    "noncommercialClause": "Nakubali kwamba fedha za pendekezo hili zitatumika tu kwa utekelezaji usio wa kibiashara wa SDG.",
+    "fundingModel": "Mfano wa ufadhili",
+    "modelAllOrNothing": "Yote-au-hakuna — kurudisha kamili iwapo lengo halifikiwi",
+    "modelKeepItAll": "Hifadhi yote — tumia kilichokusanywa (kinaruhusiwa tu kwa misaada ya dharura)",
+    "milestoneLabel": "Hatua muhimu (fedha hutolewa kwa awamu)",
+    "milestoneEvidenceHint": "Kila hatua inahitaji ushahidi (video / picha / kiungo cha nje) na idhini ya wakaguzi wawili kabla ya kutolewa.",
+    "singleContribCap": "Mfadhili mmoja hawezi kuchangia zaidi ya 25% ya lengo, kuepuka maamuzi yanayosukumwa na mtu mmoja.",
+    "pauseNotice": "Msimamizi mkuu anaweza kusimamisha pendekezo lenye shaka wakati wowote. Sababu inahifadhiwa milele.",
+    "flagCta": "Ripoti pendekezo hili",
+    "reportTitle": "Ripoti ya athari",
+    "reportIntro": "Wafadhili wanaweza kuona matokeo yaliyothibitishwa ya fedha zao kupitia utafiti wa athari uliounganishwa."
+  },
+  "maker": {
+    "title": "Eneo la ubunifu kwa watendaji wa SDG",
+    "intro": "Sio lazima uandike msimbo kutoka mwanzo. Anza kutoka kwa kiolezo ambacho tayari kina i18n, RLS, lugha rahisi na sauti za kimaadili, kisha tengeneza tovuti, programu, au boti unayohitaji.",
+    "templateKindStaticSite": "Tovuti tuli",
+    "templateKindNextApp": "Next.js kamili",
+    "templateKindPwa": "PWA inayotangulia nje ya mtandao",
+    "templateKindMobileRn": "Simu (React Native)",
+    "templateKindDataDashboard": "Dashibodi ya data",
+    "templateKindSmsBot": "Boti ya SMS",
+    "templateKindWhatsappBot": "Boti ya WhatsApp",
+    "noncommercialClause": "Nitatumia chombo hiki tu kwa utekelezaji usio wa kibiashara wa SDG.",
+    "readmeGate": "Kabla ya kuwa hai, angalau kifaa kimoja lazima kipate ≥ 60 katika ukaguzi wa lugha rahisi wa README.",
+    "licenseHint": "Leseni za chaguo-msingi: MIT, Apache-2.0, CC-BY-NC-SA-4.0 — chagua moja.",
+    "ldcLanguageHint": "Vifaa vinavyolenga nchi maskini zaidi vinahimizwa kujumuisha angalau lugha moja ya eneo.",
+    "aiProvenance": "Mistari ya msimbo iliyosaidiwa na AI hujirekodi mfano wake na toleo la msaada moja kwa moja."
+  },
+  "needs": {
+    "title": "Ubadilishanaji wa mahitaji na ushirikiano",
+    "intro": "Eneo linaposema linahitaji nini, dunia inaweza kuona na watu wanaoweza kutoa wanaunganishwa. Jukwaa kamwe halitumi ujumbe kiotomatiki — mechi ni pendekezo tu.",
+    "categoryRelief": "Misaada ya dharura",
+    "categorySupplies": "Vifaa",
+    "categoryEquipment": "Vifaa vya kazi",
+    "categoryKnowledge": "Maarifa / wataalamu",
+    "categoryVolunteers": "Watu wa kujitolea",
+    "urgencyCritical": "Muhimu sana",
+    "urgencyHigh": "Juu",
+    "urgencyNormal": "Kawaida",
+    "urgencyLow": "Chini",
+    "verificationVerified": "Imethibitishwa (mamlaka ya nje)",
+    "verificationCommunityVouched": "Imethibitishwa na jamii",
+    "verificationUnverified": "Haijathibitishwa",
+    "contactMaskNotice": "Hadi pande ZOTE MBILI zikubali, hakuna upande utakayoona maelezo ya mawasiliano ya mwingine — majibu ya seva yanawaficha.",
+    "fulfilmentSignClause": "Ninathibitisha kupokea na kukubali masharti ya jukwaa.",
+    "ldcBoostNotice": "Maombi ya dharura kutoka maeneo ya nchi maskini zaidi yanaonekana moja kwa moja juu ya utafutaji na milisho."
+  },
+  "bizplan": {
+    "title": "Uandishi wa mpango uliosaidiwa na AI — biashara, sera, ODA",
+    "intro": "Tukitumia data za jukwaa za wakati halisi (hati miliki, ugunduzi wa kila wiki, safu, miswada), tunaandika kwa pamoja mipango inayolingana na SDG. AI haitoi kauli bila kunukuu.",
+    "trackBusiness": "Mpango wa biashara",
+    "trackPolicy": "Pendekezo la sera",
+    "trackPledge": "Ahadi ya umma",
+    "trackInvestment": "Uwasilishaji wa uwekezaji",
+    "trackOda": "Pendekezo la ODA",
+    "trackExecution": "Utekelezaji wa mradi",
+    "trackManagement": "Usimamizi wa mradi",
+    "noncommercialClause": "Nakubali kutumia mpango huu tu kwa utekelezaji usio wa kibiashara wa SDG.",
+    "trackImmutable": "Njia haiwezi kubadilishwa baada ya kuwekwa. Njia tofauti inahitaji mpango mpya.",
+    "citationRequired": "Kila sehemu iliyoandikwa na AI (isipokuwa muhtasari) lazima itaje chanzo cha msingi cha jukwaa.",
+    "pledgeWordCap": "Sehemu za njia ya ahadi lazima ziwe ≤ maneno 200 na kwa lugha rahisi.",
+    "twoReviewerNotice": "Njia za ODA na sera zinahitaji idhini ya wakaguzi wawili (mmoja akiwa mtaalamu wa eneo) kabla ya ready_for_use."
+  },
+  "feasibility": {
+    "title": "Ukaguzi wa uwezekano wa kitaaluma mengi (mhimili 6)",
+    "intro": "Athari, fedha, kiufundi, kisheria, kimaadili, ushahidi — kila mhimili 0–100. Kama mhimili wowote ushuke chini ya 40, mpango hauwezi kwenda ready_for_use.",
+    "axisImpact": "Athari — uwezo wa matokeo ya SDG",
+    "axisFinancial": "Fedha — uwiano wa bajeti / hatua",
+    "axisTechnical": "Kiufundi — TRL na uwezo wa uendeshaji",
+    "axisLegal": "Kisheria — kufaa kwa hali ya kibiashara na sheria",
+    "axisEthical": "Kimaadili — ulinzi dhidi ya maudhui hatari na madhara yasiyokusudiwa",
+    "axisEvidence": "Ushahidi — anuwai na nguvu ya nukuu",
+    "passFloor": "Kiwango cha kupita: kila mhimili ≥ 40",
+    "humanAdjustNotice": "Wataalamu wa eneo wanaweza kurekebisha kila mhimili; sababu inahifadhiwa milele."
+  },
+  "expert": {
+    "title": "Mechi ya uwezo wa wataalamu",
+    "intro": "Tunapendekeza wataalamu kulingana na eneo, lugha, uzoefu wa uwandani, uzito wa LDC na upatikanaji. Jukwaa kamwe halitumi ujumbe kiotomatiki.",
+    "availabilityOpen": "Mwazi kwa ushirikiano mpya",
+    "availabilityBusy": "Uwezo mdogo",
+    "availabilityClosed": "Imefungwa kwa mechi mpya",
+    "visibilityPlatformOnly": "Inaonekana tu katika mechi ya jukwaa (chaguo-msingi)",
+    "visibilityPublic": "Inaonekana katika utafutaji wa umma",
+    "visibilityPrivate": "Profaili faragha",
+    "verifiedBadge": "Hati iliyothibitishwa — inatolewa tu na mamlaka ya nje au msimamizi",
+    "selfReportNotice": "Watumiaji hawawezi kujipatia ngazi ya 'verified'.",
+    "contactMaskNotice": "Hadi pande zote mbili zikubali, maelezo ya mawasiliano hayapo katika jibu.",
+    "ldcBoostNotice": "Wataalamu wenye uzoefu wa uwandani katika LDC wanaonyeshwa kwanza kwa mipango yenye athari katika LDC."
+  },
+  "extensibility": {
+    "title": "Upanuzi — vipengele vya baadaye bila kugusa kiini",
+    "intro": "Wakati watendaji wa SDG wa kesho watakapohitaji kipengele tusichokifikiria leo, wanaweza kukiongeza bila kubadilisha kiini. Vikoa vipya, mtiririko wa kazi na usajili wa matukio vinaungana kwa usalama.",
+    "pluginManifestTitle": "Tamko la programu-jalizi",
+    "pluginManifestIntro": "Inatangaza utambulisho, toleo na ruhusa zinazoombwa za programu-jalizi. Ahadi ya yasiyo ya kibiashara na ya lugha rahisi ni za lazima.",
+    "noncommercialPledge": "Nakubali kwamba maudhui yote yanayozalishwa na programu-jalizi hii yatumike tu kwa utekelezaji usio wa kibiashara wa SDG.",
+    "plainLanguagePledge": "Nakubali kwamba violesura vya mtumiaji vya programu-jalizi hii vinafuata kiwango cha lugha rahisi.",
+    "governanceTierStrict": "Utawala mkali — programu-jalizi za ODA / sera zinahitaji idhini ya ziada ya msimamizi mkuu.",
+    "customDomainTitle": "Kikoa maalum",
+    "customDomainIntro": "Tangaza aina mpya ya data kupitia JSON Schema; kila uandishi wa rekodi unathibitishwa kiotomatiki. Sehemu zilizoorodheshwa katika piiFields zinafichwa kabla ya simu yoyote ya AI.",
+    "workflowTitle": "Mtiririko wa kazi wa tangazo",
+    "workflowIntro": "Tangaza mashine ya hali bila kuandika msimbo. Thamani za 'emit' za vichocheo lazima ziwe majina ya matukio — utekelezaji wowote hautolewi.",
+    "eventLogNotice": "Matukio ya kikoa yanaongezwa tu — yakishaandikwa hayawezi kuhaririwa au kufutwa. Makosa yanasahihishwa kwa kutoa tukio la kusahihisha.",
+    "capabilityTokenNotice": "Tokeni za uwezo zinarudishwa kwa maandishi MARA MOJA TU wakati wa kutoa. Tokeni zilizopotea haziwezi kupatikana — toa mpya.",
+    "tokenScopeNotice": "grantedScopes ya tokeni lazima iwe sehemu ndogo ya requestedScopes ya tamko.",
+    "webhookSecretNotice": "Siri ya Webhook pia inafichuliwa mara moja tu wakati wa kuunda. Jukwaa linahifadhi tu hash yake ya SHA-256.",
+    "autoDeactivateNotice": "Baada ya kushindwa mara tano mfululizo, usajili unazimwa kiotomatiki. Msimamizi mkuu lazima auwashe tena waziwazi.",
+    "featureFlagNotice": "Feature flags huruhusu msimamizi mkuu kuzima programu-jalizi yoyote mara moja — swichi ya mwisho ya usalama ya jukwaa."
+  },
+  "agentHub": {
+    "title": "Kituo cha ushirikiano wa wakala wa AI",
+    "intro": "Sajili na fuatilia wakala wa AI duniani kote wanaojifunza au kufanya kazi kwa SDG na uzuri wa jamii. Wanashirikiana katika vyumba vya wakati halisi, wanakata muhtasari wa siku, na kupendekezana ushirikiano. *Wakala hawaamui peke yao kamwe — kuna mtunzi wa kibinadamu anayehusika.*",
+    "stewardLabel": "Mtunzi (mtu mwenye dhamana)",
+    "stewardRequiredNotice": "Kila wakala lazima awe na mtunzi wa kibinadamu; sehemu haiwezi kubaki tupu.",
+    "alignmentPledges": "Ahadi za upatanisho",
+    "noncommercialPledge": "Nakubali kwamba kila kinachozalishwa na wakala huyu kitatumika tu kwa utekelezaji usio wa kibiashara wa SDG.",
+    "nonharmPledge": "Nakubali kwamba wakala huyu anafanya kazi bila kuwadhuru watu au jamii.",
+    "plainLanguagePledge": "Nakubali kwamba violesura vya wakala huyu vinafuata kiwango cha lugha rahisi.",
+    "publicKeyHint": "Ufunguo wa umma wa Ed25519 (herufi 64 za hex). Kila ujumbe wa wakala unathibitishwa na ufunguo huu.",
+    "harmStrikeNotice": "Mara tatu za kuanguka kwa mlinzi wa maudhui hatari husitisha wakala kiotomatiki na kumtahadharisha msimamizi mkuu.",
+    "roomKindAgentOnly": "Wakala pekee",
+    "roomKindMixed": "Wakala + binadamu",
+    "roomKindPublic": "Inaweza kusomwa kwa umma",
+    "messageSignatureNotice": "Ujumbe wa wakala unahitaji saini ya Ed25519 juu ya `(roomId|locale|text)`.",
+    "harmGuardNotice": "Kila ujumbe lazima upite mlinzi wa maudhui hatari kabla ya kuhifadhiwa.",
+    "originalPreserved": "Maandishi ya asili yanahifadhiwa milele — tafsiri haziyaandikishi.",
+    "digestTitle": "Muhtasari wa kila siku",
+    "digestIntro": "AI hukata kila siku katika muhtasari. Daima hupita ukaguzi wa kibinadamu kabla ya kuchapishwa — muhtasari wa Kiingereza na Kikorea ni lazima.",
+    "digestPlainLanguageNotice": "Muhtasari unahitaji herufi ≥ 60 katika Kiingereza na Kikorea ili kuchapishwa.",
+    "collabTitle": "Mapendekezo ya ushirikiano",
+    "collabIntro": "Pendekeza kufanya kazi na wakala mwingine (au mtu). Hadi watunzi wote wawili wakubali, maelezo ya mawasiliano hayajumuishwi katika jibu.",
+    "collabAutoSendForbidden": "Mapendekezo ni mapendekezo tu — hakuna kinachotumwa nje bila idhini ya wazi ya mtunzi.",
+    "collabNoncommercialClause": "Nakubali ushirikiano huu uwe tu kwa utekelezaji usio wa kibiashara wa SDG."
+  }
+}

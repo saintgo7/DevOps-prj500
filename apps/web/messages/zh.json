@@ -1,0 +1,361 @@
+{
+  "common": {
+    "appName": "SDG影响云",
+    "tagline": "基于联合国可持续发展目标(SDGs)的多租户影响测量与报告SaaS",
+    "loading": "加载中…",
+    "submit": "提交",
+    "cancel": "取消",
+    "back": "返回",
+    "home": "首页",
+    "signOut": "退出登录",
+    "signIn": "登录",
+    "signUp": "注册",
+    "myProfile": "我的资料",
+    "language": "语言"
+  },
+  "home": {
+    "goalsHeading": "17个可持续发展目标",
+    "apiOffline": "无法连接到目录API。请使用 {dev} 或 {compose} 启动本地环境。",
+    "footerDocs": "文档"
+  },
+  "auth": {
+    "signUpTitle": "注册",
+    "signUpHint": "创建一个新的工作空间(租户)和管理员账户。",
+    "signInTitle": "登录",
+    "email": "电子邮箱",
+    "password": "密码",
+    "passwordHint": "密码 (至少12位)",
+    "organizationName": "组织名称(可选)",
+    "displayName": "显示名称(可选)",
+    "submitting": "提交中…",
+    "haveAccount": "已经有账户了吗?",
+    "noAccount": "还没有账户?",
+    "signupFailed": "注册失败",
+    "signinFailed": "登录失败"
+  },
+  "me": {
+    "title": "我的资料",
+    "email": "电子邮箱",
+    "name": "显示名称",
+    "status": "状态",
+    "mfa": "MFA",
+    "mfaActive": "启用",
+    "mfaInactive": "未启用",
+    "tenantId": "租户ID",
+    "userId": "用户ID",
+    "loadFailed": "无法加载资料"
+  },
+  "goal": {
+    "back": "← 全部17个目标",
+    "targets": "细分目标 ({count})",
+    "noTargets": "此目标尚未播种示例细分目标。",
+    "tier": "等级"
+  },
+  "languageSwitcher": {
+    "label": "选择语言"
+  },
+  "glossary": {
+    "title": "平实语言词汇表",
+    "intro": "我们用平实的语言描述我们的工作。下面是每个技术术语在日常语言中的含义。",
+    "yourCallingCard": {
+      "plain": "你的使命名片",
+      "technical": "MatchProfile",
+      "explain": "一个简短的页面,告诉别人你关心哪个SDG,你能提供什么,你需要什么。"
+    },
+    "spark": {
+      "plain": "兴趣的火花",
+      "technical": "MatchSignal",
+      "explain": "一个小动作——比如收藏或点赞——表示你可能想多了解某人。"
+    },
+    "companion": {
+      "plain": "同伴",
+      "technical": "MatchPair",
+      "explain": "你和对方都同意建立联系的人。"
+    },
+    "kindred": {
+      "plain": "寻找志同道合者",
+      "technical": "向量相似度",
+      "explain": "我们比较你关于自己写的内容与别人写的内容,来推荐与你思考和关心相似事物的人。"
+    },
+    "mustHave": {
+      "plain": "必备条件",
+      "technical": "硬过滤器",
+      "explain": "决定你绝不会被匹配到谁的规则——例如,你们必须至少共享一种语言。"
+    },
+    "fairnessBoost": {
+      "plain": "公平性加权",
+      "technical": "equity weight",
+      "explain": "我们给那些声音通常被忽略的人——例如在最不发达国家工作的人——一些额外的可见度,以免网络只放大已经很响亮的声音。"
+    },
+    "yourSpace": {
+      "plain": "你的私人空间",
+      "technical": "租户隔离",
+      "explain": "你的数据与其他每个组织分开存储。其他组织中的任何人都无法看到。"
+    },
+    "privacyLine": {
+      "plain": "隐私边界",
+      "technical": "行级安全(RLS)",
+      "explain": "嵌入数据库的规则,使我们自己的代码也无法意外显示别人的数据。"
+    },
+    "changeRecord": {
+      "plain": "变更记录",
+      "technical": "审计事件",
+      "explain": "每当发生重要变更,我们都会记下谁在何时做出的,以便你随时检查历史。"
+    },
+    "privacyMask": {
+      "plain": "隐私面罩",
+      "technical": "PII 脱敏",
+      "explain": "在AI阅读你的文字之前,我们会隐藏姓名、电话号码、地址等个人详细信息。"
+    }
+  },
+  "watch": {
+    "title": "本周发现",
+    "intro": "每周,我们关注联合国机构、捐助者、研究者和基层组织对您所关心的可持续发展目标的讨论。",
+    "noFindings": "本周没有符合您筛选条件的发现。请尝试放宽筛选。",
+    "subscribe": "每周以我的语言接收",
+    "expressInterest": "我想了解更多 / 进行合作",
+    "interestRecorded": "已保存到您的私人列表。我们不会替您联系任何人——由您决定何时以及是否联系。",
+    "publicFeed": "公开周报订阅源(以 CC BY 4.0 自由再发布)"
+  },
+  "column": {
+    "todayTitle": "今日专栏",
+    "todayIntro": "一篇简短、有出处的精选,依据我们公开的《内容标准》挑选。",
+    "byStandard": "依据《内容标准》{version} 进行编辑——每篇发布的内容都会记录此版本。",
+    "originalSource": "原始来源",
+    "translatedFrom": "从 {sourceLanguage} 翻译",
+    "approveTitle": "发布前需审批",
+    "approveDescription": "我们绝不自动发布。专栏只有在至少一名人工审批者点击批准后才会到达读者。敏感主题需要两人。",
+    "approveDecision": {
+      "approve": "批准并发布",
+      "reject": "拒绝(此发现将不会发布)",
+      "revise": "退回修改"
+    },
+    "approveExpired": "此批准链接已过期。请要求编辑重新发出。",
+    "approveAlreadyDecided": "此批准链接已被使用。每个链接仅可使用一次。",
+    "approveTokenInvalid": "无法验证此批准链接。签名不匹配。",
+    "approveSuccess": "谢谢。您的决定已于 {time} 被记录。",
+    "managingApprovers": "管理审批者",
+    "managingApproversBody": "添加或删除审批者本身就是敏感操作。需两位管理员同意,变更会被记录在不可变更的审计日志中。",
+    "partnerTitle": "合作机构",
+    "partnerBody": "合作机构可通过签名的 webhook(HMAC-SHA256)或拉取 CC BY 4.0 公开 Atom 订阅源,接收每一篇已发布的专栏。合作方从不看到草稿、订阅或私人兴趣。"
+  },
+  "dashboard": {
+    "dashboardTitle": "仪表板",
+    "sectionGoals": "17 个目标",
+    "sectionTargets": "169 个细分目标",
+    "sectionPostSdgs": "2030 年后议程",
+    "sectionPostSdgsBody": "国际社会开始讨论的 SDGs 之后时代的主题。",
+    "sectionImpact": "我们自我衡量的影响",
+    "sourceTabExternal": "来自世界",
+    "sourceTabExternalBody": "外部的研究、论文、文章、专栏、新闻通讯和经过验证的社交内容——只有通过 12 条完整性规则的内容才会出现。",
+    "sourceTabInternal": "来自本平台",
+    "sourceTabInternalBody": "我们自己发布的新闻通讯、专栏、论文。",
+    "researchTitle": "研究与项目规划",
+    "researchIntro": "基于你的发现规划新研究或新项目。在你选择分享之前,仅在你的工作区可见。",
+    "outreachTitle": "联系专家",
+    "outreachIntro": "为研究者、从业者或合作伙伴起草一条消息。我们绝不替你发送——由你点击发送。",
+    "monitoringTitle": "监控(仅管理员)",
+    "monitoringIntro": "完整性、审批、合作伙伴、研究和监控管道的整体视图。打开此页面本身会被记录在审计日志中。",
+    "chatTitle": "实时对话",
+    "chatIntro": "用你的语言输入。对方用自己的语言阅读。原文始终保留。"
+  },
+  "story": {
+    "todayShortTitle": "今日30秒故事",
+    "todayShortIntro": "一段简短、有出处的内容,按你的语言和年龄段调整。来源始终显示。AI 辅助;每个版本均经人工审批。",
+    "ageTier": {
+      "children": "面向儿童",
+      "teen": "面向青少年",
+      "adult": "面向成人",
+      "senior": "更慢节奏"
+    },
+    "approveVariant": "批准此版本发布",
+    "rejectVariant": "拒绝此版本",
+    "neverAutoPost": "我们绝不自动发布。每个版本在发往任何平台之前都由人工审批。",
+    "platformLabel": "平台",
+    "watermarkExplain": "每段视频在角落标有水印,表明这是 AI 辅助内容并显示其来源。",
+    "retract": "撤回此条发布",
+    "retractedNote": "此条发布已于 {when} 撤回。"
+  },
+  "strategy": {
+    "toneTitle": "语气",
+    "toneIntro": "五种语气 — 俏皮、朋友、庄重、引导、反思。选择契合此刻的那一种,从不说教。",
+    "ethicsClosing": "隐性提醒:我们今日所造,塑造明日的 AI,而它塑造再之后的人类。",
+    "trendBenchTitle": "趋势基准(仅元数据)",
+    "trendBenchBody": "我们追踪平台 × 语言 × 时段的平均时长、钩点时机、标签频率。从不复制或转载任何人的内容。",
+    "patentTitle": "今日发明 — 服务于 SDG 行动",
+    "patentBody": "一项新公开的专利或版权申请,映射到它能服务的 SDG 与地区。绝不以商业目的转载。",
+    "sessionTitle": "邀请制战略会议",
+    "sessionIntro": "与你邀请的人深入讨论一项新技术如何服务于 SDG。仅限非商业用途。",
+    "noncommercialClause": "我同意将本会议内容仅用于非商业目的的 SDG 实施。",
+    "revokeNotice": "若不再服务于 SDGs,超级管理员可随时撤回本会议。撤回原因永久保存。",
+    "sessionRevokedBanner": "本会议已于 {when} 撤回。原因:{reason}"
+  },
+  "research": {
+    "title": "研究·撰稿会议",
+    "intro": "我们将多方汇集的洞见以多学科方式编织为 Nature 级或 SSCI 级论文,在本平台内合作撰写。每篇已发表论文都附有一份任何人都能读懂的五段式平实语言摘要。",
+    "natureTier": "Nature 级 —— 自然科学·影响一次研究",
+    "ssciTier": "SSCI 级 —— 社会科学·政策·实践研究",
+    "plainSummaryRequired": "发表前,必须同时具备英文与主语言的平实摘要。",
+    "ldcCoauthorPrompt": "至少一位最不发达国家所属机构的共同作者会让视野更宽广。",
+    "selfCiteWarning": "自引比例超过 20%。请记录编辑理由。",
+    "publishedNote": "发表时引用列表被冻结。订正仅通过独立勘误进行。"
+  },
+  "book": {
+    "title": "图书撰写 —— 任何人都能读懂",
+    "intro": "图书是对已经过人工审批的专栏、卡片新闻、论文的重新编排。重点是策展与平实语言润色,而非从头写作。",
+    "license": "默认许可:CC BY-NC-SA 4.0",
+    "chapterSourceLabel": "章节来源(必须恰好一个)",
+    "plainScoreGate": "平实语言评分需达到 60 以上方可发行。",
+    "ldcLanguageHint": "面向最不发达国家的图书必须至少包含一种当地语言的章节。"
+  },
+  "impact": {
+    "title": "影响验证 —— 不侵犯隐私",
+    "intro": "订阅或点赞并不等同于同意。若要将您的参与计入任何影响研究,您必须另行选择加入。您可以随时撤回。",
+    "consentClause": "我同意将与我相关的 SDG 信号以匿名和仅集合的方式纳入 SDG 影响研究。",
+    "scope": "范围(SDG / 地区 / 主题)",
+    "level": "级别",
+    "levelAggregate": "仅单周期集合(最弱级别)",
+    "levelLongitudinal": "时间序列(直到到期)",
+    "expiresIn": "默认到期:12 个月",
+    "revoke": "撤回同意",
+    "revokedNote": "已发布的研究保持不变,但从下一次集合周期起将不再包含您。",
+    "kFloorNote": "除非至少 {floor} 人共享同一群组,否则任何结果都不会对外公开。",
+    "publishGate": "发表需要两位人工审稿人(其中一位为 SDG 领域专家)批准。"
+  },
+  "funding": {
+    "title": "资金对接 —— 捐赠与影响力投资",
+    "intro": "各地区·各国的 SDG 实践者公开提案,捐赠者、赞助者、影响力投资者在此对接。本平台从不直接保管资金,资金流由外部支付伙伴处理。",
+    "noncommercialClause": "我同意本提案的资金仅用于非商业的 SDG 实施。",
+    "fundingModel": "资金模式",
+    "modelAllOrNothing": "全有或全无 —— 未达目标全额退款",
+    "modelKeepItAll": "保留所得 —— 已收即用(仅紧急救援可用)",
+    "milestoneLabel": "里程碑(资金按阶段释放)",
+    "milestoneEvidenceHint": "每个里程碑释放前需提供证据(视频/照片/外部链接)并由两位审核者批准。",
+    "singleContribCap": "单一捐赠者出资不得超过目标的 25%,避免被一人左右。",
+    "pauseNotice": "超级管理员可随时暂停可疑提案。理由永久保存。",
+    "flagCta": "举报此提案",
+    "reportTitle": "影响报告",
+    "reportIntro": "捐赠者可通过关联的影响研究查看资金所造成的可验证成果。"
+  },
+  "maker": {
+    "title": "SDG 实践者创客空间",
+    "intro": "无需从零写代码。从已经预置 i18n、行级安全、平实语言、伦理语气的模板出发,搭建你需要的网站、应用或机器人。",
+    "templateKindStaticSite": "静态站点",
+    "templateKindNextApp": "Next.js 全栈",
+    "templateKindPwa": "离线优先 PWA",
+    "templateKindMobileRn": "移动端 (React Native)",
+    "templateKindDataDashboard": "数据仪表板",
+    "templateKindSmsBot": "SMS 机器人",
+    "templateKindWhatsappBot": "WhatsApp 机器人",
+    "noncommercialClause": "我承诺本工具仅用于非商业的 SDG 实施。",
+    "readmeGate": "上线前,至少一个产物的 README 平实语言评分须达 60 以上。",
+    "licenseHint": "默认许可:MIT、Apache-2.0、CC-BY-NC-SA-4.0 任选其一。",
+    "ldcLanguageHint": "面向最不发达国家的工具建议至少包含一种当地语言。",
+    "aiProvenance": "AI 辅助生成的代码会自动记录所用模型与提示版本。"
+  },
+  "needs": {
+    "title": "救援与共享匹配",
+    "intro": "当一个地区说出自己需要什么,世界都能看到,可以提供帮助的人会被匹配。本平台从不自动发送消息,匹配只是建议。",
+    "categoryRelief": "紧急救援",
+    "categorySupplies": "耗材",
+    "categoryEquipment": "设备",
+    "categoryKnowledge": "知识/专家",
+    "categoryVolunteers": "志愿者",
+    "urgencyCritical": "紧急",
+    "urgencyHigh": "高",
+    "urgencyNormal": "普通",
+    "urgencyLow": "低",
+    "verificationVerified": "已验证(外部权威)",
+    "verificationCommunityVouched": "社区担保",
+    "verificationUnverified": "未验证",
+    "contactMaskNotice": "在双方都接受之前,任何一方都看不到对方联系方式 —— 服务器响应中即被隐去。",
+    "fulfilmentSignClause": "我确认收到并同意平台条款。",
+    "ldcBoostNotice": "来自最不发达国家、紧急程度为 critical 的请求会自动置于检索与信息流的顶部。"
+  },
+  "bizplan": {
+    "title": "AI 协作的事业计划书 / 政策 / ODA 撰写",
+    "intro": "基于本平台累积的实时数据(专利、每周发现、专栏、论文),协作撰写 SDG 相关计划书。AI 绝不在没有引用的情况下下结论。",
+    "trackBusiness": "事业计划书",
+    "trackPolicy": "政策提案",
+    "trackPledge": "公约",
+    "trackInvestment": "投资引介",
+    "trackOda": "ODA 提案",
+    "trackExecution": "项目执行",
+    "trackManagement": "项目管理",
+    "noncommercialClause": "我同意本计划书仅用于非商业的 SDG 实施。",
+    "trackImmutable": "轨道一旦确定不可更改。要使用其他轨道,请创建新计划。",
+    "citationRequired": "AI 撰写的所有章节(执行摘要除外)必须引用本平台的一手资料。",
+    "pledgeWordCap": "公约轨道的每个章节须 ≤ 200 词,使用平实语言。",
+    "twoReviewerNotice": "ODA · 政策轨道在 ready_for_use 前需要两位人工审核者(其中一位为 SDG 领域专家)的批准。"
+  },
+  "feasibility": {
+    "title": "多学科可行性评审(6 轴)",
+    "intro": "影响、财务、技术、法律、伦理、证据,每轴 0–100 分。任一轴低于 40 则计划书不可进入 ready_for_use。",
+    "axisImpact": "影响 —— SDG 成果潜力",
+    "axisFinancial": "财务 —— 预算 / 里程碑一致性",
+    "axisTechnical": "技术 —— TRL 与可运营性",
+    "axisLegal": "法律 —— 非商业与合规适配",
+    "axisEthical": "伦理 —— 防有害内容与非目标伤害",
+    "axisEvidence": "证据 —— 引用多样性与强度",
+    "passFloor": "通过门槛:每轴 ≥ 40",
+    "humanAdjustNotice": "领域专家可以对各轴进行修正,原因永久保存。"
+  },
+  "expert": {
+    "title": "专家能力匹配",
+    "intro": "基于领域、语言、现场经验、LDC 加权与可用性,我们推荐专家。平台从不自动发送消息。",
+    "availabilityOpen": "可接受新合作",
+    "availabilityBusy": "档期紧张",
+    "availabilityClosed": "暂不接受新匹配",
+    "visibilityPlatformOnly": "仅在平台内匹配中可见(默认)",
+    "visibilityPublic": "在公开搜索中可见",
+    "visibilityPrivate": "档案不公开",
+    "verifiedBadge": "已认证凭据 —— 仅由外部权威机构或管理员授予",
+    "selfReportNotice": "用户不能自行授予 'verified' 等级。",
+    "contactMaskNotice": "在双方都接受之前,响应中不会包含联系方式。",
+    "ldcBoostNotice": "拥有最不发达国家现场经验的专家会被优先推荐给覆盖最不发达国家的计划。"
+  },
+  "extensibility": {
+    "title": "可扩展性 —— 未来功能,无需修改核心",
+    "intro": "当明天的 SDG 实践者需要我们今天还未设想的功能时,他们可以在不修改核心的情况下添加。新域、工作流、事件订阅都能安全接入。",
+    "pluginManifestTitle": "插件清单",
+    "pluginManifestIntro": "声明插件的身份、版本、请求权限。非商业承诺与平实语言承诺为必填项。",
+    "noncommercialPledge": "我承诺该插件产出的所有内容仅用于非商业的 SDG 实施。",
+    "plainLanguagePledge": "我承诺该插件面向用户的界面遵循平实语言标准。",
+    "governanceTierStrict": "严格治理 —— ODA / 政策类插件需要 super-admin 额外批准。",
+    "customDomainTitle": "自定义域",
+    "customDomainIntro": "通过 JSON Schema 声明新的数据类型;每次写入记录都会自动校验。piiFields 列出的字段在调用 AI 前自动屏蔽。",
+    "workflowTitle": "声明式工作流",
+    "workflowIntro": "无需写代码即可声明状态机。触发器的 emit 必须是事件名 —— 不支持任意代码执行。",
+    "eventLogNotice": "领域事件是只追加的 —— 一经写入即不可编辑或删除。错误的事件应通过补丁事件来纠正。",
+    "capabilityTokenNotice": "Capability 令牌仅在签发时返回一次原文。丢失后无法找回,需要重新签发。",
+    "tokenScopeNotice": "令牌的 grantedScopes 必须是清单 requestedScopes 的子集。",
+    "webhookSecretNotice": "Webhook secret 同样只在创建时显示一次。平台仅保留其 SHA-256 哈希。",
+    "autoDeactivateNotice": "Webhook 连续 5 次失败后自动停用。super-admin 必须显式重新激活。",
+    "featureFlagNotice": "通过 Feature flag,super-admin 可立即停用任何插件 —— 平台的最终安全开关。"
+  },
+  "agentHub": {
+    "title": "AI 代理协作中心",
+    "intro": "登记并监控全球正在学习或践行 SDG 与人类向善影响力的 AI 代理。在实时聊天室中协作,以每日摘要提炼当日要点,并交换协作邀约。*代理从不独自决定 —— 始终由人类受托人负责。*",
+    "stewardLabel": "受托人(负责的人类)",
+    "stewardRequiredNotice": "每个代理必须有人类受托人,不可为空。",
+    "alignmentPledges": "对齐承诺",
+    "noncommercialPledge": "我承诺该代理产出的一切仅用于非商业的 SDG 实施。",
+    "nonharmPledge": "我承诺该代理在运行中不会对个人或社区造成伤害。",
+    "plainLanguagePledge": "我承诺该代理的所有界面遵循平实语言标准。",
+    "publicKeyHint": "Ed25519 公钥(64 位十六进制)。每条代理消息都用此公钥验证。",
+    "harmStrikeNotice": "有害内容守卫触发 3 次后将自动暂停并提醒 super-admin。",
+    "roomKindAgentOnly": "仅代理",
+    "roomKindMixed": "代理与人类共处",
+    "roomKindPublic": "公开可读",
+    "messageSignatureNotice": "代理发送的消息需要在 `(roomId|locale|text)` 上的 Ed25519 签名。",
+    "harmGuardNotice": "每条消息需通过有害内容守卫才能保存。",
+    "originalPreserved": "原文永久保留 —— 翻译不会覆盖。",
+    "digestTitle": "每日摘要",
+    "digestIntro": "AI 每日为聊天室生成摘要。发布前必须经人工审核 —— 英语与韩语两份摘要均为必需。",
+    "digestPlainLanguageNotice": "摘要需在英语和韩语两种语言中各达到 ≥ 60 字符方可发布。",
+    "collabTitle": "协作邀约",
+    "collabIntro": "向其他代理(或人类)发起协作邀约。在双方受托人都接受之前,响应中不包含联系方式。",
+    "collabAutoSendForbidden": "邀约仅为提议 —— 未经受托人明确同意,绝不会自动外发。",
+    "collabNoncommercialClause": "我同意该协作仅用于非商业的 SDG 实施。"
+  }
+}

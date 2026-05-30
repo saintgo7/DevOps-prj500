@@ -1,0 +1,28 @@
+# CODEOWNERS — see https://docs.github.com/articles/about-code-owners
+# Each line is a pattern followed by one or more owners.
+# Update once teams are created (e.g., @sdgi-org/platform).
+
+# Default fallback
+*                                    @saintgo7
+
+# Documentation
+/docs/                               @saintgo7
+/docs/05-risk-compliance.md          @saintgo7
+/docs/15-security-design.md          @saintgo7
+/docs/adr/                           @saintgo7
+
+# Apps
+/apps/web/                           @saintgo7
+/apps/api/                           @saintgo7
+/apps/ai/                            @saintgo7
+/apps/worker/                        @saintgo7
+
+# Packages
+/packages/types/                     @saintgo7
+/packages/ui/                        @saintgo7
+/packages/sdk/                       @saintgo7
+
+# Infra & CI
+/infra/                              @saintgo7
+/.github/                            @saintgo7
+/docker-compose.yml                  @saintgo7
